@@ -1,0 +1,9 @@
+# Optional: target duration of each segment in seconds.
+# Without this file a segment ends TAIL_SECONDS after the narration stops.
+# Use slots when the picture should keep playing past the narration (e.g. a demo
+# runs on screen without commentary). A segment is never shorter than its
+# narration, so raising a value here is safe. Beware of long silent tails:
+# every second past the narration is a second of silence in the final video.
+# Format: <segment id> <seconds>
+01 14
+02 33

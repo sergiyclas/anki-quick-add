@@ -13,6 +13,8 @@ const targets = [
   { size: 48, svg: "icon.svg", out: "public/icons/icon48.png" },
   { size: 128, svg: "icon.svg", out: "public/icons/icon128.png" },
   { size: 128, svg: "icon.svg", out: "store/icon128.png", artwork: 96 },
+  { size: 512, svg: "icon.svg", out: "store/icon512.png" },
+  { size: 1024, svg: "icon.svg", out: "store/icon1024.png" },
 ];
 
 const browser = await chromium.launch({ channel: "chromium" });

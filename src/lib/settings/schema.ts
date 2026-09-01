@@ -78,7 +78,7 @@ export const DEFAULT_SETTINGS: Settings = {
   providers: {
     anthropic: { model: "claude-sonnet-5", effort: "low" },
     openai: { model: "gpt-5.6-terra", effort: "low" },
-    gemini: { model: "gemini-3.7-flash", effort: "low" },
+    gemini: { model: "gemini-3.5-flash", effort: "low" },
     compat: { model: "", effort: "low", baseUrl: "", preset: "openrouter", jsonMode: "auto" },
   },
   languages: { source: "en", target: "uk" },

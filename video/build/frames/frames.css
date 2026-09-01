@@ -1,0 +1,214 @@
+/* Frame look for the Anki Quick Add feature tour. Palette = the extension's icon:
+   blue gradient stage, coral accent. Body size must match RENDER_W x RENDER_H. */
+
+:root {
+  --bg: #0e1734;
+  --bg2: #1a2a5c;
+  --fg: #f5f7ff;
+  --muted: #b9c3e6;
+  --dim: #7f8bb8;
+  --line: rgba(255, 255, 255, 0.1);
+  --card: rgba(255, 255, 255, 0.05);
+  --accent: #ff7a59;
+  --blue: #7ea6ff;
+  --font-display: "Segoe UI", system-ui, sans-serif;
+  --font-body: "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background: radial-gradient(1200px 800px at 15% 10%, #24408a 0%, transparent 60%),
+    radial-gradient(900px 700px at 90% 90%, #3a2a66 0%, transparent 55%),
+    linear-gradient(135deg, var(--bg), var(--bg2));
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.45;
+  position: relative;
+  /* the bottom band stays free for burned-in subtitles */
+  padding: 70px 110px 190px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 66px;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 28px;
+}
+
+h1.big {
+  font-size: 104px;
+  line-height: 1.02;
+  margin: 26px 0 30px;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.eyebrow {
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+
+/* Demo layout: copy on the left, screenshot window on the right */
+
+.stage {
+  display: grid;
+  grid-template-columns: 640px 1fr;
+  gap: 60px;
+  align-items: center;
+  height: 100%;
+}
+
+.copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 32px;
+}
+
+.copy li {
+  padding: 12px 0 12px 46px;
+  position: relative;
+  color: var(--muted);
+}
+
+.copy li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 26px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.note {
+  margin-top: 24px;
+  font-size: 26px;
+  color: var(--dim);
+}
+
+.shot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.winbar {
+  height: 46px;
+  background: #e9edf7;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  color: #56607a;
+  font-size: 20px;
+}
+
+.winbar span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c9cfdf;
+}
+
+.winbar em {
+  font-style: normal;
+  margin-left: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.viewport {
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+
+.viewport img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+
+/* Hero / CTA */
+
+.hero {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1500px;
+}
+
+.logo svg {
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.4));
+}
+
+.pipeline {
+  font-size: 34px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.cta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+  font-size: 38px;
+  color: var(--muted);
+}
+
+.cta-list li {
+  padding: 8px 0;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.button {
+  display: inline-block;
+  padding: 22px 46px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.url {
+  font-size: 34px;
+  color: var(--blue);
+}

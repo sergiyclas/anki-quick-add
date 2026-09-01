@@ -15,8 +15,8 @@ export const MODEL_CATALOG: Record<ProviderId, ModelInfo[]> = {
     { id: "gpt-5.6-luna", label: "GPT-5.6 Luna" },
   ],
   gemini: [
-    { id: "gemini-3.7-flash", label: "Gemini 3.7 Flash" },
     { id: "gemini-3.5-flash", label: "Gemini 3.5 Flash" },
+    { id: "gemini-3.7-flash", label: "Gemini 3.7 Flash" },
     { id: "gemini-3.5-flash-lite", label: "Gemini 3.5 Flash Lite" },
     { id: "gemini-2.5-flash", label: "Gemini 2.5 Flash" },
     { id: "gemini-2.5-pro", label: "Gemini 2.5 Pro" },

@@ -1,0 +1,9 @@
+# Ad teasers cut from the finished video by 05-cut-teasers.sh.
+# One teaser per line: name  segID[:maxdur]  [segID:maxdur]
+# A teaser is one segment opening, or two glued together (hook + demo).
+# maxdur limits how many seconds are taken from the segment start.
+#
+# A teaser must make sense on its own: never start it mid-list ("Third, ...")
+# and never cut it right before the payoff the hook promises.
+v1 01:13 03:15
+v2 05:25

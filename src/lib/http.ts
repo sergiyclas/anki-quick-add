@@ -4,7 +4,11 @@ export class HttpError extends Error {
     public readonly url: string,
     public readonly body: string,
   ) {
-    super(`HTTP ${status} from ${new URL(url).host}: ${body.slice(0, 300)}`);
+    super(
+      status === 502 || status === 503 || status === 529
+        ? `${new URL(url).host} is temporarily overloaded (HTTP ${status}) - try again in a moment`
+        : `HTTP ${status} from ${new URL(url).host}: ${body.slice(0, 300)}`,
+    );
     this.name = "HttpError";
   }
 }
@@ -13,9 +17,20 @@ export interface HttpOptions extends RequestInit {
   timeoutMs?: number;
 }
 
+const TRANSIENT = new Set([502, 503, 529]);
+const RETRY_DELAY_MS = 1500;
+
 async function request(url: string, { timeoutMs = 15_000, signal, ...init }: HttpOptions): Promise<Response> {
-  const timeout = AbortSignal.timeout(timeoutMs);
-  const res = await fetch(url, { ...init, signal: signal ? AbortSignal.any([signal, timeout]) : timeout });
+  const attempt = async () => {
+    const timeout = AbortSignal.timeout(timeoutMs);
+    return fetch(url, { ...init, signal: signal ? AbortSignal.any([signal, timeout]) : timeout });
+  };
+  let res = await attempt();
+  // Providers answer "high demand" with 503/529 for a few seconds; one retry covers most of those.
+  if (TRANSIENT.has(res.status)) {
+    await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+    res = await attempt();
+  }
   if (!res.ok) throw new HttpError(res.status, url, await res.text());
   return res;
 }

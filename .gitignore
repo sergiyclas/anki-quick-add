@@ -5,3 +5,12 @@ dist/
 key.pem
 key.pub.b64
 HANDOFF.md
+
+# promo video sources (generated)
+video/voiceover/
+video/build/out/
+video/build/frames/out/
+video/build/frames/png/
+video/cuts/
+video/subs.srt
+video/raw/

@@ -1,0 +1,56 @@
+# video.config - parameters for the promo video build pipeline.
+# Copy to video/build/video.config in the target project and adjust.
+# Sourced by the bash steps and parsed by the python steps (plain KEY=VALUE).
+
+# --- Format ------------------------------------------------------------------
+# Common presets:
+#   16:9  landscape  OUT 1280x720,  RENDER 1920x1080
+#   9:16  vertical   OUT 1080x1920, RENDER 1080x1920
+#   1:1   square     OUT 1080x1080, RENDER 1080x1080
+# RENDER_* is the HTML frame size (Playwright viewport, must match frames.css body).
+# OUT_* is the final video size. Both must be even numbers.
+OUT_W=1280
+OUT_H=720
+RENDER_W=1920
+RENDER_H=1080
+FPS=30
+
+# --- Motion ------------------------------------------------------------------
+# Ken Burns zoom ceiling and fade length per frame, in seconds.
+ZOOM_MAX=1.09
+FADE=0.45
+
+# --- Timing ------------------------------------------------------------------
+# A segment lasts max(narration + TAIL_SECONDS, slot from segments.conf).
+# segments.conf is optional; without it every segment ends TAIL_SECONDS after
+# the narration stops, so there are no long silent tails.
+TAIL_SECONDS=0.7
+
+# --- Narration ---------------------------------------------------------------
+# TTS_ENGINE: elevenlabs (needs ELEVENLABS_API_KEY in the environment, falls
+# back to edge-tts with a warning) or edge-tts (free, no account).
+TTS_ENGINE=elevenlabs
+# edge-tts voice (Ukrainian: uk-UA-OstapNeural, uk-UA-PolinaNeural)
+EDGE_VOICE=uk-UA-OstapNeural
+# ElevenLabs voice id (list voices: python3 tts-elevenlabs.py --list-voices)
+ELEVENLABS_VOICE_ID=
+AUDIO_KBPS=64
+
+# --- Script ------------------------------------------------------------------
+# Markdown script location, relative to the project root.
+SCRIPT_MD=video/script.md
+
+# --- Subtitles ---------------------------------------------------------------
+SUBS_FONT=Arial
+SUBS_FONTSIZE=24
+SUBS_MARGINV=20
+SUBS_MAX_LINE=42
+
+# --- Output ------------------------------------------------------------------
+FINAL_NAME=promo
+# TARGET_MIB=0 disables the two-pass size squeeze (the subtitled cut is final).
+# Set a number (e.g. 22) when a hosting limit applies; LIMIT_MIB is the hard ceiling.
+TARGET_MIB=0
+LIMIT_MIB=24
+# Optional: copy the final mp4 and poster here (relative to project root). Empty = skip.
+PUBLISH_DIR=
