@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Vista previa"
   },
-  "tab_backup": {
-    "message": "Copia de seguridad"
-  },
   "save": {
     "message": "Guardar"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Se desbloquea con un código promocional en Ajustes → Copia de seguridad."
+    "message": "Se desbloquea con un código promocional en Ajustes → General."
   },
   "pro_hint_unlocked": {
     "message": "Las reglas mnemotécnicas y la etimología necesitan un proveedor de LLM; el audio de los ejemplos usa la síntesis de voz de Google."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 en Free, 2 en Pro, 3 en Founder"
+  },
+  "tab_general": {
+    "message": "General"
+  },
+  "ui_language": {
+    "message": "Idioma de la interfaz"
+  },
+  "ui_language_auto": {
+    "message": "Automático (idioma del navegador)"
+  },
+  "ui_language_hint": {
+    "message": "Se aplica de inmediato. El nombre y la descripción de la extensión en chrome://extensions siempre siguen el idioma del navegador."
+  },
+  "ui_theme": {
+    "message": "Tema de la interfaz"
+  },
+  "ui_theme_system": {
+    "message": "Como el navegador"
+  },
+  "ui_theme_light": {
+    "message": "Claro"
+  },
+  "ui_theme_dark": {
+    "message": "Oscuro"
+  },
+  "ui_theme_schedule": {
+    "message": "Oscuro según horario"
+  },
+  "ui_dark_from": {
+    "message": "Oscuro desde"
+  },
+  "ui_dark_until": {
+    "message": "hasta"
   }
 }

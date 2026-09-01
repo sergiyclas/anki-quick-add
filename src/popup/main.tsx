@@ -1,6 +1,7 @@
 import { render } from "preact";
 import "../ui/base.css";
 import "./popup.css";
+import { bootPage } from "../ui/boot";
 import { App } from "./App";
 
-render(<App />, document.getElementById("app")!);
+void bootPage(() => render(<App />, document.getElementById("app")!));

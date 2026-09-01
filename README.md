@@ -198,7 +198,7 @@ mode adds a pasted list one word at a time and reports added / duplicates / erro
 
 ### ⭐ Pro, unlocked with a promo code
 
-A promo code (Settings → Backup) unlocks mnemonics and etymology on cards, audio for every example
+A promo code (Settings → General) unlocks mnemonics and etymology on cards, audio for every example
 sentence, three card themes for the built-in note type (Classic, Paper, Midnight) and parallel
 additions in List mode. The core is free and stays free.
 
@@ -272,6 +272,8 @@ Everything is set in the options page; this is what the settings mean.
 | Duplicates | skip / add / update; search the collection or the deck | skip, collection |
 | Tags | free tags + automatic language-pair tag | `quick-add`, `en-uk` |
 | Selection bubble | off / on; trigger: Shift, Alt or every selection | off; Shift |
+| Interface language | auto (browser language) or any of the 12 bundled languages | auto |
+| Interface theme | same as the browser / light / dark / dark on a schedule (from–until) | same as the browser |
 | Card theme (Pro) | Classic / Paper / Midnight for the built-in note type | Classic |
 | Pro extras | mnemonic, etymology, example audio, parallel List mode | off |
 | Shortcut | `chrome://extensions/shortcuts` | Alt+A |

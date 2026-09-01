@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "预览"
   },
-  "tab_backup": {
-    "message": "备份"
-  },
   "save": {
     "message": "保存"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "在 设置 → 备份 中输入优惠码即可解锁。"
+    "message": "在 设置 → 常规 中输入优惠码即可解锁。"
   },
   "pro_hint_unlocked": {
     "message": "记忆法和词源需要 LLM 提供商；例句音频使用 Google 文字转语音。"
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "Free 为 1，Pro 为 2，Founder 为 3"
+  },
+  "tab_general": {
+    "message": "常规"
+  },
+  "ui_language": {
+    "message": "界面语言"
+  },
+  "ui_language_auto": {
+    "message": "自动（浏览器语言）"
+  },
+  "ui_language_hint": {
+    "message": "立即生效。chrome://extensions 中显示的扩展名称和说明始终跟随浏览器语言。"
+  },
+  "ui_theme": {
+    "message": "界面主题"
+  },
+  "ui_theme_system": {
+    "message": "跟随浏览器"
+  },
+  "ui_theme_light": {
+    "message": "浅色"
+  },
+  "ui_theme_dark": {
+    "message": "深色"
+  },
+  "ui_theme_schedule": {
+    "message": "按时间表切换深色"
+  },
+  "ui_dark_from": {
+    "message": "深色开始"
+  },
+  "ui_dark_until": {
+    "message": "结束"
   }
 }

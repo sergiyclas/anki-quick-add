@@ -30,6 +30,7 @@ WORKS WITH YOUR SETUP
 • Or bring your own key: OpenAI, Google Gemini, Anthropic, or any OpenAI-compatible endpoint (OpenRouter, Groq, DeepSeek, xAI, Mistral, Ollama, LM Studio). Your keys stay in your browser.
 • Built-in note type with a clean two-card template, or map the generated parts onto the fields of any note type you already use – and preview the result with your real Anki templates.
 • Around 40 languages in any pair. Ukrainian targets get built-in anti-calque rules.
+• Interface in 12 languages, switchable inside the extension; light, dark or dark-on-a-schedule theme.
 • Duplicate policy: skip, add anyway, or fill the empty fields of the existing note.
 
 FAST WHEN YOU WANT IT, CAREFUL WHEN YOU NEED IT

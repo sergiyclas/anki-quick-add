@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Прев'ю"
   },
-  "tab_backup": {
-    "message": "Резервна копія"
-  },
   "save": {
     "message": "Зберегти"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Відкривається промокодом у Налаштування → Резервна копія."
+    "message": "Відкривається промокодом у Налаштування → Загальні."
   },
   "pro_hint_unlocked": {
     "message": "Мнемоніка й етимологія потребують LLM-провайдера; озвучка прикладів – через Google text-to-speech."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 на Free, 2 на Pro, 3 на Founder"
+  },
+  "tab_general": {
+    "message": "Загальні"
+  },
+  "ui_language": {
+    "message": "Мова інтерфейсу"
+  },
+  "ui_language_auto": {
+    "message": "Авто (мова браузера)"
+  },
+  "ui_language_hint": {
+    "message": "Застосовується одразу. Назва й опис розширення в chrome://extensions завжди йдуть за мовою браузера."
+  },
+  "ui_theme": {
+    "message": "Тема інтерфейсу"
+  },
+  "ui_theme_system": {
+    "message": "Як у браузері"
+  },
+  "ui_theme_light": {
+    "message": "Світла"
+  },
+  "ui_theme_dark": {
+    "message": "Темна"
+  },
+  "ui_theme_schedule": {
+    "message": "Темна за розкладом"
+  },
+  "ui_dark_from": {
+    "message": "Темна з"
+  },
+  "ui_dark_until": {
+    "message": "до"
   }
 }

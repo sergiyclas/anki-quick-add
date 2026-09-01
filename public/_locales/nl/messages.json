@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Voorbeeld"
   },
-  "tab_backup": {
-    "message": "Back-up"
-  },
   "save": {
     "message": "Opslaan"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Ontgrendel met een promotiecode onder Instellingen → Back-up."
+    "message": "Ontgrendel met een promotiecode onder Instellingen → Algemeen."
   },
   "pro_hint_unlocked": {
     "message": "Ezelsbruggetjes en etymologie vereisen een LLM-aanbieder; de audio van voorbeelden gebruikt Google tekst-naar-spraak."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 bij Free, 2 bij Pro, 3 bij Founder"
+  },
+  "tab_general": {
+    "message": "Algemeen"
+  },
+  "ui_language": {
+    "message": "Taal van de interface"
+  },
+  "ui_language_auto": {
+    "message": "Automatisch (browsertaal)"
+  },
+  "ui_language_hint": {
+    "message": "Geldt meteen. De naam en beschrijving van de extensie in chrome://extensions volgen altijd de browsertaal."
+  },
+  "ui_theme": {
+    "message": "Thema van de interface"
+  },
+  "ui_theme_system": {
+    "message": "Zoals de browser"
+  },
+  "ui_theme_light": {
+    "message": "Licht"
+  },
+  "ui_theme_dark": {
+    "message": "Donker"
+  },
+  "ui_theme_schedule": {
+    "message": "Donker volgens schema"
+  },
+  "ui_dark_from": {
+    "message": "Donker van"
+  },
+  "ui_dark_until": {
+    "message": "tot"
   }
 }

@@ -1,4 +1,4 @@
-import { t } from "../lib/i18n";
+import { initI18n, t } from "../lib/i18n";
 import { type AddResult, addWord } from "../lib/pipeline/addWord";
 import { getCache, loadSettings } from "../lib/settings/storage";
 import { captureContext } from "./capture";
@@ -28,6 +28,7 @@ export function menuItems(decks: string[], defaultDeck: string, limit: number): 
 }
 
 export async function rebuildMenus(): Promise<void> {
+  await initI18n();
   const settings = await loadSettings();
   const decks = (await getCache<string[]>("decks"))?.items ?? [];
   await chrome.contextMenus.removeAll();

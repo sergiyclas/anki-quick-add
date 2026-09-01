@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Preview"
   },
-  "tab_backup": {
-    "message": "Backup"
-  },
   "save": {
     "message": "Save"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Unlock with a promo code in Settings → Backup."
+    "message": "Unlock with a promo code in Settings → General."
   },
   "pro_hint_unlocked": {
     "message": "Mnemonics and etymology need an LLM provider; example audio uses Google text-to-speech."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 on Free, 2 on Pro, 3 on Founder"
+  },
+  "tab_general": {
+    "message": "General"
+  },
+  "ui_language": {
+    "message": "Interface language"
+  },
+  "ui_language_auto": {
+    "message": "Auto (browser language)"
+  },
+  "ui_language_hint": {
+    "message": "Applies right away. The extension's name and description in chrome://extensions always follow the browser language."
+  },
+  "ui_theme": {
+    "message": "Interface theme"
+  },
+  "ui_theme_system": {
+    "message": "Same as the browser"
+  },
+  "ui_theme_light": {
+    "message": "Light"
+  },
+  "ui_theme_dark": {
+    "message": "Dark"
+  },
+  "ui_theme_schedule": {
+    "message": "Dark on a schedule"
+  },
+  "ui_dark_from": {
+    "message": "Dark from"
+  },
+  "ui_dark_until": {
+    "message": "until"
   }
 }

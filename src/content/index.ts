@@ -22,7 +22,41 @@ declare global {
 
   const MAX_LEN = 200;
   const HOST_ID = "aqa-bubble-host";
-  const msg = (key: string, subs?: string[]) => chrome.i18n.getMessage(key, subs) || key;
+  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate"];
+  let strings: Record<string, string> = {};
+  const msg = (key: string, subs: string[] = []) => {
+    const template = strings[key] ?? chrome.i18n.getMessage(key, subs.length ? ["$1", "$2"] : undefined) ?? key;
+    return template.replace(/\$(\d)/g, (_, i: string) => subs[Number(i) - 1] ?? "");
+  };
+  const loadStrings = () =>
+    chrome.runtime.sendMessage({ type: "i18n.strings", keys: STRING_KEYS }, (r?: { ok: boolean; strings?: Record<string, string> }) => {
+      if (r?.ok && r.strings) strings = r.strings;
+    });
+  loadStrings();
+
+  type UiTheme = { theme?: "system" | "light" | "dark" | "schedule"; themeSchedule?: { darkFrom: string; darkUntil: string } };
+  let uiTheme: UiTheme = {};
+  function isDarkBySchedule(from: string, until: string): boolean {
+    const toMin = (s: string) => Number(s.split(":")[0]) * 60 + Number(s.split(":")[1] ?? 0);
+    const now = new Date();
+    const cur = now.getHours() * 60 + now.getMinutes();
+    const a = toMin(from);
+    const b = toMin(until);
+    if (a === b) return false;
+    return a < b ? cur >= a && cur < b : cur >= a || cur < b;
+  }
+  function isDark(): boolean {
+    switch (uiTheme.theme ?? "system") {
+      case "dark":
+        return true;
+      case "light":
+        return false;
+      case "schedule":
+        return isDarkBySchedule(uiTheme.themeSchedule?.darkFrom ?? "20:00", uiTheme.themeSchedule?.darkUntil ?? "07:00");
+      default:
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+  }
 
   let host: HTMLDivElement | null = null;
   let currentText = "";
@@ -33,9 +67,20 @@ declare global {
     const value = (settings as { ui?: { bubbleTrigger?: Trigger } } | undefined)?.ui?.bubbleTrigger;
     return value === "always" || value === "alt" ? value : "shift";
   }
-  chrome.storage.sync.get("settings").then((s) => (trigger = readTrigger(s["settings"])));
+  function readTheme(settings: unknown): UiTheme {
+    const ui = (settings as { ui?: UiTheme } | undefined)?.ui;
+    return { theme: ui?.theme, themeSchedule: ui?.themeSchedule };
+  }
+  chrome.storage.sync.get("settings").then((s) => {
+    trigger = readTrigger(s["settings"]);
+    uiTheme = readTheme(s["settings"]);
+  });
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area === "sync" && changes["settings"]) trigger = readTrigger(changes["settings"].newValue);
+    if (area === "sync" && changes["settings"]) {
+      trigger = readTrigger(changes["settings"].newValue);
+      uiTheme = readTheme(changes["settings"].newValue);
+      loadStrings();
+    }
   });
 
   function modifierHeld(e: MouseEvent): boolean {
@@ -47,7 +92,7 @@ declare global {
 .bubble { position: fixed; z-index: 2147483647; max-width: 340px; min-width: 200px; padding: 10px 12px;
   border-radius: 10px; background: #fff; color: #1f2328; border: 1px solid #d0d7de; box-shadow: 0 6px 24px rgba(0,0,0,.18);
   font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-@media (prefers-color-scheme: dark) { .bubble { background: #1e1f22; color: #e6e6e6; border-color: #3c3f44; } }
+.bubble.dark { background: #1e1f22; color: #e6e6e6; border-color: #3c3f44; }
 .src { font-weight: 600; word-break: break-word; }
 .tr { margin-top: 4px; color: #4a7bd0; word-break: break-word; min-height: 1.4em; }
 .row { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
@@ -85,7 +130,7 @@ button:disabled { opacity: .6; cursor: default; }
     const style = document.createElement("style");
     style.textContent = STYLE;
     const bubble = document.createElement("div");
-    bubble.className = "bubble";
+    bubble.className = isDark() ? "bubble dark" : "bubble";
     bubble.innerHTML = `<div class="src"></div><div class="tr muted">…</div>
     <div class="row"><button class="add"></button><button class="secondary edit"></button></div><div class="status"></div>`;
     root.append(style, bubble);

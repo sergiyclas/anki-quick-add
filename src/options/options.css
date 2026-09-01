@@ -209,3 +209,11 @@ button.small {
 .field.promo input {
   max-width: 320px;
 }
+
+.row.schedule {
+  gap: 24px;
+}
+
+.field.inline input[type="time"] {
+  width: auto;
+}

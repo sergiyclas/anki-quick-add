@@ -1,3 +1,4 @@
+import { initI18n } from "../lib/i18n";
 import type { Request } from "../lib/messages";
 import { syncBubbleScript } from "./bubble";
 import { handleMenuClick, rebuildMenus } from "./contextMenu";
@@ -9,8 +10,11 @@ chrome.runtime.onStartup.addListener(() => void Promise.all([rebuildMenus(), syn
 chrome.permissions.onAdded.addListener(() => void syncBubbleScript());
 chrome.permissions.onRemoved.addListener(() => void syncBubbleScript());
 
+void initI18n();
+
 chrome.storage.onChanged.addListener((changes, area) => {
-  if ((area === "local" && "cache.decks" in changes) || (area === "sync" && "settings" in changes)) void rebuildMenus();
+  if (area === "sync" && "settings" in changes) void initI18n().then(rebuildMenus);
+  else if (area === "local" && "cache.decks" in changes) void rebuildMenus();
   if (area === "sync" && "settings" in changes) void syncBubbleScript();
 });
 

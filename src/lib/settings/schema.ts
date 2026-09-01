@@ -11,6 +11,7 @@ export type AudioSourceId = "dictionary" | "wiktionary" | "tts";
 export type DuplicatePolicy = "skip" | "add" | "update";
 export type BubbleTrigger = "always" | "shift" | "alt";
 export type CardTheme = "classic" | "paper" | "midnight";
+export type UiThemeSetting = "system" | "light" | "dark" | "schedule";
 export type { Tier };
 
 export interface ProviderSettings {
@@ -67,6 +68,9 @@ export interface Settings {
     quickTranslate: boolean; // instant Google translation in the popup while typing
     selectionBubble: boolean; // bubble on text selection in web pages (needs access to all sites)
     bubbleTrigger: BubbleTrigger; // show on every selection, or only while Shift/Alt is held
+    language: string; // "auto" = browser language, otherwise a _locales code
+    theme: UiThemeSetting;
+    themeSchedule: { darkFrom: string; darkUntil: string }; // HH:MM, used when theme = "schedule"
   };
   license: { tier: Tier; redeemedAt?: string };
 }
@@ -123,7 +127,18 @@ export const DEFAULT_SETTINGS: Settings = {
     production: false,
     theme: "classic",
   },
-  ui: { syncKeys: true, contextMenuDeckLimit: 8, batchConcurrency: 1, historySize: 20, quickTranslate: true, selectionBubble: false, bubbleTrigger: "shift" },
+  ui: {
+    syncKeys: true,
+    contextMenuDeckLimit: 8,
+    batchConcurrency: 1,
+    historySize: 20,
+    quickTranslate: true,
+    selectionBubble: false,
+    bubbleTrigger: "shift",
+    language: "auto",
+    theme: "system",
+    themeSchedule: { darkFrom: "20:00", darkUntil: "07:00" },
+  },
   license: { tier: "free" },
 };
 
@@ -149,7 +164,7 @@ export function withDefaults(partial: Partial<Settings> | undefined): Settings {
       exampleAudio: p.media?.exampleAudio ?? DEFAULT_SETTINGS.media.exampleAudio,
     },
     anki: { ...DEFAULT_SETTINGS.anki, ...p.anki },
-    ui: { ...DEFAULT_SETTINGS.ui, ...p.ui },
+    ui: { ...DEFAULT_SETTINGS.ui, ...p.ui, themeSchedule: { ...DEFAULT_SETTINGS.ui.themeSchedule, ...p.ui?.themeSchedule } },
     license: { ...DEFAULT_SETTINGS.license, ...p.license },
   };
 }

@@ -7,7 +7,7 @@ Anki Quick Add is a browser extension that creates Anki flashcards from words yo
 ## What data is processed
 
 - **Words and context you add.** When you add a word, the word (and, if you used the context menu, the sentence around your selection) is sent to the LLM provider you configured in the settings (Anthropic, OpenAI, Google, or an OpenAI-compatible endpoint you entered) to generate the card content. It is also used to query public media APIs: Wikipedia / Wikimedia Commons (images, recordings), Wiktionary (recordings), dictionaryapi.dev (English recordings) and Google Translate text-to-speech (audio).
-- **API keys.** Keys you enter are stored in your browser's extension storage. If "Sync API keys" is enabled (default), Chrome synchronises them to your other Chrome installations through your Google account, using Chrome's own sync mechanism. You can turn this off in Settings → Backup, after which keys stay on the device.
+- **API keys.** Keys you enter are stored in your browser's extension storage. If "Sync API keys" is enabled (default), Chrome synchronises them to your other Chrome installations through your Google account, using Chrome's own sync mechanism. You can turn this off in Settings → General, after which keys stay on the device.
 - **Settings and history.** Your settings, field mappings and a short list of recently added words are stored in the browser's extension storage (synced settings via Chrome Sync; history only locally).
 - **Anki data.** The extension talks to the AnkiConnect add-on on your own computer (`127.0.0.1:8765` by default) to list decks and note types and to add notes and media files.
 

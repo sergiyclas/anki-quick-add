@@ -76,10 +76,22 @@ const previewHtml = await options.$eval("iframe.preview-frame", (f) => f.getAttr
 check(previewHtml.includes("queue") && previewHtml.includes("черга"), "preview shows sample word and translation");
 check(previewHtml.includes("<style>"), "preview embeds the note type CSS");
 
-// Backup tab renders and shows granted hosts.
+// General tab: language and theme switches take effect immediately, without Save.
 await options.click("nav.tabs button:nth-child(5)");
 await options.waitForSelector('input[type="file"]');
-check(true, "backup tab renders");
+check(true, "general tab renders");
+const languageSelect = 'select:has(option[value="auto"])';
+const themeSelect = 'select:has(option[value="schedule"])';
+await options.selectOption(languageSelect, "de");
+await options.waitForFunction(() => document.querySelector("nav.tabs button")?.textContent === "Anbieter");
+check(true, "interface language override re-renders the options page in German");
+await options.selectOption(themeSelect, "dark");
+await options.waitForFunction(() => document.documentElement.dataset.theme === "dark");
+check(true, "interface theme forced to dark");
+await options.selectOption(languageSelect, "auto");
+await options.waitForFunction(() => document.querySelector("nav.tabs button")?.textContent !== "Anbieter");
+await options.selectOption(themeSelect, "system");
+await options.waitForFunction(() => document.documentElement.dataset.theme === undefined);
 
 // Add flow: without a key the pipeline must stop at the config step with a clear message.
 const word = process.env.AQA_WORD ?? "queue";

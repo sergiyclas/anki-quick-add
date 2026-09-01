@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Aperçu"
   },
-  "tab_backup": {
-    "message": "Sauvegarde"
-  },
   "save": {
     "message": "Enregistrer"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "À débloquer avec un code promo dans Paramètres → Sauvegarde."
+    "message": "À débloquer avec un code promo dans Paramètres → Général."
   },
   "pro_hint_unlocked": {
     "message": "Les moyens mnémotechniques et l'étymologie nécessitent un fournisseur de LLM ; l'audio des exemples utilise la synthèse vocale Google."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 en Free, 2 en Pro, 3 en Founder"
+  },
+  "tab_general": {
+    "message": "Général"
+  },
+  "ui_language": {
+    "message": "Langue de l'interface"
+  },
+  "ui_language_auto": {
+    "message": "Automatique (langue du navigateur)"
+  },
+  "ui_language_hint": {
+    "message": "S'applique immédiatement. Le nom et la description de l'extension dans chrome://extensions suivent toujours la langue du navigateur."
+  },
+  "ui_theme": {
+    "message": "Thème de l'interface"
+  },
+  "ui_theme_system": {
+    "message": "Comme le navigateur"
+  },
+  "ui_theme_light": {
+    "message": "Clair"
+  },
+  "ui_theme_dark": {
+    "message": "Sombre"
+  },
+  "ui_theme_schedule": {
+    "message": "Sombre selon un horaire"
+  },
+  "ui_dark_from": {
+    "message": "Sombre de"
+  },
+  "ui_dark_until": {
+    "message": "à"
   }
 }

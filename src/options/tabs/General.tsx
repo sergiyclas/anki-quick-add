@@ -1,12 +1,15 @@
 import { useEffect, useState } from "preact/hooks";
-import { t } from "../../lib/i18n";
+import { UI_LOCALES, t } from "../../lib/i18n";
 import { maxBatchConcurrency, redeemCode } from "../../lib/license";
 import { applyImport, buildExport, parseExport } from "../../lib/settings/exportImport";
-import { saveSettings } from "../../lib/settings/storage";
-import { clearAll } from "../../lib/settings/storage";
+import type { Settings } from "../../lib/settings/schema";
+import { clearAll, saveSettings } from "../../lib/settings/storage";
+import type { UiTheme } from "../../ui/theme";
 import type { SettingsState } from "../../ui/useSettings";
 
-export function BackupTab({ state }: { state: SettingsState }) {
+const THEMES: UiTheme[] = ["system", "light", "dark", "schedule"];
+
+export function GeneralTab({ state }: { state: SettingsState }) {
   const { settings, keys, update } = state;
   const [includeKeys, setIncludeKeys] = useState(false);
   const [message, setMessage] = useState<{ text: string; cls: string }>({ text: "", cls: "" });
@@ -16,22 +19,29 @@ export function BackupTab({ state }: { state: SettingsState }) {
   const tier = settings.license.tier;
   const maxConcurrency = maxBatchConcurrency(tier);
 
+  useEffect(() => {
+    chrome.permissions.getAll().then((p) => setOrigins(p.origins ?? []));
+  }, []);
+
+  // Language and theme take effect immediately (persisted right away); bootPage reacts to the change.
+  async function setUiNow(patch: Partial<Settings["ui"]>) {
+    const next: Settings = { ...settings, ui: { ...settings.ui, ...patch } };
+    update(() => next);
+    await saveSettings(next);
+  }
+
   async function redeem() {
     const unlocked = await redeemCode(code);
     if (!unlocked) {
       setPromo({ text: t("promo_invalid"), cls: "err" });
       return;
     }
-    const next = { ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } };
+    const next: Settings = { ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } };
     update(() => next);
     await saveSettings(next);
     setPromo({ text: t("promo_success", [t(`tier_${unlocked}`)]), cls: "ok" });
     setCode("");
   }
-
-  useEffect(() => {
-    chrome.permissions.getAll().then((p) => setOrigins(p.origins ?? []));
-  }, []);
 
   async function exportSettings() {
     const file = await buildExport(settings, includeKeys ? keys : null);
@@ -66,6 +76,51 @@ export function BackupTab({ state }: { state: SettingsState }) {
 
   return (
     <>
+      <div class="row">
+        <label class="field">
+          <span>{t("ui_language")}</span>
+          <select value={settings.ui.language} onChange={(e) => void setUiNow({ language: e.currentTarget.value })}>
+            <option value="auto">{t("ui_language_auto")}</option>
+            {UI_LOCALES.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label class="field">
+          <span>{t("ui_theme")}</span>
+          <select value={settings.ui.theme} onChange={(e) => void setUiNow({ theme: e.currentTarget.value as UiTheme })}>
+            {THEMES.map((v) => (
+              <option key={v} value={v}>
+                {t(`ui_theme_${v}`)}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      {settings.ui.theme === "schedule" && (
+        <div class="row schedule">
+          <label class="field inline">
+            <span>{t("ui_dark_from")}</span>
+            <input
+              type="time"
+              value={settings.ui.themeSchedule.darkFrom}
+              onChange={(e) => void setUiNow({ themeSchedule: { ...settings.ui.themeSchedule, darkFrom: e.currentTarget.value || "20:00" } })}
+            />
+          </label>
+          <label class="field inline">
+            <span>{t("ui_dark_until")}</span>
+            <input
+              type="time"
+              value={settings.ui.themeSchedule.darkUntil}
+              onChange={(e) => void setUiNow({ themeSchedule: { ...settings.ui.themeSchedule, darkUntil: e.currentTarget.value || "07:00" } })}
+            />
+          </label>
+        </div>
+      )}
+      <div class="hint">{t("ui_language_hint")}</div>
+
       <div class="field promo">
         <span>{t("promo_title")}</span>
         <div class="hint">
@@ -83,12 +138,17 @@ export function BackupTab({ state }: { state: SettingsState }) {
 
       <label class="field inline">
         <span>{t("opt_batch_concurrency")}</span>
-        <select value={Math.min(settings.ui.batchConcurrency, maxConcurrency)} onChange={(e) => update((s) => ({ ...s, ui: { ...s.ui, batchConcurrency: Number(e.currentTarget.value) as 1 | 2 | 3 } }))}>
-          {[1, 2, 3].filter((n) => n <= maxConcurrency).map((n) => (
-            <option key={n} value={n}>
-              {n}
-            </option>
-          ))}
+        <select
+          value={Math.min(settings.ui.batchConcurrency, maxConcurrency)}
+          onChange={(e) => update((s) => ({ ...s, ui: { ...s.ui, batchConcurrency: Number(e.currentTarget.value) as 1 | 2 | 3 } }))}
+        >
+          {[1, 2, 3]
+            .filter((n) => n <= maxConcurrency)
+            .map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
         </select>
         <span class="hint">{t("batch_concurrency_hint")}</span>
       </label>
@@ -113,11 +173,7 @@ export function BackupTab({ state }: { state: SettingsState }) {
       </div>
 
       <label class="field check">
-        <input
-          type="checkbox"
-          checked={settings.ui.syncKeys}
-          onChange={(e) => update((s) => ({ ...s, ui: { ...s.ui, syncKeys: e.currentTarget.checked } }))}
-        />
+        <input type="checkbox" checked={settings.ui.syncKeys} onChange={(e) => update((s) => ({ ...s, ui: { ...s.ui, syncKeys: e.currentTarget.checked } }))} />
         <span>{t("backup_sync_keys")}</span>
       </label>
       <div class="hint">{t("backup_sync_keys_hint")}</div>

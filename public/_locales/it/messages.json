@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Anteprima"
   },
-  "tab_backup": {
-    "message": "Backup"
-  },
   "save": {
     "message": "Salva"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Si sblocca con un codice promozionale in Impostazioni → Backup."
+    "message": "Si sblocca con un codice promozionale in Impostazioni → Generale."
   },
   "pro_hint_unlocked": {
     "message": "Mnemonici ed etimologia richiedono un provider LLM; l'audio degli esempi usa la sintesi vocale Google."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 con Free, 2 con Pro, 3 con Founder"
+  },
+  "tab_general": {
+    "message": "Generale"
+  },
+  "ui_language": {
+    "message": "Lingua dell'interfaccia"
+  },
+  "ui_language_auto": {
+    "message": "Automatica (lingua del browser)"
+  },
+  "ui_language_hint": {
+    "message": "Si applica subito. Nome e descrizione dell'estensione in chrome://extensions seguono sempre la lingua del browser."
+  },
+  "ui_theme": {
+    "message": "Tema dell'interfaccia"
+  },
+  "ui_theme_system": {
+    "message": "Come il browser"
+  },
+  "ui_theme_light": {
+    "message": "Chiaro"
+  },
+  "ui_theme_dark": {
+    "message": "Scuro"
+  },
+  "ui_theme_schedule": {
+    "message": "Scuro a orario"
+  },
+  "ui_dark_from": {
+    "message": "Scuro dalle"
+  },
+  "ui_dark_until": {
+    "message": "alle"
   }
 }

@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "プレビュー"
   },
-  "tab_backup": {
-    "message": "バックアップ"
-  },
   "save": {
     "message": "保存"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "設定 → バックアップ でプロモコードを入力すると解放されます。"
+    "message": "設定 → 全般 でプロモコードを入力すると解放されます。"
   },
   "pro_hint_unlocked": {
     "message": "記憶術と語源には LLM プロバイダーが必要です。例文の音声には Google のテキスト読み上げを使います。"
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "Free は 1、Pro は 2、Founder は 3"
+  },
+  "tab_general": {
+    "message": "全般"
+  },
+  "ui_language": {
+    "message": "インターフェースの言語"
+  },
+  "ui_language_auto": {
+    "message": "自動（ブラウザの言語）"
+  },
+  "ui_language_hint": {
+    "message": "すぐに反映されます。chrome://extensions に表示される拡張機能の名前と説明は常にブラウザの言語に従います。"
+  },
+  "ui_theme": {
+    "message": "インターフェースのテーマ"
+  },
+  "ui_theme_system": {
+    "message": "ブラウザに合わせる"
+  },
+  "ui_theme_light": {
+    "message": "ライト"
+  },
+  "ui_theme_dark": {
+    "message": "ダーク"
+  },
+  "ui_theme_schedule": {
+    "message": "スケジュールでダーク"
+  },
+  "ui_dark_from": {
+    "message": "ダーク開始"
+  },
+  "ui_dark_until": {
+    "message": "終了"
   }
 }

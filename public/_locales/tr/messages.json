@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Önizleme"
   },
-  "tab_backup": {
-    "message": "Yedekleme"
-  },
   "save": {
     "message": "Kaydet"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Ayarlar → Yedekleme'de bir promosyon koduyla açılır."
+    "message": "Ayarlar → Genel'de bir promosyon koduyla açılır."
   },
   "pro_hint_unlocked": {
     "message": "Hafıza teknikleri ve köken bilgisi bir LLM sağlayıcısı gerektirir; örnek sesleri Google metin okumayı kullanır."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "Free'de 1, Pro'da 2, Founder'da 3"
+  },
+  "tab_general": {
+    "message": "Genel"
+  },
+  "ui_language": {
+    "message": "Arayüz dili"
+  },
+  "ui_language_auto": {
+    "message": "Otomatik (tarayıcı dili)"
+  },
+  "ui_language_hint": {
+    "message": "Hemen uygulanır. Uzantının chrome://extensions sayfasındaki adı ve açıklaması her zaman tarayıcı dilini izler."
+  },
+  "ui_theme": {
+    "message": "Arayüz teması"
+  },
+  "ui_theme_system": {
+    "message": "Tarayıcı ile aynı"
+  },
+  "ui_theme_light": {
+    "message": "Açık"
+  },
+  "ui_theme_dark": {
+    "message": "Koyu"
+  },
+  "ui_theme_schedule": {
+    "message": "Zamanlamaya göre koyu"
+  },
+  "ui_dark_from": {
+    "message": "Koyu başlangıcı"
+  },
+  "ui_dark_until": {
+    "message": "bitişi"
   }
 }

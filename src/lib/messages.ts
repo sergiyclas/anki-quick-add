@@ -12,6 +12,7 @@ export type Request =
   | { type: "editor.open"; word: string; deck?: string; context?: string; block?: string }
   | { type: "translate.quick"; text: string }
   | { type: "bubble.status" }
+  | { type: "i18n.strings"; keys: string[] }
   | { type: "bubble.sync" }
   | { type: "job.regenerate"; id: string; hint: string }
   | { type: "job.commit"; id: string; overrides: CommitOverrides }
@@ -66,6 +67,11 @@ export interface BubbleStatusResponse {
   injected?: number;
 }
 
+export interface StringsResponse {
+  ok: true;
+  strings: Record<string, string>;
+}
+
 export interface TranslateResponse {
   ok: true;
   translation: string;
@@ -107,7 +113,9 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
       ? JobResponse
       : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" }
         ? OkResponse
-        : R extends { type: "bubble.status" | "bubble.sync" }
+        : R extends { type: "i18n.strings" }
+          ? StringsResponse
+          : R extends { type: "bubble.status" | "bubble.sync" }
           ? BubbleStatusResponse
           : R extends { type: "translate.quick" }
           ? TranslateResponse

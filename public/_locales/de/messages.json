@@ -68,9 +68,6 @@
   "tab_preview": {
     "message": "Vorschau"
   },
-  "tab_backup": {
-    "message": "Sicherung"
-  },
   "save": {
     "message": "Speichern"
   },
@@ -562,7 +559,7 @@
     "message": "PRO"
   },
   "pro_hint": {
-    "message": "Freischalten mit einem Aktionscode unter Einstellungen → Sicherung."
+    "message": "Freischalten mit einem Aktionscode unter Einstellungen → Allgemein."
   },
   "pro_hint_unlocked": {
     "message": "Eselsbrücken und Etymologie brauchen einen LLM-Anbieter; das Beispiel-Audio nutzt Google Text-to-Speech."
@@ -634,5 +631,38 @@
   },
   "batch_concurrency_hint": {
     "message": "1 bei Free, 2 bei Pro, 3 bei Founder"
+  },
+  "tab_general": {
+    "message": "Allgemein"
+  },
+  "ui_language": {
+    "message": "Sprache der Oberfläche"
+  },
+  "ui_language_auto": {
+    "message": "Automatisch (Browsersprache)"
+  },
+  "ui_language_hint": {
+    "message": "Gilt sofort. Name und Beschreibung der Erweiterung unter chrome://extensions folgen immer der Browsersprache."
+  },
+  "ui_theme": {
+    "message": "Design der Oberfläche"
+  },
+  "ui_theme_system": {
+    "message": "Wie der Browser"
+  },
+  "ui_theme_light": {
+    "message": "Hell"
+  },
+  "ui_theme_dark": {
+    "message": "Dunkel"
+  },
+  "ui_theme_schedule": {
+    "message": "Dunkel nach Zeitplan"
+  },
+  "ui_dark_from": {
+    "message": "Dunkel ab"
+  },
+  "ui_dark_until": {
+    "message": "bis"
   }
 }

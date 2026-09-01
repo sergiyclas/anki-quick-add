@@ -2,12 +2,13 @@ import { useState } from "preact/hooks";
 import { t } from "../lib/i18n";
 import { useSettings } from "../ui/useSettings";
 import { AnkiTab } from "./tabs/Anki";
-import { BackupTab } from "./tabs/Backup";
+
 import { GenerationTab } from "./tabs/Generation";
+import { GeneralTab } from "./tabs/General";
 import { PreviewTab } from "./tabs/Preview";
 import { ProvidersTab } from "./tabs/Providers";
 
-const TABS = ["providers", "anki", "generation", "preview", "backup"] as const;
+const TABS = ["providers", "anki", "generation", "preview", "general"] as const;
 type Tab = (typeof TABS)[number];
 
 export function App() {
@@ -37,7 +38,7 @@ export function App() {
         {tab === "anki" && <AnkiTab state={state} />}
         {tab === "generation" && <GenerationTab state={state} />}
         {tab === "preview" && <PreviewTab state={state} />}
-        {tab === "backup" && <BackupTab state={state} />}
+        {tab === "general" && <GeneralTab state={state} />}
       </section>
       <div class="actions">
         <button onClick={save} disabled={!state.dirty}>

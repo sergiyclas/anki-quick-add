@@ -6,6 +6,7 @@ import { cancelBatch, clearBatch, getBatch, resumeBatch, startBatch } from "../l
 import { KEYLESS, getAdapter } from "../lib/providers/registry";
 import { applyTheme } from "../lib/anki/builtinModel";
 import { getCache, loadKeys, loadSettings, setCache } from "../lib/settings/storage";
+import { initI18n, t } from "../lib/i18n";
 import { quickTranslate } from "../lib/quickTranslate";
 import { extractSentence } from "../lib/text";
 import { bubbleStatus, syncBubbleScript } from "./bubble";
@@ -59,6 +60,11 @@ async function dispatch(request: Request) {
       return { ok: true, result: await addWord({ ...request, context: contextOf(request) }) };
     case "editor.open":
       return { ok: true, id: (await openEditor({ word: request.word, deck: request.deck, context: contextOf(request) })).id };
+    case "i18n.strings": {
+      await initI18n();
+      // Placeholders stay as $1/$2 so the content script can fill them in.
+      return { ok: true, strings: Object.fromEntries(request.keys.map((k) => [k, t(k, ["$1", "$2"])])) };
+    }
     case "bubble.status":
       return { ok: true, ...(await bubbleStatus()) };
     case "bubble.sync": {
