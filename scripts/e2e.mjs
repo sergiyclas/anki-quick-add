@@ -129,7 +129,7 @@ if (!process.env.AQA_API_KEY) {
     await chrome.storage.sync.set({ settings: { ...settings, provider: "free", anki: { ...settings.anki, modelName: "Anki Quick Add" } } });
   });
   await popup.reload();
-  await popup.waitForSelector(".popup-input");
+  await popup.waitForFunction(() => document.querySelector(".popup-row select")?.value, null, { timeout: 15_000 });
   await popup.fill(".popup-input", "harbor");
   await popup.press(".popup-input", "Enter");
   await popup.waitForFunction(() => !document.querySelector(".popup-input")?.hasAttribute("disabled") && (document.querySelector(".popup-status")?.textContent ?? "").length > 0, null, { timeout: 120_000 });
@@ -147,6 +147,69 @@ if (!process.env.AQA_API_KEY) {
     for (const name of media) if (name.startsWith("aqa_")) await anki("deleteMediaFile", { filename: name });
   } else {
     check(false, "free card not found in Anki");
+  }
+  await worker.evaluate(async () => {
+    const { settings } = await chrome.storage.sync.get("settings");
+    await chrome.storage.sync.set({ settings: { ...settings, provider: "anthropic" } });
+  });
+  await popup.reload();
+  await popup.waitForSelector(".popup-input");
+}
+
+// Offline queue: with Anki unreachable the card is still built and parked, and lands once Anki answers.
+{
+  const anki = async (action, params = {}) =>
+    (await (await fetch("http://127.0.0.1:8765", { method: "POST", body: JSON.stringify({ action, version: 6, params }) })).json()).result;
+  const setAnkiUrl = (ankiUrl) =>
+    worker.evaluate(async (u) => {
+      const { settings } = await chrome.storage.sync.get("settings");
+      await chrome.storage.sync.set({
+        settings: { ...settings, provider: "free", anki: { ...settings.anki, url: u, modelName: "Anki Quick Add" } },
+      });
+    }, ankiUrl);
+  const queueCount = () =>
+    worker.evaluate(
+      () =>
+        new Promise((resolve) => {
+          const open = indexedDB.open("aqa-queue", 1);
+          open.onsuccess = () => {
+            const tx = open.result.transaction("items", "readonly").objectStore("items").count();
+            tx.onsuccess = () => resolve(tx.result);
+          };
+          open.onerror = () => resolve(-1);
+        }),
+    );
+
+  await setAnkiUrl("http://127.0.0.1:8799"); // nothing listens there
+  await popup.reload();
+  await popup.waitForFunction(() => document.querySelector(".popup-row select")?.value, null, { timeout: 15_000 });
+  await popup.fill(".popup-input", "lantern");
+  await popup.press(".popup-input", "Enter");
+  await popup.waitForFunction(
+    () => !document.querySelector(".popup-input")?.hasAttribute("disabled") && (document.querySelector(".popup-status")?.textContent ?? "").length > 0,
+    null,
+    { timeout: 120_000 },
+  );
+  const queuedStatus = await popup.textContent(".popup-status");
+  check((await queueCount()) === 1, `card queued while Anki is closed: ${queuedStatus}`);
+  await popup.waitForSelector(".popup-queue", { timeout: 5_000 });
+  check(true, "popup shows the queue bar after queueing");
+
+  await setAnkiUrl("http://127.0.0.1:8765");
+  await popup.click(".popup-queue button");
+  await popup.waitForFunction(() => !document.querySelector(".popup-queue"), null, { timeout: 60_000 });
+  check((await queueCount()) === 0, "queue emptied through the popup button");
+
+  const ids = await anki("findNotes", { query: '"Word:lantern" tag:aqa' });
+  check(ids.length === 1, `queued card reached Anki: ${ids.length} note(s)`);
+  if (ids.length) {
+    const [info] = await anki("notesInfo", { notes: ids });
+    const fields = Object.fromEntries(Object.entries(info.fields).map(([k, v]) => [k, v.value]));
+    check(Boolean(fields.Translation), `queued card kept its content: "${fields.Translation}"`);
+    check(/\[sound:/.test(fields.Audio ?? ""), "queued card kept its audio through IndexedDB");
+    const media = Object.values(fields).flatMap((v) => [...String(v).matchAll(/\[sound:([^\]]+)\]|src="([^"]+)"/g)].map((m) => m[1] ?? m[2]));
+    await anki("deleteNotes", { notes: ids });
+    for (const name of media) if (name.startsWith("aqa_")) await anki("deleteMediaFile", { filename: name });
   }
   await worker.evaluate(async () => {
     const { settings } = await chrome.storage.sync.get("settings");

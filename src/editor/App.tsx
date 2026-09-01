@@ -41,6 +41,8 @@ function resultText(result: AddResult): string {
     case "added":
     case "updated":
       return t("popup_added", [result.word, result.summary.translation]);
+    case "queued":
+      return t("popup_queued", [result.word, String(result.queued)]);
     case "duplicate":
       return t("popup_duplicate", [result.word]);
     case "error":

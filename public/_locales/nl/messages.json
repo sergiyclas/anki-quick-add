@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "tot"
+  },
+  "popup_queued": {
+    "message": "In de wachtrij: $WORD$ – Anki is gesloten ($COUNT$ wachten)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ wachten op Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Nu toevoegen"
+  },
+  "queue_flushing": {
+    "message": "Bezig met toevoegen…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ toegevoegd, $LEFT$ over",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "De wachtrij is leeg."
+  },
+  "queue_title": {
+    "message": "Offline wachtrij"
+  },
+  "queue_clear": {
+    "message": "Wachtrij wissen"
+  },
+  "queue_clear_confirm": {
+    "message": "$COUNT$ wachtende kaarten weggooien? Ze komen niet in Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Wachten op Anki-profiel: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Blijven toevoegen als Anki dicht is"
+  },
+  "opt_offline_queue_hint": {
+    "message": "De kaart wordt meteen gemaakt en naar Anki geschreven zodra het weer open is (tot $COUNT$ kaarten, elke vijf minuten opnieuw geprobeerd).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

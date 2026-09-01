@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "終了"
+  },
+  "popup_queued": {
+    "message": "待機中: $WORD$ – Anki が閉じています（$COUNT$ 件待機）",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ 件が Anki を待っています",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "今すぐ追加"
+  },
+  "queue_flushing": {
+    "message": "追加中…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ 件追加、残り $LEFT$ 件",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "待機中のカードはありません。"
+  },
+  "queue_title": {
+    "message": "オフラインキュー"
+  },
+  "queue_clear": {
+    "message": "キューを破棄"
+  },
+  "queue_clear_confirm": {
+    "message": "待機中の $COUNT$ 件を破棄しますか？Anki には追加されません。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "待機中の Anki プロファイル: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Anki が閉じていても追加する"
+  },
+  "opt_offline_queue_hint": {
+    "message": "カードはその場で作成し、次に Anki を開いたときに書き込みます（最大 $COUNT$ 件、5 分ごとに再試行）。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

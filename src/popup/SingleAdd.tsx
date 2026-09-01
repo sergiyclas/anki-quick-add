@@ -15,6 +15,8 @@ function describe(result: AddResult): Status {
       const suffix = result.warnings.length ? ` (${result.warnings.join(", ")})` : "";
       return { text: t("popup_added", [result.word, result.summary.translation]) + suffix, cls: "ok" };
     }
+    case "queued":
+      return { text: t("popup_queued", [result.word, String(result.queued)]), cls: "warn" };
     case "duplicate":
       return { text: t("popup_duplicate", [result.word]), cls: "warn" };
     case "error":
@@ -22,7 +24,17 @@ function describe(result: AddResult): Status {
   }
 }
 
-export function SingleAdd({ deck, onDeckChange, quickTranslate }: { deck: string; onDeckChange(deck: string): void; quickTranslate: boolean }) {
+export function SingleAdd({
+  deck,
+  onDeckChange,
+  quickTranslate,
+  onQueued,
+}: {
+  deck: string;
+  onDeckChange(deck: string): void;
+  quickTranslate: boolean;
+  onQueued(count: number): void;
+}) {
   const [status, setStatus] = useState<Status>({ text: "", cls: "" });
   const [busy, setBusy] = useState(false);
   const [decks, setDecks] = useState<string[]>([]);
@@ -63,7 +75,8 @@ export function SingleAdd({ deck, onDeckChange, quickTranslate }: { deck: string
     }
     const result = response.result;
     setStatus(describe(result));
-    if (result.status === "added" || result.status === "updated") {
+    if (result.status === "queued") onQueued(result.queued);
+    if (result.status === "added" || result.status === "updated" || result.status === "queued") {
       if (input.current) input.current.value = "";
       setPreview("");
     } else if (result.status === "error" && result.action === "openOptions") {

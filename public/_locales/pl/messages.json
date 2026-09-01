@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "do"
+  },
+  "popup_queued": {
+    "message": "W kolejce: $WORD$ – Anki jest zamknięte ($COUNT$ czeka)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ czeka na Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Dodaj teraz"
+  },
+  "queue_flushing": {
+    "message": "Dodaję…"
+  },
+  "queue_result": {
+    "message": "dodano $ADDED$, zostało $LEFT$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "Kolejka jest pusta."
+  },
+  "queue_title": {
+    "message": "Kolejka offline"
+  },
+  "queue_clear": {
+    "message": "Wyczyść kolejkę"
+  },
+  "queue_clear_confirm": {
+    "message": "Usunąć $COUNT$ kart z kolejki? Nie trafią do Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Czekają na profil Anki: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Dodawaj także przy zamkniętym Anki"
+  },
+  "opt_offline_queue_hint": {
+    "message": "Karta powstaje od razu i trafia do Anki przy następnym uruchomieniu (do $COUNT$ kart, ponowna próba co pięć minut).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

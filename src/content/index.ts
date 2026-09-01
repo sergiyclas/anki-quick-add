@@ -17,12 +17,13 @@ declare global {
   type AddResult =
     | { status: "added" | "updated"; word: string; summary: { translation: string }; warnings: string[] }
     | { status: "duplicate"; word: string }
+    | { status: "queued"; word: string; queued: number }
     | { status: "error"; word: string; message: string; action?: string };
   type Trigger = "always" | "shift" | "alt";
 
   const MAX_LEN = 200;
   const HOST_ID = "aqa-bubble-host";
-  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate"];
+  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate", "popup_queued"];
   let strings: Record<string, string> = {};
   const msg = (key: string, subs: string[] = []) => {
     const template = strings[key] ?? chrome.i18n.getMessage(key, subs.length ? ["$1", "$2"] : undefined) ?? key;
@@ -190,6 +191,10 @@ button:disabled { opacity: .6; cursor: default; }
           status.className = "status ok";
           status.textContent =
             msg("popup_added", [result.word, result.summary.translation]) + (result.warnings.length ? ` (${result.warnings.join(", ")})` : "");
+          setTimeout(() => host && hide(), 2500);
+        } else if (result.status === "queued") {
+          status.className = "status warn";
+          status.textContent = msg("popup_queued", [result.word, String(result.queued)]);
           setTimeout(() => host && hide(), 2500);
         } else if (result.status === "duplicate") {
           status.className = "status warn";

@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "until"
+  },
+  "popup_queued": {
+    "message": "Queued: $WORD$ – Anki is closed ($COUNT$ waiting)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ waiting for Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Add now"
+  },
+  "queue_flushing": {
+    "message": "Adding…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ added, $LEFT$ left",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "The queue is empty."
+  },
+  "queue_title": {
+    "message": "Offline queue"
+  },
+  "queue_clear": {
+    "message": "Discard queue"
+  },
+  "queue_clear_confirm": {
+    "message": "Discard $COUNT$ queued cards? They will not be added to Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Waiting for Anki profile: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Keep adding while Anki is closed"
+  },
+  "opt_offline_queue_hint": {
+    "message": "The card is built right away and written to Anki the next time it is open (up to $COUNT$ cards, retried every five minutes).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

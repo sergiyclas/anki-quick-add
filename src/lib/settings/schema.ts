@@ -71,6 +71,7 @@ export interface Settings {
     language: string; // "auto" = browser language, otherwise a _locales code
     theme: UiThemeSetting;
     themeSchedule: { darkFrom: string; darkUntil: string }; // HH:MM, used when theme = "schedule"
+    offlineQueue: boolean; // park cards while Anki is closed and write them when it comes back
   };
   license: { tier: Tier; redeemedAt?: string };
 }
@@ -138,6 +139,7 @@ export const DEFAULT_SETTINGS: Settings = {
     language: "auto",
     theme: "system",
     themeSchedule: { darkFrom: "20:00", darkUntil: "07:00" },
+    offlineQueue: true,
   },
   license: { tier: "free" },
 };

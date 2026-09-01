@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "alle"
+  },
+  "popup_queued": {
+    "message": "In coda: $WORD$ – Anki è chiuso ($COUNT$ in attesa)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ in attesa di Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Aggiungi ora"
+  },
+  "queue_flushing": {
+    "message": "Aggiungo…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ aggiunte, ne restano $LEFT$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "La coda è vuota."
+  },
+  "queue_title": {
+    "message": "Coda offline"
+  },
+  "queue_clear": {
+    "message": "Svuota la coda"
+  },
+  "queue_clear_confirm": {
+    "message": "Eliminare $COUNT$ schede in coda? Non finiranno in Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "In attesa del profilo Anki: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Continua ad aggiungere con Anki chiuso"
+  },
+  "opt_offline_queue_hint": {
+    "message": "La scheda viene creata subito e scritta in Anki alla prossima apertura (fino a $COUNT$ schede, nuovo tentativo ogni cinque minuti).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

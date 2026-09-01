@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "结束"
+  },
+  "popup_queued": {
+    "message": "已排队：$WORD$ – Anki 未打开（$COUNT$ 张等待中）",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ 张等待 Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "立即添加"
+  },
+  "queue_flushing": {
+    "message": "正在添加…"
+  },
+  "queue_result": {
+    "message": "已添加 $ADDED$ 张，剩余 $LEFT$ 张",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "队列为空。"
+  },
+  "queue_title": {
+    "message": "离线队列"
+  },
+  "queue_clear": {
+    "message": "清空队列"
+  },
+  "queue_clear_confirm": {
+    "message": "要丢弃队列中的 $COUNT$ 张卡片吗？它们不会进入 Anki。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "等待 Anki 配置文件：$PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Anki 未打开时也继续添加"
+  },
+  "opt_offline_queue_hint": {
+    "message": "卡片会立即生成，并在下次打开 Anki 时写入（最多 $COUNT$ 张，每五分钟重试一次）。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

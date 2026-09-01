@@ -50,6 +50,8 @@ export function describeResult(result: AddResult): { text: string; kind: ToastKi
       const suffix = result.warnings.length ? ` (${result.warnings.join(", ")})` : "";
       return { text: t("popup_added", [result.word, result.summary.translation]) + suffix, kind: "ok" };
     }
+    case "queued":
+      return { text: t("popup_queued", [result.word, String(result.queued)]), kind: "warn" };
     case "duplicate":
       return { text: t("popup_duplicate", [result.word]), kind: "warn" };
     case "error":

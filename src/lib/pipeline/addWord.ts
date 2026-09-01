@@ -21,6 +21,7 @@ import { type ApiKeys, BUILTIN_MODEL_NAME, type DuplicatePolicy, type Settings }
 import { getCache, loadKeys, loadMapping, loadSettings, setCache } from "../settings/storage";
 import { normalizeWord } from "../text";
 import { pushHistory } from "../history";
+import { QUEUE_LIMIT, enqueue, lastKnownProfile } from "../queue/store";
 import { PipelineError } from "./errors";
 
 export interface AddRequest {
@@ -41,6 +42,7 @@ export interface AddSummary {
 export type AddResult =
   | { status: "added" | "updated"; word: string; noteId: number; summary: AddSummary; warnings: string[] }
   | { status: "duplicate"; word: string; noteId: number }
+  | { status: "queued"; word: string; queued: number; summary: AddSummary }
   | { status: "error"; word: string; step: PipelineError["step"]; message: string; action?: PipelineError["action"]; detail?: string };
 
 export type PrepareFailure = Extract<AddResult, { status: "duplicate" | "error" }>;
@@ -57,6 +59,7 @@ export interface Prepared {
   warnings: string[];
   policy: DuplicatePolicy;
   existingNoteId?: number;
+  deferredDedupe?: boolean; // Anki was closed: the duplicate check happens when the card is written
 }
 
 export interface CommitOverrides {
@@ -135,18 +138,26 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
     if (!providerCfg.model) throw new PipelineError("config", "No model selected", "openOptions");
 
     const client = new AnkiClient(settings.anki.url);
-    const deck = request.deck ?? settings.anki.deck;
+    const deck = request.deck || settings.anki.deck;
     const modelName = settings.anki.modelName;
-    if (modelName === BUILTIN_MODEL_NAME) await ensureBuiltinModel(client);
-    const fields = await modelFields(client, modelName);
-    const mapping = await resolveMapping(modelName, fields);
-
     const policy = settings.anki.duplicatePolicy;
-    const existingIds = await client.findNotes(
-      buildDedupeQuery(mapping.dedupeField, word, settings.anki.dedupeScope === "deck" ? deck : undefined),
-    );
-    const existingNoteId = existingIds[0];
-    if (existingNoteId !== undefined && policy === "skip") return { status: "duplicate", word, noteId: existingNoteId };
+
+    // With the queue on, a closed Anki does not stop the card being made: the note type, the field
+    // mapping and the duplicate check are all resolved again when the queue is written out.
+    let existingNoteId: number | undefined;
+    let deferredDedupe = false;
+    try {
+      if (modelName === BUILTIN_MODEL_NAME) await ensureBuiltinModel(client);
+      const fields = await modelFields(client, modelName);
+      const mapping = await resolveMapping(modelName, fields);
+      existingNoteId = (
+        await client.findNotes(buildDedupeQuery(mapping.dedupeField, word, settings.anki.dedupeScope === "deck" ? deck : undefined))
+      )[0];
+      if (existingNoteId !== undefined && policy === "skip") return { status: "duplicate", word, noteId: existingNoteId };
+    } catch (e) {
+      if (!(e instanceof AnkiError && e.code === "unreachable" && settings.ui.offlineQueue)) throw e;
+      deferredDedupe = true;
+    }
 
     const pro = tierAtLeast(settings.license.tier, "pro");
     const schema = buildCardSchema(settings.generation, {
@@ -199,6 +210,7 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
       warnings,
       policy,
       existingNoteId: policy === "update" ? existingNoteId : undefined,
+      deferredDedupe,
     };
   } catch (e) {
     return toError(word, e);
@@ -214,9 +226,20 @@ export async function commit(prepared: Prepared, overrides: CommitOverrides = {}
     const fields = await modelFields(client, prepared.modelName);
     const mapping = await resolveMapping(prepared.modelName, fields);
 
+    const deck = overrides.deck || prepared.deck;
+    let existingNoteId = prepared.existingNoteId;
+    if (prepared.deferredDedupe) {
+      const found = (
+        await client.findNotes(buildDedupeQuery(mapping.dedupeField, word, settings.anki.dedupeScope === "deck" ? deck : undefined))
+      )[0];
+      if (found !== undefined) {
+        if (prepared.policy === "skip") return { status: "duplicate", word, noteId: found };
+        if (prepared.policy === "update") existingNoteId = found;
+      }
+    }
+
     const card: CardData = { ...prepared.card, ...overrides.card };
     const media = prepared.media.filter((m) => !(m.kind === "audio" && overrides.dropAudio) && !(m.kind === "image" && overrides.dropImage));
-    const deck = overrides.deck ?? prepared.deck;
     const note = buildNote(card, media, mapping, {
       deck,
       tags: buildTags(settings, overrides.tags ?? prepared.tags),
@@ -234,8 +257,8 @@ export async function commit(prepared: Prepared, overrides: CommitOverrides = {}
       image: media.some((m) => m.kind === "image"),
     };
 
-    if (prepared.existingNoteId !== undefined) {
-      const [existing] = await client.notesInfo([prepared.existingNoteId]);
+    if (existingNoteId !== undefined) {
+      const [existing] = await client.notesInfo([existingNoteId]);
       if (existing) {
         const update = buildUpdate(existing, note);
         if (update) await client.updateNoteFields(update);
@@ -255,5 +278,32 @@ export async function commit(prepared: Prepared, overrides: CommitOverrides = {}
 
 export async function addWord(request: AddRequest): Promise<AddResult> {
   const prepared = await prepare(request);
-  return "status" in prepared ? prepared : commit(prepared);
+  if ("status" in prepared) return prepared;
+  const result = await commit(prepared);
+  if (result.status !== "error" || result.step !== "anki") return result;
+  return queueOrFail(prepared, result);
+}
+
+// Anki is closed: park the finished card instead of throwing away the work that made it.
+async function queueOrFail(prepared: Prepared, failure: AddResult & { status: "error" }): Promise<AddResult> {
+  const settings = await loadSettings();
+  if (!settings.ui.offlineQueue) return failure;
+  const queued = await enqueue(prepared, await lastKnownProfile()).catch(() => null);
+  if (!queued) return failure;
+  if (!queued.queued) {
+    return queued.reason === "duplicate"
+      ? { ...failure, message: `"${prepared.word}" is already waiting in the queue` }
+      : { ...failure, message: `The offline queue is full (${QUEUE_LIMIT} cards). Open Anki to write them.` };
+  }
+  return {
+    status: "queued",
+    word: prepared.word,
+    queued: queued.count,
+    summary: {
+      translation: prepared.card.translations.join(", "),
+      transcription: prepared.card.transcription,
+      audio: prepared.media.some((m) => m.kind === "audio"),
+      image: prepared.media.some((m) => m.kind === "image"),
+    },
+  };
 }

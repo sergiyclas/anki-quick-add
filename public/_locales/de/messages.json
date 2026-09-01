@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "bis"
+  },
+  "popup_queued": {
+    "message": "In der Warteschlange: $WORD$ – Anki ist geschlossen ($COUNT$ warten)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ warten auf Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Jetzt hinzufügen"
+  },
+  "queue_flushing": {
+    "message": "Wird hinzugefügt…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ hinzugefügt, $LEFT$ übrig",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "Die Warteschlange ist leer."
+  },
+  "queue_title": {
+    "message": "Offline-Warteschlange"
+  },
+  "queue_clear": {
+    "message": "Warteschlange verwerfen"
+  },
+  "queue_clear_confirm": {
+    "message": "$COUNT$ wartende Karten verwerfen? Sie landen nicht in Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Warten auf Anki-Profil: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Auch bei geschlossenem Anki hinzufügen"
+  },
+  "opt_offline_queue_hint": {
+    "message": "Die Karte entsteht sofort und wird beim nächsten Start von Anki geschrieben (bis zu $COUNT$ Karten, Wiederholung alle fünf Minuten).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

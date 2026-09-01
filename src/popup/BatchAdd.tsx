@@ -3,7 +3,7 @@ import { t } from "../lib/i18n";
 import { send } from "../lib/messages";
 import { type BatchState, splitWords } from "../lib/pipeline/batch";
 
-const ICON: Record<string, string> = { pending: "·", running: "…", added: "✓", updated: "✓", duplicate: "=", error: "✗", cancelled: "–" };
+const ICON: Record<string, string> = { pending: "·", running: "…", added: "✓", updated: "✓", queued: "⏳", duplicate: "=", error: "✗", cancelled: "–" };
 
 function summary(state: BatchState): string {
   const count = (s: string) => state.items.filter((i) => i.status === s).length;

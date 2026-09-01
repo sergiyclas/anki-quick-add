@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "hasta"
+  },
+  "popup_queued": {
+    "message": "En cola: $WORD$ – Anki está cerrado ($COUNT$ esperando)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ esperando a Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Añadir ahora"
+  },
+  "queue_flushing": {
+    "message": "Añadiendo…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ añadidas, quedan $LEFT$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "La cola está vacía."
+  },
+  "queue_title": {
+    "message": "Cola sin conexión"
+  },
+  "queue_clear": {
+    "message": "Descartar la cola"
+  },
+  "queue_clear_confirm": {
+    "message": "¿Descartar $COUNT$ tarjetas en cola? No se añadirán a Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Esperando el perfil de Anki: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Seguir añadiendo con Anki cerrado"
+  },
+  "opt_offline_queue_hint": {
+    "message": "La tarjeta se crea al momento y se escribe en Anki la próxima vez que se abra (hasta $COUNT$ tarjetas, reintento cada cinco minutos).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

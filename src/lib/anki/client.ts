@@ -100,6 +100,10 @@ export class AnkiClient {
     return this.invoke("updateNoteFields", { note });
   }
 
+  activeProfile(): Promise<string> {
+    return this.invoke("getActiveProfile");
+  }
+
   getTags(): Promise<string[]> {
     return this.invoke("getTags");
   }

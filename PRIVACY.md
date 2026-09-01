@@ -27,6 +27,9 @@ Everything below happens only when you trigger it (typing in the popup, pressing
   provider they belong to. If *Sync API keys* is enabled (default), Chrome synchronises them to your
   other Chrome installations through your Google account, using Chrome's own sync; turn it off in
   Settings → General and the keys stay on this device.
+- **Offline queue.** When Anki is closed, the finished card (its text and the downloaded audio and
+  image) is stored in the browser's IndexedDB on this device until Anki accepts it, then deleted. It
+  is never uploaded anywhere.
 - **Settings and history.** Settings, field mappings, the selected interface language and theme, and
   a short list of recently added words live in the browser's extension storage (settings via Chrome
   Sync, history only locally). Promo codes are checked locally against a hash; nothing is sent.
@@ -57,7 +60,9 @@ governed by their respective privacy policies. Only the services you enable or c
 
 ## Permissions
 
-- `storage` – settings, field mappings, keys, history.
+- `storage`, `unlimitedStorage` – settings, field mappings, keys, history, and the offline queue of
+  cards waiting for Anki (which would not fit in the 10 MB default budget).
+- `alarms` – retries the offline queue every few minutes.
 - `contextMenus` – the *Add to Anki* menu on selected text.
 - `activeTab`, `scripting` – reading the selection and showing the confirmation toast on the page
   where you used the menu; registering the selection-bubble script when you enable it.

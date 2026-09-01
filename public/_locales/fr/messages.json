@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "à"
+  },
+  "popup_queued": {
+    "message": "En file : $WORD$ – Anki est fermé ($COUNT$ en attente)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ en attente d'Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Ajouter maintenant"
+  },
+  "queue_flushing": {
+    "message": "Ajout…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ ajoutées, $LEFT$ restantes",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "La file est vide."
+  },
+  "queue_title": {
+    "message": "File hors ligne"
+  },
+  "queue_clear": {
+    "message": "Vider la file"
+  },
+  "queue_clear_confirm": {
+    "message": "Supprimer $COUNT$ cartes en attente ? Elles n'iront pas dans Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "En attente du profil Anki : $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Continuer à ajouter quand Anki est fermé"
+  },
+  "opt_offline_queue_hint": {
+    "message": "La carte est créée tout de suite et écrite dans Anki à sa prochaine ouverture (jusqu'à $COUNT$ cartes, nouvel essai toutes les cinq minutes).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "até"
+  },
+  "popup_queued": {
+    "message": "Na fila: $WORD$ – o Anki está fechado ($COUNT$ aguardando)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ aguardando o Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Adicionar agora"
+  },
+  "queue_flushing": {
+    "message": "Adicionando…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ adicionados, restam $LEFT$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "A fila está vazia."
+  },
+  "queue_title": {
+    "message": "Fila offline"
+  },
+  "queue_clear": {
+    "message": "Descartar a fila"
+  },
+  "queue_clear_confirm": {
+    "message": "Descartar $COUNT$ cartões da fila? Eles não irão para o Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Aguardando o perfil do Anki: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Continuar adicionando com o Anki fechado"
+  },
+  "opt_offline_queue_hint": {
+    "message": "O cartão é criado na hora e gravado no Anki na próxima vez que ele abrir (até $COUNT$ cartões, nova tentativa a cada cinco minutos).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

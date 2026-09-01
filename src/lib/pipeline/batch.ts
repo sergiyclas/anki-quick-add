@@ -2,7 +2,7 @@ import { maxBatchConcurrency } from "../license";
 import { loadSettings } from "../settings/storage";
 import { type AddResult, addWord } from "./addWord";
 
-export type BatchItemStatus = "pending" | "running" | "added" | "updated" | "duplicate" | "error" | "cancelled";
+export type BatchItemStatus = "pending" | "running" | "added" | "updated" | "queued" | "duplicate" | "error" | "cancelled";
 
 export interface BatchItem {
   word: string;
@@ -49,6 +49,8 @@ function describe(result: AddResult): Pick<BatchItem, "status" | "detail"> {
     case "added":
     case "updated":
       return { status: result.status, detail: result.summary.translation };
+    case "queued":
+      return { status: "queued", detail: result.summary.translation };
     case "duplicate":
       return { status: "duplicate" };
     case "error":

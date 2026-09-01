@@ -103,6 +103,8 @@ Creating Anki flashcards from words the user types or selects: the card content 
 | Permission | Justification |
 |---|---|
 | `storage` | Stores the user's settings, field mappings, API keys (in the browser's extension storage only) and a short history of added words. |
+| `unlimitedStorage` | Cards added while Anki is closed are held in a local queue until Anki accepts them. Each card carries its pronunciation audio and image, so the 10 MB default budget would hold only about 45 of them; the queue is deleted as soon as the cards are written to Anki. |
+| `alarms` | Retries that queue every few minutes, so the cards land as soon as Anki is running again. |
 | `contextMenus` | Adds the "Add to Anki" entry to the context menu shown on selected text. |
 | `activeTab` | When the user invokes the context menu, reads the selected text and its paragraph on that tab to extract the sentence used as context, and shows a small confirmation toast on the same page. |
 | `scripting` | Injects the selection reader and the confirmation toast into the active tab (context-menu flow), and registers the optional selection-bubble content script when the user turns the bubble on in the settings. |
@@ -122,7 +124,7 @@ Creating Anki flashcards from words the user types or selects: the card content 
 
 Tick:
 
-- **Website content** – the text the user selects on a page (and the surrounding sentence) is sent to the provider the user configured (Google Translate's dictionary endpoint, dictionaryapi.dev and Tatoeba for the Free provider, or the user's LLM provider) to build the card, and only when the user triggers an add.
+- **Website content** – the text the user selects on a page (and the surrounding sentence) is sent to the provider the user configured (Google Translate's dictionary endpoint, dictionaryapi.dev and Tatoeba for the Free provider, or the user's LLM provider) to build the card, and only when the user triggers an add. Nothing is transferred to the developer; a card waiting for a closed Anki is stored locally only.
 - **Authentication information** – the user's own API keys for LLM providers are stored in the browser's extension storage (Chrome Sync when enabled) and sent only to the provider they belong to.
 
 Leave unticked: personally identifiable information, health, financial and payment information,
@@ -156,12 +158,12 @@ handles user data (website content, API keys).
 
 ## 6. Notes for the reviewer (*copy* into the review notes / additional information field if offered)
 
-Testing requires the Anki desktop app with the AnkiConnect add-on (https://ankiweb.net/shared/info/2055492159, add-on code 2055492159); AnkiConnect's default configuration already allows requests from extensions. With Anki running: press Alt+A (or click the icon), type "harbor", press Enter – the default Free provider needs no API key and adds a note to the "Default" deck (translation, IPA, examples, pronunciation audio, image). Without Anki the popup shows "Anki: offline" and nothing is sent anywhere. LLM providers are optional and need the user's own key. The selection bubble is off by default; enabling it in Settings → Languages & Generation prompts for the site permission. No account, no backend, no remote code; source: https://github.com/sergiyclas/anki-quick-add
+Testing requires the Anki desktop app with the AnkiConnect add-on (https://ankiweb.net/shared/info/2055492159, add-on code 2055492159); AnkiConnect's default configuration already allows requests from extensions. Without Anki running the card is built and held in a local queue (Settings → General shows it). With Anki running: press Alt+A (or click the icon), type "harbor", press Enter – the default Free provider needs no API key and adds a note to the "Default" deck (translation, IPA, examples, pronunciation audio, image). Without Anki the popup shows "Anki: offline" and nothing is sent anywhere. LLM providers are optional and need the user's own key. The selection bubble is off by default; enabling it in Settings → Languages & Generation prompts for the site permission. No account, no backend, no remote code; source: https://github.com/sergiyclas/anki-quick-add
 
 ## 7. After the item is live
 
 - README: replace *"Chrome Web Store listing: coming soon"* with the store link; add the YouTube link.
-- Tag the release (`git tag v2.0.0 && git push --tags`) and attach the zip to a GitHub release.
+- Tag the release (`git tag v2.1.0 && git push --tags`) and attach the zip to a GitHub release.
 - For every later upload: bump `version`, `npm run check`, `node scripts/e2e.mjs`, `npm run zip`.
 
 ## Assets in this folder

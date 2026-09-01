@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "bitişi"
+  },
+  "popup_queued": {
+    "message": "Sırada: $WORD$ – Anki kapalı ($COUNT$ bekliyor)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ kart Anki'yi bekliyor",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Şimdi ekle"
+  },
+  "queue_flushing": {
+    "message": "Ekleniyor…"
+  },
+  "queue_result": {
+    "message": "$ADDED$ eklendi, $LEFT$ kaldı",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "Sıra boş."
+  },
+  "queue_title": {
+    "message": "Çevrimdışı sıra"
+  },
+  "queue_clear": {
+    "message": "Sırayı temizle"
+  },
+  "queue_clear_confirm": {
+    "message": "Sıradaki $COUNT$ kart silinsin mi? Anki'ye eklenmeyecekler.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Anki profili bekleniyor: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Anki kapalıyken de eklemeye devam et"
+  },
+  "opt_offline_queue_hint": {
+    "message": "Kart hemen oluşturulur ve Anki bir sonraki açılışında yazılır (en fazla $COUNT$ kart, her beş dakikada bir yeniden denenir).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }

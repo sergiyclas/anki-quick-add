@@ -212,6 +212,14 @@ additions in List mode. The core is free and stays free.
 The interface comes in 12 languages – it follows the browser, or the one you pick in Settings →
 General – and in light, dark, or dark on a schedule between two times. Both apply instantly.
 
+### 📥 Anki can stay closed
+
+Adding a word with Anki shut down no longer fails: the card is built in full and parked in an offline
+queue, then written to Anki the next time it answers – on a five-minute alarm, when the browser
+starts, when the popup opens, or from the *Add now* button. The queue lives in IndexedDB (media as
+binary, about 150 KB per card, up to 300 cards), survives closing the browser, and remembers which
+Anki profile each card was meant for, so nothing lands in the wrong collection.
+
 ### 🔁 Duplicates, sync, backup
 
 Duplicates are checked in the collection or the target deck before anything is generated; policy:
@@ -284,6 +292,7 @@ Everything is set in the options page; this is what the settings mean.
 | Selection bubble | off / on; trigger: Shift, Alt or every selection | off; Shift |
 | Interface language | auto (browser language) or any of the 12 bundled languages | auto |
 | Interface theme | same as the browser / light / dark / dark on a schedule (from–until) | same as the browser |
+| Offline queue | keep adding while Anki is closed; up to 300 cards | on |
 | Card theme (Pro) | Classic / Paper / Midnight for the built-in note type | Classic |
 | Pro extras | mnemonic, etymology, example audio, parallel List mode | off |
 | Shortcut | `chrome://extensions/shortcuts` | Alt+A |

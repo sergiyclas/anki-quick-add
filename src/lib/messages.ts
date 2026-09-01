@@ -3,6 +3,8 @@
 import type { ModelTemplates } from "./anki/types";
 import type { AddResult, CommitOverrides } from "./pipeline/addWord";
 import type { BatchState } from "./pipeline/batch";
+import type { FlushSummary } from "./queue/flush";
+import type { QueueStatus } from "./queue/store";
 import type { ModelInfo } from "./providers/types";
 import type { CardTheme, ProviderId, ProviderSettings } from "./settings/schema";
 
@@ -12,6 +14,9 @@ export type Request =
   | { type: "editor.open"; word: string; deck?: string; context?: string; block?: string }
   | { type: "translate.quick"; text: string }
   | { type: "bubble.status" }
+  | { type: "queue.status" }
+  | { type: "queue.flush" }
+  | { type: "queue.clear" }
   | { type: "i18n.strings"; keys: string[] }
   | { type: "bubble.sync" }
   | { type: "job.regenerate"; id: string; hint: string }
@@ -38,6 +43,17 @@ export interface PingResponse {
   model: string;
   deck: string;
   quickTranslate: boolean;
+  queued: number;
+}
+
+export interface QueueStatusResponse {
+  ok: true;
+  status: QueueStatus;
+}
+
+export interface QueueFlushResponse {
+  ok: true;
+  summary: FlushSummary;
 }
 
 export interface AddResponse {
@@ -111,9 +127,13 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
     ? AddResponse
     : R extends { type: "editor.open" }
       ? JobResponse
-      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" }
+      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" }
         ? OkResponse
-        : R extends { type: "i18n.strings" }
+        : R extends { type: "queue.status" }
+          ? QueueStatusResponse
+          : R extends { type: "queue.flush" }
+            ? QueueFlushResponse
+            : R extends { type: "i18n.strings" }
           ? StringsResponse
           : R extends { type: "bubble.status" | "bubble.sync" }
           ? BubbleStatusResponse

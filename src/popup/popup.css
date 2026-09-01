@@ -136,3 +136,15 @@ button.small {
   font-size: 13px;
   color: var(--accent);
 }
+
+.popup-queue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.batch-list li.queued .icon {
+  color: var(--warn);
+}

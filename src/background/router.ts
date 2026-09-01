@@ -8,6 +8,8 @@ import { applyTheme } from "../lib/anki/builtinModel";
 import { getCache, loadKeys, loadSettings, setCache } from "../lib/settings/storage";
 import { initI18n, t } from "../lib/i18n";
 import { quickTranslate } from "../lib/quickTranslate";
+import { flushQueue } from "../lib/queue/flush";
+import { clearQueue, queueCount, queueStatus } from "../lib/queue/store";
 import { extractSentence } from "../lib/text";
 import { bubbleStatus, syncBubbleScript } from "./bubble";
 import { commitJob, openEditor, regenerateJob } from "./jobs";
@@ -29,6 +31,15 @@ async function ping(): Promise<PingResponse> {
     (version) => ({ ok: true, version }),
     (e: Error) => ({ ok: false, error: e.message }),
   );
+  // Remember which collection is open, so queued cards are never written into a different profile.
+  if (anki.ok) {
+    void client.activeProfile().then(
+      async (profile) => {
+        if (profile) await setCache("profile", profile);
+      },
+      () => undefined,
+    );
+  }
   const hasKey = KEYLESS.has(settings.provider) ? true : Boolean(keys[settings.provider as Exclude<typeof settings.provider, "free" | "compat">]);
   return {
     ok: true,
@@ -39,6 +50,7 @@ async function ping(): Promise<PingResponse> {
     model: settings.providers[settings.provider].model,
     deck: settings.anki.deck,
     quickTranslate: settings.ui.quickTranslate,
+    queued: await queueCount(),
   };
 }
 
@@ -65,6 +77,13 @@ async function dispatch(request: Request) {
       // Placeholders stay as $1/$2 so the content script can fill them in.
       return { ok: true, strings: Object.fromEntries(request.keys.map((k) => [k, t(k, ["$1", "$2"])])) };
     }
+    case "queue.status":
+      return { ok: true, status: await queueStatus() };
+    case "queue.flush":
+      return { ok: true, summary: await flushQueue() };
+    case "queue.clear":
+      await clearQueue();
+      return { ok: true };
     case "bubble.status":
       return { ok: true, ...(await bubbleStatus()) };
     case "bubble.sync": {

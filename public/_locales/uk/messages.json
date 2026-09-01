@@ -664,5 +664,77 @@
   },
   "ui_dark_until": {
     "message": "до"
+  },
+  "popup_queued": {
+    "message": "У черзі: $WORD$ – Anki закритий ($COUNT$ чекає)",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "COUNT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_pending": {
+    "message": "$COUNT$ чекає на Anki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_flush": {
+    "message": "Додати зараз"
+  },
+  "queue_flushing": {
+    "message": "Додаю…"
+  },
+  "queue_result": {
+    "message": "додано $ADDED$, лишилось $LEFT$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "LEFT": {
+        "content": "$2"
+      }
+    }
+  },
+  "queue_empty": {
+    "message": "Черга порожня."
+  },
+  "queue_title": {
+    "message": "Офлайн-черга"
+  },
+  "queue_clear": {
+    "message": "Очистити чергу"
+  },
+  "queue_clear_confirm": {
+    "message": "Видалити $COUNT$ карток із черги? Вони не потраплять в Anki.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_profiles": {
+    "message": "Чекають на профіль Anki: $PROFILES$",
+    "placeholders": {
+      "PROFILES": {
+        "content": "$1"
+      }
+    }
+  },
+  "opt_offline_queue": {
+    "message": "Додавати, навіть коли Anki закритий"
+  },
+  "opt_offline_queue_hint": {
+    "message": "Картка створюється одразу й потрапляє в Anki, щойно він відкриється (до $COUNT$ карток, спроба кожні п'ять хвилин).",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
   }
 }
