@@ -1,5 +1,5 @@
 import type { JsonSchema } from "../generation/types";
-import type { ProviderId, ProviderSettings } from "../settings/schema";
+import type { GenerationSettings, ProviderId, ProviderSettings } from "../settings/schema";
 
 export type ProviderErrorCode = "auth" | "http" | "refusal" | "truncated" | "empty" | "invalid_json" | "network";
 
@@ -25,6 +25,12 @@ export interface GenerateRequest {
   schemaName: string;
   maxTokens: number;
   signal?: AbortSignal;
+  // Structured view of the same request, for adapters that do not talk to a language model.
+  word: string;
+  context?: string;
+  source: string;
+  target: string;
+  generation: GenerationSettings;
 }
 
 export interface GenerateResult {

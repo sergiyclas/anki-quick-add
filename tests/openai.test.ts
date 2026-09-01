@@ -1,9 +1,10 @@
 import { afterEach, expect, test, vi } from "vitest";
+import { DEFAULT_SETTINGS } from "../src/lib/settings/schema";
 import { openai } from "../src/lib/providers/openai";
 import { mockFetch } from "./helpers/mockFetch";
 
 const schema = { type: "object" as const, properties: { uk: { type: "string" as const } }, required: ["uk"], additionalProperties: false as const };
-const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 2048 };
+const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 2048, word: "hello", source: "en", target: "uk", generation: DEFAULT_SETTINGS.generation };
 const cfg = { model: "gpt-5.6-terra", effort: "low" as const };
 const ok = (text: string) => ({
   status: 200,

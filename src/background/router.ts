@@ -3,7 +3,8 @@ import { AnkiClient } from "../lib/anki/client";
 import type { ErrorResponse, ListResponse, PingResponse, Request, ResponseFor } from "../lib/messages";
 import { addWord } from "../lib/pipeline/addWord";
 import { cancelBatch, clearBatch, getBatch, resumeBatch, startBatch } from "../lib/pipeline/batch";
-import { getAdapter } from "../lib/providers/registry";
+import { KEYLESS, getAdapter } from "../lib/providers/registry";
+import { applyTheme } from "../lib/anki/builtinModel";
 import { getCache, loadKeys, loadSettings, setCache } from "../lib/settings/storage";
 import { quickTranslate } from "../lib/quickTranslate";
 import { extractSentence } from "../lib/text";
@@ -27,7 +28,7 @@ async function ping(): Promise<PingResponse> {
     (version) => ({ ok: true, version }),
     (e: Error) => ({ ok: false, error: e.message }),
   );
-  const hasKey = settings.provider === "compat" ? true : Boolean(keys[settings.provider]);
+  const hasKey = KEYLESS.has(settings.provider) ? true : Boolean(keys[settings.provider as Exclude<typeof settings.provider, "free" | "compat">]);
   return {
     ok: true,
     version: chrome.runtime.getManifest().version,
@@ -104,6 +105,11 @@ async function dispatch(request: Request) {
       const client = new AnkiClient(settings.anki.url);
       const [templates, css] = await Promise.all([client.modelTemplates(request.modelName), client.modelStyling(request.modelName)]);
       return { ok: true, templates, css };
+    }
+    case "model.applyTheme": {
+      const settings = await loadSettings();
+      await applyTheme(new AnkiClient(settings.anki.url), request.theme);
+      return { ok: true };
     }
     case "model.ensureBuiltin": {
       const settings = await loadSettings();

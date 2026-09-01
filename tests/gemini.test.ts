@@ -1,4 +1,5 @@
 import { afterEach, expect, test, vi } from "vitest";
+import { DEFAULT_SETTINGS } from "../src/lib/settings/schema";
 import { gemini, toOpenApiSubset } from "../src/lib/providers/gemini";
 import { mockFetch } from "./helpers/mockFetch";
 
@@ -8,7 +9,7 @@ const schema = {
   required: ["uk", "list"],
   additionalProperties: false as const,
 };
-const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 2048 };
+const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 2048, word: "hello", source: "en", target: "uk", generation: DEFAULT_SETTINGS.generation };
 const cfg = { model: "gemini-3.7-flash", effort: "low" as const };
 const ok = (text: string) => ({
   status: 200,

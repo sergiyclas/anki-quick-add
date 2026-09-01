@@ -22,16 +22,18 @@ export function ProvidersTab({ state }: { state: SettingsState }) {
   const id = settings.provider;
   const cfg = settings.providers[id];
   const compatHost = hostOf(cfg.baseUrl);
-  const apiKey = id === "compat" ? (keys.compat?.[compatHost] ?? "") : (keys[id] ?? "");
+  const apiKey = id === "compat" ? (keys.compat?.[compatHost] ?? "") : id === "free" ? "" : (keys[id] ?? "");
   const preset = COMPAT_PRESETS.find((p) => p.id === cfg.preset);
 
   const setCfg = (patch: Partial<ProviderSettings>) =>
     update((s) => ({ ...s, providers: { ...s.providers, [id]: { ...s.providers[id], ...patch } } }));
 
   const setKey = (value: string) =>
-    updateKeys((k) =>
-      id === "compat" ? { ...k, compat: { ...k.compat, [compatHost]: value } } : { ...k, [id]: value },
-    );
+    updateKeys((k) => {
+      if (id === "compat") return { ...k, compat: { ...k.compat, [compatHost]: value } };
+      if (id === "free") return k;
+      return { ...k, [id]: value };
+    });
 
   return (
     <>
@@ -45,6 +47,8 @@ export function ProvidersTab({ state }: { state: SettingsState }) {
           ))}
         </select>
       </label>
+
+      {id === "free" && <div class="hint">{t("provider_free_hint")}</div>}
 
       {id === "compat" && (
         <>
@@ -83,25 +87,29 @@ export function ProvidersTab({ state }: { state: SettingsState }) {
         </>
       )}
 
-      <label class="field">
-        <span>{t("opt_api_key")}</span>
-        <input type="password" value={apiKey} placeholder={preset?.keyOptional ? t("opt_key_optional") : "sk-…"} onInput={(e) => setKey(e.currentTarget.value.trim())} />
-        {id === "compat" && !compatHost && <div class="hint">{t("opt_key_needs_host")}</div>}
-      </label>
+      {id !== "free" && (
+        <>
+          <label class="field">
+            <span>{t("opt_api_key")}</span>
+            <input type="password" value={apiKey} placeholder={preset?.keyOptional ? t("opt_key_optional") : "sk-…"} onInput={(e) => setKey(e.currentTarget.value.trim())} />
+            {id === "compat" && !compatHost && <div class="hint">{t("opt_key_needs_host")}</div>}
+          </label>
 
-      <ModelPicker provider={id} cfg={cfg} apiKey={apiKey} onChange={(model) => setCfg({ model })} />
+          <ModelPicker provider={id} cfg={cfg} apiKey={apiKey} onChange={(model) => setCfg({ model })} />
 
-      {id !== "compat" && (
-        <label class="field">
-          <span>{t("opt_effort")}</span>
-          <select value={cfg.effort} onChange={(e) => setCfg({ effort: e.currentTarget.value as Effort })}>
-            {EFFORTS.map((v) => (
-              <option key={v} value={v}>
-                {v}
-              </option>
-            ))}
-          </select>
-        </label>
+          {id !== "compat" && (
+            <label class="field">
+              <span>{t("opt_effort")}</span>
+              <select value={cfg.effort} onChange={(e) => setCfg({ effort: e.currentTarget.value as Effort })}>
+                {EFFORTS.map((v) => (
+                  <option key={v} value={v}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+        </>
       )}
     </>
   );

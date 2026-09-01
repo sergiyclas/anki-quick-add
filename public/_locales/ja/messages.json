@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "chrome:// ページ、Chrome ウェブストア、PDF、他の拡張機能のページでは動作しません。"
+  },
+  "provider_free_hint": {
+    "message": "API キーは不要です。訳語・品詞・類義語・定義は Google 翻訳の辞書データから、英語の IPA と例文は dictionaryapi.dev から、訳付きの例文は Tatoeba から取得します。文法メモ・記憶術・語義の判別はありません。それらが必要な場合は LLM プロバイダーを選んでください。"
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "設定 → バックアップ でプロモコードを入力すると解放されます。"
+  },
+  "pro_hint_unlocked": {
+    "message": "記憶術と語源には LLM プロバイダーが必要です。例文の音声には Google のテキスト読み上げを使います。"
+  },
+  "gen_mnemonic": {
+    "message": "記憶術 – 単語を覚えるためのヒント"
+  },
+  "gen_etymology": {
+    "message": "語源 – 単語の由来"
+  },
+  "media_example_audio": {
+    "message": "すべての例文に音声を付ける"
+  },
+  "opt_theme": {
+    "message": "カードのテーマ"
+  },
+  "theme_classic": {
+    "message": "クラシック"
+  },
+  "theme_paper": {
+    "message": "ペーパー"
+  },
+  "theme_midnight": {
+    "message": "ミッドナイト"
+  },
+  "theme_hint": {
+    "message": "Anki の内蔵ノートタイプにすぐ適用されます。既存のカードも変わります。"
+  },
+  "theme_applied": {
+    "message": "適用しました"
+  },
+  "promo_title": {
+    "message": "プロモコード"
+  },
+  "promo_placeholder": {
+    "message": "コードを入力"
+  },
+  "promo_redeem": {
+    "message": "適用"
+  },
+  "promo_current_tier": {
+    "message": "現在のプラン"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "このコードは無効です。"
+  },
+  "promo_success": {
+    "message": "解放しました: $TIER$。ありがとうございます！",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro では、カードの記憶術と語源、例文の音声、カードのテーマ、リストモードでの 2 件並行追加が使えます。Founder では 3 件並行になります。"
+  },
+  "opt_batch_concurrency": {
+    "message": "リストモードでの並行追加数"
+  },
+  "batch_concurrency_hint": {
+    "message": "Free は 1、Pro は 2、Founder は 3"
   }
 }

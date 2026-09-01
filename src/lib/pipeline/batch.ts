@@ -1,3 +1,5 @@
+import { maxBatchConcurrency } from "../license";
+import { loadSettings } from "../settings/storage";
 import { type AddResult, addWord } from "./addWord";
 
 export type BatchItemStatus = "pending" | "running" | "added" | "updated" | "duplicate" | "error" | "cancelled";
@@ -54,27 +56,45 @@ function describe(result: AddResult): Pick<BatchItem, "status" | "detail"> {
   }
 }
 
+// Concurrency comes from the settings, capped by the licence tier (1 free, 2 pro, 3 founder).
+export async function effectiveConcurrency(): Promise<number> {
+  const settings = await loadSettings();
+  return Math.max(1, Math.min(settings.ui.batchConcurrency, maxBatchConcurrency(settings.license.tier)));
+}
+
+// Read-modify-write of one item; the state in session storage is the source of truth while running.
+async function updateItem(id: string, index: number, patch: Partial<BatchItem>): Promise<BatchState | undefined> {
+  const current = await getBatch();
+  if (!current || current.id !== id) return undefined;
+  current.items[index] = { ...current.items[index]!, ...patch };
+  await save(current);
+  return current;
+}
+
 async function run(state: BatchState): Promise<void> {
-  for (let i = 0; i < state.items.length; i++) {
-    const current = (await getBatch()) ?? state;
-    if (current.id !== state.id) return;
-    if (current.cancelled) {
-      current.items = current.items.map((it) => (it.status === "pending" ? { ...it, status: "cancelled" } : it));
-      current.running = false;
-      await save(current);
-      return;
+  const concurrency = await effectiveConcurrency();
+  let next = 0;
+
+  const worker = async () => {
+    for (;;) {
+      const current = await getBatch();
+      if (!current || current.id !== state.id) return;
+      if (current.cancelled) return;
+      const index = next++;
+      if (index >= current.items.length) return;
+      if (current.items[index]!.status !== "pending") continue;
+      await updateItem(state.id, index, { status: "running" });
+      const result = await addWord({ word: current.items[index]!.word, deck: current.deck });
+      await updateItem(state.id, index, describe(result));
     }
-    const item = current.items[i]!;
-    if (item.status !== "pending") continue;
-    current.items[i] = { ...item, status: "running" };
-    await save(current);
-    const result = await addWord({ word: item.word, deck: current.deck });
-    current.items[i] = { word: item.word, ...describe(result) };
-    await save(current);
-    state = current;
-  }
-  const done = (await getBatch()) ?? state;
-  if (done.id === state.id) await save({ ...done, running: false });
+  };
+
+  await Promise.all(Array.from({ length: concurrency }, worker));
+
+  const done = await getBatch();
+  if (!done || done.id !== state.id) return;
+  if (done.cancelled) done.items = done.items.map((it) => (it.status === "pending" || it.status === "running" ? { ...it, status: "cancelled" } : it));
+  await save({ ...done, running: false });
 }
 
 // Starts a new batch (replacing a finished one) or resumes the pending items of the stored batch.

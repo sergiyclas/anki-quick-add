@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "在 chrome:// 页面、Chrome 网上应用店、PDF 以及其他扩展的页面中不可用。"
+  },
+  "provider_free_hint": {
+    "message": "无需 API 密钥。翻译、词性、同义词和释义来自 Google 翻译的词典数据，英语的音标和例句来自 dictionaryapi.dev，带翻译的例句来自 Tatoeba。没有语法说明、记忆法和义项区分，如需这些请选择 LLM 提供商。"
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "在 设置 → 备份 中输入优惠码即可解锁。"
+  },
+  "pro_hint_unlocked": {
+    "message": "记忆法和词源需要 LLM 提供商；例句音频使用 Google 文字转语音。"
+  },
+  "gen_mnemonic": {
+    "message": "记忆法 – 帮你记住这个词的小窍门"
+  },
+  "gen_etymology": {
+    "message": "词源 – 这个词从哪里来"
+  },
+  "media_example_audio": {
+    "message": "为每个例句生成音频"
+  },
+  "opt_theme": {
+    "message": "卡片主题"
+  },
+  "theme_classic": {
+    "message": "经典"
+  },
+  "theme_paper": {
+    "message": "纸张"
+  },
+  "theme_midnight": {
+    "message": "午夜"
+  },
+  "theme_hint": {
+    "message": "立即应用到 Anki 中的内置笔记类型；已有卡片也会随之改变。"
+  },
+  "theme_applied": {
+    "message": "已应用"
+  },
+  "promo_title": {
+    "message": "优惠码"
+  },
+  "promo_placeholder": {
+    "message": "输入优惠码"
+  },
+  "promo_redeem": {
+    "message": "兑换"
+  },
+  "promo_current_tier": {
+    "message": "当前方案"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "此优惠码无效。"
+  },
+  "promo_success": {
+    "message": "已解锁：$TIER$。谢谢！",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro 解锁卡片上的记忆法和词源、例句音频、卡片主题以及列表模式下 2 个并行添加；Founder 提升到 3 个。"
+  },
+  "opt_batch_concurrency": {
+    "message": "列表模式下的并行添加数"
+  },
+  "batch_concurrency_hint": {
+    "message": "Free 为 1，Pro 为 2，Founder 为 3"
   }
 }

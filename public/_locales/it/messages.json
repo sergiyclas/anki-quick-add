@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Non funziona nelle pagine chrome://, nel Chrome Web Store, nei PDF e nelle pagine di altre estensioni."
+  },
+  "provider_free_hint": {
+    "message": "Nessuna chiave API necessaria. Traduzioni, parte del discorso, sinonimi e definizioni arrivano dai dati di dizionario di Google Traduttore, IPA ed esempi per l'inglese da dictionaryapi.dev, frasi di esempio tradotte da Tatoeba. Niente note grammaticali, mnemonici o scelta del significato: per quelli serve un provider LLM."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Si sblocca con un codice promozionale in Impostazioni → Backup."
+  },
+  "pro_hint_unlocked": {
+    "message": "Mnemonici ed etimologia richiedono un provider LLM; l'audio degli esempi usa la sintesi vocale Google."
+  },
+  "gen_mnemonic": {
+    "message": "Mnemonico – un aiuto per ricordare la parola"
+  },
+  "gen_etymology": {
+    "message": "Etimologia – da dove viene la parola"
+  },
+  "media_example_audio": {
+    "message": "Audio per ogni frase di esempio"
+  },
+  "opt_theme": {
+    "message": "Tema della scheda"
+  },
+  "theme_classic": {
+    "message": "Classico"
+  },
+  "theme_paper": {
+    "message": "Carta"
+  },
+  "theme_midnight": {
+    "message": "Mezzanotte"
+  },
+  "theme_hint": {
+    "message": "Applicato subito al tipo di nota integrato in Anki; cambiano anche le schede esistenti."
+  },
+  "theme_applied": {
+    "message": "Applicato"
+  },
+  "promo_title": {
+    "message": "Codice promozionale"
+  },
+  "promo_placeholder": {
+    "message": "Inserisci un codice"
+  },
+  "promo_redeem": {
+    "message": "Riscatta"
+  },
+  "promo_current_tier": {
+    "message": "Piano attuale"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Questo codice non è valido."
+  },
+  "promo_success": {
+    "message": "Sbloccato: $TIER$. Grazie!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro sblocca mnemonici ed etimologia sulle schede, audio per le frasi di esempio, temi delle schede e 2 aggiunte in parallelo in modalità elenco; Founder porta a 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Aggiunte in parallelo in modalità elenco"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 con Free, 2 con Pro, 3 con Founder"
   }
 }

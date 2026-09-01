@@ -1,10 +1,11 @@
 import { afterEach, expect, test, vi } from "vitest";
+import { DEFAULT_SETTINGS } from "../src/lib/settings/schema";
 import { openaiCompat, resolveJsonMode } from "../src/lib/providers/openaiCompat";
 import type { ProviderSettings } from "../src/lib/settings/schema";
 import { mockFetch } from "./helpers/mockFetch";
 
 const schema = { type: "object" as const, properties: { uk: { type: "string" as const } }, required: ["uk"], additionalProperties: false as const };
-const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 2048 };
+const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 2048, word: "hello", source: "en", target: "uk", generation: DEFAULT_SETTINGS.generation };
 const openrouter: ProviderSettings = { model: "meta-llama/llama-3.3-70b-instruct", effort: "low", baseUrl: "https://openrouter.ai/api/v1/", preset: "openrouter", jsonMode: "auto" };
 const ok = (content: string, finish = "stop") => ({ status: 200, body: { model: "x", choices: [{ message: { content }, finish_reason: finish }] } });
 

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "preact/hooks";
 import { t } from "../../lib/i18n";
 import { send } from "../../lib/messages";
-import { BUILTIN_MODEL_NAME, type DuplicatePolicy } from "../../lib/settings/schema";
+import { THEMES } from "../../lib/anki/builtinModel";
+import { tierAtLeast } from "../../lib/license";
+import { BUILTIN_MODEL_NAME, type CardTheme, type DuplicatePolicy } from "../../lib/settings/schema";
 import type { SettingsState } from "../../ui/useSettings";
 import { FieldMappingTable } from "../components/FieldMappingTable";
 import { GrantHostButton } from "../components/GrantHostButton";
@@ -48,6 +50,15 @@ export function AnkiTab({ state }: { state: SettingsState }) {
   const set = (patch: Partial<typeof anki>) => update((s) => ({ ...s, anki: { ...s.anki, ...patch } }));
   const modelOptions = models.items.includes(BUILTIN_MODEL_NAME) ? models.items : [BUILTIN_MODEL_NAME, ...models.items];
   const builtinMissing = anki.modelName === BUILTIN_MODEL_NAME && models.items.length > 0 && !models.items.includes(BUILTIN_MODEL_NAME);
+  const pro = tierAtLeast(settings.license.tier, "pro");
+  const [themeStatus, setThemeStatus] = useState("");
+
+  async function chooseTheme(theme: CardTheme) {
+    set({ theme });
+    setThemeStatus("…");
+    const r = await send({ type: "model.applyTheme", theme });
+    setThemeStatus(r.ok ? t("theme_applied") : r.error);
+  }
 
   async function createBuiltin() {
     setCreateStatus("…");
@@ -103,6 +114,25 @@ export function AnkiTab({ state }: { state: SettingsState }) {
         <label class="field check">
           <input type="checkbox" checked={anki.production} onChange={(e) => set({ production: e.currentTarget.checked })} />
           <span>{t("opt_production")}</span>
+        </label>
+      )}
+
+      {anki.modelName === BUILTIN_MODEL_NAME && (
+        <label class={`field ${pro ? "" : "locked"}`}>
+          <span>
+            {t("opt_theme")} {!pro && <em class="lock">{t("pro_locked")}</em>}
+          </span>
+          <div class="row">
+            <select value={anki.theme} disabled={!pro} onChange={(e) => void chooseTheme(e.currentTarget.value as CardTheme)}>
+              {(Object.keys(THEMES) as CardTheme[]).map((id) => (
+                <option key={id} value={id}>
+                  {t(`theme_${id}`)}
+                </option>
+              ))}
+            </select>
+            <span class="hint">{themeStatus}</span>
+          </div>
+          <div class="hint">{pro ? t("theme_hint") : t("pro_hint")}</div>
         </label>
       )}
 

@@ -4,7 +4,7 @@ import type { ModelTemplates } from "./anki/types";
 import type { AddResult, CommitOverrides } from "./pipeline/addWord";
 import type { BatchState } from "./pipeline/batch";
 import type { ModelInfo } from "./providers/types";
-import type { ProviderId, ProviderSettings } from "./settings/schema";
+import type { CardTheme, ProviderId, ProviderSettings } from "./settings/schema";
 
 export type Request =
   | { type: "ping" }
@@ -25,6 +25,7 @@ export type Request =
   | { type: "model.fields"; modelName: string; refresh?: boolean }
   | { type: "model.templates"; modelName: string }
   | { type: "model.ensureBuiltin" }
+  | { type: "model.applyTheme"; theme: CardTheme }
   | { type: "provider.listModels"; provider: ProviderId; cfg: ProviderSettings; key: string };
 
 export interface PingResponse {
@@ -104,7 +105,7 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
     ? AddResponse
     : R extends { type: "editor.open" }
       ? JobResponse
-      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" }
+      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" }
         ? OkResponse
         : R extends { type: "bubble.status" | "bubble.sync" }
           ? BubbleStatusResponse

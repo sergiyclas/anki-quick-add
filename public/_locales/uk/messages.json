@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Не працює на сторінках chrome://, у Chrome Web Store, у PDF і на сторінках інших розширень."
+  },
+  "provider_free_hint": {
+    "message": "Без API-ключа. Переклади, частина мови, синоніми й визначення – зі словникових даних Google Translate, IPA і приклади для англійської – з dictionaryapi.dev, речення-приклади з перекладами – з Tatoeba. Без граматичної довідки, мнемонік і розрізнення значень – для цього потрібен LLM-провайдер."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Відкривається промокодом у Налаштування → Резервна копія."
+  },
+  "pro_hint_unlocked": {
+    "message": "Мнемоніка й етимологія потребують LLM-провайдера; озвучка прикладів – через Google text-to-speech."
+  },
+  "gen_mnemonic": {
+    "message": "Мнемоніка – як запам'ятати слово"
+  },
+  "gen_etymology": {
+    "message": "Етимологія – звідки слово походить"
+  },
+  "media_example_audio": {
+    "message": "Аудіо для кожного речення-прикладу"
+  },
+  "opt_theme": {
+    "message": "Тема картки"
+  },
+  "theme_classic": {
+    "message": "Класична"
+  },
+  "theme_paper": {
+    "message": "Папір"
+  },
+  "theme_midnight": {
+    "message": "Опівніч"
+  },
+  "theme_hint": {
+    "message": "Застосовується до вбудованого типу нотатки в Anki одразу; існуючі картки теж змінюються."
+  },
+  "theme_applied": {
+    "message": "Застосовано"
+  },
+  "promo_title": {
+    "message": "Промокод"
+  },
+  "promo_placeholder": {
+    "message": "Введи код"
+  },
+  "promo_redeem": {
+    "message": "Активувати"
+  },
+  "promo_current_tier": {
+    "message": "Поточний план"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Такого коду нема."
+  },
+  "promo_success": {
+    "message": "Відкрито: $TIER$. Дякую!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro відкриває мнемоніку й етимологію на картках, озвучку речень-прикладів, теми оформлення і 2 паралельні додавання у режимі списку; Founder – 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Паралельних додавань у режимі списку"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 на Free, 2 на Pro, 3 на Founder"
   }
 }

@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Nie działa na stronach chrome://, w Chrome Web Store, w plikach PDF i na stronach innych rozszerzeń."
+  },
+  "provider_free_hint": {
+    "message": "Bez klucza API. Tłumaczenia, część mowy, synonimy i definicje pochodzą z danych słownikowych Tłumacza Google, IPA i przykłady dla angielskiego z dictionaryapi.dev, zdania przykładowe z tłumaczeniem z Tatoeby. Bez uwag gramatycznych, mnemotechnik i rozróżniania znaczeń – do tego potrzebny jest dostawca LLM."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Odblokuj kodem promocyjnym w Ustawienia → Kopia zapasowa."
+  },
+  "pro_hint_unlocked": {
+    "message": "Mnemotechniki i etymologia wymagają dostawcy LLM; audio przykładów korzysta z syntezy mowy Google."
+  },
+  "gen_mnemonic": {
+    "message": "Mnemotechnika – jak zapamiętać słowo"
+  },
+  "gen_etymology": {
+    "message": "Etymologia – skąd pochodzi słowo"
+  },
+  "media_example_audio": {
+    "message": "Audio do każdego zdania przykładowego"
+  },
+  "opt_theme": {
+    "message": "Motyw karty"
+  },
+  "theme_classic": {
+    "message": "Klasyczny"
+  },
+  "theme_paper": {
+    "message": "Papier"
+  },
+  "theme_midnight": {
+    "message": "Północ"
+  },
+  "theme_hint": {
+    "message": "Stosowany od razu do wbudowanego typu notatki w Anki; istniejące karty też się zmieniają."
+  },
+  "theme_applied": {
+    "message": "Zastosowano"
+  },
+  "promo_title": {
+    "message": "Kod promocyjny"
+  },
+  "promo_placeholder": {
+    "message": "Wpisz kod"
+  },
+  "promo_redeem": {
+    "message": "Aktywuj"
+  },
+  "promo_current_tier": {
+    "message": "Bieżący plan"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Ten kod jest nieprawidłowy."
+  },
+  "promo_success": {
+    "message": "Odblokowano: $TIER$. Dziękujemy!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro odblokowuje mnemotechniki i etymologię na kartach, audio zdań przykładowych, motywy kart i 2 równoległe dodawania w trybie listy; Founder zwiększa to do 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Równoległe dodawania w trybie listy"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 w Free, 2 w Pro, 3 w Founder"
   }
 }

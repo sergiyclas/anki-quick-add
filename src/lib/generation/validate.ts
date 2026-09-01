@@ -86,6 +86,10 @@ export function normalizeCardData(raw: Record<string, unknown>, word: string, g:
   if (g.synonyms) card.synonyms = cleanList(raw["synonyms"], g.synonymsCount);
   const grammar = cleanText(raw["grammar"]);
   if (grammar) card.grammar = grammar;
+  const mnemonic = cleanText(raw["mnemonic"]);
+  if (mnemonic) card.mnemonic = mnemonic;
+  const etymology = cleanText(raw["etymology"]);
+  if (etymology) card.etymology = etymology;
   const imageQuery = cleanText(raw["imageQuery"]);
   if (imageQuery) card.imageQuery = imageQuery;
   if (context) card.context = context;

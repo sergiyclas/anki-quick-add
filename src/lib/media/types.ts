@@ -6,6 +6,7 @@ export interface MediaCredit {
 
 export interface MediaResult {
   kind: "audio" | "image";
+  role?: "pronunciation" | "example"; // audio only; default pronunciation
   filename: string;
   data: string; // base64
   mime: string;

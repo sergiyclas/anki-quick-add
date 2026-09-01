@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Ne fonctionne pas sur les pages chrome://, le Chrome Web Store, les PDF et les pages d'autres extensions."
+  },
+  "provider_free_hint": {
+    "message": "Aucune clé API requise. Traductions, catégorie grammaticale, synonymes et définitions proviennent des données de dictionnaire de Google Traduction, l'API et les exemples pour l'anglais de dictionaryapi.dev, les phrases d'exemple traduites de Tatoeba. Pas de notes de grammaire, de moyens mnémotechniques ni de choix du sens – passez à un fournisseur de LLM pour cela."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "À débloquer avec un code promo dans Paramètres → Sauvegarde."
+  },
+  "pro_hint_unlocked": {
+    "message": "Les moyens mnémotechniques et l'étymologie nécessitent un fournisseur de LLM ; l'audio des exemples utilise la synthèse vocale Google."
+  },
+  "gen_mnemonic": {
+    "message": "Moyen mnémotechnique – une astuce pour retenir le mot"
+  },
+  "gen_etymology": {
+    "message": "Étymologie – d'où vient le mot"
+  },
+  "media_example_audio": {
+    "message": "Audio pour chaque phrase d'exemple"
+  },
+  "opt_theme": {
+    "message": "Thème de la carte"
+  },
+  "theme_classic": {
+    "message": "Classique"
+  },
+  "theme_paper": {
+    "message": "Papier"
+  },
+  "theme_midnight": {
+    "message": "Minuit"
+  },
+  "theme_hint": {
+    "message": "Appliqué immédiatement au type de note intégré dans Anki ; les cartes existantes changent aussi."
+  },
+  "theme_applied": {
+    "message": "Appliqué"
+  },
+  "promo_title": {
+    "message": "Code promo"
+  },
+  "promo_placeholder": {
+    "message": "Saisir un code"
+  },
+  "promo_redeem": {
+    "message": "Utiliser"
+  },
+  "promo_current_tier": {
+    "message": "Formule actuelle"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Ce code n'est pas valide."
+  },
+  "promo_success": {
+    "message": "Débloqué : $TIER$. Merci !",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro débloque les moyens mnémotechniques et l'étymologie sur les cartes, l'audio des phrases d'exemple, les thèmes de carte et 2 ajouts en parallèle en mode liste ; Founder passe à 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Ajouts en parallèle en mode liste"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 en Free, 2 en Pro, 3 en Founder"
   }
 }

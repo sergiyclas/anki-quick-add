@@ -37,6 +37,10 @@ export function renderSlot(slot: TextSlotId, card: CardData, format: ListFormat)
       return renderText(card.definition);
     case "grammar":
       return renderText(card.grammar);
+    case "mnemonic":
+      return renderText(card.mnemonic);
+    case "etymology":
+      return renderText(card.etymology);
     case "context":
       return renderText(card.context);
   }

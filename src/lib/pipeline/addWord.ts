@@ -12,7 +12,10 @@ import { resolveImage } from "../media/wikiImage";
 import { buildNote, buildUpdate } from "../note/builder";
 import { type FieldMapping, resolveDefaultMapping } from "../note/mapping";
 import { buildTags } from "../note/tags";
-import { getAdapter } from "../providers/registry";
+import { KEYLESS, getAdapter } from "../providers/registry";
+import { tierAtLeast } from "../license";
+import { googleTts } from "../media/tts";
+import { mediaBaseName } from "../media/audio";
 import { ProviderError } from "../providers/types";
 import { type ApiKeys, BUILTIN_MODEL_NAME, type DuplicatePolicy, type Settings } from "../settings/schema";
 import { getCache, loadKeys, loadMapping, loadSettings, setCache } from "../settings/storage";
@@ -66,6 +69,7 @@ export interface CommitOverrides {
 
 function providerKey(keys: ApiKeys, settings: Settings): string {
   const id = settings.provider;
+  if (id === "free") return "";
   if (id === "compat") return keys.compat?.[safeHost(settings.providers.compat.baseUrl ?? "")] ?? "";
   return keys[id] ?? "";
 }
@@ -107,6 +111,16 @@ function toError(word: string, e: unknown): PrepareFailure {
   return { status: "error", word, step: "generate", message: e instanceof Error ? e.message : String(e) };
 }
 
+// Pro: one TTS clip per example sentence, attached to the examples-audio field.
+async function exampleAudioFor(sentences: string[], lang: string, word: string): Promise<MediaResult[]> {
+  const clips = await Promise.all(
+    sentences.map((text, i) =>
+      googleTts.find({ word: text, lang, baseName: `${mediaBaseName("aqa_ex", lang, word)}_${i + 1}`, allowOgg: false }).catch(() => null),
+    ),
+  );
+  return clips.filter((c): c is MediaResult => c !== null).map((c) => ({ ...c, role: "example" as const }));
+}
+
 // Steps 1-6: normalise, check config, dedupe, generate, fetch media. Does not write to Anki.
 export async function prepare(request: AddRequest): Promise<Prepared | PrepareFailure> {
   let word = request.word.trim();
@@ -117,7 +131,7 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
 
     const key = providerKey(keys, settings);
     const providerCfg = settings.providers[settings.provider];
-    if (!key && settings.provider !== "compat") throw new PipelineError("config", "API key is not set", "openOptions");
+    if (!key && !KEYLESS.has(settings.provider)) throw new PipelineError("config", "API key is not set", "openOptions");
     if (!providerCfg.model) throw new PipelineError("config", "No model selected", "openOptions");
 
     const client = new AnkiClient(settings.anki.url);
@@ -134,10 +148,26 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
     const existingNoteId = existingIds[0];
     if (existingNoteId !== undefined && policy === "skip") return { status: "duplicate", word, noteId: existingNoteId };
 
-    const schema = buildCardSchema(settings.generation, settings.media.image.enabled);
+    const pro = tierAtLeast(settings.license.tier, "pro");
+    const schema = buildCardSchema(settings.generation, {
+      image: settings.media.image.enabled,
+      mnemonic: pro && settings.generation.mnemonic,
+      etymology: pro && settings.generation.etymology,
+    });
     const [generated, audio] = await Promise.all([
       getAdapter(settings.provider).generate(
-        { system: buildSystemPrompt(settings), user: buildUserMessage(word, request.context, request.hint), schema, schemaName: "anki_card", maxTokens: 2048 },
+        {
+          system: buildSystemPrompt(settings),
+          user: buildUserMessage(word, request.context, request.hint),
+          schema,
+          schemaName: "anki_card",
+          maxTokens: 2048,
+          word,
+          context: request.context,
+          source: settings.languages.source,
+          target: settings.languages.target,
+          generation: settings.generation,
+        },
         providerCfg,
         key,
       ),
@@ -149,7 +179,10 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
       throw new PipelineError("validate", `Model output did not match the schema: ${problems[0]}`, undefined, generated.raw.slice(0, 500));
     }
     const card = normalizeCardData(generated.json as Record<string, unknown>, word, settings.generation, request.context);
-    const image = await resolveImage(word, card.imageQuery ?? word, settings).catch(() => null);
+    const [image, exampleAudio] = await Promise.all([
+      resolveImage(word, card.imageQuery ?? word, settings).catch(() => null),
+      pro && settings.media.exampleAudio ? exampleAudioFor(card.examples.map((e) => e.text), settings.languages.source, word) : Promise.resolve([]),
+    ]);
 
     const warnings: string[] = [];
     if (settings.media.audio.enabled && !audio) warnings.push("no audio");
@@ -162,7 +195,7 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
       tags: request.tags ?? [],
       modelName,
       card,
-      media: [audio, image].filter((m): m is MediaResult => m !== null),
+      media: [audio, image, ...exampleAudio].filter((m): m is MediaResult => m !== null),
       warnings,
       policy,
       existingNoteId: policy === "update" ? existingNoteId : undefined,

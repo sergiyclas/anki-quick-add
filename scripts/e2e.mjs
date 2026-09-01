@@ -36,7 +36,7 @@ check(worker.url() === url("background.js"), `service worker started: ${worker.u
 await worker.evaluate(
   async ({ apiKey, deck, noteType }) => {
     await chrome.storage.sync.set({
-      settings: { anki: { deck, modelName: noteType, tags: ["quick-add", "e2e"] } },
+      settings: { provider: "anthropic", anki: { deck, modelName: noteType, tags: ["quick-add", "e2e"] } },
       keys: apiKey ? { anthropic: apiKey } : {},
     });
   },
@@ -108,6 +108,40 @@ if (!process.env.AQA_API_KEY) {
   check(/2/.test(batchSummary ?? ""), `batch summary after two failures: ${batchSummary}`);
   const state = await worker.evaluate(async () => (await chrome.storage.session.get("batch:current"))["batch:current"]);
   check(state && state.running === false && state.items.length === 2, "batch state persisted in session storage");
+}
+
+// Free provider: a real add with no API key (Google dictionary data + dictionaryapi + Tatoeba), then clean up.
+{
+  await worker.evaluate(async () => {
+    const { settings } = await chrome.storage.sync.get("settings");
+    await chrome.storage.sync.set({ settings: { ...settings, provider: "free", anki: { ...settings.anki, modelName: "Anki Quick Add" } } });
+  });
+  await popup.reload();
+  await popup.waitForSelector(".popup-input");
+  await popup.fill(".popup-input", "harbor");
+  await popup.press(".popup-input", "Enter");
+  await popup.waitForFunction(() => !document.querySelector(".popup-input")?.hasAttribute("disabled") && (document.querySelector(".popup-status")?.textContent ?? "").length > 0, null, { timeout: 120_000 });
+  const freeStatus = await popup.textContent(".popup-status");
+  check(/^(Added|Додано)/.test(freeStatus ?? ""), `free provider added a card without a key: ${freeStatus}`);
+  const anki = async (action, params = {}) => (await (await fetch("http://127.0.0.1:8765", { method: "POST", body: JSON.stringify({ action, version: 6, params }) })).json()).result;
+  const ids = await anki("findNotes", { query: '"Word:harbor" tag:aqa' });
+  if (ids.length) {
+    const [info] = await anki("notesInfo", { notes: ids });
+    const fields = Object.fromEntries(Object.entries(info.fields).map(([k, v]) => [k, v.value]));
+    check(Boolean(fields.Translation) && Boolean(fields.Examples), `free card has translation "${fields.Translation}" and examples`);
+    check(/\[sound:/.test(fields.Audio ?? ""), "free card has pronunciation audio");
+    const media = Object.values(fields).flatMap((v) => [...String(v).matchAll(/\[sound:([^\]]+)\]|src="([^"]+)"/g)].map((m) => m[1] ?? m[2]));
+    await anki("deleteNotes", { notes: ids });
+    for (const name of media) if (name.startsWith("aqa_")) await anki("deleteMediaFile", { filename: name });
+  } else {
+    check(false, "free card not found in Anki");
+  }
+  await worker.evaluate(async () => {
+    const { settings } = await chrome.storage.sync.get("settings");
+    await chrome.storage.sync.set({ settings: { ...settings, provider: "anthropic" } });
+  });
+  await popup.reload();
+  await popup.waitForSelector(".popup-input");
 }
 
 // Instant translation preview in the popup (free Google endpoint, no LLM).

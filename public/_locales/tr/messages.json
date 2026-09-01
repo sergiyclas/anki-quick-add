@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "chrome:// sayfalarında, Chrome Web Mağazası'nda, PDF'lerde ve diğer uzantıların sayfalarında çalışmaz."
+  },
+  "provider_free_hint": {
+    "message": "API anahtarı gerekmez. Çeviriler, sözcük türü, eş anlamlılar ve tanımlar Google Çeviri'nin sözlük verilerinden, İngilizce için IPA ve örnekler dictionaryapi.dev'den, çevirili örnek cümleler Tatoeba'dan gelir. Dilbilgisi notu, hafıza tekniği veya anlam ayrımı yoktur – bunlar için bir LLM sağlayıcısı seçin."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Ayarlar → Yedekleme'de bir promosyon koduyla açılır."
+  },
+  "pro_hint_unlocked": {
+    "message": "Hafıza teknikleri ve köken bilgisi bir LLM sağlayıcısı gerektirir; örnek sesleri Google metin okumayı kullanır."
+  },
+  "gen_mnemonic": {
+    "message": "Hafıza tekniği – kelimeyi hatırlamak için bir ipucu"
+  },
+  "gen_etymology": {
+    "message": "Köken – kelime nereden geliyor"
+  },
+  "media_example_audio": {
+    "message": "Her örnek cümle için ses"
+  },
+  "opt_theme": {
+    "message": "Kart teması"
+  },
+  "theme_classic": {
+    "message": "Klasik"
+  },
+  "theme_paper": {
+    "message": "Kâğıt"
+  },
+  "theme_midnight": {
+    "message": "Gece yarısı"
+  },
+  "theme_hint": {
+    "message": "Anki'deki yerleşik not türüne hemen uygulanır; mevcut kartlar da değişir."
+  },
+  "theme_applied": {
+    "message": "Uygulandı"
+  },
+  "promo_title": {
+    "message": "Promosyon kodu"
+  },
+  "promo_placeholder": {
+    "message": "Kod girin"
+  },
+  "promo_redeem": {
+    "message": "Kullan"
+  },
+  "promo_current_tier": {
+    "message": "Geçerli plan"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Bu kod geçerli değil."
+  },
+  "promo_success": {
+    "message": "Açıldı: $TIER$. Teşekkürler!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro; kartlarda hafıza tekniği ve köken bilgisini, örnek cümle seslerini, kart temalarını ve liste modunda 2 paralel eklemeyi açar; Founder bunu 3'e çıkarır."
+  },
+  "opt_batch_concurrency": {
+    "message": "Liste modunda paralel ekleme"
+  },
+  "batch_concurrency_hint": {
+    "message": "Free'de 1, Pro'da 2, Founder'da 3"
   }
 }

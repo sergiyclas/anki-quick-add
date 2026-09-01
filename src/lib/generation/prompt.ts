@@ -1,4 +1,5 @@
 import { languageByCode } from "../languages";
+import { tierAtLeast } from "../license";
 import type { Settings } from "../settings/schema";
 import { QUALITY_RULES } from "./qualityRules";
 
@@ -28,6 +29,11 @@ export function buildSystemPrompt(settings: Settings): string {
       `- grammar: brief notes a learner needs for this word in ${source.name} (gender/plural, irregular forms, aspect pair, governed case/preposition, countability); "" if nothing notable`,
     );
   }
+  const pro = tierAtLeast(settings.license.tier, "pro");
+  if (pro && g.mnemonic) {
+    lines.push(`- mnemonic: one vivid, concrete memory hook that links the sound or spelling of the word to its meaning for a ${target.name} speaker (max 2 sentences)`);
+  }
+  if (pro && g.etymology) lines.push(`- etymology: where the word comes from, in one sentence`);
   if (settings.media.image.enabled) {
     lines.push(`- imageQuery: the Wikipedia article title or short search phrase that best depicts this sense`);
   }

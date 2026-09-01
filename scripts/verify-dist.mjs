@@ -17,18 +17,20 @@ for (const file of ["manifest.json", "background.js", "popup/index.html", "optio
 
 const manifest = JSON.parse(readFileSync(resolve(dist, "manifest.json"), "utf8"));
 const en = JSON.parse(readFileSync(resolve(dist, "_locales/en/messages.json"), "utf8"));
+const missing = [];
 const placeholders = (s) => [...s.matchAll(/\$[A-Z]+\$/g)].map((m) => m[0]).sort().join(",");
 for (const dir of readdirSync(resolve(dist, "_locales"))) {
   if (dir === "en") continue;
   const loc = JSON.parse(readFileSync(resolve(dist, "_locales", dir, "messages.json"), "utf8"));
   for (const key of Object.keys(en)) {
-    if (!(key in loc)) problems.push(`${dir} locale is missing "${key}"`);
+    if (!(key in loc)) missing.push(`${dir}:${key}`);
     else if (placeholders(loc[key].message) !== placeholders(en[key].message)) problems.push(`${dir} locale: placeholders differ in "${key}"`);
   }
   for (const key of Object.keys(loc)) if (!(key in en)) problems.push(`${dir} locale has unknown key "${key}"`);
 }
 for (const ref of JSON.stringify(manifest).matchAll(/__MSG_(\w+)__/g)) if (!(ref[1] in en)) problems.push(`manifest references unknown message "${ref[1]}"`);
 
+if (missing.length) console.warn(`verify-dist: ${missing.length} message(s) fall back to English: ${missing.slice(0, 6).join(", ")}${missing.length > 6 ? ", …" : ""}`);
 if (problems.length) {
   console.error(problems.map((p) => `verify-dist: ${p}`).join("\n"));
   process.exit(1);

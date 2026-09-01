@@ -72,6 +72,18 @@ export class AnkiClient {
     return this.invoke("createModel", { modelName, inOrderFields, cardTemplates, css, isCloze: false });
   }
 
+  modelFieldAdd(modelName: string, fieldName: string): Promise<void> {
+    return this.invoke("modelFieldAdd", { modelName, fieldName });
+  }
+
+  updateModelTemplates(name: string, templates: Record<string, { Front: string; Back: string }>): Promise<void> {
+    return this.invoke("updateModelTemplates", { model: { name, templates } });
+  }
+
+  updateModelStyling(name: string, css: string): Promise<void> {
+    return this.invoke("updateModelStyling", { model: { name, css } });
+  }
+
   findNotes(query: string): Promise<number[]> {
     return this.invoke("findNotes", { query });
   }

@@ -13,9 +13,9 @@
 
 ## Description
 
-Anki Quick Add turns a single word into a complete Anki flashcard.
+Anki Quick Add turns a single word into a complete Anki flashcard – and it works with no API key at all.
 
-Type a word in the popup (Alt+A) or hold Shift and select it on any page, and the extension asks the LLM provider of your choice for the translation, transcription, part of speech, example sentences, synonyms and grammar notes, fetches pronunciation audio and a Wikipedia image, and adds the note to Anki through AnkiConnect. The whole thing takes a few seconds and one keystroke.
+Type a word in the popup (Alt+A) or hold Shift and select it on any page. Out of the box the extension builds the card from free sources (Google Translate's dictionary data, dictionaryapi.dev, the Tatoeba sentence corpus): translation, part of speech, IPA, synonyms, definition and example sentences, plus pronunciation audio and a Wikipedia image. Plug in your own LLM key and you also get grammar notes, sense-aware translations and examples at your CEFR level. The note lands in Anki through AnkiConnect in a few seconds.
 
 WHAT YOU GET ON EVERY CARD
 • Translation(s) in your language
@@ -26,7 +26,8 @@ WHAT YOU GET ON EVERY CARD
 • A Wikipedia image chosen for the intended sense, with author and license stored
 
 WORKS WITH YOUR SETUP
-• Bring your own key: OpenAI, Google Gemini, Anthropic, or any OpenAI-compatible endpoint (OpenRouter, Groq, DeepSeek, xAI, Mistral, Ollama, LM Studio). Your keys stay in your browser.
+• No key needed: the Free provider is the default.
+• Or bring your own key: OpenAI, Google Gemini, Anthropic, or any OpenAI-compatible endpoint (OpenRouter, Groq, DeepSeek, xAI, Mistral, Ollama, LM Studio). Your keys stay in your browser.
 • Built-in note type with a clean two-card template, or map the generated parts onto the fields of any note type you already use – and preview the result with your real Anki templates.
 • Around 40 languages in any pair. Ukrainian targets get built-in anti-calque rules.
 • Duplicate policy: skip, add anyway, or fill the empty fields of the existing note.
@@ -39,9 +40,12 @@ FAST WHEN YOU WANT IT, CAREFUL WHEN YOU NEED IT
 • List mode: paste a list of words, get a summary of added / duplicates / errors
 • Settings sync across your Chrome installs, JSON export/import
 
+PRO (promo code)
+• Mnemonics and etymology on cards, audio for every example sentence, card themes (Classic, Paper, Midnight), parallel additions in List mode.
+
 REQUIREMENTS
 • Anki desktop running with the AnkiConnect add-on (code 2055492159). No AnkiConnect configuration needed.
-• An API key for at least one LLM provider (or a local model via Ollama / LM Studio).
+• Optional: an API key for an LLM provider, or a local model via Ollama / LM Studio.
 
 Free and open source (MIT): https://github.com/sergiyclas/anki-quick-add
 
@@ -61,7 +65,8 @@ Creating Anki flashcards from words the user types or selects, with content gene
 | Host `api.anthropic.com`, `api.openai.com`, `generativelanguage.googleapis.com` | The LLM providers the user can choose. |
 | Host `translate.google.com`, `translate.googleapis.com` | Pronunciation audio (TTS) and the instant translation preview. |
 | Host `*.wikipedia.org`, `*.wiktionary.org`, `commons.wikimedia.org`, `upload.wikimedia.org` | Card images and native pronunciation recordings, with license metadata. |
-| Host `api.dictionaryapi.dev` | English pronunciation recordings. |
+| Host `api.dictionaryapi.dev` | English pronunciation recordings; IPA, definitions and examples for the Free provider. |
+| Host `tatoeba.org` | Example sentences with translations for the Free provider. |
 | Optional host `https://*/*`, `http://*/*` | Requested only when the user (a) enters a custom OpenAI-compatible endpoint or AnkiConnect URL, or (b) enables the selection bubble, which needs to run on the pages the user reads. Never requested at install. |
 
 ## Data use disclosure

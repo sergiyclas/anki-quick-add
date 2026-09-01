@@ -42,7 +42,8 @@
     "https://*.wiktionary.org/*",
     "https://commons.wikimedia.org/*",
     "https://upload.wikimedia.org/*",
-    "https://api.dictionaryapi.dev/*"
+    "https://api.dictionaryapi.dev/*",
+    "https://tatoeba.org/*"
   ],
   "optional_host_permissions": [
     "https://*/*",

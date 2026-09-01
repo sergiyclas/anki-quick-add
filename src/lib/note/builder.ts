@@ -24,6 +24,7 @@ export function buildNote(card: CardData, media: MediaResult[], mapping: FieldMa
   }
   if (mapping.audioField) fields[mapping.audioField] = "";
   if (mapping.imageField) fields[mapping.imageField] = "";
+  if (mapping.examplesAudioField) fields[mapping.examplesAudioField] = "";
   // The built-in note type generates its second (production) card only when Reverse is non-empty.
   if (opts.production && mapping.modelName === BUILTIN_MODEL_NAME) fields["Reverse"] = "y";
 
@@ -35,8 +36,12 @@ export function buildNote(card: CardData, media: MediaResult[], mapping: FieldMa
     options: { allowDuplicate: opts.allowDuplicate, duplicateScope: opts.duplicateScope },
   };
 
-  const audio = media.find((m) => m.kind === "audio");
-  if (audio && mapping.audioField) note.audio = [attachment(audio, mapping.audioField)];
+  const audio = media.find((m) => m.kind === "audio" && m.role !== "example");
+  const attachments = audio && mapping.audioField ? [attachment(audio, mapping.audioField)] : [];
+  if (mapping.examplesAudioField) {
+    for (const m of media) if (m.kind === "audio" && m.role === "example") attachments.push(attachment(m, mapping.examplesAudioField));
+  }
+  if (attachments.length) note.audio = attachments;
   const image = media.find((m) => m.kind === "image");
   if (image && mapping.imageField) {
     note.picture = [attachment(image, mapping.imageField)];

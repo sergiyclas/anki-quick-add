@@ -1,9 +1,10 @@
 import { afterEach, expect, test, vi } from "vitest";
+import { DEFAULT_SETTINGS } from "../src/lib/settings/schema";
 import { anthropic } from "../src/lib/providers/anthropic";
 import { ProviderError } from "../src/lib/providers/types";
 
 const schema = { type: "object" as const, properties: { uk: { type: "string" as const } }, required: ["uk"], additionalProperties: false as const };
-const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 1024 };
+const request = { system: "sys", user: "Word: hello", schema, schemaName: "anki_card", maxTokens: 1024, word: "hello", source: "en", target: "uk", generation: DEFAULT_SETTINGS.generation };
 
 function mockFetch(status: number, body: unknown) {
   const calls: { url: string; init: RequestInit }[] = [];

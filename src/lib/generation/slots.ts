@@ -1,3 +1,4 @@
+import { tierAtLeast } from "../license";
 import type { Settings } from "../settings/schema";
 import type { SlotId, TextSlotId } from "./types";
 
@@ -16,6 +17,8 @@ export const TEXT_SLOTS: readonly { id: TextSlotId; enabled(settings: Settings):
   { id: "synonyms", enabled: (s) => s.generation.synonyms },
   { id: "examples", enabled: () => true },
   { id: "grammar", enabled: (s) => s.generation.grammar },
+  { id: "mnemonic", enabled: (s) => s.generation.mnemonic && tierAtLeast(s.license.tier, "pro") },
+  { id: "etymology", enabled: (s) => s.generation.etymology && tierAtLeast(s.license.tier, "pro") },
   { id: "context", enabled: () => true },
 ];
 

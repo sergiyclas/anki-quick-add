@@ -6,8 +6,9 @@
 
 Type a word, or select it on any page, and a finished flashcard lands in Anki: translation,
 transcription, part of speech, example sentences, synonyms, grammar notes, pronunciation audio and
-a Wikipedia image with its license. The content comes from the LLM provider **you** choose with
-**your** key; the note goes into Anki through AnkiConnect. Nothing in between.
+a Wikipedia image with its license. Works out of the box with **no API key** (free dictionary
+sources), or with the LLM provider **you** choose and **your** key; the note goes into Anki through
+AnkiConnect. Nothing in between.
 
 [![CI](https://github.com/sergiyclas/anki-quick-add/actions/workflows/ci.yml/badge.svg)](https://github.com/sergiyclas/anki-quick-add/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -39,7 +40,7 @@ a Wikipedia image with its license. The content comes from the LLM provider **yo
 ![TTS](https://img.shields.io/badge/Google_TTS-fallback_audio-34a853?logo=google&logoColor=white)
 
 **Quality**<br>
-![Vitest](https://img.shields.io/badge/Vitest-62_tests-6e9f18?logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-68_tests-6e9f18?logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-e2e_on_the_built_extension-2ead33?logo=playwright&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088ff?logo=githubactions&logoColor=white)
 ![i18n](https://img.shields.io/badge/UI-12_languages-ff7a59)
@@ -123,7 +124,9 @@ audio source order, image settings.
 
 - Chrome 144+ (or any current Chromium browser)
 - [Anki](https://apps.ankiweb.net/) desktop running with the [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on (code `2055492159`) – no AnkiConnect configuration needed
-- An API key for one LLM provider, or a local model behind Ollama / LM Studio
+- Optional: an API key for an LLM provider, or a local model behind Ollama / LM Studio. Without one,
+  the **Free** provider builds the card from Google Translate's dictionary data, dictionaryapi.dev
+  and Tatoeba.
 
 ### Install
 
@@ -140,7 +143,8 @@ npm run build          # -> dist/
 
 ### First run
 
-1. Click the icon → **Settings** → **Providers**: pick a provider, paste the key, choose a model.
+1. Click the icon → **Settings** → **Providers**: keep **Free** (no key), or pick an LLM provider,
+   paste the key and choose a model.
 2. **Anki**: choose the deck. Keep the built-in note type (created on first use) or pick one of yours
    and map the fields.
 3. **Languages & Generation**: set the language you learn and the language you translate into.
@@ -157,6 +161,13 @@ for: translations, IPA, part of speech, definition, synonyms, example sentences 
 level (optionally translated), and a grammar note that adapts to the language – gender and plural
 for German, aspect pairs for Slavic languages, irregular forms for English. Ukrainian targets get
 built-in rules against calques from Russian.
+
+### 🆓 No key? No problem
+
+The default **Free** provider needs nothing: translations, part of speech, synonyms and definitions
+come from Google Translate's dictionary data, IPA and examples for English from dictionaryapi.dev,
+example sentences with translations from the Tatoeba corpus. Grammar notes and sense disambiguation
+are the LLM providers' job.
 
 ### 🔌 Your provider, your key
 
@@ -184,6 +195,12 @@ An instant Google translation appears while you type, before any LLM call. On we
 select shows a bubble with the translation and an *Add to Anki* button; the sentence around the word
 goes along as context. Shift+Enter opens an editor to review, edit or regenerate with a hint. List
 mode adds a pasted list one word at a time and reports added / duplicates / errors.
+
+### ⭐ Pro, unlocked with a promo code
+
+A promo code (Settings → Backup) unlocks mnemonics and etymology on cards, audio for every example
+sentence, three card themes for the built-in note type (Classic, Paper, Midnight) and parallel
+additions in List mode. The core is free and stays free.
 
 ### 🔁 Duplicates, sync, backup
 
@@ -223,7 +240,7 @@ src/
   content/      selection bubble (self-contained, injected only when enabled)
   lib/
     anki/       AnkiConnect client, built-in note type, search helpers
-    providers/  anthropic, openai, gemini, openaiCompat + presets and catalog
+    providers/  free (Google dictionary data + dictionaryapi + Tatoeba), anthropic, openai, gemini, openaiCompat
     generation/ JSON schema builder, prompt builder, validator, per-language quality rules
     media/      dictionaryapi, Wiktionary audio, Google TTS, Wikipedia/Commons images
     note/       field mapping, renderers, note builder, template preview (mini mustache)
@@ -243,7 +260,7 @@ Everything is set in the options page; this is what the settings mean.
 
 | Setting | Options | Default |
 |---|---|---|
-| Provider / model | Anthropic, OpenAI, Gemini, OpenAI-compatible; any model id | Anthropic · `claude-sonnet-5` |
+| Provider / model | Free (no key), Anthropic, OpenAI, Gemini, OpenAI-compatible; any model id | Free |
 | Reasoning effort | low / medium / high | low |
 | Languages | ~40, any source → target pair | English → Ukrainian |
 | Generate | transcription, part of speech, definition, synonyms, grammar, example translations | all but definition and example translations |
@@ -255,6 +272,8 @@ Everything is set in the options page; this is what the settings mean.
 | Duplicates | skip / add / update; search the collection or the deck | skip, collection |
 | Tags | free tags + automatic language-pair tag | `quick-add`, `en-uk` |
 | Selection bubble | off / on; trigger: Shift, Alt or every selection | off; Shift |
+| Card theme (Pro) | Classic / Paper / Midnight for the built-in note type | Classic |
+| Pro extras | mnemonic, etymology, example audio, parallel List mode | off |
 | Shortcut | `chrome://extensions/shortcuts` | Alt+A |
 
 ---
@@ -262,7 +281,7 @@ Everything is set in the options page; this is what the settings mean.
 ## 🧪 Testing
 
 ```bash
-npm run check                                   # tsc + 62 unit tests + build + dist checks
+npm run check                                   # tsc + 68 unit tests + build + dist checks
 npm run e2e                                     # Playwright drives the built extension (Anki running)
 AQA_ANKI=1 npx vitest run tests/integration/anki.test.ts     # live AnkiConnect
 AQA_NET=1  npx vitest run tests/integration/media.test.ts    # live Wikipedia / Wiktionary / TTS

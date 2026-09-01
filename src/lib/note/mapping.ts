@@ -15,6 +15,7 @@ export interface FieldMapping {
   audioField?: string;
   imageField?: string;
   creditField?: string;
+  examplesAudioField?: string;
   listFormat: ListFormat;
 }
 
@@ -33,6 +34,9 @@ export const BUILTIN_FIELDS = [
   "Image",
   "ImageCredit",
   "Reverse",
+  "Mnemonic",
+  "Etymology",
+  "ExamplesAudio",
 ] as const;
 
 export function defaultMappingForBuiltin(): FieldMapping {
@@ -47,12 +51,15 @@ export function defaultMappingForBuiltin(): FieldMapping {
       synonyms: "Synonyms",
       examples: "Examples",
       grammar: "Grammar",
+      mnemonic: "Mnemonic",
+      etymology: "Etymology",
     },
     staticFields: {},
     dedupeField: "Word",
     audioField: "Audio",
     imageField: "Image",
     creditField: "ImageCredit",
+    examplesAudioField: "ExamplesAudio",
     listFormat: { ...DEFAULT_LIST_FORMAT },
   };
 }
@@ -108,6 +115,7 @@ export function validateMapping(mapping: FieldMapping, fieldNames: string[]): st
     ["audio", mapping.audioField],
     ["image", mapping.imageField],
     ["image credit", mapping.creditField],
+    ["examples audio", mapping.examplesAudioField],
   ] as const) {
     if (field && !known.has(field)) errors.push(`${name} field "${field}" does not exist in the note type`);
   }

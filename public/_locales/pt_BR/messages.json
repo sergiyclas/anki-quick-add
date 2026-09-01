@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Não funciona em páginas chrome://, na Chrome Web Store, em PDFs e em páginas de outras extensões."
+  },
+  "provider_free_hint": {
+    "message": "Sem chave de API. Traduções, classe gramatical, sinônimos e definições vêm dos dados de dicionário do Google Tradutor; AFI e exemplos em inglês, do dictionaryapi.dev; frases de exemplo traduzidas, do Tatoeba. Sem notas gramaticais, mnemônicos ou escolha do sentido – para isso, use um provedor de LLM."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Desbloqueie com um código promocional em Configurações → Backup."
+  },
+  "pro_hint_unlocked": {
+    "message": "Mnemônicos e etimologia precisam de um provedor de LLM; o áudio dos exemplos usa o texto para fala do Google."
+  },
+  "gen_mnemonic": {
+    "message": "Mnemônico – um truque para lembrar a palavra"
+  },
+  "gen_etymology": {
+    "message": "Etimologia – de onde vem a palavra"
+  },
+  "media_example_audio": {
+    "message": "Áudio para cada frase de exemplo"
+  },
+  "opt_theme": {
+    "message": "Tema do cartão"
+  },
+  "theme_classic": {
+    "message": "Clássico"
+  },
+  "theme_paper": {
+    "message": "Papel"
+  },
+  "theme_midnight": {
+    "message": "Meia-noite"
+  },
+  "theme_hint": {
+    "message": "Aplicado imediatamente ao tipo de nota integrado no Anki; os cartões existentes também mudam."
+  },
+  "theme_applied": {
+    "message": "Aplicado"
+  },
+  "promo_title": {
+    "message": "Código promocional"
+  },
+  "promo_placeholder": {
+    "message": "Digite um código"
+  },
+  "promo_redeem": {
+    "message": "Resgatar"
+  },
+  "promo_current_tier": {
+    "message": "Plano atual"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Este código não é válido."
+  },
+  "promo_success": {
+    "message": "Desbloqueado: $TIER$. Obrigado!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "O Pro desbloqueia mnemônicos e etimologia nos cartões, áudio das frases de exemplo, temas de cartão e 2 adições em paralelo no modo lista; o Founder eleva para 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Adições em paralelo no modo lista"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 no Free, 2 no Pro, 3 no Founder"
   }
 }

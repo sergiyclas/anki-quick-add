@@ -1,6 +1,8 @@
 import { useEffect, useState } from "preact/hooks";
 import { t } from "../../lib/i18n";
+import { maxBatchConcurrency, redeemCode } from "../../lib/license";
 import { applyImport, buildExport, parseExport } from "../../lib/settings/exportImport";
+import { saveSettings } from "../../lib/settings/storage";
 import { clearAll } from "../../lib/settings/storage";
 import type { SettingsState } from "../../ui/useSettings";
 
@@ -9,6 +11,23 @@ export function BackupTab({ state }: { state: SettingsState }) {
   const [includeKeys, setIncludeKeys] = useState(false);
   const [message, setMessage] = useState<{ text: string; cls: string }>({ text: "", cls: "" });
   const [origins, setOrigins] = useState<string[]>([]);
+  const [code, setCode] = useState("");
+  const [promo, setPromo] = useState<{ text: string; cls: string }>({ text: "", cls: "" });
+  const tier = settings.license.tier;
+  const maxConcurrency = maxBatchConcurrency(tier);
+
+  async function redeem() {
+    const unlocked = await redeemCode(code);
+    if (!unlocked) {
+      setPromo({ text: t("promo_invalid"), cls: "err" });
+      return;
+    }
+    const next = { ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } };
+    update(() => next);
+    await saveSettings(next);
+    setPromo({ text: t("promo_success", [t(`tier_${unlocked}`)]), cls: "ok" });
+    setCode("");
+  }
 
   useEffect(() => {
     chrome.permissions.getAll().then((p) => setOrigins(p.origins ?? []));
@@ -47,6 +66,33 @@ export function BackupTab({ state }: { state: SettingsState }) {
 
   return (
     <>
+      <div class="field promo">
+        <span>{t("promo_title")}</span>
+        <div class="hint">
+          {t("promo_current_tier")}: <b>{t(`tier_${tier}`)}</b>
+        </div>
+        <div class="row">
+          <input type="text" value={code} placeholder={t("promo_placeholder")} onInput={(e) => setCode(e.currentTarget.value)} onKeyDown={(e) => e.key === "Enter" && void redeem()} />
+          <button type="button" class="secondary" disabled={!code.trim()} onClick={() => void redeem()}>
+            {t("promo_redeem")}
+          </button>
+        </div>
+        {promo.text && <div class={`hint ${promo.cls}`}>{promo.text}</div>}
+        <div class="hint">{t("promo_features")}</div>
+      </div>
+
+      <label class="field inline">
+        <span>{t("opt_batch_concurrency")}</span>
+        <select value={Math.min(settings.ui.batchConcurrency, maxConcurrency)} onChange={(e) => update((s) => ({ ...s, ui: { ...s.ui, batchConcurrency: Number(e.currentTarget.value) as 1 | 2 | 3 } }))}>
+          {[1, 2, 3].filter((n) => n <= maxConcurrency).map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
+        </select>
+        <span class="hint">{t("batch_concurrency_hint")}</span>
+      </label>
+
       <div class="field">
         <span>{t("backup_export")}</span>
         <div class="row">

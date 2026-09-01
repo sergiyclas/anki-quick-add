@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Funktioniert nicht auf chrome://-Seiten, im Chrome Web Store, in PDFs und auf Seiten anderer Erweiterungen."
+  },
+  "provider_free_hint": {
+    "message": "Kein API-Schlüssel nötig. Übersetzungen, Wortart, Synonyme und Definitionen kommen aus den Wörterbuchdaten von Google Translate, IPA und Beispiele für Englisch von dictionaryapi.dev, Beispielsätze mit Übersetzung von Tatoeba. Keine Grammatikhinweise, Eselsbrücken oder Bedeutungsauswahl – dafür einen LLM-Anbieter wählen."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Freischalten mit einem Aktionscode unter Einstellungen → Sicherung."
+  },
+  "pro_hint_unlocked": {
+    "message": "Eselsbrücken und Etymologie brauchen einen LLM-Anbieter; das Beispiel-Audio nutzt Google Text-to-Speech."
+  },
+  "gen_mnemonic": {
+    "message": "Eselsbrücke – eine Gedächtnisstütze für das Wort"
+  },
+  "gen_etymology": {
+    "message": "Etymologie – woher das Wort kommt"
+  },
+  "media_example_audio": {
+    "message": "Audio für jeden Beispielsatz"
+  },
+  "opt_theme": {
+    "message": "Kartendesign"
+  },
+  "theme_classic": {
+    "message": "Klassisch"
+  },
+  "theme_paper": {
+    "message": "Papier"
+  },
+  "theme_midnight": {
+    "message": "Mitternacht"
+  },
+  "theme_hint": {
+    "message": "Wird sofort auf den eingebauten Notiztyp in Anki angewendet; auch bestehende Karten ändern sich."
+  },
+  "theme_applied": {
+    "message": "Angewendet"
+  },
+  "promo_title": {
+    "message": "Aktionscode"
+  },
+  "promo_placeholder": {
+    "message": "Code eingeben"
+  },
+  "promo_redeem": {
+    "message": "Einlösen"
+  },
+  "promo_current_tier": {
+    "message": "Aktueller Plan"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Dieser Code ist ungültig."
+  },
+  "promo_success": {
+    "message": "Freigeschaltet: $TIER$. Danke!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro schaltet Eselsbrücken und Etymologie auf den Karten, Audio für Beispielsätze, Kartendesigns und 2 parallele Ergänzungen im Listenmodus frei; Founder erhöht das auf 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Parallele Ergänzungen im Listenmodus"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 bei Free, 2 bei Pro, 3 bei Founder"
   }
 }

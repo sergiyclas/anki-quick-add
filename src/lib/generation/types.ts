@@ -7,6 +7,8 @@ export type TextSlotId =
   | "synonyms"
   | "examples"
   | "grammar"
+  | "mnemonic"
+  | "etymology"
   | "context";
 
 export type SlotId = TextSlotId | "imageQuery" | "audio" | "image" | "imageCredit";
@@ -25,6 +27,8 @@ export interface CardData {
   synonyms?: string[];
   examples: ExampleItem[];
   grammar?: string;
+  mnemonic?: string;
+  etymology?: string;
   imageQuery?: string;
   context?: string;
 }

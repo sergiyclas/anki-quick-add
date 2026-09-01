@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Does not work on chrome:// pages, the Chrome Web Store, PDFs and other extensions' pages."
+  },
+  "provider_free_hint": {
+    "message": "No API key needed. Translations, part of speech, synonyms and definitions come from Google Translate's dictionary data, IPA and examples for English from dictionaryapi.dev, example sentences with translations from Tatoeba. No grammar notes, mnemonics or sense disambiguation – switch to an LLM provider for those."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Unlock with a promo code in Settings → Backup."
+  },
+  "pro_hint_unlocked": {
+    "message": "Mnemonics and etymology need an LLM provider; example audio uses Google text-to-speech."
+  },
+  "gen_mnemonic": {
+    "message": "Mnemonic – a memory hook for the word"
+  },
+  "gen_etymology": {
+    "message": "Etymology – where the word comes from"
+  },
+  "media_example_audio": {
+    "message": "Audio for every example sentence"
+  },
+  "opt_theme": {
+    "message": "Card theme"
+  },
+  "theme_classic": {
+    "message": "Classic"
+  },
+  "theme_paper": {
+    "message": "Paper"
+  },
+  "theme_midnight": {
+    "message": "Midnight"
+  },
+  "theme_hint": {
+    "message": "Applied to the built-in note type in Anki right away; existing cards change too."
+  },
+  "theme_applied": {
+    "message": "Applied"
+  },
+  "promo_title": {
+    "message": "Promo code"
+  },
+  "promo_placeholder": {
+    "message": "Enter a code"
+  },
+  "promo_redeem": {
+    "message": "Redeem"
+  },
+  "promo_current_tier": {
+    "message": "Current plan"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "This code is not valid."
+  },
+  "promo_success": {
+    "message": "Unlocked: $TIER$. Thank you!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro unlocks mnemonics and etymology on cards, audio for example sentences, card themes and 2 parallel additions in List mode; Founder raises that to 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Parallel additions in List mode"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 on Free, 2 on Pro, 3 on Founder"
   }
 }

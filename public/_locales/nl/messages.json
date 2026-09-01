@@ -551,5 +551,88 @@
   },
   "bubble_restricted_hint": {
     "message": "Werkt niet op chrome://-pagina's, in de Chrome Web Store, in pdf's en op pagina's van andere extensies."
+  },
+  "provider_free_hint": {
+    "message": "Geen API-sleutel nodig. Vertalingen, woordsoort, synoniemen en definities komen uit de woordenboekgegevens van Google Translate, IPA en voorbeelden voor Engels van dictionaryapi.dev, voorbeeldzinnen met vertaling van Tatoeba. Geen grammaticanotities, ezelsbruggetjes of betekeniskeuze – kies daarvoor een LLM-aanbieder."
+  },
+  "pro_title": {
+    "message": "Pro"
+  },
+  "pro_locked": {
+    "message": "PRO"
+  },
+  "pro_hint": {
+    "message": "Ontgrendel met een promotiecode onder Instellingen → Back-up."
+  },
+  "pro_hint_unlocked": {
+    "message": "Ezelsbruggetjes en etymologie vereisen een LLM-aanbieder; de audio van voorbeelden gebruikt Google tekst-naar-spraak."
+  },
+  "gen_mnemonic": {
+    "message": "Ezelsbruggetje – een geheugensteuntje voor het woord"
+  },
+  "gen_etymology": {
+    "message": "Etymologie – waar het woord vandaan komt"
+  },
+  "media_example_audio": {
+    "message": "Audio bij elke voorbeeldzin"
+  },
+  "opt_theme": {
+    "message": "Kaartthema"
+  },
+  "theme_classic": {
+    "message": "Klassiek"
+  },
+  "theme_paper": {
+    "message": "Papier"
+  },
+  "theme_midnight": {
+    "message": "Middernacht"
+  },
+  "theme_hint": {
+    "message": "Wordt meteen toegepast op het ingebouwde notitietype in Anki; bestaande kaarten veranderen ook."
+  },
+  "theme_applied": {
+    "message": "Toegepast"
+  },
+  "promo_title": {
+    "message": "Promotiecode"
+  },
+  "promo_placeholder": {
+    "message": "Voer een code in"
+  },
+  "promo_redeem": {
+    "message": "Inwisselen"
+  },
+  "promo_current_tier": {
+    "message": "Huidig plan"
+  },
+  "tier_free": {
+    "message": "Free"
+  },
+  "tier_pro": {
+    "message": "Pro"
+  },
+  "tier_founder": {
+    "message": "Founder"
+  },
+  "promo_invalid": {
+    "message": "Deze code is niet geldig."
+  },
+  "promo_success": {
+    "message": "Ontgrendeld: $TIER$. Bedankt!",
+    "placeholders": {
+      "TIER": {
+        "content": "$1"
+      }
+    }
+  },
+  "promo_features": {
+    "message": "Pro ontgrendelt ezelsbruggetjes en etymologie op kaarten, audio bij voorbeeldzinnen, kaartthema's en 2 gelijktijdige toevoegingen in lijstmodus; Founder verhoogt dat naar 3."
+  },
+  "opt_batch_concurrency": {
+    "message": "Gelijktijdige toevoegingen in lijstmodus"
+  },
+  "batch_concurrency_hint": {
+    "message": "1 bij Free, 2 bij Pro, 3 bij Founder"
   }
 }

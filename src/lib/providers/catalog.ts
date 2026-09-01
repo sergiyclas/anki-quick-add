@@ -4,6 +4,7 @@ import type { ModelInfo } from "./types";
 // Static, advisory list shown before "Refresh models" has been used. Model ids change often;
 // the list-models endpoint of each provider is the source of truth.
 export const MODEL_CATALOG: Record<ProviderId, ModelInfo[]> = {
+  free: [],
   anthropic: [
     { id: "claude-sonnet-5", label: "Claude Sonnet 5" },
     { id: "claude-opus-5", label: "Claude Opus 5" },

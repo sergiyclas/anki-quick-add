@@ -4,6 +4,7 @@ import { type BubbleStatusResponse, send } from "../../lib/messages";
 import { saveSettings } from "../../lib/settings/storage";
 import type { BubbleTrigger, Cefr, GenerationSettings, Settings } from "../../lib/settings/schema";
 import { ALL_SITES } from "../../background/bubble";
+import { tierAtLeast } from "../../lib/license";
 import type { SettingsState } from "../../ui/useSettings";
 import { LanguageSelect } from "../components/LanguageSelect";
 
@@ -32,6 +33,7 @@ export function GenerationTab({ state }: { state: SettingsState }) {
   const setMedia = (patch: (m: Settings["media"]) => Settings["media"]) => update((s) => ({ ...s, media: patch(s.media) }));
   const audio = settings.media.audio;
   const image = settings.media.image;
+  const pro = tierAtLeast(settings.license.tier, "pro");
   const [bubbleDenied, setBubbleDenied] = useState(false);
   const [bubble, setBubble] = useState<BubbleStatusResponse | null>(null);
   const setUi = (patch: Partial<Settings["ui"]>) => update((s) => ({ ...s, ui: { ...s.ui, ...patch } }));
@@ -112,6 +114,25 @@ export function GenerationTab({ state }: { state: SettingsState }) {
             <span>{t(`gen_${key}`)}</span>
           </label>
         ))}
+      </div>
+
+      <div class={`field pro ${pro ? "" : "locked"}`}>
+        <span>
+          {t("pro_title")} {!pro && <em class="lock">{t("pro_locked")}</em>}
+        </span>
+        <label class="check">
+          <input type="checkbox" disabled={!pro} checked={g.mnemonic} onChange={(e) => setGen({ mnemonic: e.currentTarget.checked })} />
+          <span>{t("gen_mnemonic")}</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" disabled={!pro} checked={g.etymology} onChange={(e) => setGen({ etymology: e.currentTarget.checked })} />
+          <span>{t("gen_etymology")}</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" disabled={!pro} checked={settings.media.exampleAudio} onChange={(e) => setMedia((m) => ({ ...m, exampleAudio: e.currentTarget.checked }))} />
+          <span>{t("media_example_audio")}</span>
+        </label>
+        <div class="hint">{pro ? t("pro_hint_unlocked") : t("pro_hint")}</div>
       </div>
 
       <label class="field">
