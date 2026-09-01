@@ -3,6 +3,7 @@ import type { Request } from "../lib/messages";
 import { syncBubbleScript } from "./bubble";
 import { handleMenuClick, rebuildMenus } from "./contextMenu";
 import { flushQueue } from "../lib/queue/flush";
+import { refreshBadge } from "../lib/queue/store";
 import { handleMessage } from "./router";
 
 // All listeners are registered synchronously at top level so Chrome can wake the worker for them.
@@ -22,6 +23,7 @@ chrome.permissions.onAdded.addListener(() => void syncBubbleScript());
 chrome.permissions.onRemoved.addListener(() => void syncBubbleScript());
 
 void initI18n();
+void refreshBadge();
 
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === "sync" && "settings" in changes) void initI18n().then(rebuildMenus);

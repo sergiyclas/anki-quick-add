@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "La file est vide."
   },
-  "queue_title": {
-    "message": "File hors ligne"
-  },
   "queue_clear": {
     "message": "Vider la file"
   },
@@ -714,14 +711,6 @@
     "message": "Supprimer $COUNT$ cartes en attente ? Elles n'iront pas dans Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "En attente du profil Anki : $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "File"
+  },
+  "queue_now": {
+    "message": "à l'instant"
+  },
+  "queue_minutes": {
+    "message": "il y a $COUNT$ min",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "il y a $COUNT$ h",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "il y a $COUNT$ j",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Les cartes créées quand Anki est fermé attendent ici."
+  },
+  "queue_has_audio": {
+    "message": "avec audio"
+  },
+  "queue_has_image": {
+    "message": "avec image"
+  },
+  "queue_remove": {
+    "message": "Retirer de la file"
+  },
+  "queue_still_closed": {
+    "message": "Anki est toujours fermé."
   }
 }

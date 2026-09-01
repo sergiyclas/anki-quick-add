@@ -44,10 +44,10 @@ be pasted as-is.
 | Category | Education (the store's extension categories are flat; *Tools* is the fallback) |
 | Language | English. Ukrainian, German, French, Spanish, Italian, Polish, Portuguese (Brazil), Dutch, Turkish, Japanese and Chinese (Simplified) come from `_locales` – the dashboard lists them automatically once the zip is uploaded |
 | Store icon | `store/icon128.png` (128×128, 96 px artwork + 16 px transparent padding) |
-| Screenshots | `store/screenshot-1.png` … `screenshot-5.png` (1280×800, 24-bit PNG, no alpha), in that order |
+| Screenshots | `store/screenshot-1.png` … `screenshot-5.png` (1280×800, 24-bit PNG, no alpha), in that order: card, popup, selection bubble, offline queue, settings |
 | Small promo tile | `store/promo-small.png` (440×280) – required |
 | Marquee promo tile | `store/promo-marquee.png` (1400×560) – optional, used only if the store features the item |
-| YouTube video | the URL of the uploaded `video/build/out/anki-quick-add-demo.mp4` (1:57); upload it as Public or Unlisted first |
+| YouTube video | the URL of the uploaded `video/build/out/anki-quick-add-demo.mp4` (2:06); upload it as Public or Unlisted first |
 | Official URL | leave empty (requires a Search Console-verified site; GitHub cannot be verified) |
 | Homepage URL | `https://github.com/sergiyclas/anki-quick-add` |
 | Support URL | `https://github.com/sergiyclas/anki-quick-add/issues` |
@@ -74,6 +74,7 @@ WORKS WITH YOUR SETUP
 • Around 40 languages in any pair. Ukrainian targets get built-in anti-calque rules.
 • Interface in 12 languages, switchable inside the extension; light, dark or dark-on-a-schedule theme.
 • Duplicate policy: skip, add anyway, or fill the empty fields of the existing note.
+• Anki does not have to be running: cards wait in a queue with their audio and image and land as soon as it is back.
 
 FAST WHEN YOU WANT IT, CAREFUL WHEN YOU NEED IT
 • Instant Google translation while you type – no LLM tokens spent until you press Enter
@@ -171,4 +172,4 @@ Testing requires the Anki desktop app with the AnkiConnect add-on (https://ankiw
 - `icon128.png` – store icon (96 px artwork, 16 px padding); `icon512.png`, `icon1024.png` – for other listings / press
 - `screenshot-1.png` … `screenshot-5.png` – 1280×800, 24-bit PNG
 - `promo-small.png` – 440×280; `promo-marquee.png` – 1400×560
-- Video: `video/build/out/anki-quick-add-demo.mp4` (1080p, 1:57) – upload to YouTube and link it in the listing
+- Video: `video/build/out/anki-quick-add-demo.mp4` (1080p, 2:06) – upload to YouTube and link it in the listing

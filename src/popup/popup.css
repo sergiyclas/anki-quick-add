@@ -137,14 +137,103 @@ button.small {
   color: var(--accent);
 }
 
-.popup-queue {
+.batch-list li.queued .icon {
+  color: var(--warn);
+}
+
+.popup-modes .badge {
+  display: inline-block;
+  min-width: 16px;
+  padding: 0 5px;
+  border-radius: 8px;
+  background: var(--warn);
+  color: #fff;
+  font-size: 10px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.queue-empty {
+  padding: 18px 4px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.queue-empty-title {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.queue-head {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
-  margin-top: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.queue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.queue-list li {
+  padding: 5px 0;
+  border-top: 1px solid var(--border);
+}
+
+.queue-list li.err-item .queue-translation {
+  color: var(--err);
+}
+
+.queue-word {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.queue-word b {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.queue-media {
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+.queue-when {
   font-size: 11px;
 }
 
-.batch-list li.queued .icon {
-  color: var(--warn);
+.queue-drop {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.queue-drop:hover {
+  color: var(--err);
+}
+
+.queue-translation {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.queue-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
 }

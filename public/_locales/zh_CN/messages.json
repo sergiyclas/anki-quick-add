@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "队列为空。"
   },
-  "queue_title": {
-    "message": "离线队列"
-  },
   "queue_clear": {
     "message": "清空队列"
   },
@@ -714,14 +711,6 @@
     "message": "要丢弃队列中的 $COUNT$ 张卡片吗？它们不会进入 Anki。",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "等待 Anki 配置文件：$PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "队列"
+  },
+  "queue_now": {
+    "message": "刚刚"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ 分钟前",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ 小时前",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ 天前",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Anki 未打开时创建的卡片会在这里等待。"
+  },
+  "queue_has_audio": {
+    "message": "含音频"
+  },
+  "queue_has_image": {
+    "message": "含图片"
+  },
+  "queue_remove": {
+    "message": "从队列移除"
+  },
+  "queue_still_closed": {
+    "message": "Anki 仍未打开。"
   }
 }

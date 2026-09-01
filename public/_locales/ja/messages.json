@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "待機中のカードはありません。"
   },
-  "queue_title": {
-    "message": "オフラインキュー"
-  },
   "queue_clear": {
     "message": "キューを破棄"
   },
@@ -714,14 +711,6 @@
     "message": "待機中の $COUNT$ 件を破棄しますか？Anki には追加されません。",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "待機中の Anki プロファイル: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "キュー"
+  },
+  "queue_now": {
+    "message": "たった今"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ 分前",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ 時間前",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ 日前",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Anki が閉じているときに作ったカードがここで待ちます。"
+  },
+  "queue_has_audio": {
+    "message": "音声あり"
+  },
+  "queue_has_image": {
+    "message": "画像あり"
+  },
+  "queue_remove": {
+    "message": "キューから削除"
+  },
+  "queue_still_closed": {
+    "message": "Anki はまだ閉じています。"
   }
 }

@@ -222,15 +222,26 @@ demo(
     **GENERAL,
 )
 
-# --- 09 Batch ------------------------------------------------------------------------------------
+# --- 09 Offline queue ------------------------------------------------------------------------------
+demo(
+    "09a-queue",
+    "Offline queue",
+    "Anki can stay closed",
+    ["the card is built right away", "it waits with audio and image", "written the moment Anki is back"],
+    "queue-01-list.png",
+    box=(760, 640),
+    win_title="Anki Quick Add · Queue",
+)
+
+# --- 10 Batch ------------------------------------------------------------------------------------
 BATCH = dict(box=(760, 640), win_title="Anki Quick Add · List")
-demo("09a-batch-list", "List mode", "Paste a list", ["one word per line", "or comma-separated"], "batch-01-list.png", **BATCH)
-demo("09b-batch-running", "List mode", "Added one by one", ["progress per word", "cancel and resume"], "batch-02-running.png", **BATCH)
-demo("09c-batch-done", "List mode", "Done", ["summary: added · duplicates · errors"], "batch-03-done.png", **BATCH)
+demo("10a-batch-list", "List mode", "Paste a list", ["one word per line", "or comma-separated"], "batch-01-list.png", **BATCH)
+demo("10b-batch-running", "List mode", "Added one by one", ["progress per word", "cancel and resume"], "batch-02-running.png", **BATCH)
+demo("10c-batch-done", "List mode", "Done", ["summary: added · duplicates · errors"], "batch-03-done.png", **BATCH)
 
 # --- 10 CTA --------------------------------------------------------------------------------------
 write(
-    "10a-cta",
+    "11a-cta",
     f"""
 <div class="hero">
   <div class="logo">{icon_svg()}</div>

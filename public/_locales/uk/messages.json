@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "Черга порожня."
   },
-  "queue_title": {
-    "message": "Офлайн-черга"
-  },
   "queue_clear": {
     "message": "Очистити чергу"
   },
@@ -714,14 +711,6 @@
     "message": "Видалити $COUNT$ карток із черги? Вони не потраплять в Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Чекають на профіль Anki: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Черга"
+  },
+  "queue_now": {
+    "message": "щойно"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ хв тому",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ год тому",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ дн тому",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Тут чекають картки, додані поки Anki закритий."
+  },
+  "queue_has_audio": {
+    "message": "з аудіо"
+  },
+  "queue_has_image": {
+    "message": "з картинкою"
+  },
+  "queue_remove": {
+    "message": "Прибрати з черги"
+  },
+  "queue_still_closed": {
+    "message": "Anki досі закритий."
   }
 }

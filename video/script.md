@@ -68,16 +68,23 @@ dark theme forced.
 
 > The interface speaks twelve languages: follow the browser, or pick one in the settings. And it comes in light, dark, or dark on a schedule, for late-night sessions.
 
-## Segment 09 – Batch (1:27–1:35)
+## Segment 09 – Anki can stay closed (1:27–1:38)
 
-**Екран:** 09a-batch-list: four words pasted into List mode. 09b-batch-running: the first one added,
-the next one running. 09c-batch-done: "4 added · 0 duplicates · 0 errors".
+**Екран:** 09a-queue: the popup Queue tab with three cards waiting ("lantern", "harbor", "meadow"),
+each with its translation and the marks for audio and image. Caption: "written the moment Anki is back".
+
+> Anki does not even have to be running. The card is built straight away and waits in a queue, with its audio and picture, until Anki answers again.
+
+## Segment 10 – Batch (1:38–1:46)
+
+**Екран:** 10a-batch-list: four words pasted into List mode. 10b-batch-running: the first one added,
+the next one running. 10c-batch-done: "4 added · 0 duplicates · 0 errors".
 
 > Have a list? Paste it. Words are added one by one, and duplicates are skipped or updated, your call.
 
-## Segment 10 – CTA (1:35–1:43)
+## Segment 11 – CTA (1:46–1:54)
 
-**Екран:** 10a-cta: icon, "Anki Quick Add", three lines (Free & open source · Your keys, your Anki ·
+**Екран:** 11a-cta: icon, "Anki Quick Add", three lines (Free & open source · Your keys, your Anki ·
 12 UI languages), GitHub URL and "Chrome Web Store".
 
 > Anki Quick Add is free and open source. Your keys, your Anki, nothing in between. Get it from the Chrome Web Store, or grab it on GitHub.

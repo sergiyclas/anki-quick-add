@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "La cola está vacía."
   },
-  "queue_title": {
-    "message": "Cola sin conexión"
-  },
   "queue_clear": {
     "message": "Descartar la cola"
   },
@@ -714,14 +711,6 @@
     "message": "¿Descartar $COUNT$ tarjetas en cola? No se añadirán a Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Esperando el perfil de Anki: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Cola"
+  },
+  "queue_now": {
+    "message": "ahora mismo"
+  },
+  "queue_minutes": {
+    "message": "hace $COUNT$ min",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "hace $COUNT$ h",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "hace $COUNT$ d",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Aquí esperan las tarjetas creadas con Anki cerrado."
+  },
+  "queue_has_audio": {
+    "message": "con audio"
+  },
+  "queue_has_image": {
+    "message": "con imagen"
+  },
+  "queue_remove": {
+    "message": "Quitar de la cola"
+  },
+  "queue_still_closed": {
+    "message": "Anki sigue cerrado."
   }
 }

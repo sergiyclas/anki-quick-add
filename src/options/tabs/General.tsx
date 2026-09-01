@@ -17,8 +17,6 @@ export function GeneralTab({ state }: { state: SettingsState }) {
   const [message, setMessage] = useState<{ text: string; cls: string }>({ text: "", cls: "" });
   const [origins, setOrigins] = useState<string[]>([]);
   const [queue, setQueue] = useState<QueueStatus | null>(null);
-  const [queueBusy, setQueueBusy] = useState(false);
-  const [queueMsg, setQueueMsg] = useState("");
   const [code, setCode] = useState("");
   const [promo, setPromo] = useState<{ text: string; cls: string }>({ text: "", cls: "" });
   const tier = settings.license.tier;
@@ -32,26 +30,6 @@ export function GeneralTab({ state }: { state: SettingsState }) {
   async function refreshQueue() {
     const r = await send({ type: "queue.status" });
     if (r.ok) setQueue(r.status);
-  }
-
-  async function flushQueueNow() {
-    setQueueBusy(true);
-    setQueueMsg("");
-    const r = await send({ type: "queue.flush" });
-    setQueueBusy(false);
-    await refreshQueue();
-    if (!r.ok) return setQueueMsg(r.error);
-    setQueueMsg(
-      r.summary.reachable
-        ? t("queue_result", [String(r.summary.added), String(r.summary.duplicates + r.summary.errors + r.summary.held)])
-        : t("popup_anki_offline"),
-    );
-  }
-
-  async function clearQueueNow() {
-    if (!window.confirm(t("queue_clear_confirm", [String(queue?.count ?? 0)]))) return;
-    await send({ type: "queue.clear" });
-    await refreshQueue();
   }
 
   // Language and theme take effect immediately (persisted right away); bootPage reacts to the change.
@@ -156,24 +134,8 @@ export function GeneralTab({ state }: { state: SettingsState }) {
         />
         <span>{t("opt_offline_queue")}</span>
       </label>
-      <div class="hint">{t("opt_offline_queue_hint", [String(QUEUE_LIMIT)])}</div>
-      <div class="field">
-        <span>{t("queue_title")}</span>
-        <div class="hint">
-          {queue?.count ? t("queue_pending", [String(queue.count)]) : t("queue_empty")}
-          {queue?.words.length ? ` – ${queue.words.slice(0, 8).join(", ")}${queue.words.length > 8 ? "…" : ""}` : ""}
-        </div>
-        {queue?.profiles.length ? <div class="hint">{t("queue_profiles", [queue.profiles.join(", ")])}</div> : null}
-        {queue?.lastError ? <div class="hint err">{queue.lastError}</div> : null}
-        <div class="row">
-          <button type="button" class="secondary" disabled={!queue?.count || queueBusy} onClick={() => void flushQueueNow()}>
-            {queueBusy ? t("queue_flushing") : t("queue_flush")}
-          </button>
-          <button type="button" class="secondary danger" disabled={!queue?.count} onClick={() => void clearQueueNow()}>
-            {t("queue_clear")}
-          </button>
-          {queueMsg && <span class="hint">{queueMsg}</span>}
-        </div>
+      <div class="hint">
+        {t("opt_offline_queue_hint", [String(QUEUE_LIMIT)])} {queue?.items.length ? t("queue_pending", [String(queue.items.length)]) : ""}
       </div>
 
       <div class="field promo">

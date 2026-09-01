@@ -3,11 +3,11 @@ import { t } from "../lib/i18n";
 import { type PingResponse, send } from "../lib/messages";
 import { BatchAdd } from "./BatchAdd";
 import { History } from "./History";
-import { QueueBar } from "./QueueBar";
+import { QueueList } from "./QueueList";
 import { SingleAdd } from "./SingleAdd";
 import { StatusBar } from "./StatusBar";
 
-type Mode = "single" | "batch";
+type Mode = "single" | "batch" | "queue";
 
 export function App() {
   const [ping, setPing] = useState<PingResponse | null>(null);
@@ -35,10 +35,16 @@ export function App() {
         <a class={mode === "batch" ? "active" : ""} onClick={() => setMode("batch")}>
           {t("mode_batch")}
         </a>
+        {(queued > 0 || mode === "queue") && (
+          <a class={mode === "queue" ? "active" : ""} onClick={() => setMode("queue")}>
+            {t("mode_queue")} <span class="badge">{queued}</span>
+          </a>
+        )}
       </div>
-      {mode === "single" ? <SingleAdd deck={deck} onDeckChange={setDeck} quickTranslate={ping?.quickTranslate ?? false} onQueued={setQueued} /> : <BatchAdd deck={deck} />}
-      <QueueBar count={queued} onChange={setQueued} />
-      <History />
+      {mode === "single" && <SingleAdd deck={deck} onDeckChange={setDeck} quickTranslate={ping?.quickTranslate ?? false} onQueued={setQueued} />}
+      {mode === "batch" && <BatchAdd deck={deck} />}
+      {mode === "queue" && <QueueList onChange={setQueued} />}
+      {mode !== "queue" && <History />}
       <StatusBar ping={ping} />
     </>
   );

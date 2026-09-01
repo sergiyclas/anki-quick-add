@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "Sıra boş."
   },
-  "queue_title": {
-    "message": "Çevrimdışı sıra"
-  },
   "queue_clear": {
     "message": "Sırayı temizle"
   },
@@ -714,14 +711,6 @@
     "message": "Sıradaki $COUNT$ kart silinsin mi? Anki'ye eklenmeyecekler.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Anki profili bekleniyor: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Sıra"
+  },
+  "queue_now": {
+    "message": "az önce"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ dk önce",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ sa önce",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ gün önce",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Anki kapalıyken eklenen kartlar burada bekler."
+  },
+  "queue_has_audio": {
+    "message": "sesli"
+  },
+  "queue_has_image": {
+    "message": "görselli"
+  },
+  "queue_remove": {
+    "message": "Sıradan çıkar"
+  },
+  "queue_still_closed": {
+    "message": "Anki hâlâ kapalı."
   }
 }

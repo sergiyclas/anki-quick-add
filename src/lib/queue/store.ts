@@ -3,18 +3,27 @@
 
 import type { Prepared } from "../pipeline/addWord";
 import { getCache } from "../settings/storage";
-import { allItems, clearItems, countItems, putItem } from "./db";
+import { allItems, clearItems, countItems, deleteItem, putItem } from "./db";
 import { blobFromBase64 } from "./media";
 
 export const QUEUE_LIMIT = 300; // ~45 MB of media; the browser quota itself follows free disk space
 
 export type EnqueueResult = { queued: true; count: number } | { queued: false; reason: "full" | "duplicate"; count: number };
 
-export interface QueueStatus {
-  count: number;
-  words: string[];
-  profiles: string[];
+export interface QueueItemInfo {
+  id: string;
+  word: string;
+  translation: string;
+  at: number;
+  hasAudio: boolean;
+  hasImage: boolean;
+  profile: string;
   lastError?: string;
+}
+
+export interface QueueStatus {
+  items: QueueItemInfo[];
+  profiles: string[];
 }
 
 export async function queueCount(): Promise<number> {
@@ -26,17 +35,36 @@ export async function queueCount(): Promise<number> {
 }
 
 export async function queueStatus(): Promise<QueueStatus> {
-  const items = await allItems();
+  const items = await allItems().catch(() => []);
   return {
-    count: items.length,
-    words: items.map((i) => i.word),
+    items: items.map((i) => ({
+      id: i.id,
+      word: i.word,
+      translation: i.prepared.card.translations.join(", "),
+      at: i.at,
+      hasAudio: i.prepared.media.some((m) => m.kind === "audio"),
+      hasImage: i.prepared.media.some((m) => m.kind === "image"),
+      profile: i.profile,
+      lastError: i.lastError,
+    })),
     profiles: [...new Set(items.map((i) => i.profile).filter(Boolean))],
-    lastError: items.find((i) => i.lastError)?.lastError,
   };
+}
+
+export async function removeQueued(id: string): Promise<void> {
+  await deleteItem(id);
+}
+
+// The toolbar icon carries the count, so a waiting card is visible without opening anything.
+export async function refreshBadge(): Promise<void> {
+  const count = await queueCount();
+  await chrome.action.setBadgeBackgroundColor({ color: "#b26a00" });
+  await chrome.action.setBadgeText({ text: count ? String(count) : "" });
 }
 
 export async function clearQueue(): Promise<void> {
   await clearItems();
+  await refreshBadge();
 }
 
 // The profile Anki had open the last time it answered; a queued card is only written back into it.
@@ -59,5 +87,6 @@ export async function enqueue(prepared: Prepared, profile: string): Promise<Enqu
     attempts: 0,
     prepared: { ...rest, media: media.map(({ data, ...m }) => ({ ...m, blob: blobFromBase64(data, m.mime) })) },
   });
+  await refreshBadge();
   return { queued: true, count: items.length + 1 };
 }

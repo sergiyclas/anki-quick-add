@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "De wachtrij is leeg."
   },
-  "queue_title": {
-    "message": "Offline wachtrij"
-  },
   "queue_clear": {
     "message": "Wachtrij wissen"
   },
@@ -714,14 +711,6 @@
     "message": "$COUNT$ wachtende kaarten weggooien? Ze komen niet in Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Wachten op Anki-profiel: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Wachtrij"
+  },
+  "queue_now": {
+    "message": "zojuist"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ min geleden",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ u geleden",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ d geleden",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Kaarten die bij gesloten Anki zijn gemaakt, wachten hier."
+  },
+  "queue_has_audio": {
+    "message": "met audio"
+  },
+  "queue_has_image": {
+    "message": "met afbeelding"
+  },
+  "queue_remove": {
+    "message": "Uit de wachtrij halen"
+  },
+  "queue_still_closed": {
+    "message": "Anki is nog steeds gesloten."
   }
 }

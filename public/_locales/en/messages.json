@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "The queue is empty."
   },
-  "queue_title": {
-    "message": "Offline queue"
-  },
   "queue_clear": {
     "message": "Discard queue"
   },
@@ -714,14 +711,6 @@
     "message": "Discard $COUNT$ queued cards? They will not be added to Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Waiting for Anki profile: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Queue"
+  },
+  "queue_now": {
+    "message": "just now"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ min ago",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ h ago",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ d ago",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Cards added while Anki is closed wait here."
+  },
+  "queue_has_audio": {
+    "message": "with audio"
+  },
+  "queue_has_image": {
+    "message": "with an image"
+  },
+  "queue_remove": {
+    "message": "Remove from the queue"
+  },
+  "queue_still_closed": {
+    "message": "Anki is still closed."
   }
 }

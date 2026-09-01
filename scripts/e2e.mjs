@@ -192,13 +192,19 @@ if (!process.env.AQA_API_KEY) {
   );
   const queuedStatus = await popup.textContent(".popup-status");
   check((await queueCount()) === 1, `card queued while Anki is closed: ${queuedStatus}`);
-  await popup.waitForSelector(".popup-queue", { timeout: 5_000 });
-  check(true, "popup shows the queue bar after queueing");
+  check((await worker.evaluate(() => chrome.action.getBadgeText({}))) === "1", "toolbar badge shows the queue count");
+
+  await popup.click(".popup-modes a:nth-child(3)");
+  await popup.waitForSelector(".queue-list li");
+  const queuedWord = await popup.textContent(".queue-list li b");
+  const queuedTranslation = await popup.textContent(".queue-list li .queue-translation");
+  check(queuedWord === "lantern" && Boolean(queuedTranslation), `queue view lists the card: ${queuedWord} – ${queuedTranslation}`);
+  check(Boolean(await popup.$(".queue-word .queue-media span")), "queue view marks the media it is carrying");
 
   await setAnkiUrl("http://127.0.0.1:8765");
-  await popup.click(".popup-queue button");
-  await popup.waitForFunction(() => !document.querySelector(".popup-queue"), null, { timeout: 60_000 });
-  check((await queueCount()) === 0, "queue emptied through the popup button");
+  await popup.click(".queue-head button");
+  await popup.waitForSelector(".queue-empty", { timeout: 60_000 });
+  check((await queueCount()) === 0, "queue emptied through the Add now button");
 
   const ids = await anki("findNotes", { query: '"Word:lantern" tag:aqa' });
   check(ids.length === 1, `queued card reached Anki: ${ids.length} note(s)`);

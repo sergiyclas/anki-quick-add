@@ -254,6 +254,29 @@ async function capture(): Promise<void> {
   await popup.waitForSelector(".batch .row span.ok", { timeout: 300_000 });
   await shot(popup, "batch-03-done", { fullPage: true, docs: "09-batch" });
 
+  // --- Offline queue: point Anki at a dead port, park a few cards, show the queue view ------------
+  await popup.click(".popup-modes a:nth-child(1)");
+  await worker.evaluate(async () => {
+    const { settings } = await chrome.storage.sync.get("settings");
+    await chrome.storage.sync.set({ settings: { ...settings, provider: "free", anki: { ...settings.anki, url: "http://127.0.0.1:8799" } } });
+  });
+  await popup.reload();
+  await popup.waitForFunction(() => document.querySelector(".popup-row select")?.value, null, { timeout: 15_000 });
+  for (const queuedWord of ["lantern", "harbor", "meadow"]) {
+    await popup.fill(".popup-input", queuedWord);
+    await popup.press(".popup-input", "Enter");
+    await popup.waitForFunction(
+      () => !document.querySelector(".popup-input")?.hasAttribute("disabled") && (document.querySelector(".popup-status")?.textContent ?? "").length > 0,
+      null,
+      { timeout: 120_000 },
+    );
+  }
+  await popup.click(".popup-modes a:nth-child(3)");
+  await popup.waitForSelector(".queue-list li");
+  await popup.waitForTimeout(400);
+  await shot(popup, "queue-01-list", { fullPage: true, docs: "11-queue" });
+  // The queue lives in this throwaway profile, so nothing needs cleaning up in Anki.
+
   await context.close();
   writeFileSync(resolve(RAW, "run.json"), JSON.stringify({ model: MODEL, deck: DECK, at: new Date().toISOString() }, null, 2));
 }

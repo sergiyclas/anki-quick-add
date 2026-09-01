@@ -9,7 +9,7 @@ import { getCache, loadKeys, loadSettings, setCache } from "../lib/settings/stor
 import { initI18n, t } from "../lib/i18n";
 import { quickTranslate } from "../lib/quickTranslate";
 import { flushQueue } from "../lib/queue/flush";
-import { clearQueue, queueCount, queueStatus } from "../lib/queue/store";
+import { clearQueue, queueCount, queueStatus, refreshBadge, removeQueued } from "../lib/queue/store";
 import { extractSentence } from "../lib/text";
 import { bubbleStatus, syncBubbleScript } from "./bubble";
 import { commitJob, openEditor, regenerateJob } from "./jobs";
@@ -83,6 +83,10 @@ async function dispatch(request: Request) {
       return { ok: true, summary: await flushQueue() };
     case "queue.clear":
       await clearQueue();
+      return { ok: true };
+    case "queue.remove":
+      await removeQueued(request.id);
+      await refreshBadge();
       return { ok: true };
     case "bubble.status":
       return { ok: true, ...(await bubbleStatus()) };

@@ -17,6 +17,7 @@ export type Request =
   | { type: "queue.status" }
   | { type: "queue.flush" }
   | { type: "queue.clear" }
+  | { type: "queue.remove"; id: string }
   | { type: "i18n.strings"; keys: string[] }
   | { type: "bubble.sync" }
   | { type: "job.regenerate"; id: string; hint: string }
@@ -127,7 +128,7 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
     ? AddResponse
     : R extends { type: "editor.open" }
       ? JobResponse
-      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" }
+      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" | "queue.remove" }
         ? OkResponse
         : R extends { type: "queue.status" }
           ? QueueStatusResponse

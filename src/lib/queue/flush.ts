@@ -3,6 +3,7 @@ import { type Prepared, commit } from "../pipeline/addWord";
 import { loadSettings, setCache } from "../settings/storage";
 import { type QueuedItem, allItems, countItems, deleteItem, putItem } from "./db";
 import { base64FromBlob } from "./media";
+import { refreshBadge } from "./store";
 
 const PER_FLUSH = 25; // one run stays short so the service worker is not killed halfway through
 
@@ -63,5 +64,6 @@ export async function flushQueue(): Promise<FlushSummary> {
   }
 
   summary.remaining = await countItems();
+  await refreshBadge();
   return summary;
 }

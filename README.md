@@ -58,7 +58,7 @@ AnkiConnect. Nothing in between.
 *A word typed into the popup, the instant translation while typing, and the card the extension made:
 translation, IPA, three examples, synonyms, a grammar note and a Wikipedia photo with its credit.*
 
-**[▶ Watch the feature tour](docs/demo.mp4)** – 1:57, every feature in order
+**[▶ Watch the feature tour](docs/demo.mp4)** – 2:06, every feature in order
 
 </div>
 
@@ -113,6 +113,11 @@ audio source order, image settings.
 **List mode** – a pasted list, added one by one, with a summary.
 
 ![Batch](docs/09-batch.png)
+
+**Offline queue** – cards added while Anki was closed, with their translation and the media they are
+carrying; *Add now* writes them, or they go in by themselves within five minutes.
+
+![Queue](docs/11-queue.png)
 
 **General** – interface language (follows the browser, or any of the 12 bundled languages), interface
 theme (light, dark, or dark on a schedule), promo code, export/import.

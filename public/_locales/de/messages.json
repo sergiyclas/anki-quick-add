@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "Die Warteschlange ist leer."
   },
-  "queue_title": {
-    "message": "Offline-Warteschlange"
-  },
   "queue_clear": {
     "message": "Warteschlange verwerfen"
   },
@@ -714,14 +711,6 @@
     "message": "$COUNT$ wartende Karten verwerfen? Sie landen nicht in Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Warten auf Anki-Profil: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Warteschlange"
+  },
+  "queue_now": {
+    "message": "gerade eben"
+  },
+  "queue_minutes": {
+    "message": "vor $COUNT$ Min.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "vor $COUNT$ Std.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "vor $COUNT$ T.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Karten, die bei geschlossenem Anki entstehen, warten hier."
+  },
+  "queue_has_audio": {
+    "message": "mit Audio"
+  },
+  "queue_has_image": {
+    "message": "mit Bild"
+  },
+  "queue_remove": {
+    "message": "Aus der Warteschlange entfernen"
+  },
+  "queue_still_closed": {
+    "message": "Anki ist weiterhin geschlossen."
   }
 }

@@ -56,7 +56,7 @@ support, so this field can stay empty.
 
 ## 4. The video
 
-File: `video/build/out/anki-quick-add-demo.mp4` (1920×1080, 1:57, ~25 MB).
+File: `video/build/out/anki-quick-add-demo.mp4` (1920×1080, 2:06, ~27 MB).
 Thumbnail: `youtube/thumbnail.png` (1280×720) – custom thumbnails need a verified channel (phone
 number), which takes a minute in Settings → Channel → Feature eligibility.
 
@@ -91,7 +91,8 @@ Chapters
 0:55 Editor: check before it lands
 1:05 Providers, languages, note types
 1:28 Interface language and theme
-1:39 List mode, and where to get it
+1:39 Anki can stay closed: the queue
+1:49 List mode, and where to get it
 
 What it does
 • Free by default: translations, part of speech and definitions from Google Translate's dictionary
@@ -101,6 +102,7 @@ What it does
 • Around 40 languages in any pair, examples at the CEFR level you pick.
 • Built-in note type, or a field mapping onto a note type you already use, with a preview that
   renders your real Anki templates.
+• Anki can stay closed: cards wait in a queue with their audio and image and land as soon as it is back.
 • Selection bubble, right-click menu, editor window, list mode, duplicate policy.
 • Interface in 12 languages, light / dark / scheduled dark theme.
 

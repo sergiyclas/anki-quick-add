@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "Kolejka jest pusta."
   },
-  "queue_title": {
-    "message": "Kolejka offline"
-  },
   "queue_clear": {
     "message": "Wyczyść kolejkę"
   },
@@ -714,14 +711,6 @@
     "message": "Usunąć $COUNT$ kart z kolejki? Nie trafią do Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Czekają na profil Anki: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Kolejka"
+  },
+  "queue_now": {
+    "message": "przed chwilą"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ min temu",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ godz. temu",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ dni temu",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Tu czekają karty dodane przy zamkniętym Anki."
+  },
+  "queue_has_audio": {
+    "message": "z dźwiękiem"
+  },
+  "queue_has_image": {
+    "message": "z obrazem"
+  },
+  "queue_remove": {
+    "message": "Usuń z kolejki"
+  },
+  "queue_still_closed": {
+    "message": "Anki nadal jest zamknięte."
   }
 }

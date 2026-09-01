@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "La coda è vuota."
   },
-  "queue_title": {
-    "message": "Coda offline"
-  },
   "queue_clear": {
     "message": "Svuota la coda"
   },
@@ -714,14 +711,6 @@
     "message": "Eliminare $COUNT$ schede in coda? Non finiranno in Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "In attesa del profilo Anki: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Coda"
+  },
+  "queue_now": {
+    "message": "adesso"
+  },
+  "queue_minutes": {
+    "message": "$COUNT$ min fa",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "$COUNT$ h fa",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "$COUNT$ g fa",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Qui attendono le schede create con Anki chiuso."
+  },
+  "queue_has_audio": {
+    "message": "con audio"
+  },
+  "queue_has_image": {
+    "message": "con immagine"
+  },
+  "queue_remove": {
+    "message": "Togli dalla coda"
+  },
+  "queue_still_closed": {
+    "message": "Anki è ancora chiuso."
   }
 }

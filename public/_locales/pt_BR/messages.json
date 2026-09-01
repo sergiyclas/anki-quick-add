@@ -704,9 +704,6 @@
   "queue_empty": {
     "message": "A fila está vazia."
   },
-  "queue_title": {
-    "message": "Fila offline"
-  },
   "queue_clear": {
     "message": "Descartar a fila"
   },
@@ -714,14 +711,6 @@
     "message": "Descartar $COUNT$ cartões da fila? Eles não irão para o Anki.",
     "placeholders": {
       "COUNT": {
-        "content": "$1"
-      }
-    }
-  },
-  "queue_profiles": {
-    "message": "Aguardando o perfil do Anki: $PROFILES$",
-    "placeholders": {
-      "PROFILES": {
         "content": "$1"
       }
     }
@@ -736,5 +725,50 @@
         "content": "$1"
       }
     }
+  },
+  "mode_queue": {
+    "message": "Fila"
+  },
+  "queue_now": {
+    "message": "agora mesmo"
+  },
+  "queue_minutes": {
+    "message": "há $COUNT$ min",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_hours": {
+    "message": "há $COUNT$ h",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_days": {
+    "message": "há $COUNT$ d",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "queue_empty_hint": {
+    "message": "Aqui esperam os cartões criados com o Anki fechado."
+  },
+  "queue_has_audio": {
+    "message": "com áudio"
+  },
+  "queue_has_image": {
+    "message": "com imagem"
+  },
+  "queue_remove": {
+    "message": "Remover da fila"
+  },
+  "queue_still_closed": {
+    "message": "O Anki continua fechado."
   }
 }
