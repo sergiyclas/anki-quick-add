@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "Escribe o selecciona una palabra y obtén una tarjeta de Anki completa: traducción, transcripción, ejemplos, audio e imagen, generados por el proveedor de LLM que elijas."
+    "message": "Una palabra, una tarjeta Anki completa: traducción, AFI, ejemplos, audio e imagen. Sin clave API o con tu propio LLM."
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

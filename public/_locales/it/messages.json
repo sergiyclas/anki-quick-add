@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "Digita o seleziona una parola e ottieni una scheda Anki completa: traduzione, trascrizione, esempi, audio e immagine, generati dal provider LLM che preferisci."
+    "message": "Una parola, una scheda Anki completa: traduzione, IPA, esempi, audio e immagine. Senza chiave API o con il tuo LLM."
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

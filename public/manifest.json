@@ -4,6 +4,7 @@
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "version": "2.0.0",
+  "homepage_url": "https://github.com/sergiyclas/anki-quick-add",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1AzRqIkAQbk6J+9uuiZ+eKWcf8M0L1v/pAXrKipHk/LP15WTb27/NilUgPKJEAUmqnt01vEMLgvBdkcyw3KY8DIQUvkMBTCQ56HCJJORRtkLf5CZiSLaKkAinFPg0vGu6ei379XZJCfOrrmeTy0MSqnv7E3gWHMLtL8mi+qmloake68jxHzqXd+chbOauKTYdpr/RH7ZiNwuxrN0WoN+J3HvqBRQWPDpT5TeK93BsVEy5wL08xbKkm/AvaTL35heGbNvwHKcjvNQgTW/Geg8drfI6aIirknxVFx2NjZbDwbC7D7p6BbTFRsN/UhZE5syMP3SbgyYv+nsDAS65AsysQIDAQAB",
   "minimum_chrome_version": "144",
   "icons": {

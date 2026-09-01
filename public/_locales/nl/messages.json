@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "Typ of selecteer een woord en krijg een volledig ingevulde Anki-kaart: vertaling, transcriptie, voorbeelden, audio en afbeelding, gegenereerd door de LLM-aanbieder van jouw keuze."
+    "message": "Eén woord, een complete Anki-kaart: vertaling, IPA, voorbeelden, audio en afbeelding. Zonder API-sleutel of met je eigen LLM."
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

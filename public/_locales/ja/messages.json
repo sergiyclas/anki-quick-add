@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "単語を入力または選択するだけで、訳語・発音記号・例文・音声・画像がそろった Anki カードを作成。お好みの LLM プロバイダーで生成します。"
+    "message": "単語を入力または選択するだけで、訳語・発音記号・例文・音声・画像がそろった Anki カードを作成。API キーなしでも、お好みの LLM でも。"
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

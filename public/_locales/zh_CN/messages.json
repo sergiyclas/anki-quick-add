@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "输入或选中一个单词，即可获得一张完整的 Anki 卡片：翻译、音标、例句、音频和图片，由你选择的 LLM 提供商生成。"
+    "message": "输入或选中一个单词，即可获得完整的 Anki 卡片：翻译、音标、例句、音频和图片。无需 API 密钥，也可使用你自己的 LLM。"
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

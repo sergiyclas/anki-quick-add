@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "Bir kelime yazın veya seçin; çeviri, transkripsiyon, örnekler, ses ve görselle eksiksiz bir Anki kartı alın – seçtiğiniz LLM sağlayıcısı tarafından üretilir."
+    "message": "Tek kelime, eksiksiz bir Anki kartı: çeviri, IPA, örnekler, ses ve görsel. API anahtarı olmadan ya da kendi LLM'inizle."
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

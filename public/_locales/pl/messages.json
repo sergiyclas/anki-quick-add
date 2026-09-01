@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "Wpisz lub zaznacz słowo i otrzymaj kompletną kartę Anki: tłumaczenie, transkrypcję, przykłady, audio i obraz – wygenerowane przez wybranego dostawcę LLM."
+    "message": "Jedno słowo – gotowa karta Anki: tłumaczenie, IPA, przykłady, audio i obraz. Bez klucza API lub z własnym LLM."
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"

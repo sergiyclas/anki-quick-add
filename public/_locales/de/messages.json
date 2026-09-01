@@ -3,7 +3,7 @@
     "message": "Anki Quick Add"
   },
   "extDescription": {
-    "message": "Tippe oder markiere ein Wort und erhalte eine vollständig ausgefüllte Anki-Karte: Übersetzung, Lautschrift, Beispiele, Audio und Bild – erzeugt vom LLM-Anbieter deiner Wahl."
+    "message": "Ein Wort rein, eine komplette Anki-Karte raus: Übersetzung, IPA, Beispiele, Audio und Bild. Ohne API-Key oder mit deinem LLM."
   },
   "actionTitle": {
     "message": "Anki Quick Add (Alt+A)"
