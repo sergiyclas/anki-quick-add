@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "default_locale": "en",
+  "version": "2.0.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1AzRqIkAQbk6J+9uuiZ+eKWcf8M0L1v/pAXrKipHk/LP15WTb27/NilUgPKJEAUmqnt01vEMLgvBdkcyw3KY8DIQUvkMBTCQ56HCJJORRtkLf5CZiSLaKkAinFPg0vGu6ei379XZJCfOrrmeTy0MSqnv7E3gWHMLtL8mi+qmloake68jxHzqXd+chbOauKTYdpr/RH7ZiNwuxrN0WoN+J3HvqBRQWPDpT5TeK93BsVEy5wL08xbKkm/AvaTL35heGbNvwHKcjvNQgTW/Geg8drfI6aIirknxVFx2NjZbDwbC7D7p6BbTFRsN/UhZE5syMP3SbgyYv+nsDAS65AsysQIDAQAB",
+  "minimum_chrome_version": "144",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "__MSG_actionTitle__"
+  },
+  "options_ui": {
+    "page": "options/index.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8765/*",
+    "http://localhost:8765/*",
+    "https://api.anthropic.com/*",
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://translate.google.com/*",
+    "https://translate.googleapis.com/*",
+    "https://*.wikipedia.org/*",
+    "https://*.wiktionary.org/*",
+    "https://commons.wikimedia.org/*",
+    "https://upload.wikimedia.org/*",
+    "https://api.dictionaryapi.dev/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+A"
+      },
+      "description": "__MSG_cmdOpen__"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

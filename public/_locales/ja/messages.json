@@ -1,0 +1,555 @@
+{
+  "extName": {
+    "message": "Anki Quick Add"
+  },
+  "extDescription": {
+    "message": "単語を入力または選択するだけで、訳語・発音記号・例文・音声・画像がそろった Anki カードを作成。お好みの LLM プロバイダーで生成します。"
+  },
+  "actionTitle": {
+    "message": "Anki Quick Add (Alt+A)"
+  },
+  "cmdOpen": {
+    "message": "Anki Quick Add を開く"
+  },
+  "popup_placeholder": {
+    "message": "単語またはフレーズを入力して Enter"
+  },
+  "popup_settings": {
+    "message": "設定"
+  },
+  "popup_adding": {
+    "message": "「$WORD$」を追加中…",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_added": {
+    "message": "追加しました: $WORD$ – $TRANSLATION$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "TRANSLATION": {
+        "content": "$2"
+      }
+    }
+  },
+  "popup_duplicate": {
+    "message": "すでにコレクションにあります: $WORD$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_anki_ok": {
+    "message": "Anki: 接続済み"
+  },
+  "popup_anki_offline": {
+    "message": "Anki: オフライン"
+  },
+  "popup_no_key": {
+    "message": "API キーがありません"
+  },
+  "options_title": {
+    "message": "Anki Quick Add – 設定"
+  },
+  "tab_providers": {
+    "message": "プロバイダー"
+  },
+  "tab_anki": {
+    "message": "Anki"
+  },
+  "tab_generation": {
+    "message": "言語と生成"
+  },
+  "tab_preview": {
+    "message": "プレビュー"
+  },
+  "tab_backup": {
+    "message": "バックアップ"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "saved": {
+    "message": "保存しました"
+  },
+  "editor_title": {
+    "message": "Anki に追加"
+  },
+  "err_empty_input": {
+    "message": "追加するものがありません"
+  },
+  "err_no_api_key": {
+    "message": "API キーが未設定です – 設定 → プロバイダーを開いてください"
+  },
+  "err_anki_unreachable": {
+    "message": "Anki が起動していないか、AnkiConnect がインストールされていません"
+  },
+  "opt_provider": {
+    "message": "プロバイダー"
+  },
+  "opt_api_key": {
+    "message": "API キー"
+  },
+  "opt_model": {
+    "message": "モデル"
+  },
+  "opt_model_hint": {
+    "message": "一覧から選ぶか、プロバイダーが対応する任意のモデル ID を入力してください。"
+  },
+  "opt_effort": {
+    "message": "推論の深さ"
+  },
+  "opt_anki_url": {
+    "message": "AnkiConnect の URL"
+  },
+  "opt_deck": {
+    "message": "デッキ"
+  },
+  "opt_note_type": {
+    "message": "ノートタイプ"
+  },
+  "opt_tags": {
+    "message": "タグ"
+  },
+  "opt_tags_hint": {
+    "message": "カンマ区切り。言語ペアのタグ（例: en-ja）は自動で追加されます。"
+  },
+  "refresh": {
+    "message": "更新"
+  },
+  "opt_preset": {
+    "message": "サービス"
+  },
+  "opt_base_url": {
+    "message": "ベース URL"
+  },
+  "opt_json_mode": {
+    "message": "JSON モード"
+  },
+  "opt_json_mode_hint": {
+    "message": "json_schema = 厳密な構造化出力、json_object = スキーマをプロンプトに含める通常の JSON モード（サーバーが json_schema を拒否した場合は自動的に使用）。"
+  },
+  "opt_key_optional": {
+    "message": "ローカルサーバーでは不要"
+  },
+  "opt_key_needs_host": {
+    "message": "先にベース URL を入力してください – キーはホストごとに保存されます。"
+  },
+  "refresh_models": {
+    "message": "モデル一覧を更新"
+  },
+  "models_fetched": {
+    "message": "プロバイダーから $COUNT$ 件のモデルを取得しました",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "host_not_granted": {
+    "message": "この拡張機能には $HOST$ へのアクセス権限がありません",
+    "placeholders": {
+      "HOST": {
+        "content": "$1"
+      }
+    }
+  },
+  "grant_access": {
+    "message": "アクセスを許可"
+  },
+  "unsaved": {
+    "message": "未保存の変更があります"
+  },
+  "yes": {
+    "message": "はい"
+  },
+  "no": {
+    "message": "いいえ"
+  },
+  "opt_dup_policy": {
+    "message": "単語がすでに存在する場合"
+  },
+  "dup_skip": {
+    "message": "スキップ（何もしない）"
+  },
+  "dup_add": {
+    "message": "それでも追加（重複を許可）"
+  },
+  "dup_update": {
+    "message": "更新: 既存ノートの空欄を埋める"
+  },
+  "opt_dedupe_scope": {
+    "message": "重複を検索する範囲"
+  },
+  "scope_collection": {
+    "message": "コレクション全体"
+  },
+  "scope_deck": {
+    "message": "追加先デッキのみ"
+  },
+  "opt_auto_lang_tag": {
+    "message": "言語ペアのタグを追加する（例: en-ja）"
+  },
+  "opt_production": {
+    "message": "逆向きカードも作成する（訳語 → 単語）"
+  },
+  "note_type_missing": {
+    "message": "このノートタイプはまだ Anki にありません。"
+  },
+  "create_note_type": {
+    "message": "ノートタイプを作成"
+  },
+  "note_type_created": {
+    "message": "作成しました"
+  },
+  "note_type_builtin_hint": {
+    "message": "生成される各要素のフィールドと、すっきりした 2 枚構成のテンプレートを備えた内蔵ノートタイプ。"
+  },
+  "mapping_title": {
+    "message": "フィールドの割り当て"
+  },
+  "mapping_hint": {
+    "message": "生成された各要素をノートタイプのどのフィールドに入れるか。メディア用フィールドには音声 / 画像が入り、重複チェック用フィールドは追加前に検索されます。"
+  },
+  "not_mapped": {
+    "message": "– 保存しない –"
+  },
+  "mapping_dedupe_field": {
+    "message": "重複チェックの基準"
+  },
+  "mapping_static": {
+    "message": "固定値"
+  },
+  "fmt_comma": {
+    "message": "カンマ区切り"
+  },
+  "fmt_lines": {
+    "message": "1 行に 1 つ"
+  },
+  "fmt_list": {
+    "message": "箇条書き"
+  },
+  "slot_word": {
+    "message": "単語"
+  },
+  "slot_translations": {
+    "message": "訳語"
+  },
+  "slot_transcription": {
+    "message": "発音記号 (IPA)"
+  },
+  "slot_partOfSpeech": {
+    "message": "品詞"
+  },
+  "slot_definition": {
+    "message": "定義"
+  },
+  "slot_synonyms": {
+    "message": "類義語"
+  },
+  "slot_examples": {
+    "message": "例文"
+  },
+  "slot_grammar": {
+    "message": "文法メモ"
+  },
+  "slot_context": {
+    "message": "出典の文（文脈）"
+  },
+  "slot_audio": {
+    "message": "音声"
+  },
+  "slot_image": {
+    "message": "画像"
+  },
+  "slot_imageCredit": {
+    "message": "画像のクレジット"
+  },
+  "preview_front": {
+    "message": "表面"
+  },
+  "preview_back": {
+    "message": "裏面"
+  },
+  "preview_night": {
+    "message": "ナイトモード"
+  },
+  "preview_not_generated": {
+    "message": "このサンプルではこのカードは生成されません（表面が空です）。"
+  },
+  "preview_hint": {
+    "message": "Anki のノートタイプの実際のテンプレートと CSS を使い、サンプルデータで描画しています。"
+  },
+  "backup_export": {
+    "message": "設定をエクスポート"
+  },
+  "backup_export_button": {
+    "message": "JSON をダウンロード"
+  },
+  "backup_include_keys": {
+    "message": "API キーを含める"
+  },
+  "backup_import": {
+    "message": "設定をインポート"
+  },
+  "backup_import_hint": {
+    "message": "現在の設定とフィールド割り当てを置き換えます。API キーはファイルに含まれている場合のみインポートされます。"
+  },
+  "backup_import_confirm": {
+    "message": "設定をインポートしますか？ フィールド割り当て: $MAPPINGS$、API キーの有無: $KEYS$。現在の設定は置き換えられます。",
+    "placeholders": {
+      "MAPPINGS": {
+        "content": "$1"
+      },
+      "KEYS": {
+        "content": "$2"
+      }
+    }
+  },
+  "backup_sync_keys": {
+    "message": "ブラウザーのアカウントで API キーを同期する (Chrome Sync)"
+  },
+  "backup_sync_keys_hint": {
+    "message": "オフ: キーはこの端末にのみ保存され、他の設定は引き続き同期されます。"
+  },
+  "backup_diagnostics": {
+    "message": "診断"
+  },
+  "backup_version": {
+    "message": "バージョン"
+  },
+  "backup_granted_origins": {
+    "message": "許可済みのホスト"
+  },
+  "backup_reset": {
+    "message": "すべての設定をリセット"
+  },
+  "backup_reset_confirm": {
+    "message": "この拡張機能の設定・割り当て・API キーをすべて削除しますか？"
+  },
+  "gen_source": {
+    "message": "学習中の言語"
+  },
+  "gen_target": {
+    "message": "訳す言語"
+  },
+  "gen_level": {
+    "message": "例文のレベル (CEFR)"
+  },
+  "gen_level_hint": {
+    "message": "定義の言い回しにも影響します。"
+  },
+  "gen_translations_count": {
+    "message": "訳語"
+  },
+  "gen_examples_count": {
+    "message": "例文"
+  },
+  "gen_synonyms_count": {
+    "message": "類義語（最大）"
+  },
+  "gen_parts": {
+    "message": "生成する項目"
+  },
+  "gen_transcription": {
+    "message": "発音記号 (IPA)"
+  },
+  "gen_partOfSpeech": {
+    "message": "品詞"
+  },
+  "gen_definition": {
+    "message": "学習言語での定義"
+  },
+  "gen_synonyms": {
+    "message": "類義語"
+  },
+  "gen_grammar": {
+    "message": "文法メモ（性・複数形・不規則変化・アスペクトなど）"
+  },
+  "gen_exampleTranslations": {
+    "message": "例文を翻訳する"
+  },
+  "gen_extra": {
+    "message": "モデルへの追加指示"
+  },
+  "gen_extra_hint": {
+    "message": "任意。プロンプトにそのまま追加されます。例: “Use British spelling”、“Examples about software engineering”。"
+  },
+  "media_audio": {
+    "message": "発音の音声"
+  },
+  "media_audio_order_hint": {
+    "message": "この順番でソースを試し、最初に音声が見つかったものを使います。"
+  },
+  "audio_dictionary": {
+    "message": "辞書の録音 (dictionaryapi.dev、英語のみ)"
+  },
+  "audio_wiktionary": {
+    "message": "Wiktionary / Wikimedia Commons の録音"
+  },
+  "audio_tts": {
+    "message": "Google テキスト読み上げ"
+  },
+  "media_allow_ogg": {
+    "message": ".ogg ファイルを許可する（AnkiMobile/iOS では再生不可）"
+  },
+  "media_image": {
+    "message": "Wikipedia / Wikimedia Commons の画像"
+  },
+  "media_image_hint": {
+    "message": "モデルが語義に合う Wikipedia の記事を選びます。見つからなければ Commons を検索します。"
+  },
+  "media_image_width": {
+    "message": "最大幅 (px)"
+  },
+  "media_store_credit": {
+    "message": "作者とライセンスを保存する（CC BY / CC BY-SA で必須）"
+  },
+  "ctx_root": {
+    "message": "Anki に追加: “%s”"
+  },
+  "ctx_default": {
+    "message": "「$DECK$」に追加",
+    "placeholders": {
+      "DECK": {
+        "content": "$1"
+      }
+    }
+  },
+  "ctx_editor": {
+    "message": "エディターで開く…"
+  },
+  "popup_shift_enter": {
+    "message": "Shift+Enter: 追加前に確認"
+  },
+  "editor_no_job": {
+    "message": "編集するカードがありません – ポップアップまたはコンテキストメニューからエディターを開いてください。"
+  },
+  "editor_generating": {
+    "message": "カードを生成中…"
+  },
+  "editor_extra_tags": {
+    "message": "追加タグ"
+  },
+  "editor_hint_placeholder": {
+    "message": "再生成のヒント。例:「動詞の意味で」「フォーマルな文体で」"
+  },
+  "editor_regenerate": {
+    "message": "再生成"
+  },
+  "editor_add": {
+    "message": "Anki に追加"
+  },
+  "mode_single": {
+    "message": "1 語"
+  },
+  "mode_batch": {
+    "message": "リスト"
+  },
+  "batch_placeholder": {
+    "message": "1 行に 1 語（またはカンマ区切り）"
+  },
+  "batch_run": {
+    "message": "$COUNT$ 件を追加",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "batch_running": {
+    "message": "$DONE$ / $TOTAL$…",
+    "placeholders": {
+      "DONE": {
+        "content": "$1"
+      },
+      "TOTAL": {
+        "content": "$2"
+      }
+    }
+  },
+  "batch_summary": {
+    "message": "追加 $ADDED$ · 重複 $DUP$ · エラー $ERR$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "DUP": {
+        "content": "$2"
+      },
+      "ERR": {
+        "content": "$3"
+      }
+    }
+  },
+  "batch_cancel": {
+    "message": "キャンセル"
+  },
+  "batch_resume": {
+    "message": "残りを再開"
+  },
+  "batch_clear": {
+    "message": "クリア"
+  },
+  "bubble_add": {
+    "message": "Anki に追加"
+  },
+  "bubble_edit": {
+    "message": "編集…"
+  },
+  "bubble_no_translation": {
+    "message": "（即時翻訳なし）"
+  },
+  "ui_on_pages": {
+    "message": "ウェブページとポップアップで"
+  },
+  "ui_quick_translate": {
+    "message": "ポップアップで入力中に Google の即時翻訳を表示する"
+  },
+  "ui_selection_bubble": {
+    "message": "ページ上でテキストを選択したとき、即時翻訳と「Anki に追加」のバブルを表示する"
+  },
+  "ui_selection_bubble_hint": {
+    "message": "すべてのサイトで動作する権限が必要です（Chrome が一度確認します）。無料の Google 翻訳エンドポイントを使うため LLM のトークンは消費しません。"
+  },
+  "ui_selection_bubble_denied": {
+    "message": "権限が許可されなかったため、バブルはオフのままです。"
+  },
+  "cmd_hint": {
+    "message": "ショートカット: Alt+A（chrome://extensions/shortcuts で変更可）"
+  },
+  "ui_bubble_trigger": {
+    "message": "バブルを表示する条件"
+  },
+  "trigger_shift": {
+    "message": "Shift を押している間のみ"
+  },
+  "trigger_alt": {
+    "message": "Alt を押している間のみ"
+  },
+  "trigger_always": {
+    "message": "選択のたびに"
+  },
+  "bubble_permission": {
+    "message": "すべてのサイトへのアクセス"
+  },
+  "bubble_registered": {
+    "message": "スクリプト登録済み"
+  },
+  "bubble_injected": {
+    "message": "開いている $COUNT$ 個のタブで有効化",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "bubble_restricted_hint": {
+    "message": "chrome:// ページ、Chrome ウェブストア、PDF、他の拡張機能のページでは動作しません。"
+  }
+}

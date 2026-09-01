@@ -1,0 +1,555 @@
+{
+  "extName": {
+    "message": "Anki Quick Add"
+  },
+  "extDescription": {
+    "message": "Typ of selecteer een woord en krijg een volledig ingevulde Anki-kaart: vertaling, transcriptie, voorbeelden, audio en afbeelding, gegenereerd door de LLM-aanbieder van jouw keuze."
+  },
+  "actionTitle": {
+    "message": "Anki Quick Add (Alt+A)"
+  },
+  "cmdOpen": {
+    "message": "Anki Quick Add openen"
+  },
+  "popup_placeholder": {
+    "message": "Woord of uitdrukking, dan Enter"
+  },
+  "popup_settings": {
+    "message": "Instellingen"
+  },
+  "popup_adding": {
+    "message": "„$WORD$” wordt toegevoegd…",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_added": {
+    "message": "Toegevoegd: $WORD$ – $TRANSLATION$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "TRANSLATION": {
+        "content": "$2"
+      }
+    }
+  },
+  "popup_duplicate": {
+    "message": "Al in de collectie: $WORD$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_anki_ok": {
+    "message": "Anki: verbonden"
+  },
+  "popup_anki_offline": {
+    "message": "Anki: offline"
+  },
+  "popup_no_key": {
+    "message": "Geen API-sleutel"
+  },
+  "options_title": {
+    "message": "Anki Quick Add – Instellingen"
+  },
+  "tab_providers": {
+    "message": "Aanbieders"
+  },
+  "tab_anki": {
+    "message": "Anki"
+  },
+  "tab_generation": {
+    "message": "Talen & generatie"
+  },
+  "tab_preview": {
+    "message": "Voorbeeld"
+  },
+  "tab_backup": {
+    "message": "Back-up"
+  },
+  "save": {
+    "message": "Opslaan"
+  },
+  "saved": {
+    "message": "Opgeslagen"
+  },
+  "editor_title": {
+    "message": "Toevoegen aan Anki"
+  },
+  "err_empty_input": {
+    "message": "Niets om toe te voegen"
+  },
+  "err_no_api_key": {
+    "message": "API-sleutel niet ingesteld – open Instellingen → Aanbieders"
+  },
+  "err_anki_unreachable": {
+    "message": "Anki draait niet of AnkiConnect is niet geïnstalleerd"
+  },
+  "opt_provider": {
+    "message": "Aanbieder"
+  },
+  "opt_api_key": {
+    "message": "API-sleutel"
+  },
+  "opt_model": {
+    "message": "Model"
+  },
+  "opt_model_hint": {
+    "message": "Kies uit de lijst of typ een willekeurige model-id die je aanbieder ondersteunt."
+  },
+  "opt_effort": {
+    "message": "Redeneerinspanning"
+  },
+  "opt_anki_url": {
+    "message": "AnkiConnect-URL"
+  },
+  "opt_deck": {
+    "message": "Stapel"
+  },
+  "opt_note_type": {
+    "message": "Notitietype"
+  },
+  "opt_tags": {
+    "message": "Tags"
+  },
+  "opt_tags_hint": {
+    "message": "Door komma's gescheiden. Een taalpaar-tag (bijv. en-nl) wordt automatisch toegevoegd."
+  },
+  "refresh": {
+    "message": "Vernieuwen"
+  },
+  "opt_preset": {
+    "message": "Dienst"
+  },
+  "opt_base_url": {
+    "message": "Basis-URL"
+  },
+  "opt_json_mode": {
+    "message": "JSON-modus"
+  },
+  "opt_json_mode_hint": {
+    "message": "json_schema = strikte gestructureerde uitvoer; json_object = gewone JSON-modus met het schema in de prompt (wordt automatisch gebruikt als de server json_schema weigert)."
+  },
+  "opt_key_optional": {
+    "message": "niet nodig voor lokale servers"
+  },
+  "opt_key_needs_host": {
+    "message": "Vul eerst de basis-URL in – de sleutel wordt per host opgeslagen."
+  },
+  "refresh_models": {
+    "message": "Modellen vernieuwen"
+  },
+  "models_fetched": {
+    "message": "$COUNT$ modellen opgehaald bij de aanbieder",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "host_not_granted": {
+    "message": "De extensie heeft geen toestemming voor $HOST$",
+    "placeholders": {
+      "HOST": {
+        "content": "$1"
+      }
+    }
+  },
+  "grant_access": {
+    "message": "Toegang verlenen"
+  },
+  "unsaved": {
+    "message": "niet-opgeslagen wijzigingen"
+  },
+  "yes": {
+    "message": "ja"
+  },
+  "no": {
+    "message": "nee"
+  },
+  "opt_dup_policy": {
+    "message": "Als het woord al bestaat"
+  },
+  "dup_skip": {
+    "message": "Overslaan (niets doen)"
+  },
+  "dup_add": {
+    "message": "Toch toevoegen (duplicaat toestaan)"
+  },
+  "dup_update": {
+    "message": "Bijwerken: lege velden van de bestaande notitie invullen"
+  },
+  "opt_dedupe_scope": {
+    "message": "Duplicaten zoeken in"
+  },
+  "scope_collection": {
+    "message": "de hele collectie"
+  },
+  "scope_deck": {
+    "message": "alleen de doelstapel"
+  },
+  "opt_auto_lang_tag": {
+    "message": "Taalpaar-tag toevoegen (bijv. en-nl)"
+  },
+  "opt_production": {
+    "message": "Ook de omgekeerde kaart maken (vertaling → woord)"
+  },
+  "note_type_missing": {
+    "message": "Dit notitietype bestaat nog niet in Anki."
+  },
+  "create_note_type": {
+    "message": "Notitietype maken"
+  },
+  "note_type_created": {
+    "message": "Gemaakt"
+  },
+  "note_type_builtin_hint": {
+    "message": "Ingebouwd notitietype met velden voor elk gegenereerd onderdeel en een strak sjabloon met twee kaarten."
+  },
+  "mapping_title": {
+    "message": "Veldtoewijzing"
+  },
+  "mapping_hint": {
+    "message": "Welk gegenereerd onderdeel in welk veld van het notitietype komt. Mediavelden krijgen audio / afbeelding; het duplicaatcontroleveld wordt doorzocht vóór het toevoegen."
+  },
+  "not_mapped": {
+    "message": "– niet opslaan –"
+  },
+  "mapping_dedupe_field": {
+    "message": "Duplicaatcontrole op"
+  },
+  "mapping_static": {
+    "message": "Vaste waarden"
+  },
+  "fmt_comma": {
+    "message": "door komma's gescheiden"
+  },
+  "fmt_lines": {
+    "message": "één per regel"
+  },
+  "fmt_list": {
+    "message": "opsommingslijst"
+  },
+  "slot_word": {
+    "message": "Woord"
+  },
+  "slot_translations": {
+    "message": "Vertalingen"
+  },
+  "slot_transcription": {
+    "message": "Transcriptie (IPA)"
+  },
+  "slot_partOfSpeech": {
+    "message": "Woordsoort"
+  },
+  "slot_definition": {
+    "message": "Definitie"
+  },
+  "slot_synonyms": {
+    "message": "Synoniemen"
+  },
+  "slot_examples": {
+    "message": "Voorbeelden"
+  },
+  "slot_grammar": {
+    "message": "Grammaticanotities"
+  },
+  "slot_context": {
+    "message": "Bronzin (context)"
+  },
+  "slot_audio": {
+    "message": "Audio"
+  },
+  "slot_image": {
+    "message": "Afbeelding"
+  },
+  "slot_imageCredit": {
+    "message": "Bronvermelding afbeelding"
+  },
+  "preview_front": {
+    "message": "Voorkant"
+  },
+  "preview_back": {
+    "message": "Achterkant"
+  },
+  "preview_night": {
+    "message": "Nachtmodus"
+  },
+  "preview_not_generated": {
+    "message": "Deze kaart zou voor het voorbeeld niet worden gegenereerd (de voorkant is leeg)."
+  },
+  "preview_hint": {
+    "message": "Weergegeven met de echte sjablonen en CSS van het notitietype uit Anki, met voorbeeldgegevens."
+  },
+  "backup_export": {
+    "message": "Instellingen exporteren"
+  },
+  "backup_export_button": {
+    "message": "JSON downloaden"
+  },
+  "backup_include_keys": {
+    "message": "inclusief API-sleutels"
+  },
+  "backup_import": {
+    "message": "Instellingen importeren"
+  },
+  "backup_import_hint": {
+    "message": "Vervangt de huidige instellingen en veldtoewijzingen. API-sleutels worden alleen geïmporteerd als het bestand ze bevat."
+  },
+  "backup_import_confirm": {
+    "message": "Instellingen importeren? Veldtoewijzingen: $MAPPINGS$, API-sleutels inbegrepen: $KEYS$. De huidige instellingen worden vervangen.",
+    "placeholders": {
+      "MAPPINGS": {
+        "content": "$1"
+      },
+      "KEYS": {
+        "content": "$2"
+      }
+    }
+  },
+  "backup_sync_keys": {
+    "message": "API-sleutels synchroniseren via mijn browseraccount (Chrome Sync)"
+  },
+  "backup_sync_keys_hint": {
+    "message": "Uit: sleutels blijven alleen op dit apparaat; de overige instellingen synchroniseren nog steeds."
+  },
+  "backup_diagnostics": {
+    "message": "Diagnose"
+  },
+  "backup_version": {
+    "message": "Versie"
+  },
+  "backup_granted_origins": {
+    "message": "Toegestane hosts"
+  },
+  "backup_reset": {
+    "message": "Alle instellingen resetten"
+  },
+  "backup_reset_confirm": {
+    "message": "Alle instellingen, toewijzingen en API-sleutels van deze extensie verwijderen?"
+  },
+  "gen_source": {
+    "message": "Ik leer"
+  },
+  "gen_target": {
+    "message": "Vertalen naar"
+  },
+  "gen_level": {
+    "message": "Niveau van de voorbeeldzinnen (ERK)"
+  },
+  "gen_level_hint": {
+    "message": "Bepaalt ook de formulering van de definities."
+  },
+  "gen_translations_count": {
+    "message": "Vertalingen"
+  },
+  "gen_examples_count": {
+    "message": "Voorbeelden"
+  },
+  "gen_synonyms_count": {
+    "message": "Synoniemen (max.)"
+  },
+  "gen_parts": {
+    "message": "Genereren"
+  },
+  "gen_transcription": {
+    "message": "Transcriptie (IPA)"
+  },
+  "gen_partOfSpeech": {
+    "message": "Woordsoort"
+  },
+  "gen_definition": {
+    "message": "Definitie in de brontaal"
+  },
+  "gen_synonyms": {
+    "message": "Synoniemen"
+  },
+  "gen_grammar": {
+    "message": "Grammaticanotities (geslacht, meervoud, onregelmatige vormen, aspect…)"
+  },
+  "gen_exampleTranslations": {
+    "message": "Voorbeeldzinnen vertalen"
+  },
+  "gen_extra": {
+    "message": "Extra instructies voor het model"
+  },
+  "gen_extra_hint": {
+    "message": "Optioneel. Wordt ongewijzigd aan de prompt toegevoegd, bijv. „Use British spelling” of „Examples about software engineering”."
+  },
+  "media_audio": {
+    "message": "Uitspraakaudio"
+  },
+  "media_audio_order_hint": {
+    "message": "Bronnen worden in deze volgorde geprobeerd; de eerste met een opname wint."
+  },
+  "audio_dictionary": {
+    "message": "Woordenboekopname (dictionaryapi.dev, alleen Engels)"
+  },
+  "audio_wiktionary": {
+    "message": "Opname van Wiktionary / Wikimedia Commons"
+  },
+  "audio_tts": {
+    "message": "Google tekst-naar-spraak"
+  },
+  "media_allow_ogg": {
+    "message": ".ogg-bestanden toestaan (niet afspeelbaar op AnkiMobile/iOS)"
+  },
+  "media_image": {
+    "message": "Afbeelding van Wikipedia / Wikimedia Commons"
+  },
+  "media_image_hint": {
+    "message": "Het model kiest het Wikipedia-artikel dat bij de betekenis past; anders een zoekopdracht op Commons."
+  },
+  "media_image_width": {
+    "message": "Max. breedte (px)"
+  },
+  "media_store_credit": {
+    "message": "Auteur en licentie opslaan (vereist door CC BY / CC BY-SA)"
+  },
+  "ctx_root": {
+    "message": "Toevoegen aan Anki: „%s”"
+  },
+  "ctx_default": {
+    "message": "Toevoegen aan „$DECK$”",
+    "placeholders": {
+      "DECK": {
+        "content": "$1"
+      }
+    }
+  },
+  "ctx_editor": {
+    "message": "Openen in editor…"
+  },
+  "popup_shift_enter": {
+    "message": "Shift+Enter: controleren vóór toevoegen"
+  },
+  "editor_no_job": {
+    "message": "Geen kaart om te bewerken – open de editor vanuit de pop-up of het contextmenu."
+  },
+  "editor_generating": {
+    "message": "Kaart wordt gegenereerd…"
+  },
+  "editor_extra_tags": {
+    "message": "Extra tags"
+  },
+  "editor_hint_placeholder": {
+    "message": "Hint voor opnieuw genereren, bijv. „de werkwoordsbetekenis”, „formeel register”"
+  },
+  "editor_regenerate": {
+    "message": "Opnieuw genereren"
+  },
+  "editor_add": {
+    "message": "Toevoegen aan Anki"
+  },
+  "mode_single": {
+    "message": "Eén woord"
+  },
+  "mode_batch": {
+    "message": "Lijst"
+  },
+  "batch_placeholder": {
+    "message": "Eén woord per regel (of door komma's gescheiden)"
+  },
+  "batch_run": {
+    "message": "$COUNT$ toevoegen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "batch_running": {
+    "message": "$DONE$ / $TOTAL$…",
+    "placeholders": {
+      "DONE": {
+        "content": "$1"
+      },
+      "TOTAL": {
+        "content": "$2"
+      }
+    }
+  },
+  "batch_summary": {
+    "message": "$ADDED$ toegevoegd · $DUP$ duplicaten · $ERR$ fouten",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "DUP": {
+        "content": "$2"
+      },
+      "ERR": {
+        "content": "$3"
+      }
+    }
+  },
+  "batch_cancel": {
+    "message": "Annuleren"
+  },
+  "batch_resume": {
+    "message": "Rest hervatten"
+  },
+  "batch_clear": {
+    "message": "Wissen"
+  },
+  "bubble_add": {
+    "message": "Toevoegen aan Anki"
+  },
+  "bubble_edit": {
+    "message": "Bewerken…"
+  },
+  "bubble_no_translation": {
+    "message": "(geen directe vertaling)"
+  },
+  "ui_on_pages": {
+    "message": "Op webpagina's en in de pop-up"
+  },
+  "ui_quick_translate": {
+    "message": "Een directe Google-vertaling tonen tijdens het typen in de pop-up"
+  },
+  "ui_selection_bubble": {
+    "message": "Een ballon met directe vertaling en „Toevoegen aan Anki” tonen wanneer ik tekst op een pagina selecteer"
+  },
+  "ui_selection_bubble_hint": {
+    "message": "Vereist toestemming om op alle sites te draaien; Chrome vraagt dit één keer. Gebruikt het gratis Google Translate-eindpunt, geen LLM-tokens."
+  },
+  "ui_selection_bubble_denied": {
+    "message": "Toestemming niet verleend – de ballon blijft uit."
+  },
+  "cmd_hint": {
+    "message": "Sneltoets: Alt+A (wijzigen via chrome://extensions/shortcuts)"
+  },
+  "ui_bubble_trigger": {
+    "message": "Ballon tonen"
+  },
+  "trigger_shift": {
+    "message": "alleen met Shift ingedrukt"
+  },
+  "trigger_alt": {
+    "message": "alleen met Alt ingedrukt"
+  },
+  "trigger_always": {
+    "message": "bij elke selectie"
+  },
+  "bubble_permission": {
+    "message": "Toegang tot alle sites"
+  },
+  "bubble_registered": {
+    "message": "Script geregistreerd"
+  },
+  "bubble_injected": {
+    "message": "geactiveerd in $COUNT$ open tabblad(en)",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "bubble_restricted_hint": {
+    "message": "Werkt niet op chrome://-pagina's, in de Chrome Web Store, in pdf's en op pagina's van andere extensies."
+  }
+}

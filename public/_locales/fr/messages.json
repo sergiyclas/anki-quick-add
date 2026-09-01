@@ -1,0 +1,555 @@
+{
+  "extName": {
+    "message": "Anki Quick Add"
+  },
+  "extDescription": {
+    "message": "Tapez ou sélectionnez un mot et obtenez une carte Anki complète : traduction, transcription, exemples, audio et image, générés par le fournisseur de LLM de votre choix."
+  },
+  "actionTitle": {
+    "message": "Anki Quick Add (Alt+A)"
+  },
+  "cmdOpen": {
+    "message": "Ouvrir Anki Quick Add"
+  },
+  "popup_placeholder": {
+    "message": "Mot ou expression, puis Entrée"
+  },
+  "popup_settings": {
+    "message": "Paramètres"
+  },
+  "popup_adding": {
+    "message": "Ajout de « $WORD$ »…",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_added": {
+    "message": "Ajouté : $WORD$ – $TRANSLATION$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "TRANSLATION": {
+        "content": "$2"
+      }
+    }
+  },
+  "popup_duplicate": {
+    "message": "Déjà dans la collection : $WORD$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_anki_ok": {
+    "message": "Anki : connecté"
+  },
+  "popup_anki_offline": {
+    "message": "Anki : hors ligne"
+  },
+  "popup_no_key": {
+    "message": "Pas de clé API"
+  },
+  "options_title": {
+    "message": "Anki Quick Add – Paramètres"
+  },
+  "tab_providers": {
+    "message": "Fournisseurs"
+  },
+  "tab_anki": {
+    "message": "Anki"
+  },
+  "tab_generation": {
+    "message": "Langues et génération"
+  },
+  "tab_preview": {
+    "message": "Aperçu"
+  },
+  "tab_backup": {
+    "message": "Sauvegarde"
+  },
+  "save": {
+    "message": "Enregistrer"
+  },
+  "saved": {
+    "message": "Enregistré"
+  },
+  "editor_title": {
+    "message": "Ajouter à Anki"
+  },
+  "err_empty_input": {
+    "message": "Rien à ajouter"
+  },
+  "err_no_api_key": {
+    "message": "Clé API non définie – ouvrez Paramètres → Fournisseurs"
+  },
+  "err_anki_unreachable": {
+    "message": "Anki n'est pas lancé ou AnkiConnect n'est pas installé"
+  },
+  "opt_provider": {
+    "message": "Fournisseur"
+  },
+  "opt_api_key": {
+    "message": "Clé API"
+  },
+  "opt_model": {
+    "message": "Modèle"
+  },
+  "opt_model_hint": {
+    "message": "Choisissez dans la liste ou saisissez n'importe quel identifiant de modèle pris en charge par votre fournisseur."
+  },
+  "opt_effort": {
+    "message": "Effort de raisonnement"
+  },
+  "opt_anki_url": {
+    "message": "URL d'AnkiConnect"
+  },
+  "opt_deck": {
+    "message": "Paquet"
+  },
+  "opt_note_type": {
+    "message": "Type de note"
+  },
+  "opt_tags": {
+    "message": "Étiquettes"
+  },
+  "opt_tags_hint": {
+    "message": "Séparées par des virgules. Une étiquette de paire de langues (p. ex. en-fr) est ajoutée automatiquement."
+  },
+  "refresh": {
+    "message": "Actualiser"
+  },
+  "opt_preset": {
+    "message": "Service"
+  },
+  "opt_base_url": {
+    "message": "URL de base"
+  },
+  "opt_json_mode": {
+    "message": "Mode JSON"
+  },
+  "opt_json_mode_hint": {
+    "message": "json_schema = sortie structurée stricte ; json_object = mode JSON simple avec le schéma dans le prompt (utilisé automatiquement si le serveur refuse json_schema)."
+  },
+  "opt_key_optional": {
+    "message": "inutile pour les serveurs locaux"
+  },
+  "opt_key_needs_host": {
+    "message": "Saisissez d'abord l'URL de base – la clé est enregistrée par hôte."
+  },
+  "refresh_models": {
+    "message": "Actualiser les modèles"
+  },
+  "models_fetched": {
+    "message": "$COUNT$ modèles récupérés auprès du fournisseur",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "host_not_granted": {
+    "message": "L'extension n'a pas l'autorisation d'accéder à $HOST$",
+    "placeholders": {
+      "HOST": {
+        "content": "$1"
+      }
+    }
+  },
+  "grant_access": {
+    "message": "Autoriser l'accès"
+  },
+  "unsaved": {
+    "message": "modifications non enregistrées"
+  },
+  "yes": {
+    "message": "oui"
+  },
+  "no": {
+    "message": "non"
+  },
+  "opt_dup_policy": {
+    "message": "Si le mot existe déjà"
+  },
+  "dup_skip": {
+    "message": "Ignorer (ne rien faire)"
+  },
+  "dup_add": {
+    "message": "Ajouter quand même (autoriser le doublon)"
+  },
+  "dup_update": {
+    "message": "Mettre à jour : remplir les champs vides de la note existante"
+  },
+  "opt_dedupe_scope": {
+    "message": "Chercher les doublons dans"
+  },
+  "scope_collection": {
+    "message": "toute la collection"
+  },
+  "scope_deck": {
+    "message": "le paquet cible uniquement"
+  },
+  "opt_auto_lang_tag": {
+    "message": "Ajouter une étiquette de paire de langues (p. ex. en-fr)"
+  },
+  "opt_production": {
+    "message": "Créer aussi la carte inverse (traduction → mot)"
+  },
+  "note_type_missing": {
+    "message": "Ce type de note n'existe pas encore dans Anki."
+  },
+  "create_note_type": {
+    "message": "Créer le type de note"
+  },
+  "note_type_created": {
+    "message": "Créé"
+  },
+  "note_type_builtin_hint": {
+    "message": "Type de note intégré avec un champ pour chaque élément généré et un modèle propre à deux cartes."
+  },
+  "mapping_title": {
+    "message": "Correspondance des champs"
+  },
+  "mapping_hint": {
+    "message": "Quel élément généré va dans quel champ du type de note. Les champs média reçoivent l'audio / l'image ; le champ de détection des doublons est consulté avant l'ajout."
+  },
+  "not_mapped": {
+    "message": "– non enregistré –"
+  },
+  "mapping_dedupe_field": {
+    "message": "Détection des doublons par"
+  },
+  "mapping_static": {
+    "message": "Valeurs fixes"
+  },
+  "fmt_comma": {
+    "message": "séparés par des virgules"
+  },
+  "fmt_lines": {
+    "message": "un par ligne"
+  },
+  "fmt_list": {
+    "message": "liste à puces"
+  },
+  "slot_word": {
+    "message": "Mot"
+  },
+  "slot_translations": {
+    "message": "Traductions"
+  },
+  "slot_transcription": {
+    "message": "Transcription (API)"
+  },
+  "slot_partOfSpeech": {
+    "message": "Catégorie grammaticale"
+  },
+  "slot_definition": {
+    "message": "Définition"
+  },
+  "slot_synonyms": {
+    "message": "Synonymes"
+  },
+  "slot_examples": {
+    "message": "Exemples"
+  },
+  "slot_grammar": {
+    "message": "Notes de grammaire"
+  },
+  "slot_context": {
+    "message": "Phrase source (contexte)"
+  },
+  "slot_audio": {
+    "message": "Audio"
+  },
+  "slot_image": {
+    "message": "Image"
+  },
+  "slot_imageCredit": {
+    "message": "Crédit de l'image"
+  },
+  "preview_front": {
+    "message": "Recto"
+  },
+  "preview_back": {
+    "message": "Verso"
+  },
+  "preview_night": {
+    "message": "Mode nuit"
+  },
+  "preview_not_generated": {
+    "message": "Cette carte ne serait pas générée pour l'exemple (son recto est vide)."
+  },
+  "preview_hint": {
+    "message": "Rendu avec les vrais modèles et le CSS du type de note depuis Anki, avec des données d'exemple."
+  },
+  "backup_export": {
+    "message": "Exporter les paramètres"
+  },
+  "backup_export_button": {
+    "message": "Télécharger le JSON"
+  },
+  "backup_include_keys": {
+    "message": "inclure les clés API"
+  },
+  "backup_import": {
+    "message": "Importer les paramètres"
+  },
+  "backup_import_hint": {
+    "message": "Remplace les paramètres et correspondances de champs actuels. Les clés API ne sont importées que si le fichier en contient."
+  },
+  "backup_import_confirm": {
+    "message": "Importer les paramètres ? Correspondances de champs : $MAPPINGS$, clés API incluses : $KEYS$. Les paramètres actuels seront remplacés.",
+    "placeholders": {
+      "MAPPINGS": {
+        "content": "$1"
+      },
+      "KEYS": {
+        "content": "$2"
+      }
+    }
+  },
+  "backup_sync_keys": {
+    "message": "Synchroniser les clés API via mon compte navigateur (Chrome Sync)"
+  },
+  "backup_sync_keys_hint": {
+    "message": "Désactivé : les clés restent sur cet appareil uniquement ; les autres paramètres sont toujours synchronisés."
+  },
+  "backup_diagnostics": {
+    "message": "Diagnostic"
+  },
+  "backup_version": {
+    "message": "Version"
+  },
+  "backup_granted_origins": {
+    "message": "Hôtes autorisés"
+  },
+  "backup_reset": {
+    "message": "Réinitialiser tous les paramètres"
+  },
+  "backup_reset_confirm": {
+    "message": "Supprimer tous les paramètres, correspondances et clés API de cette extension ?"
+  },
+  "gen_source": {
+    "message": "J'apprends"
+  },
+  "gen_target": {
+    "message": "Traduire en"
+  },
+  "gen_level": {
+    "message": "Niveau des phrases d'exemple (CECRL)"
+  },
+  "gen_level_hint": {
+    "message": "Guide aussi la formulation des définitions."
+  },
+  "gen_translations_count": {
+    "message": "Traductions"
+  },
+  "gen_examples_count": {
+    "message": "Exemples"
+  },
+  "gen_synonyms_count": {
+    "message": "Synonymes (max.)"
+  },
+  "gen_parts": {
+    "message": "Générer"
+  },
+  "gen_transcription": {
+    "message": "Transcription (API)"
+  },
+  "gen_partOfSpeech": {
+    "message": "Catégorie grammaticale"
+  },
+  "gen_definition": {
+    "message": "Définition dans la langue source"
+  },
+  "gen_synonyms": {
+    "message": "Synonymes"
+  },
+  "gen_grammar": {
+    "message": "Notes de grammaire (genre, pluriel, formes irrégulières, aspect…)"
+  },
+  "gen_exampleTranslations": {
+    "message": "Traduire les phrases d'exemple"
+  },
+  "gen_extra": {
+    "message": "Instructions supplémentaires pour le modèle"
+  },
+  "gen_extra_hint": {
+    "message": "Facultatif. Ajouté tel quel au prompt, p. ex. « Use British spelling » ou « Examples about software engineering »."
+  },
+  "media_audio": {
+    "message": "Audio de prononciation"
+  },
+  "media_audio_order_hint": {
+    "message": "Les sources sont essayées dans cet ordre ; la première qui a un enregistrement l'emporte."
+  },
+  "audio_dictionary": {
+    "message": "Enregistrement de dictionnaire (dictionaryapi.dev, anglais uniquement)"
+  },
+  "audio_wiktionary": {
+    "message": "Enregistrement Wiktionary / Wikimedia Commons"
+  },
+  "audio_tts": {
+    "message": "Synthèse vocale Google"
+  },
+  "media_allow_ogg": {
+    "message": "Autoriser les fichiers .ogg (illisibles sur AnkiMobile/iOS)"
+  },
+  "media_image": {
+    "message": "Image de Wikipédia / Wikimedia Commons"
+  },
+  "media_image_hint": {
+    "message": "Le modèle choisit l'article Wikipédia correspondant au sens ; à défaut, une recherche sur Commons."
+  },
+  "media_image_width": {
+    "message": "Largeur max. (px)"
+  },
+  "media_store_credit": {
+    "message": "Enregistrer l'auteur et la licence (requis par CC BY / CC BY-SA)"
+  },
+  "ctx_root": {
+    "message": "Ajouter à Anki : « %s »"
+  },
+  "ctx_default": {
+    "message": "Ajouter à « $DECK$ »",
+    "placeholders": {
+      "DECK": {
+        "content": "$1"
+      }
+    }
+  },
+  "ctx_editor": {
+    "message": "Ouvrir dans l'éditeur…"
+  },
+  "popup_shift_enter": {
+    "message": "Maj+Entrée : vérifier avant d'ajouter"
+  },
+  "editor_no_job": {
+    "message": "Aucune carte à modifier – ouvrez l'éditeur depuis le popup ou le menu contextuel."
+  },
+  "editor_generating": {
+    "message": "Génération de la carte…"
+  },
+  "editor_extra_tags": {
+    "message": "Étiquettes supplémentaires"
+  },
+  "editor_hint_placeholder": {
+    "message": "Indication pour la régénération, p. ex. « le sens verbal », « registre soutenu »"
+  },
+  "editor_regenerate": {
+    "message": "Régénérer"
+  },
+  "editor_add": {
+    "message": "Ajouter à Anki"
+  },
+  "mode_single": {
+    "message": "Un mot"
+  },
+  "mode_batch": {
+    "message": "Liste"
+  },
+  "batch_placeholder": {
+    "message": "Un mot par ligne (ou séparés par des virgules)"
+  },
+  "batch_run": {
+    "message": "Ajouter $COUNT$",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "batch_running": {
+    "message": "$DONE$ / $TOTAL$…",
+    "placeholders": {
+      "DONE": {
+        "content": "$1"
+      },
+      "TOTAL": {
+        "content": "$2"
+      }
+    }
+  },
+  "batch_summary": {
+    "message": "$ADDED$ ajoutés · $DUP$ doublons · $ERR$ erreurs",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "DUP": {
+        "content": "$2"
+      },
+      "ERR": {
+        "content": "$3"
+      }
+    }
+  },
+  "batch_cancel": {
+    "message": "Annuler"
+  },
+  "batch_resume": {
+    "message": "Reprendre le reste"
+  },
+  "batch_clear": {
+    "message": "Effacer"
+  },
+  "bubble_add": {
+    "message": "Ajouter à Anki"
+  },
+  "bubble_edit": {
+    "message": "Modifier…"
+  },
+  "bubble_no_translation": {
+    "message": "(pas de traduction instantanée)"
+  },
+  "ui_on_pages": {
+    "message": "Sur les pages web et dans le popup"
+  },
+  "ui_quick_translate": {
+    "message": "Afficher une traduction Google instantanée pendant la saisie dans le popup"
+  },
+  "ui_selection_bubble": {
+    "message": "Afficher une bulle avec une traduction instantanée et « Ajouter à Anki » quand je sélectionne du texte sur une page"
+  },
+  "ui_selection_bubble_hint": {
+    "message": "Nécessite l'autorisation de s'exécuter sur tous les sites ; Chrome la demandera une fois. Utilise le point d'accès gratuit de Google Traduction, sans jetons LLM."
+  },
+  "ui_selection_bubble_denied": {
+    "message": "Autorisation refusée – la bulle reste désactivée."
+  },
+  "cmd_hint": {
+    "message": "Raccourci : Alt+A (à modifier dans chrome://extensions/shortcuts)"
+  },
+  "ui_bubble_trigger": {
+    "message": "Afficher la bulle"
+  },
+  "trigger_shift": {
+    "message": "seulement avec Maj enfoncée"
+  },
+  "trigger_alt": {
+    "message": "seulement avec Alt enfoncée"
+  },
+  "trigger_always": {
+    "message": "à chaque sélection"
+  },
+  "bubble_permission": {
+    "message": "Accès à tous les sites"
+  },
+  "bubble_registered": {
+    "message": "Script enregistré"
+  },
+  "bubble_injected": {
+    "message": "activé dans $COUNT$ onglet(s) ouvert(s)",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "bubble_restricted_hint": {
+    "message": "Ne fonctionne pas sur les pages chrome://, le Chrome Web Store, les PDF et les pages d'autres extensions."
+  }
+}

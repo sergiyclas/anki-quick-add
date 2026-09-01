@@ -1,0 +1,555 @@
+{
+  "extName": {
+    "message": "Anki Quick Add"
+  },
+  "extDescription": {
+    "message": "Bir kelime yazın veya seçin; çeviri, transkripsiyon, örnekler, ses ve görselle eksiksiz bir Anki kartı alın – seçtiğiniz LLM sağlayıcısı tarafından üretilir."
+  },
+  "actionTitle": {
+    "message": "Anki Quick Add (Alt+A)"
+  },
+  "cmdOpen": {
+    "message": "Anki Quick Add'i aç"
+  },
+  "popup_placeholder": {
+    "message": "Kelime veya ifade, ardından Enter"
+  },
+  "popup_settings": {
+    "message": "Ayarlar"
+  },
+  "popup_adding": {
+    "message": "“$WORD$” ekleniyor…",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_added": {
+    "message": "Eklendi: $WORD$ – $TRANSLATION$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "TRANSLATION": {
+        "content": "$2"
+      }
+    }
+  },
+  "popup_duplicate": {
+    "message": "Koleksiyonda zaten var: $WORD$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_anki_ok": {
+    "message": "Anki: bağlı"
+  },
+  "popup_anki_offline": {
+    "message": "Anki: çevrimdışı"
+  },
+  "popup_no_key": {
+    "message": "API anahtarı yok"
+  },
+  "options_title": {
+    "message": "Anki Quick Add – Ayarlar"
+  },
+  "tab_providers": {
+    "message": "Sağlayıcılar"
+  },
+  "tab_anki": {
+    "message": "Anki"
+  },
+  "tab_generation": {
+    "message": "Diller ve üretim"
+  },
+  "tab_preview": {
+    "message": "Önizleme"
+  },
+  "tab_backup": {
+    "message": "Yedekleme"
+  },
+  "save": {
+    "message": "Kaydet"
+  },
+  "saved": {
+    "message": "Kaydedildi"
+  },
+  "editor_title": {
+    "message": "Anki'ye ekle"
+  },
+  "err_empty_input": {
+    "message": "Eklenecek bir şey yok"
+  },
+  "err_no_api_key": {
+    "message": "API anahtarı ayarlanmamış – Ayarlar → Sağlayıcılar'ı açın"
+  },
+  "err_anki_unreachable": {
+    "message": "Anki çalışmıyor veya AnkiConnect kurulu değil"
+  },
+  "opt_provider": {
+    "message": "Sağlayıcı"
+  },
+  "opt_api_key": {
+    "message": "API anahtarı"
+  },
+  "opt_model": {
+    "message": "Model"
+  },
+  "opt_model_hint": {
+    "message": "Listeden seçin veya sağlayıcınızın desteklediği herhangi bir model kimliğini yazın."
+  },
+  "opt_effort": {
+    "message": "Akıl yürütme çabası"
+  },
+  "opt_anki_url": {
+    "message": "AnkiConnect URL'si"
+  },
+  "opt_deck": {
+    "message": "Deste"
+  },
+  "opt_note_type": {
+    "message": "Not türü"
+  },
+  "opt_tags": {
+    "message": "Etiketler"
+  },
+  "opt_tags_hint": {
+    "message": "Virgülle ayrılır. Dil çifti etiketi (örn. en-tr) otomatik eklenir."
+  },
+  "refresh": {
+    "message": "Yenile"
+  },
+  "opt_preset": {
+    "message": "Servis"
+  },
+  "opt_base_url": {
+    "message": "Temel URL"
+  },
+  "opt_json_mode": {
+    "message": "JSON modu"
+  },
+  "opt_json_mode_hint": {
+    "message": "json_schema = katı yapılandırılmış çıktı; json_object = şemanın istemde yer aldığı düz JSON modu (sunucu json_schema'yı reddederse otomatik kullanılır)."
+  },
+  "opt_key_optional": {
+    "message": "yerel sunucular için gerekmez"
+  },
+  "opt_key_needs_host": {
+    "message": "Önce temel URL'yi girin – anahtar her ana makine için ayrı saklanır."
+  },
+  "refresh_models": {
+    "message": "Modelleri yenile"
+  },
+  "models_fetched": {
+    "message": "Sağlayıcıdan $COUNT$ model alındı",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "host_not_granted": {
+    "message": "Uzantının $HOST$ adresine erişim izni yok",
+    "placeholders": {
+      "HOST": {
+        "content": "$1"
+      }
+    }
+  },
+  "grant_access": {
+    "message": "Erişim ver"
+  },
+  "unsaved": {
+    "message": "kaydedilmemiş değişiklikler"
+  },
+  "yes": {
+    "message": "evet"
+  },
+  "no": {
+    "message": "hayır"
+  },
+  "opt_dup_policy": {
+    "message": "Kelime zaten varsa"
+  },
+  "dup_skip": {
+    "message": "Atla (hiçbir şey yapma)"
+  },
+  "dup_add": {
+    "message": "Yine de ekle (kopyaya izin ver)"
+  },
+  "dup_update": {
+    "message": "Güncelle: mevcut notun boş alanlarını doldur"
+  },
+  "opt_dedupe_scope": {
+    "message": "Kopyaları şurada ara"
+  },
+  "scope_collection": {
+    "message": "tüm koleksiyon"
+  },
+  "scope_deck": {
+    "message": "yalnızca hedef deste"
+  },
+  "opt_auto_lang_tag": {
+    "message": "Dil çifti etiketi ekle (örn. en-tr)"
+  },
+  "opt_production": {
+    "message": "Ters kartı da oluştur (çeviri → kelime)"
+  },
+  "note_type_missing": {
+    "message": "Bu not türü Anki'de henüz yok."
+  },
+  "create_note_type": {
+    "message": "Not türü oluştur"
+  },
+  "note_type_created": {
+    "message": "Oluşturuldu"
+  },
+  "note_type_builtin_hint": {
+    "message": "Üretilen her bölüm için alanları olan ve temiz iki kartlı şablona sahip yerleşik not türü."
+  },
+  "mapping_title": {
+    "message": "Alan eşlemesi"
+  },
+  "mapping_hint": {
+    "message": "Üretilen hangi bölümün not türünün hangi alanına gideceği. Medya alanları ses / görsel alır; kopya denetimi alanı eklemeden önce aranır."
+  },
+  "not_mapped": {
+    "message": "– kaydetme –"
+  },
+  "mapping_dedupe_field": {
+    "message": "Kopya denetimi alanı"
+  },
+  "mapping_static": {
+    "message": "Sabit değerler"
+  },
+  "fmt_comma": {
+    "message": "virgülle ayrılmış"
+  },
+  "fmt_lines": {
+    "message": "her satıra bir tane"
+  },
+  "fmt_list": {
+    "message": "madde işaretli liste"
+  },
+  "slot_word": {
+    "message": "Kelime"
+  },
+  "slot_translations": {
+    "message": "Çeviriler"
+  },
+  "slot_transcription": {
+    "message": "Transkripsiyon (IPA)"
+  },
+  "slot_partOfSpeech": {
+    "message": "Sözcük türü"
+  },
+  "slot_definition": {
+    "message": "Tanım"
+  },
+  "slot_synonyms": {
+    "message": "Eş anlamlılar"
+  },
+  "slot_examples": {
+    "message": "Örnekler"
+  },
+  "slot_grammar": {
+    "message": "Dilbilgisi notları"
+  },
+  "slot_context": {
+    "message": "Kaynak cümle (bağlam)"
+  },
+  "slot_audio": {
+    "message": "Ses"
+  },
+  "slot_image": {
+    "message": "Görsel"
+  },
+  "slot_imageCredit": {
+    "message": "Görsel kaynağı"
+  },
+  "preview_front": {
+    "message": "Ön yüz"
+  },
+  "preview_back": {
+    "message": "Arka yüz"
+  },
+  "preview_night": {
+    "message": "Gece modu"
+  },
+  "preview_not_generated": {
+    "message": "Bu kart örnek için üretilmezdi (ön yüzü boş)."
+  },
+  "preview_hint": {
+    "message": "Anki'deki not türünün gerçek şablonları ve CSS'i ile örnek verilerle oluşturuldu."
+  },
+  "backup_export": {
+    "message": "Ayarları dışa aktar"
+  },
+  "backup_export_button": {
+    "message": "JSON indir"
+  },
+  "backup_include_keys": {
+    "message": "API anahtarlarını dahil et"
+  },
+  "backup_import": {
+    "message": "Ayarları içe aktar"
+  },
+  "backup_import_hint": {
+    "message": "Mevcut ayarları ve alan eşlemelerini değiştirir. API anahtarları yalnızca dosyada varsa içe aktarılır."
+  },
+  "backup_import_confirm": {
+    "message": "Ayarlar içe aktarılsın mı? Alan eşlemeleri: $MAPPINGS$, API anahtarları dahil: $KEYS$. Mevcut ayarlar değiştirilecek.",
+    "placeholders": {
+      "MAPPINGS": {
+        "content": "$1"
+      },
+      "KEYS": {
+        "content": "$2"
+      }
+    }
+  },
+  "backup_sync_keys": {
+    "message": "API anahtarlarını tarayıcı hesabım üzerinden eşitle (Chrome Sync)"
+  },
+  "backup_sync_keys_hint": {
+    "message": "Kapalı: anahtarlar yalnızca bu cihazda kalır; diğer ayarlar eşitlenmeye devam eder."
+  },
+  "backup_diagnostics": {
+    "message": "Tanılama"
+  },
+  "backup_version": {
+    "message": "Sürüm"
+  },
+  "backup_granted_origins": {
+    "message": "İzin verilen ana makineler"
+  },
+  "backup_reset": {
+    "message": "Tüm ayarları sıfırla"
+  },
+  "backup_reset_confirm": {
+    "message": "Bu uzantının tüm ayarları, eşlemeleri ve API anahtarları silinsin mi?"
+  },
+  "gen_source": {
+    "message": "Öğrendiğim dil"
+  },
+  "gen_target": {
+    "message": "Çevrilecek dil"
+  },
+  "gen_level": {
+    "message": "Örnek cümlelerin seviyesi (CEFR)"
+  },
+  "gen_level_hint": {
+    "message": "Tanımların ifadesini de yönlendirir."
+  },
+  "gen_translations_count": {
+    "message": "Çeviri"
+  },
+  "gen_examples_count": {
+    "message": "Örnek"
+  },
+  "gen_synonyms_count": {
+    "message": "Eş anlamlı (en fazla)"
+  },
+  "gen_parts": {
+    "message": "Üret"
+  },
+  "gen_transcription": {
+    "message": "Transkripsiyon (IPA)"
+  },
+  "gen_partOfSpeech": {
+    "message": "Sözcük türü"
+  },
+  "gen_definition": {
+    "message": "Kaynak dilde tanım"
+  },
+  "gen_synonyms": {
+    "message": "Eş anlamlılar"
+  },
+  "gen_grammar": {
+    "message": "Dilbilgisi notları (cinsiyet, çoğul, düzensiz biçimler, görünüş…)"
+  },
+  "gen_exampleTranslations": {
+    "message": "Örnek cümleleri çevir"
+  },
+  "gen_extra": {
+    "message": "Model için ek yönergeler"
+  },
+  "gen_extra_hint": {
+    "message": "İsteğe bağlı. İsteme olduğu gibi eklenir, örn. “Use British spelling” veya “Examples about software engineering”."
+  },
+  "media_audio": {
+    "message": "Telaffuz sesi"
+  },
+  "media_audio_order_hint": {
+    "message": "Kaynaklar bu sırayla denenir; kaydı olan ilk kaynak kazanır."
+  },
+  "audio_dictionary": {
+    "message": "Sözlük kaydı (dictionaryapi.dev, yalnızca İngilizce)"
+  },
+  "audio_wiktionary": {
+    "message": "Wiktionary / Wikimedia Commons kaydı"
+  },
+  "audio_tts": {
+    "message": "Google metin okuma"
+  },
+  "media_allow_ogg": {
+    "message": ".ogg dosyalarına izin ver (AnkiMobile/iOS'ta çalmaz)"
+  },
+  "media_image": {
+    "message": "Wikipedia / Wikimedia Commons'tan görsel"
+  },
+  "media_image_hint": {
+    "message": "Model, anlama uyan Wikipedia maddesini seçer; olmazsa Commons'ta arama yapılır."
+  },
+  "media_image_width": {
+    "message": "En fazla genişlik (px)"
+  },
+  "media_store_credit": {
+    "message": "Yazar ve lisansı sakla (CC BY / CC BY-SA için zorunlu)"
+  },
+  "ctx_root": {
+    "message": "Anki'ye ekle: “%s”"
+  },
+  "ctx_default": {
+    "message": "“$DECK$” destesine ekle",
+    "placeholders": {
+      "DECK": {
+        "content": "$1"
+      }
+    }
+  },
+  "ctx_editor": {
+    "message": "Düzenleyicide aç…"
+  },
+  "popup_shift_enter": {
+    "message": "Shift+Enter: eklemeden önce gözden geçir"
+  },
+  "editor_no_job": {
+    "message": "Düzenlenecek kart yok – düzenleyiciyi açılır pencereden veya bağlam menüsünden açın."
+  },
+  "editor_generating": {
+    "message": "Kart üretiliyor…"
+  },
+  "editor_extra_tags": {
+    "message": "Ek etiketler"
+  },
+  "editor_hint_placeholder": {
+    "message": "Yeniden üretim için ipucu, örn. “fiil anlamı”, “resmî üslup”"
+  },
+  "editor_regenerate": {
+    "message": "Yeniden üret"
+  },
+  "editor_add": {
+    "message": "Anki'ye ekle"
+  },
+  "mode_single": {
+    "message": "Tek kelime"
+  },
+  "mode_batch": {
+    "message": "Liste"
+  },
+  "batch_placeholder": {
+    "message": "Her satıra bir kelime (veya virgülle ayrılmış)"
+  },
+  "batch_run": {
+    "message": "$COUNT$ ekle",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "batch_running": {
+    "message": "$DONE$ / $TOTAL$…",
+    "placeholders": {
+      "DONE": {
+        "content": "$1"
+      },
+      "TOTAL": {
+        "content": "$2"
+      }
+    }
+  },
+  "batch_summary": {
+    "message": "$ADDED$ eklendi · $DUP$ kopya · $ERR$ hata",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "DUP": {
+        "content": "$2"
+      },
+      "ERR": {
+        "content": "$3"
+      }
+    }
+  },
+  "batch_cancel": {
+    "message": "İptal"
+  },
+  "batch_resume": {
+    "message": "Kalanlara devam et"
+  },
+  "batch_clear": {
+    "message": "Temizle"
+  },
+  "bubble_add": {
+    "message": "Anki'ye ekle"
+  },
+  "bubble_edit": {
+    "message": "Düzenle…"
+  },
+  "bubble_no_translation": {
+    "message": "(anında çeviri yok)"
+  },
+  "ui_on_pages": {
+    "message": "Web sayfalarında ve açılır pencerede"
+  },
+  "ui_quick_translate": {
+    "message": "Açılır pencerede yazarken anında Google çevirisi göster"
+  },
+  "ui_selection_bubble": {
+    "message": "Bir sayfada metin seçtiğimde anında çeviri ve “Anki'ye ekle” içeren bir baloncuk göster"
+  },
+  "ui_selection_bubble_hint": {
+    "message": "Tüm sitelerde çalışma izni gerektirir; Chrome bir kez soracaktır. Ücretsiz Google Çeviri uç noktasını kullanır, LLM jetonu harcamaz."
+  },
+  "ui_selection_bubble_denied": {
+    "message": "İzin verilmedi – baloncuk kapalı kalır."
+  },
+  "cmd_hint": {
+    "message": "Kısayol: Alt+A (chrome://extensions/shortcuts adresinden değiştirin)"
+  },
+  "ui_bubble_trigger": {
+    "message": "Baloncuğu göster"
+  },
+  "trigger_shift": {
+    "message": "yalnızca Shift basılıyken"
+  },
+  "trigger_alt": {
+    "message": "yalnızca Alt basılıyken"
+  },
+  "trigger_always": {
+    "message": "her seçimde"
+  },
+  "bubble_permission": {
+    "message": "Tüm sitelere erişim"
+  },
+  "bubble_registered": {
+    "message": "Betik kayıtlı"
+  },
+  "bubble_injected": {
+    "message": "$COUNT$ açık sekmede etkinleştirildi",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "bubble_restricted_hint": {
+    "message": "chrome:// sayfalarında, Chrome Web Mağazası'nda, PDF'lerde ve diğer uzantıların sayfalarında çalışmaz."
+  }
+}

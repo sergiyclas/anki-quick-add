@@ -1,0 +1,26 @@
+{
+  "name": "anki-quick-add",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Chrome extension: type or select a word and get a fully filled Anki card (translation, IPA, examples, audio, image) via the LLM provider of your choice.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build && node scripts/verify-dist.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit && vitest run && vite build && node scripts/verify-dist.mjs",
+    "zip": "node scripts/zip.mjs",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "dependencies": {
+    "preact": "10.29.8"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.2.7",
+    "playwright": "^1.62.1",
+    "typescript": "6.0.3",
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
+  }
+}

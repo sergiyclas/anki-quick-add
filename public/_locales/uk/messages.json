@@ -1,0 +1,555 @@
+{
+  "extName": {
+    "message": "Anki Quick Add"
+  },
+  "extDescription": {
+    "message": "Введи або виділи слово – і отримай повністю заповнену картку Anki: переклад, транскрипція, приклади, аудіо й картинка від обраного тобою LLM-провайдера."
+  },
+  "actionTitle": {
+    "message": "Anki Quick Add (Alt+A)"
+  },
+  "cmdOpen": {
+    "message": "Відкрити Anki Quick Add"
+  },
+  "popup_placeholder": {
+    "message": "Слово або фраза, потім Enter"
+  },
+  "popup_settings": {
+    "message": "Налаштування"
+  },
+  "popup_adding": {
+    "message": "Додаю «$WORD$»…",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_added": {
+    "message": "Додано: $WORD$ – $TRANSLATION$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "TRANSLATION": {
+        "content": "$2"
+      }
+    }
+  },
+  "popup_duplicate": {
+    "message": "Вже є в колекції: $WORD$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_anki_ok": {
+    "message": "Anki: підключено"
+  },
+  "popup_anki_offline": {
+    "message": "Anki: офлайн"
+  },
+  "popup_no_key": {
+    "message": "Немає API-ключа"
+  },
+  "options_title": {
+    "message": "Anki Quick Add – Налаштування"
+  },
+  "tab_providers": {
+    "message": "Провайдери"
+  },
+  "tab_anki": {
+    "message": "Anki"
+  },
+  "tab_generation": {
+    "message": "Мови та генерація"
+  },
+  "tab_preview": {
+    "message": "Прев'ю"
+  },
+  "tab_backup": {
+    "message": "Резервна копія"
+  },
+  "save": {
+    "message": "Зберегти"
+  },
+  "saved": {
+    "message": "Збережено"
+  },
+  "editor_title": {
+    "message": "Додати в Anki"
+  },
+  "err_empty_input": {
+    "message": "Нема чого додавати"
+  },
+  "err_no_api_key": {
+    "message": "API-ключ не задано – відкрий Налаштування → Провайдери"
+  },
+  "err_anki_unreachable": {
+    "message": "Anki не запущений або не встановлений AnkiConnect"
+  },
+  "opt_provider": {
+    "message": "Провайдер"
+  },
+  "opt_api_key": {
+    "message": "API-ключ"
+  },
+  "opt_model": {
+    "message": "Модель"
+  },
+  "opt_model_hint": {
+    "message": "Вибери зі списку або впиши будь-який id моделі, який підтримує провайдер."
+  },
+  "opt_effort": {
+    "message": "Глибина міркування"
+  },
+  "opt_anki_url": {
+    "message": "URL AnkiConnect"
+  },
+  "opt_deck": {
+    "message": "Колода"
+  },
+  "opt_note_type": {
+    "message": "Тип нотатки"
+  },
+  "opt_tags": {
+    "message": "Теги"
+  },
+  "opt_tags_hint": {
+    "message": "Через кому. Тег мовної пари (напр. en-uk) додається автоматично."
+  },
+  "refresh": {
+    "message": "Оновити"
+  },
+  "opt_preset": {
+    "message": "Сервіс"
+  },
+  "opt_base_url": {
+    "message": "Base URL"
+  },
+  "opt_json_mode": {
+    "message": "Режим JSON"
+  },
+  "opt_json_mode_hint": {
+    "message": "json_schema – строгий structured output; json_object – звичайний JSON-режим зі схемою в промпті (вмикається сам, якщо сервер відхиляє json_schema)."
+  },
+  "opt_key_optional": {
+    "message": "для локальних серверів не потрібен"
+  },
+  "opt_key_needs_host": {
+    "message": "Спершу впиши base URL – ключ зберігається окремо для кожного хоста."
+  },
+  "refresh_models": {
+    "message": "Оновити моделі"
+  },
+  "models_fetched": {
+    "message": "Отримано моделей від провайдера: $COUNT$",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "host_not_granted": {
+    "message": "Розширення не має дозволу на доступ до $HOST$",
+    "placeholders": {
+      "HOST": {
+        "content": "$1"
+      }
+    }
+  },
+  "grant_access": {
+    "message": "Надати доступ"
+  },
+  "unsaved": {
+    "message": "є незбережені зміни"
+  },
+  "yes": {
+    "message": "так"
+  },
+  "no": {
+    "message": "ні"
+  },
+  "opt_dup_policy": {
+    "message": "Якщо слово вже є"
+  },
+  "dup_skip": {
+    "message": "Пропустити (нічого не робити)"
+  },
+  "dup_add": {
+    "message": "Додати все одно (дозволити дублікат)"
+  },
+  "dup_update": {
+    "message": "Оновити: дозаповнити порожні поля існуючої нотатки"
+  },
+  "opt_dedupe_scope": {
+    "message": "Шукати дублікати"
+  },
+  "scope_collection": {
+    "message": "по всій колекції"
+  },
+  "scope_deck": {
+    "message": "лише в цільовій колоді"
+  },
+  "opt_auto_lang_tag": {
+    "message": "Додавати тег мовної пари (напр. en-uk)"
+  },
+  "opt_production": {
+    "message": "Створювати й зворотну картку (переклад → слово)"
+  },
+  "note_type_missing": {
+    "message": "Цього типу нотатки ще нема в Anki."
+  },
+  "create_note_type": {
+    "message": "Створити тип нотатки"
+  },
+  "note_type_created": {
+    "message": "Створено"
+  },
+  "note_type_builtin_hint": {
+    "message": "Вбудований тип нотатки з полями для всіх згенерованих частин і акуратним шаблоном на дві картки."
+  },
+  "mapping_title": {
+    "message": "Відповідність полів"
+  },
+  "mapping_hint": {
+    "message": "Яка згенерована частина йде в яке поле типу нотатки. Медіа-поля отримують аудіо / картинку; поле перевірки дублікатів шукається перед додаванням."
+  },
+  "not_mapped": {
+    "message": "– не зберігати –"
+  },
+  "mapping_dedupe_field": {
+    "message": "Перевірка дублікатів за"
+  },
+  "mapping_static": {
+    "message": "Фіксовані значення"
+  },
+  "fmt_comma": {
+    "message": "через кому"
+  },
+  "fmt_lines": {
+    "message": "по одному в рядку"
+  },
+  "fmt_list": {
+    "message": "маркований список"
+  },
+  "slot_word": {
+    "message": "Слово"
+  },
+  "slot_translations": {
+    "message": "Переклади"
+  },
+  "slot_transcription": {
+    "message": "Транскрипція (IPA)"
+  },
+  "slot_partOfSpeech": {
+    "message": "Частина мови"
+  },
+  "slot_definition": {
+    "message": "Визначення"
+  },
+  "slot_synonyms": {
+    "message": "Синоніми"
+  },
+  "slot_examples": {
+    "message": "Приклади"
+  },
+  "slot_grammar": {
+    "message": "Граматична довідка"
+  },
+  "slot_context": {
+    "message": "Речення-джерело (контекст)"
+  },
+  "slot_audio": {
+    "message": "Аудіо"
+  },
+  "slot_image": {
+    "message": "Картинка"
+  },
+  "slot_imageCredit": {
+    "message": "Авторство картинки"
+  },
+  "preview_front": {
+    "message": "Лице"
+  },
+  "preview_back": {
+    "message": "Зворот"
+  },
+  "preview_night": {
+    "message": "Нічний режим"
+  },
+  "preview_not_generated": {
+    "message": "Для зразка ця картка не створилася б (її лицьова сторона порожня)."
+  },
+  "preview_hint": {
+    "message": "Відрендерено справжніми шаблонами і CSS типу нотатки з Anki на зразкових даних."
+  },
+  "backup_export": {
+    "message": "Експорт налаштувань"
+  },
+  "backup_export_button": {
+    "message": "Завантажити JSON"
+  },
+  "backup_include_keys": {
+    "message": "разом з API-ключами"
+  },
+  "backup_import": {
+    "message": "Імпорт налаштувань"
+  },
+  "backup_import_hint": {
+    "message": "Замінює поточні налаштування і відповідності полів. API-ключі імпортуються, лише якщо вони є у файлі."
+  },
+  "backup_import_confirm": {
+    "message": "Імпортувати налаштування? Відповідностей полів: $MAPPINGS$, API-ключі у файлі: $KEYS$. Поточні налаштування буде замінено.",
+    "placeholders": {
+      "MAPPINGS": {
+        "content": "$1"
+      },
+      "KEYS": {
+        "content": "$2"
+      }
+    }
+  },
+  "backup_sync_keys": {
+    "message": "Синхронізувати API-ключі через акаунт браузера (Chrome Sync)"
+  },
+  "backup_sync_keys_hint": {
+    "message": "Вимкнено: ключі лишаються тільки на цьому пристрої; решта налаштувань синхронізується."
+  },
+  "backup_diagnostics": {
+    "message": "Діагностика"
+  },
+  "backup_version": {
+    "message": "Версія"
+  },
+  "backup_granted_origins": {
+    "message": "Дозволені хости"
+  },
+  "backup_reset": {
+    "message": "Скинути всі налаштування"
+  },
+  "backup_reset_confirm": {
+    "message": "Видалити всі налаштування, відповідності полів і API-ключі цього розширення?"
+  },
+  "gen_source": {
+    "message": "Я вивчаю"
+  },
+  "gen_target": {
+    "message": "Перекладати на"
+  },
+  "gen_level": {
+    "message": "Рівень речень-прикладів (CEFR)"
+  },
+  "gen_level_hint": {
+    "message": "Також визначає складність формулювань у визначеннях."
+  },
+  "gen_translations_count": {
+    "message": "Перекладів"
+  },
+  "gen_examples_count": {
+    "message": "Прикладів"
+  },
+  "gen_synonyms_count": {
+    "message": "Синонімів (макс.)"
+  },
+  "gen_parts": {
+    "message": "Генерувати"
+  },
+  "gen_transcription": {
+    "message": "Транскрипцію (IPA)"
+  },
+  "gen_partOfSpeech": {
+    "message": "Частину мови"
+  },
+  "gen_definition": {
+    "message": "Визначення мовою оригіналу"
+  },
+  "gen_synonyms": {
+    "message": "Синоніми"
+  },
+  "gen_grammar": {
+    "message": "Граматичну довідку (рід, множина, неправильні форми, вид…)"
+  },
+  "gen_exampleTranslations": {
+    "message": "Переклад речень-прикладів"
+  },
+  "gen_extra": {
+    "message": "Додаткові інструкції для моделі"
+  },
+  "gen_extra_hint": {
+    "message": "Необов'язково. Додається до промпту як є, напр. «Use British spelling» або «Examples about software engineering»."
+  },
+  "media_audio": {
+    "message": "Аудіо вимови"
+  },
+  "media_audio_order_hint": {
+    "message": "Джерела пробуються в цьому порядку; перше, де є запис, перемагає."
+  },
+  "audio_dictionary": {
+    "message": "Словниковий запис (dictionaryapi.dev, лише англійська)"
+  },
+  "audio_wiktionary": {
+    "message": "Запис з Wiktionary / Wikimedia Commons"
+  },
+  "audio_tts": {
+    "message": "Google text-to-speech"
+  },
+  "media_allow_ogg": {
+    "message": "Дозволити .ogg (не грає на AnkiMobile/iOS)"
+  },
+  "media_image": {
+    "message": "Картинка з Wikipedia / Wikimedia Commons"
+  },
+  "media_image_hint": {
+    "message": "Модель обирає статтю Wikipedia, що відповідає значенню; запасний варіант – пошук по Commons."
+  },
+  "media_image_width": {
+    "message": "Макс. ширина (px)"
+  },
+  "media_store_credit": {
+    "message": "Зберігати автора й ліцензію (вимога CC BY / CC BY-SA)"
+  },
+  "ctx_root": {
+    "message": "Додати в Anki: «%s»"
+  },
+  "ctx_default": {
+    "message": "Додати в «$DECK$»",
+    "placeholders": {
+      "DECK": {
+        "content": "$1"
+      }
+    }
+  },
+  "ctx_editor": {
+    "message": "Відкрити в редакторі…"
+  },
+  "popup_shift_enter": {
+    "message": "Shift+Enter: переглянути перед додаванням"
+  },
+  "editor_no_job": {
+    "message": "Нема картки для редагування – відкрий редактор з попапа або контекстного меню."
+  },
+  "editor_generating": {
+    "message": "Генерую картку…"
+  },
+  "editor_extra_tags": {
+    "message": "Додаткові теги"
+  },
+  "editor_hint_placeholder": {
+    "message": "Підказка для повторної генерації, напр. «значення як дієслово», «формальний стиль»"
+  },
+  "editor_regenerate": {
+    "message": "Згенерувати знову"
+  },
+  "editor_add": {
+    "message": "Додати в Anki"
+  },
+  "mode_single": {
+    "message": "Одне слово"
+  },
+  "mode_batch": {
+    "message": "Список"
+  },
+  "batch_placeholder": {
+    "message": "По одному слову в рядку (або через кому)"
+  },
+  "batch_run": {
+    "message": "Додати $COUNT$",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "batch_running": {
+    "message": "$DONE$ / $TOTAL$…",
+    "placeholders": {
+      "DONE": {
+        "content": "$1"
+      },
+      "TOTAL": {
+        "content": "$2"
+      }
+    }
+  },
+  "batch_summary": {
+    "message": "додано $ADDED$ · дублікатів $DUP$ · помилок $ERR$",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "DUP": {
+        "content": "$2"
+      },
+      "ERR": {
+        "content": "$3"
+      }
+    }
+  },
+  "batch_cancel": {
+    "message": "Скасувати"
+  },
+  "batch_resume": {
+    "message": "Продовжити решту"
+  },
+  "batch_clear": {
+    "message": "Очистити"
+  },
+  "bubble_add": {
+    "message": "Додати в Anki"
+  },
+  "bubble_edit": {
+    "message": "Редагувати…"
+  },
+  "bubble_no_translation": {
+    "message": "(миттєвий переклад недоступний)"
+  },
+  "ui_on_pages": {
+    "message": "На вебсторінках і в попапі"
+  },
+  "ui_quick_translate": {
+    "message": "Показувати миттєвий переклад Google, поки набираю слово в попапі"
+  },
+  "ui_selection_bubble": {
+    "message": "Показувати бульбашку з миттєвим перекладом і «Додати в Anki», коли я виділяю текст на сторінці"
+  },
+  "ui_selection_bubble_hint": {
+    "message": "Потрібен дозвіл на всі сайти; Chrome спитає один раз. Використовує безкоштовний endpoint Google Translate, без токенів LLM."
+  },
+  "ui_selection_bubble_denied": {
+    "message": "Дозвіл не надано – бульбашка лишається вимкненою."
+  },
+  "cmd_hint": {
+    "message": "Гаряча клавіша: Alt+A (змінити: chrome://extensions/shortcuts)"
+  },
+  "ui_bubble_trigger": {
+    "message": "Показувати бульбашку"
+  },
+  "trigger_shift": {
+    "message": "лише із затиснутим Shift"
+  },
+  "trigger_alt": {
+    "message": "лише із затиснутим Alt"
+  },
+  "trigger_always": {
+    "message": "при кожному виділенні"
+  },
+  "bubble_permission": {
+    "message": "Доступ до всіх сайтів"
+  },
+  "bubble_registered": {
+    "message": "Скрипт зареєстровано"
+  },
+  "bubble_injected": {
+    "message": "активовано у відкритих вкладках: $COUNT$",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "bubble_restricted_hint": {
+    "message": "Не працює на сторінках chrome://, у Chrome Web Store, у PDF і на сторінках інших розширень."
+  }
+}

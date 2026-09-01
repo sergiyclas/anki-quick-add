@@ -1,0 +1,555 @@
+{
+  "extName": {
+    "message": "Anki Quick Add"
+  },
+  "extDescription": {
+    "message": "Tippe oder markiere ein Wort und erhalte eine vollständig ausgefüllte Anki-Karte: Übersetzung, Lautschrift, Beispiele, Audio und Bild – erzeugt vom LLM-Anbieter deiner Wahl."
+  },
+  "actionTitle": {
+    "message": "Anki Quick Add (Alt+A)"
+  },
+  "cmdOpen": {
+    "message": "Anki Quick Add öffnen"
+  },
+  "popup_placeholder": {
+    "message": "Wort oder Ausdruck, dann Enter"
+  },
+  "popup_settings": {
+    "message": "Einstellungen"
+  },
+  "popup_adding": {
+    "message": "„$WORD$“ wird hinzugefügt…",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_added": {
+    "message": "Hinzugefügt: $WORD$ – $TRANSLATION$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      },
+      "TRANSLATION": {
+        "content": "$2"
+      }
+    }
+  },
+  "popup_duplicate": {
+    "message": "Bereits in der Sammlung: $WORD$",
+    "placeholders": {
+      "WORD": {
+        "content": "$1"
+      }
+    }
+  },
+  "popup_anki_ok": {
+    "message": "Anki: verbunden"
+  },
+  "popup_anki_offline": {
+    "message": "Anki: offline"
+  },
+  "popup_no_key": {
+    "message": "Kein API-Schlüssel"
+  },
+  "options_title": {
+    "message": "Anki Quick Add – Einstellungen"
+  },
+  "tab_providers": {
+    "message": "Anbieter"
+  },
+  "tab_anki": {
+    "message": "Anki"
+  },
+  "tab_generation": {
+    "message": "Sprachen & Generierung"
+  },
+  "tab_preview": {
+    "message": "Vorschau"
+  },
+  "tab_backup": {
+    "message": "Sicherung"
+  },
+  "save": {
+    "message": "Speichern"
+  },
+  "saved": {
+    "message": "Gespeichert"
+  },
+  "editor_title": {
+    "message": "Zu Anki hinzufügen"
+  },
+  "err_empty_input": {
+    "message": "Nichts hinzuzufügen"
+  },
+  "err_no_api_key": {
+    "message": "API-Schlüssel fehlt – öffne Einstellungen → Anbieter"
+  },
+  "err_anki_unreachable": {
+    "message": "Anki läuft nicht oder AnkiConnect ist nicht installiert"
+  },
+  "opt_provider": {
+    "message": "Anbieter"
+  },
+  "opt_api_key": {
+    "message": "API-Schlüssel"
+  },
+  "opt_model": {
+    "message": "Modell"
+  },
+  "opt_model_hint": {
+    "message": "Aus der Liste wählen oder eine beliebige Modell-ID eingeben, die dein Anbieter unterstützt."
+  },
+  "opt_effort": {
+    "message": "Denkaufwand"
+  },
+  "opt_anki_url": {
+    "message": "AnkiConnect-URL"
+  },
+  "opt_deck": {
+    "message": "Stapel"
+  },
+  "opt_note_type": {
+    "message": "Notiztyp"
+  },
+  "opt_tags": {
+    "message": "Schlagwörter"
+  },
+  "opt_tags_hint": {
+    "message": "Durch Kommas getrennt. Ein Sprachpaar-Schlagwort (z. B. en-de) wird automatisch ergänzt."
+  },
+  "refresh": {
+    "message": "Aktualisieren"
+  },
+  "opt_preset": {
+    "message": "Dienst"
+  },
+  "opt_base_url": {
+    "message": "Basis-URL"
+  },
+  "opt_json_mode": {
+    "message": "JSON-Modus"
+  },
+  "opt_json_mode_hint": {
+    "message": "json_schema = strikte strukturierte Ausgabe; json_object = einfacher JSON-Modus mit dem Schema im Prompt (wird automatisch verwendet, wenn der Server json_schema ablehnt)."
+  },
+  "opt_key_optional": {
+    "message": "für lokale Server nicht nötig"
+  },
+  "opt_key_needs_host": {
+    "message": "Zuerst die Basis-URL eingeben – der Schlüssel wird pro Host gespeichert."
+  },
+  "refresh_models": {
+    "message": "Modelle aktualisieren"
+  },
+  "models_fetched": {
+    "message": "$COUNT$ Modelle vom Anbieter geladen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "host_not_granted": {
+    "message": "Die Erweiterung hat keine Berechtigung für $HOST$",
+    "placeholders": {
+      "HOST": {
+        "content": "$1"
+      }
+    }
+  },
+  "grant_access": {
+    "message": "Zugriff erlauben"
+  },
+  "unsaved": {
+    "message": "ungespeicherte Änderungen"
+  },
+  "yes": {
+    "message": "ja"
+  },
+  "no": {
+    "message": "nein"
+  },
+  "opt_dup_policy": {
+    "message": "Wenn das Wort bereits existiert"
+  },
+  "dup_skip": {
+    "message": "Überspringen (nichts tun)"
+  },
+  "dup_add": {
+    "message": "Trotzdem hinzufügen (Duplikat erlauben)"
+  },
+  "dup_update": {
+    "message": "Aktualisieren: leere Felder der vorhandenen Notiz füllen"
+  },
+  "opt_dedupe_scope": {
+    "message": "Duplikate suchen in"
+  },
+  "scope_collection": {
+    "message": "der gesamten Sammlung"
+  },
+  "scope_deck": {
+    "message": "nur im Zielstapel"
+  },
+  "opt_auto_lang_tag": {
+    "message": "Sprachpaar-Schlagwort hinzufügen (z. B. en-de)"
+  },
+  "opt_production": {
+    "message": "Auch die umgekehrte Karte erstellen (Übersetzung → Wort)"
+  },
+  "note_type_missing": {
+    "message": "Dieser Notiztyp existiert in Anki noch nicht."
+  },
+  "create_note_type": {
+    "message": "Notiztyp erstellen"
+  },
+  "note_type_created": {
+    "message": "Erstellt"
+  },
+  "note_type_builtin_hint": {
+    "message": "Eingebauter Notiztyp mit Feldern für alle erzeugten Teile und einer sauberen Vorlage mit zwei Karten."
+  },
+  "mapping_title": {
+    "message": "Feldzuordnung"
+  },
+  "mapping_hint": {
+    "message": "Welcher erzeugte Teil in welches Feld des Notiztyps kommt. Medienfelder erhalten Audio / Bild; das Duplikatprüfungsfeld wird vor dem Hinzufügen durchsucht."
+  },
+  "not_mapped": {
+    "message": "– nicht speichern –"
+  },
+  "mapping_dedupe_field": {
+    "message": "Duplikatprüfung nach"
+  },
+  "mapping_static": {
+    "message": "Feste Werte"
+  },
+  "fmt_comma": {
+    "message": "kommagetrennt"
+  },
+  "fmt_lines": {
+    "message": "eines pro Zeile"
+  },
+  "fmt_list": {
+    "message": "Aufzählungsliste"
+  },
+  "slot_word": {
+    "message": "Wort"
+  },
+  "slot_translations": {
+    "message": "Übersetzungen"
+  },
+  "slot_transcription": {
+    "message": "Lautschrift (IPA)"
+  },
+  "slot_partOfSpeech": {
+    "message": "Wortart"
+  },
+  "slot_definition": {
+    "message": "Definition"
+  },
+  "slot_synonyms": {
+    "message": "Synonyme"
+  },
+  "slot_examples": {
+    "message": "Beispiele"
+  },
+  "slot_grammar": {
+    "message": "Grammatikhinweise"
+  },
+  "slot_context": {
+    "message": "Quellsatz (Kontext)"
+  },
+  "slot_audio": {
+    "message": "Audio"
+  },
+  "slot_image": {
+    "message": "Bild"
+  },
+  "slot_imageCredit": {
+    "message": "Bildnachweis"
+  },
+  "preview_front": {
+    "message": "Vorderseite"
+  },
+  "preview_back": {
+    "message": "Rückseite"
+  },
+  "preview_night": {
+    "message": "Nachtmodus"
+  },
+  "preview_not_generated": {
+    "message": "Diese Karte würde für das Beispiel nicht erzeugt (ihre Vorderseite ist leer)."
+  },
+  "preview_hint": {
+    "message": "Gerendert mit den echten Vorlagen und dem CSS des Notiztyps aus Anki, mit Beispieldaten."
+  },
+  "backup_export": {
+    "message": "Einstellungen exportieren"
+  },
+  "backup_export_button": {
+    "message": "JSON herunterladen"
+  },
+  "backup_include_keys": {
+    "message": "API-Schlüssel einschließen"
+  },
+  "backup_import": {
+    "message": "Einstellungen importieren"
+  },
+  "backup_import_hint": {
+    "message": "Ersetzt die aktuellen Einstellungen und Feldzuordnungen. API-Schlüssel werden nur importiert, wenn die Datei sie enthält."
+  },
+  "backup_import_confirm": {
+    "message": "Einstellungen importieren? Feldzuordnungen: $MAPPINGS$, API-Schlüssel enthalten: $KEYS$. Die aktuellen Einstellungen werden ersetzt.",
+    "placeholders": {
+      "MAPPINGS": {
+        "content": "$1"
+      },
+      "KEYS": {
+        "content": "$2"
+      }
+    }
+  },
+  "backup_sync_keys": {
+    "message": "API-Schlüssel über mein Browserkonto synchronisieren (Chrome Sync)"
+  },
+  "backup_sync_keys_hint": {
+    "message": "Aus: Schlüssel bleiben nur auf diesem Gerät; andere Einstellungen werden weiterhin synchronisiert."
+  },
+  "backup_diagnostics": {
+    "message": "Diagnose"
+  },
+  "backup_version": {
+    "message": "Version"
+  },
+  "backup_granted_origins": {
+    "message": "Erlaubte Hosts"
+  },
+  "backup_reset": {
+    "message": "Alle Einstellungen zurücksetzen"
+  },
+  "backup_reset_confirm": {
+    "message": "Alle Einstellungen, Zuordnungen und API-Schlüssel dieser Erweiterung löschen?"
+  },
+  "gen_source": {
+    "message": "Ich lerne"
+  },
+  "gen_target": {
+    "message": "Übersetzen nach"
+  },
+  "gen_level": {
+    "message": "Niveau der Beispielsätze (GER)"
+  },
+  "gen_level_hint": {
+    "message": "Bestimmt auch die Formulierung der Definitionen."
+  },
+  "gen_translations_count": {
+    "message": "Übersetzungen"
+  },
+  "gen_examples_count": {
+    "message": "Beispiele"
+  },
+  "gen_synonyms_count": {
+    "message": "Synonyme (max.)"
+  },
+  "gen_parts": {
+    "message": "Erzeugen"
+  },
+  "gen_transcription": {
+    "message": "Lautschrift (IPA)"
+  },
+  "gen_partOfSpeech": {
+    "message": "Wortart"
+  },
+  "gen_definition": {
+    "message": "Definition in der Ausgangssprache"
+  },
+  "gen_synonyms": {
+    "message": "Synonyme"
+  },
+  "gen_grammar": {
+    "message": "Grammatikhinweise (Genus, Plural, unregelmäßige Formen, Aspekt…)"
+  },
+  "gen_exampleTranslations": {
+    "message": "Beispielsätze übersetzen"
+  },
+  "gen_extra": {
+    "message": "Zusätzliche Anweisungen für das Modell"
+  },
+  "gen_extra_hint": {
+    "message": "Optional. Wird unverändert an den Prompt angehängt, z. B. „Use British spelling“ oder „Examples about software engineering“."
+  },
+  "media_audio": {
+    "message": "Aussprache-Audio"
+  },
+  "media_audio_order_hint": {
+    "message": "Die Quellen werden in dieser Reihenfolge probiert; die erste mit einer Aufnahme gewinnt."
+  },
+  "audio_dictionary": {
+    "message": "Wörterbuchaufnahme (dictionaryapi.dev, nur Englisch)"
+  },
+  "audio_wiktionary": {
+    "message": "Aufnahme von Wiktionary / Wikimedia Commons"
+  },
+  "audio_tts": {
+    "message": "Google Text-to-Speech"
+  },
+  "media_allow_ogg": {
+    "message": ".ogg-Dateien erlauben (auf AnkiMobile/iOS nicht abspielbar)"
+  },
+  "media_image": {
+    "message": "Bild von Wikipedia / Wikimedia Commons"
+  },
+  "media_image_hint": {
+    "message": "Das Modell wählt den Wikipedia-Artikel passend zur Bedeutung; als Ausweichlösung eine Commons-Suche."
+  },
+  "media_image_width": {
+    "message": "Max. Breite (px)"
+  },
+  "media_store_credit": {
+    "message": "Autor und Lizenz speichern (erforderlich bei CC BY / CC BY-SA)"
+  },
+  "ctx_root": {
+    "message": "Zu Anki hinzufügen: „%s“"
+  },
+  "ctx_default": {
+    "message": "Zu „$DECK$“ hinzufügen",
+    "placeholders": {
+      "DECK": {
+        "content": "$1"
+      }
+    }
+  },
+  "ctx_editor": {
+    "message": "Im Editor öffnen…"
+  },
+  "popup_shift_enter": {
+    "message": "Shift+Enter: vor dem Hinzufügen prüfen"
+  },
+  "editor_no_job": {
+    "message": "Keine Karte zum Bearbeiten – öffne den Editor aus dem Popup oder dem Kontextmenü."
+  },
+  "editor_generating": {
+    "message": "Karte wird erzeugt…"
+  },
+  "editor_extra_tags": {
+    "message": "Zusätzliche Schlagwörter"
+  },
+  "editor_hint_placeholder": {
+    "message": "Hinweis für die Neugenerierung, z. B. „die Verbbedeutung“, „formelles Register“"
+  },
+  "editor_regenerate": {
+    "message": "Neu erzeugen"
+  },
+  "editor_add": {
+    "message": "Zu Anki hinzufügen"
+  },
+  "mode_single": {
+    "message": "Ein Wort"
+  },
+  "mode_batch": {
+    "message": "Liste"
+  },
+  "batch_placeholder": {
+    "message": "Ein Wort pro Zeile (oder durch Kommas getrennt)"
+  },
+  "batch_run": {
+    "message": "$COUNT$ hinzufügen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "batch_running": {
+    "message": "$DONE$ / $TOTAL$…",
+    "placeholders": {
+      "DONE": {
+        "content": "$1"
+      },
+      "TOTAL": {
+        "content": "$2"
+      }
+    }
+  },
+  "batch_summary": {
+    "message": "$ADDED$ hinzugefügt · $DUP$ Duplikate · $ERR$ Fehler",
+    "placeholders": {
+      "ADDED": {
+        "content": "$1"
+      },
+      "DUP": {
+        "content": "$2"
+      },
+      "ERR": {
+        "content": "$3"
+      }
+    }
+  },
+  "batch_cancel": {
+    "message": "Abbrechen"
+  },
+  "batch_resume": {
+    "message": "Rest fortsetzen"
+  },
+  "batch_clear": {
+    "message": "Leeren"
+  },
+  "bubble_add": {
+    "message": "Zu Anki hinzufügen"
+  },
+  "bubble_edit": {
+    "message": "Bearbeiten…"
+  },
+  "bubble_no_translation": {
+    "message": "(keine Sofortübersetzung)"
+  },
+  "ui_on_pages": {
+    "message": "Auf Webseiten und im Popup"
+  },
+  "ui_quick_translate": {
+    "message": "Beim Tippen im Popup eine Google-Sofortübersetzung anzeigen"
+  },
+  "ui_selection_bubble": {
+    "message": "Beim Markieren von Text auf einer Seite eine Blase mit Sofortübersetzung und „Zu Anki hinzufügen“ anzeigen"
+  },
+  "ui_selection_bubble_hint": {
+    "message": "Benötigt die Berechtigung für alle Websites; Chrome fragt einmal nach. Nutzt den kostenlosen Google-Translate-Endpunkt, keine LLM-Tokens."
+  },
+  "ui_selection_bubble_denied": {
+    "message": "Berechtigung nicht erteilt – die Blase bleibt aus."
+  },
+  "cmd_hint": {
+    "message": "Tastenkürzel: Alt+A (ändern unter chrome://extensions/shortcuts)"
+  },
+  "ui_bubble_trigger": {
+    "message": "Blase anzeigen"
+  },
+  "trigger_shift": {
+    "message": "nur bei gedrückter Shift-Taste"
+  },
+  "trigger_alt": {
+    "message": "nur bei gedrückter Alt-Taste"
+  },
+  "trigger_always": {
+    "message": "bei jeder Markierung"
+  },
+  "bubble_permission": {
+    "message": "Zugriff auf alle Websites"
+  },
+  "bubble_registered": {
+    "message": "Skript registriert"
+  },
+  "bubble_injected": {
+    "message": "in $COUNT$ offenen Tab(s) aktiviert",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "bubble_restricted_hint": {
+    "message": "Funktioniert nicht auf chrome://-Seiten, im Chrome Web Store, in PDFs und auf Seiten anderer Erweiterungen."
+  }
+}
