@@ -228,6 +228,20 @@ async function capture(): Promise<void> {
   await options.waitForSelector("iframe.preview-frame", { timeout: 15_000 });
   await options.waitForTimeout(600);
   await shot(options, "options-04-preview", { fullPage: true, docs: "08-options-preview" });
+  await options.click("nav.tabs button:nth-child(5)");
+  await options.waitForSelector('input[type="file"]');
+  const themeSelect = 'select:has(option[value="schedule"])';
+  await options.selectOption(themeSelect, "schedule");
+  await options.waitForSelector('input[type="time"]');
+  await options.waitForTimeout(300);
+  await shot(options, "options-05-general", { fullPage: true, docs: "10-options-general" });
+  await options.selectOption(themeSelect, "dark");
+  await options.waitForFunction(() => document.documentElement.dataset.theme === "dark");
+  await options.waitForTimeout(300);
+  await shot(options, "options-06-general-dark", { fullPage: true });
+  // back to the light theme so the popup shots below stay consistent
+  await options.selectOption(themeSelect, "system");
+  await options.waitForFunction(() => document.documentElement.dataset.theme === undefined);
 
   // --- Batch mode ----------------------------------------------------------------------------
   await popup.click(".popup-modes a:nth-child(2)");

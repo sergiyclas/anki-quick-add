@@ -10,7 +10,7 @@ import type { SettingsState } from "../../ui/useSettings";
 const THEMES: UiTheme[] = ["system", "light", "dark", "schedule"];
 
 export function GeneralTab({ state }: { state: SettingsState }) {
-  const { settings, keys, update } = state;
+  const { settings, keys, update, applyNow } = state;
   const [includeKeys, setIncludeKeys] = useState(false);
   const [message, setMessage] = useState<{ text: string; cls: string }>({ text: "", cls: "" });
   const [origins, setOrigins] = useState<string[]>([]);
@@ -24,10 +24,8 @@ export function GeneralTab({ state }: { state: SettingsState }) {
   }, []);
 
   // Language and theme take effect immediately (persisted right away); bootPage reacts to the change.
-  async function setUiNow(patch: Partial<Settings["ui"]>) {
-    const next: Settings = { ...settings, ui: { ...settings.ui, ...patch } };
-    update(() => next);
-    await saveSettings(next);
+  function setUiNow(patch: Partial<Settings["ui"]>) {
+    return applyNow({ ...settings, ui: { ...settings.ui, ...patch } });
   }
 
   async function redeem() {
@@ -36,9 +34,7 @@ export function GeneralTab({ state }: { state: SettingsState }) {
       setPromo({ text: t("promo_invalid"), cls: "err" });
       return;
     }
-    const next: Settings = { ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } };
-    update(() => next);
-    await saveSettings(next);
+    await applyNow({ ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } });
     setPromo({ text: t("promo_success", [t(`tier_${unlocked}`)]), cls: "ok" });
     setCode("");
   }

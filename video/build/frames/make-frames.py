@@ -203,15 +203,34 @@ demo(
     win_title="Settings – Preview",
 )
 
-# --- 08 Batch ------------------------------------------------------------------------------------
-BATCH = dict(box=(760, 640), win_title="Anki Quick Add · List")
-demo("08a-batch-list", "List mode", "Paste a list", ["one word per line", "or comma-separated"], "batch-01-list.png", **BATCH)
-demo("08b-batch-running", "List mode", "Added one by one", ["progress per word", "cancel and resume"], "batch-02-running.png", **BATCH)
-demo("08c-batch-done", "List mode", "Done", ["summary: added · duplicates · errors"], "batch-03-done.png", **BATCH)
+# --- 08 Language + theme -------------------------------------------------------------------------
+GENERAL = dict(box=(1000, 720), focus=(0, 0, 1800, 1300), win_title="Settings – General")
+demo(
+    "08a-general",
+    "Settings · General",
+    "Speaks your language",
+    ["UI in 12 languages", "follows the browser, or pick one", "applies instantly"],
+    "options-05-general.png",
+    **GENERAL,
+)
+demo(
+    "08b-general-dark",
+    "Settings · General",
+    "Light, dark, or on a schedule",
+    ["same as the browser", "light or dark", "dark between two times"],
+    "options-06-general-dark.png",
+    **GENERAL,
+)
 
-# --- 09 CTA --------------------------------------------------------------------------------------
+# --- 09 Batch ------------------------------------------------------------------------------------
+BATCH = dict(box=(760, 640), win_title="Anki Quick Add · List")
+demo("09a-batch-list", "List mode", "Paste a list", ["one word per line", "or comma-separated"], "batch-01-list.png", **BATCH)
+demo("09b-batch-running", "List mode", "Added one by one", ["progress per word", "cancel and resume"], "batch-02-running.png", **BATCH)
+demo("09c-batch-done", "List mode", "Done", ["summary: added · duplicates · errors"], "batch-03-done.png", **BATCH)
+
+# --- 10 CTA --------------------------------------------------------------------------------------
 write(
-    "09a-cta",
+    "10a-cta",
     f"""
 <div class="hero">
   <div class="logo">{icon_svg()}</div>

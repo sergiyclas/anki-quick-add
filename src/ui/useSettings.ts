@@ -12,6 +12,7 @@ export interface SettingsState {
   modelFieldsError: string;
   dirty: boolean;
   update(patch: (s: Settings) => Settings): void;
+  applyNow(next: Settings): Promise<void>; // persist immediately, without marking the form dirty
   updateKeys(patch: (k: ApiKeys) => ApiKeys): void;
   updateMapping(patch: (m: FieldMapping) => FieldMapping): void;
   reloadModelFields(): Promise<void>;
@@ -56,6 +57,11 @@ export function useSettings(): SettingsState | null {
     setDirty(true);
   }, []);
 
+  const applyNow = useCallback(async (next: Settings) => {
+    setSettings(next);
+    await saveSettings(next);
+  }, []);
+
   const updateKeys = useCallback((patch: (k: ApiKeys) => ApiKeys) => {
     setKeys((k) => patch(k));
     setDirty(true);
@@ -83,6 +89,7 @@ export function useSettings(): SettingsState | null {
     modelFieldsError,
     dirty,
     update,
+    applyNow,
     updateKeys,
     updateMapping,
     reloadModelFields: () => loadFieldsAndMapping(true),

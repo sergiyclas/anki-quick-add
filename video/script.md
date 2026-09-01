@@ -1,4 +1,4 @@
-# Anki Quick Add – feature tour, ~80 s, 16:9 (YouTube)
+# Anki Quick Add – feature tour, ~2 min, 16:9 (YouTube)
 
 Preamble: English narration (edge-tts en-US-AndrewNeural). Every screenshot in the frames is a real
 capture from `scripts/capture.ts` – the cards were generated on that run by Gemini 3.5 Flash and added
@@ -60,16 +60,24 @@ rendering the note type's real templates.
 
 > Use the built-in note type, or map the generated parts onto your own, and preview the result with your real Anki templates.
 
-## Segment 08 – Batch (1:17–1:25)
+## Segment 08 – Language and theme (1:17–1:27)
 
-**Екран:** 08a-batch-list: four words pasted into List mode. 08b-batch-running: the first one added,
-the next one running. 08c-batch-done: "4 added · 0 duplicates · 0 errors".
+**Екран:** 08a-general: Settings → General, "Interface language" and "Interface theme" selects, the
+theme set to "Dark on a schedule" with the two time fields. 08b-general-dark: the same tab with the
+dark theme forced.
+
+> The interface speaks twelve languages: follow the browser, or pick one in the settings. And it comes in light, dark, or dark on a schedule, for late-night sessions.
+
+## Segment 09 – Batch (1:27–1:35)
+
+**Екран:** 09a-batch-list: four words pasted into List mode. 09b-batch-running: the first one added,
+the next one running. 09c-batch-done: "4 added · 0 duplicates · 0 errors".
 
 > Have a list? Paste it. Words are added one by one, and duplicates are skipped or updated, your call.
 
-## Segment 09 – CTA (1:25–1:33)
+## Segment 10 – CTA (1:35–1:43)
 
-**Екран:** 09a-cta: icon, "Anki Quick Add", three lines (Free & open source · Your keys, your Anki ·
+**Екран:** 10a-cta: icon, "Anki Quick Add", three lines (Free & open source · Your keys, your Anki ·
 12 UI languages), GitHub URL and "Chrome Web Store".
 
 > Anki Quick Add is free and open source. Your keys, your Anki, nothing in between. Get it from the Chrome Web Store, or grab it on GitHub.

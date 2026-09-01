@@ -40,7 +40,7 @@ AnkiConnect. Nothing in between.
 ![TTS](https://img.shields.io/badge/Google_TTS-fallback_audio-34a853?logo=google&logoColor=white)
 
 **Quality**<br>
-![Vitest](https://img.shields.io/badge/Vitest-68_tests-6e9f18?logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-79_tests-6e9f18?logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-e2e_on_the_built_extension-2ead33?logo=playwright&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088ff?logo=githubactions&logoColor=white)
 ![i18n](https://img.shields.io/badge/UI-12_languages-ff7a59)
@@ -58,7 +58,7 @@ AnkiConnect. Nothing in between.
 *A word typed into the popup, the instant translation while typing, and the card the extension made:
 translation, IPA, three examples, synonyms, a grammar note and a Wikipedia photo with its credit.*
 
-**[▶ Watch the feature tour](docs/demo.mp4)** – 1:45, every feature in order
+**[▶ Watch the feature tour](docs/demo.mp4)** – 1:57, every feature in order
 
 </div>
 
@@ -113,6 +113,11 @@ audio source order, image settings.
 **List mode** – a pasted list, added one by one, with a summary.
 
 ![Batch](docs/09-batch.png)
+
+**General** – interface language (follows the browser, or any of the 12 bundled languages), interface
+theme (light, dark, or dark on a schedule), promo code, export/import.
+
+![General](docs/10-options-general.png)
 
 </details>
 
@@ -201,6 +206,11 @@ mode adds a pasted list one word at a time and reports added / duplicates / erro
 A promo code (Settings → General) unlocks mnemonics and etymology on cards, audio for every example
 sentence, three card themes for the built-in note type (Classic, Paper, Midnight) and parallel
 additions in List mode. The core is free and stays free.
+
+### 🌗 Your language, your theme
+
+The interface comes in 12 languages – it follows the browser, or the one you pick in Settings →
+General – and in light, dark, or dark on a schedule between two times. Both apply instantly.
 
 ### 🔁 Duplicates, sync, backup
 
