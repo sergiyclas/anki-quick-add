@@ -28,6 +28,7 @@ export interface GenerateRequest {
   // Structured view of the same request, for adapters that do not talk to a language model.
   word: string;
   context?: string;
+  senseFromContext?: boolean; // free provider: let the sentence choose the sense
   source: string;
   target: string;
   generation: GenerationSettings;

@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki hâlâ kapalı."
+  },
+  "tr_offline_title": {
+    "message": "Çevrimdışı çeviri"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome bu cihazda bir dil paketi tutabilir. Çevrimiçi çevirmene ulaşılamadığında devreye girer, böylece baloncuk bağlantısız da çalışır."
+  },
+  "tr_pair": {
+    "message": "$SRC$ → $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "hazır, çevrimdışı çalışır"
+  },
+  "tr_state_downloadable": {
+    "message": "henüz indirilmedi"
+  },
+  "tr_state_downloading": {
+    "message": "indiriliyor…"
+  },
+  "tr_state_unavailable": {
+    "message": "bu çift için yok"
+  },
+  "tr_unsupported": {
+    "message": "Bu tarayıcıda yerleşik çevirmen yok."
+  },
+  "tr_download": {
+    "message": "Dil paketini indir"
+  },
+  "tr_cancel": {
+    "message": "İptal"
+  },
+  "tr_download_failed": {
+    "message": "İndirme başarısız: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Çevrimdışı çeviriyi ayarla"
+  },
+  "tr_context_sense": {
+    "message": "Anlamı cümleye göre seç"
+  },
+  "tr_context_in_card": {
+    "message": "Bu anlamı kartta da kullan"
+  },
+  "tr_context_sense_hint": {
+    "message": "Beyzbol sayfasındaki \"bat\" yarasa değil, sopa olur. Olağan anlam altta görünmeye devam eder."
+  },
+  "bubble_usually": {
+    "message": "genelde: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

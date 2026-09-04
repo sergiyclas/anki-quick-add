@@ -7,6 +7,7 @@ import { ALL_SITES } from "../../background/bubble";
 import { tierAtLeast } from "../../lib/license";
 import type { SettingsState } from "../../ui/useSettings";
 import { LanguageSelect } from "../components/LanguageSelect";
+import { OfflineTranslation } from "../components/OfflineTranslation";
 
 const LEVELS: Cefr[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
 const TOGGLES: (keyof GenerationSettings)[] = ["transcription", "partOfSpeech", "definition", "synonyms", "grammar", "exampleTranslations"];
@@ -148,6 +149,23 @@ export function GenerationTab({ state }: { state: SettingsState }) {
           <span>{t("ui_quick_translate")}</span>
         </label>
         <label class="check">
+          <input
+            type="checkbox"
+            checked={settings.translation.contextSense}
+            onChange={(e) => update((s) => ({ ...s, translation: { ...s.translation, contextSense: e.currentTarget.checked } }))}
+          />
+          <span>{t("tr_context_sense")}</span>
+        </label>
+        <label class="check">
+          <input
+            type="checkbox"
+            checked={settings.translation.contextInCard}
+            onChange={(e) => update((s) => ({ ...s, translation: { ...s.translation, contextInCard: e.currentTarget.checked } }))}
+          />
+          <span>{t("tr_context_in_card")}</span>
+        </label>
+        <div class="hint">{t("tr_context_sense_hint")}</div>
+        <label class="check">
           <input type="checkbox" checked={settings.ui.selectionBubble} onChange={(e) => void toggleBubble(e.currentTarget.checked)} />
           <span>{t("ui_selection_bubble")}</span>
         </label>
@@ -169,6 +187,8 @@ export function GenerationTab({ state }: { state: SettingsState }) {
         )}
         <div class="hint">{t("cmd_hint")}</div>
       </div>
+
+      <OfflineTranslation source={settings.languages.source} target={settings.languages.target} />
 
       <div class="field">
         <label class="check">

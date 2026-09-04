@@ -19,6 +19,7 @@ export default defineConfig({
         editor: resolve(root, "editor/index.html"),
         background: resolve(root, "background/index.ts"),
         content: resolve(root, "content/index.ts"),
+        offscreen: resolve(root, "offscreen/index.html"),
       },
       output: {
         entryFileNames: "[name].js",

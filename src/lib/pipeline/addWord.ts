@@ -175,6 +175,7 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
           maxTokens: 2048,
           word,
           context: request.context,
+          senseFromContext: settings.translation.contextInCard,
           source: settings.languages.source,
           target: settings.languages.target,
           generation: settings.generation,

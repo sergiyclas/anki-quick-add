@@ -3,6 +3,7 @@
 import type { ModelTemplates } from "./anki/types";
 import type { AddResult, CommitOverrides } from "./pipeline/addWord";
 import type { BatchState } from "./pipeline/batch";
+import type { ContextSense } from "./sense/contextual";
 import type { FlushSummary } from "./queue/flush";
 import type { QueueStatus } from "./queue/store";
 import type { ModelInfo } from "./providers/types";
@@ -13,6 +14,9 @@ export type Request =
   | { type: "add"; word: string; deck?: string; tags?: string[]; context?: string; block?: string }
   | { type: "editor.open"; word: string; deck?: string; context?: string; block?: string }
   | { type: "translate.quick"; text: string }
+  | { type: "translate.sense"; text: string; block?: string; context?: string }
+  | { type: "translate.state"; refresh?: boolean }
+  | { type: "translate.ready"; source: string; target: string }
   | { type: "bubble.status" }
   | { type: "queue.status" }
   | { type: "queue.flush" }
@@ -45,6 +49,7 @@ export interface PingResponse {
   deck: string;
   quickTranslate: boolean;
   queued: number;
+  translator: AIAvailability;
 }
 
 export interface QueueStatusResponse {
@@ -94,6 +99,20 @@ export interface TranslateResponse {
   translation: string;
   source: string;
   target: string;
+  engine: "gtx" | "device";
+}
+
+export interface SenseResponse extends ContextSense {
+  ok: true;
+  source: string;
+  target: string;
+}
+
+export interface TranslateStateResponse {
+  ok: true;
+  availability: AIAvailability;
+  source: string;
+  target: string;
 }
 
 export interface ListResponse {
@@ -128,7 +147,7 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
     ? AddResponse
     : R extends { type: "editor.open" }
       ? JobResponse
-      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" | "queue.remove" }
+      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" | "queue.remove" | "translate.ready" }
         ? OkResponse
         : R extends { type: "queue.status" }
           ? QueueStatusResponse
@@ -140,6 +159,10 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
           ? BubbleStatusResponse
           : R extends { type: "translate.quick" }
           ? TranslateResponse
+          : R extends { type: "translate.state" }
+          ? TranslateStateResponse
+          : R extends { type: "translate.sense" }
+          ? SenseResponse
           : R extends { type: "batch.start" | "batch.status" | "batch.resume" }
           ? BatchResponse
           : R extends { type: "decks.list" | "models.list" | "model.fields" }

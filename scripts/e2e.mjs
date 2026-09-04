@@ -1,7 +1,7 @@
 // Loads dist/ into a headless Chromium as an unpacked extension and exercises the popup and options pages.
 // Requires a prior `npm run build`. Anki with AnkiConnect should be running for the deck checks.
 // Optional env: AQA_API_KEY (Anthropic) to run a real add; AQA_WORD (default "queue"); AQA_DECK; AQA_NOTE_TYPE.
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
@@ -15,6 +15,14 @@ const check = (ok, label) => {
   console.log(`${ok ? "PASS" : "FAIL"}  ${label}`);
   if (!ok) failures.push(label);
 };
+const skip = (label) => console.log(`SKIP  ${label} (Anki is not running)`);
+
+// Everything that writes to a collection needs Anki; the rest of the suite runs without it.
+const ankiUp = await fetch("http://127.0.0.1:8765", { method: "POST", body: '{"action":"version","version":6}' }).then(
+  (r) => r.ok,
+  () => false,
+);
+if (!ankiUp) console.log("NOTE  Anki/AnkiConnect is closed - deck, note type, preview, free-provider and queue checks are skipped");
 
 const context = await chromium.launchPersistentContext(mkdtempSync(resolve(tmpdir(), "aqa-e2e-")), {
   channel: "chromium",
@@ -27,6 +35,8 @@ context.on("page", (page) => {
   page.on("pageerror", (e) => pageErrors.push(`${page.url()}: ${e.message}`));
   page.on("console", (msg) => msg.type() === "error" && pageErrors.push(`${page.url()}: ${msg.text()}`));
 });
+
+const manifestPermissions = JSON.parse(readFileSync(resolve(DIST, "manifest.json"), "utf8")).permissions;
 
 let [worker] = context.serviceWorkers();
 if (!worker) worker = await context.waitForEvent("serviceworker");
@@ -49,32 +59,37 @@ await popup.goto(url("popup/index.html"));
 await popup.waitForSelector(".popup-footer span");
 const footer = await popup.textContent(".popup-footer span");
 check(footer && footer !== "…", `popup footer: ${footer}`);
-check(!footer.includes("offline"), "popup reports Anki connected");
+if (ankiUp) check(!footer.includes("offline"), "popup reports Anki connected");
+else skip("popup Anki status");
 
 // Options: tabs render, Anki tab lists decks and note types through the worker.
 const options = await context.newPage();
 await options.goto(url("options/index.html"));
 await options.waitForSelector("nav.tabs button");
 check((await options.$$("nav.tabs button")).length === 5, "options has 5 tabs");
-await options.click("nav.tabs button:nth-child(2)");
-// The selects show the saved value immediately; wait for the lists fetched through the worker.
-await options.waitForSelector('select >> nth=1 >> option[value="Basic"]', { state: "attached", timeout: 10_000 });
-const decks = await options.$$eval("select >> nth=0 >> option", (opts) => opts.map((o) => o.value));
-const models = await options.$$eval("select >> nth=1 >> option", (opts) => opts.map((o) => o.value));
-check(decks.length > 0, `decks listed via AnkiConnect: ${decks.join(", ")}`);
-check(models.includes("Basic"), `note types listed: ${models.length} (includes Basic)`);
+if (ankiUp) {
+  await options.click("nav.tabs button:nth-child(2)");
+  // The selects show the saved value immediately; wait for the lists fetched through the worker.
+  await options.waitForSelector('select >> nth=1 >> option[value="Basic"]', { state: "attached", timeout: 10_000 });
+  const decks = await options.$$eval("select >> nth=0 >> option", (opts) => opts.map((o) => o.value));
+  const models = await options.$$eval("select >> nth=1 >> option", (opts) => opts.map((o) => o.value));
+  check(decks.length > 0, `decks listed via AnkiConnect: ${decks.join(", ")}`);
+  check(models.includes("Basic"), `note types listed: ${models.length} (includes Basic)`);
 
-// Field mapping table appears for the configured note type (legacy v1 layout auto-detected).
-await options.waitForSelector(".mapping table tr", { timeout: 10_000 });
-const mappedWord = await options.$eval(".mapping table tr:first-child select", (s) => s.value);
-check(mappedWord === "En", `mapping auto-detected for My cards_en-uk: word -> ${mappedWord}`);
+  // Field mapping table appears for the configured note type (legacy v1 layout auto-detected).
+  await options.waitForSelector(".mapping table tr", { timeout: 10_000 });
+  const mappedWord = await options.$eval(".mapping table tr:first-child select", (s) => s.value);
+  check(mappedWord === "En", `mapping auto-detected for My cards_en-uk: word -> ${mappedWord}`);
 
-// Preview tab renders the note type's real templates with sample data inside a sandboxed iframe.
-await options.click("nav.tabs button:nth-child(4)");
-await options.waitForSelector("iframe.preview-frame", { timeout: 10_000 });
-const previewHtml = await options.$eval("iframe.preview-frame", (f) => f.getAttribute("srcdoc") ?? "");
-check(previewHtml.includes("queue") && previewHtml.includes("черга"), "preview shows sample word and translation");
-check(previewHtml.includes("<style>"), "preview embeds the note type CSS");
+  // Preview tab renders the note type's real templates with sample data inside a sandboxed iframe.
+  await options.click("nav.tabs button:nth-child(4)");
+  await options.waitForSelector("iframe.preview-frame", { timeout: 10_000 });
+  const previewHtml = await options.$eval("iframe.preview-frame", (f) => f.getAttribute("srcdoc") ?? "");
+  check(previewHtml.includes("queue") && previewHtml.includes("черга"), "preview shows sample word and translation");
+  check(previewHtml.includes("<style>"), "preview embeds the note type CSS");
+} else {
+  skip("decks, note types, field mapping and preview");
+}
 
 // General tab: language and theme switches take effect immediately, without Save.
 await options.click("nav.tabs button:nth-child(5)");
@@ -123,7 +138,8 @@ if (!process.env.AQA_API_KEY) {
 }
 
 // Free provider: a real add with no API key (Google dictionary data + dictionaryapi + Tatoeba), then clean up.
-{
+if (!ankiUp) skip("free provider add");
+else {
   await worker.evaluate(async () => {
     const { settings } = await chrome.storage.sync.get("settings");
     await chrome.storage.sync.set({ settings: { ...settings, provider: "free", anki: { ...settings.anki, modelName: "Anki Quick Add" } } });
@@ -157,7 +173,8 @@ if (!process.env.AQA_API_KEY) {
 }
 
 // Offline queue: with Anki unreachable the card is still built and parked, and lands once Anki answers.
-{
+if (!ankiUp) skip("offline queue round trip");
+else {
   const anki = async (action, params = {}) =>
     (await (await fetch("http://127.0.0.1:8765", { method: "POST", body: JSON.stringify({ action, version: 6, params }) })).json()).result;
   const setAnkiUrl = (ankiUrl) =>
@@ -223,6 +240,25 @@ if (!process.env.AQA_API_KEY) {
   });
   await popup.reload();
   await popup.waitForSelector(".popup-input");
+}
+
+// Offline translator plumbing: the offscreen document exists in the build and is created lazily.
+{
+  check(manifestPermissions.includes("offscreen"), "manifest declares the offscreen permission");
+  const contexts = await worker.evaluate(() => chrome.runtime.getContexts({ contextTypes: ["OFFSCREEN_DOCUMENT"] }));
+  check(contexts.length === 0, "no offscreen document until something needs the on-device translator");
+  const state = await options.evaluate(() => chrome.runtime.sendMessage({ type: "translate.state" }));
+  const states = ["unavailable", "downloadable", "downloading", "available"];
+  check(state?.ok && states.includes(state.availability), `built-in translator state: ${state?.availability}`);
+}
+
+// Sense in context: "bat" next to a baseball sentence must not stay the animal.
+{
+  const sense = await options.evaluate(() =>
+    chrome.runtime.sendMessage({ type: "translate.sense", text: "bat", block: "He swung the bat and hit a home run in the ninth inning." }),
+  );
+  check(sense?.ok && Boolean(sense.base), `sense lookup answered: base=${sense?.base}`);
+  check(Boolean(sense?.contextual) && sense.contextual !== sense.base, `contextual sense differs from the usual one: ${sense?.contextual}`);
 }
 
 // Instant translation preview in the popup (free Google endpoint, no LLM).

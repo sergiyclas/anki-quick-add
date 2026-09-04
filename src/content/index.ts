@@ -23,7 +23,7 @@ declare global {
 
   const MAX_LEN = 200;
   const HOST_ID = "aqa-bubble-host";
-  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate", "popup_queued"];
+  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate", "popup_queued", "bubble_usually"];
   let strings: Record<string, string> = {};
   const msg = (key: string, subs: string[] = []) => {
     const template = strings[key] ?? chrome.i18n.getMessage(key, subs.length ? ["$1", "$2"] : undefined) ?? key;
@@ -63,10 +63,14 @@ declare global {
   let currentText = "";
   let requestSeq = 0;
   let trigger: Trigger = "shift";
+  let contextSense = true;
 
   function readTrigger(settings: unknown): Trigger {
     const value = (settings as { ui?: { bubbleTrigger?: Trigger } } | undefined)?.ui?.bubbleTrigger;
     return value === "always" || value === "alt" ? value : "shift";
+  }
+  function readContextSense(settings: unknown): boolean {
+    return (settings as { translation?: { contextSense?: boolean } } | undefined)?.translation?.contextSense !== false;
   }
   function readTheme(settings: unknown): UiTheme {
     const ui = (settings as { ui?: UiTheme } | undefined)?.ui;
@@ -75,11 +79,13 @@ declare global {
   chrome.storage.sync.get("settings").then((s) => {
     trigger = readTrigger(s["settings"]);
     uiTheme = readTheme(s["settings"]);
+    contextSense = readContextSense(s["settings"]);
   });
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area === "sync" && changes["settings"]) {
       trigger = readTrigger(changes["settings"].newValue);
       uiTheme = readTheme(changes["settings"].newValue);
+      contextSense = readContextSense(changes["settings"].newValue);
       loadStrings();
     }
   });
@@ -96,6 +102,7 @@ declare global {
 .bubble.dark { background: #1e1f22; color: #e6e6e6; border-color: #3c3f44; }
 .src { font-weight: 600; word-break: break-word; }
 .tr { margin-top: 4px; color: #4a7bd0; word-break: break-word; min-height: 1.4em; }
+.tr2 { margin-top: 2px; font-size: 12px; color: #6b7280; word-break: break-word; }
 .row { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
 button { font: inherit; font-size: 13px; padding: 5px 10px; border-radius: 6px; cursor: pointer; border: 1px solid #4a7bd0; background: #4a7bd0; color: #fff; }
 button.secondary { background: transparent; color: #4a7bd0; }
@@ -132,13 +139,14 @@ button:disabled { opacity: .6; cursor: default; }
     style.textContent = STYLE;
     const bubble = document.createElement("div");
     bubble.className = isDark() ? "bubble dark" : "bubble";
-    bubble.innerHTML = `<div class="src"></div><div class="tr muted">…</div>
+    bubble.innerHTML = `<div class="src"></div><div class="tr muted">…</div><div class="tr2"></div>
     <div class="row"><button class="add"></button><button class="secondary edit"></button></div><div class="status"></div>`;
     root.append(style, bubble);
     document.documentElement.appendChild(host);
 
     const src = bubble.querySelector<HTMLDivElement>(".src")!;
     const tr = bubble.querySelector<HTMLDivElement>(".tr")!;
+    const tr2 = bubble.querySelector<HTMLDivElement>(".tr2")!;
     const addBtn = bubble.querySelector<HTMLButtonElement>(".add")!;
     const editBtn = bubble.querySelector<HTMLButtonElement>(".edit")!;
     const status = bubble.querySelector<HTMLDivElement>(".status")!;
@@ -171,6 +179,16 @@ button:disabled { opacity: .6; cursor: default; }
         tr.textContent = msg("bubble_no_translation");
       }
     });
+
+    // A second, slower request refines the first line with the sense the sentence points at.
+    if (contextSense && block.length > text.length && text.length <= 40 && text.split(/\s+/).length <= 2) {
+      chrome.runtime.sendMessage({ type: "translate.sense", text, block }, (r?: { ok: boolean; contextual?: string; base?: string }) => {
+        if (seq !== requestSeq || !host || !r?.ok || !r.contextual || !r.base) return;
+        tr.classList.remove("muted");
+        tr.textContent = r.contextual;
+        tr2.textContent = msg("bubble_usually", [r.base]);
+      });
+    }
 
     addBtn.addEventListener("click", () => {
       addBtn.disabled = true;

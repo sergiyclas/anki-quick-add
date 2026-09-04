@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki è ancora chiuso."
+  },
+  "tr_offline_title": {
+    "message": "Traduzione offline"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome può tenere un pacchetto linguistico su questo dispositivo. Entra in gioco quando il traduttore online non risponde, così la bolla funziona anche senza connessione."
+  },
+  "tr_pair": {
+    "message": "da $SRC$ a $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "pronto, funziona offline"
+  },
+  "tr_state_downloadable": {
+    "message": "non ancora scaricato"
+  },
+  "tr_state_downloading": {
+    "message": "scaricamento…"
+  },
+  "tr_state_unavailable": {
+    "message": "non disponibile per questa coppia"
+  },
+  "tr_unsupported": {
+    "message": "Questo browser non ha un traduttore integrato."
+  },
+  "tr_download": {
+    "message": "Scarica il pacchetto"
+  },
+  "tr_cancel": {
+    "message": "Annulla"
+  },
+  "tr_download_failed": {
+    "message": "Scaricamento non riuscito: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Configura la traduzione offline"
+  },
+  "tr_context_sense": {
+    "message": "Scegliere il senso dalla frase"
+  },
+  "tr_context_in_card": {
+    "message": "Usare quel senso anche sulla scheda"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" in una pagina di baseball diventa la mazza, non il pipistrello. Il senso abituale resta visibile sotto."
+  },
+  "bubble_usually": {
+    "message": "di solito: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

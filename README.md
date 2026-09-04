@@ -225,6 +225,17 @@ starts, when the popup opens, or from the *Add now* button. The queue lives in I
 binary, about 150 KB per card, up to 300 cards), survives closing the browser, and remembers which
 Anki profile each card was meant for, so nothing lands in the wrong collection.
 
+### 🌐 Right meaning, and one that survives losing the connection
+
+Select a word and the bubble shows the meaning it has *in that sentence*: "bat" on a baseball page
+becomes *битка*, not *кажан*, with the usual meaning still visible underneath. The same meaning goes
+onto the card. It works by translating the sentence and matching it against the dictionary's candidate
+senses, with stem-tolerant comparison for inflected languages – no extra key, no LLM call.
+
+Chrome can also keep a language pack on the device (Settings → Languages & Generation → *Offline
+translation*). When the online translator cannot be reached, the extension falls back to it, so the
+bubble keeps working with no connection at all.
+
 ### 🔁 Duplicates, sync, backup
 
 Duplicates are checked in the collection or the target deck before anything is generated; policy:
@@ -298,6 +309,8 @@ Everything is set in the options page; this is what the settings mean.
 | Interface language | auto (browser language) or any of the 12 bundled languages | auto |
 | Interface theme | same as the browser / light / dark / dark on a schedule (from–until) | same as the browser |
 | Offline queue | keep adding while Anki is closed; up to 300 cards | on |
+| Sense in context | pick the meaning that fits the sentence, in the bubble and on the card | on |
+| Offline translation | on-device language pack, used when the online translator is unreachable | off until downloaded |
 | Card theme (Pro) | Classic / Paper / Midnight for the built-in note type | Classic |
 | Pro extras | mnemonic, etymology, example audio, parallel List mode | off |
 | Shortcut | `chrome://extensions/shortcuts` | Alt+A |

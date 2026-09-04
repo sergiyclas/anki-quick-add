@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki ist weiterhin geschlossen."
+  },
+  "tr_offline_title": {
+    "message": "Offline-Übersetzung"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome kann ein Sprachpaket auf diesem Gerät behalten. Es springt ein, wenn der Online-Übersetzer nicht erreichbar ist, sodass die Blase auch ohne Verbindung funktioniert."
+  },
+  "tr_pair": {
+    "message": "$SRC$ nach $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "bereit, funktioniert offline"
+  },
+  "tr_state_downloadable": {
+    "message": "noch nicht geladen"
+  },
+  "tr_state_downloading": {
+    "message": "wird geladen…"
+  },
+  "tr_state_unavailable": {
+    "message": "für dieses Paar nicht verfügbar"
+  },
+  "tr_unsupported": {
+    "message": "Dieser Browser hat keinen eingebauten Übersetzer."
+  },
+  "tr_download": {
+    "message": "Sprachpaket laden"
+  },
+  "tr_cancel": {
+    "message": "Abbrechen"
+  },
+  "tr_download_failed": {
+    "message": "Laden fehlgeschlagen: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Offline-Übersetzung einrichten"
+  },
+  "tr_context_sense": {
+    "message": "Bedeutung aus dem Satz wählen"
+  },
+  "tr_context_in_card": {
+    "message": "Diese Bedeutung auch auf die Karte"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" auf einer Baseball-Seite wird zum Schläger, nicht zur Fledermaus. Die übliche Bedeutung bleibt darunter sichtbar."
+  },
+  "bubble_usually": {
+    "message": "normalerweise: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

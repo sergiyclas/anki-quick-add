@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki nadal jest zamknięte."
+  },
+  "tr_offline_title": {
+    "message": "Tłumaczenie offline"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome może trzymać pakiet językowy na tym urządzeniu. Włącza się, gdy tłumacz online jest niedostępny, więc dymek działa bez połączenia."
+  },
+  "tr_pair": {
+    "message": "$SRC$ na $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "gotowy, działa offline"
+  },
+  "tr_state_downloadable": {
+    "message": "jeszcze nie pobrany"
+  },
+  "tr_state_downloading": {
+    "message": "pobieranie…"
+  },
+  "tr_state_unavailable": {
+    "message": "niedostępny dla tej pary"
+  },
+  "tr_unsupported": {
+    "message": "Ta przeglądarka nie ma wbudowanego tłumacza."
+  },
+  "tr_download": {
+    "message": "Pobierz pakiet językowy"
+  },
+  "tr_cancel": {
+    "message": "Anuluj"
+  },
+  "tr_download_failed": {
+    "message": "Pobieranie nie powiodło się: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Skonfiguruj tłumaczenie offline"
+  },
+  "tr_context_sense": {
+    "message": "Wybieraj znaczenie na podstawie zdania"
+  },
+  "tr_context_in_card": {
+    "message": "To znaczenie także na karcie"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" na stronie o baseballu stanie się kijem, a nie nietoperzem. Zwykłe znaczenie zostaje widoczne poniżej."
+  },
+  "bubble_usually": {
+    "message": "zwykle: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

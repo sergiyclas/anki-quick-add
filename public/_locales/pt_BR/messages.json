@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "O Anki continua fechado."
+  },
+  "tr_offline_title": {
+    "message": "Tradução offline"
+  },
+  "tr_offline_hint": {
+    "message": "O Chrome pode manter um pacote de idioma neste dispositivo. Ele assume quando o tradutor online não responde, então a bolha continua funcionando sem conexão."
+  },
+  "tr_pair": {
+    "message": "$SRC$ para $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "pronto, funciona offline"
+  },
+  "tr_state_downloadable": {
+    "message": "ainda não baixado"
+  },
+  "tr_state_downloading": {
+    "message": "baixando…"
+  },
+  "tr_state_unavailable": {
+    "message": "indisponível para este par"
+  },
+  "tr_unsupported": {
+    "message": "Este navegador não tem tradutor integrado."
+  },
+  "tr_download": {
+    "message": "Baixar o pacote de idioma"
+  },
+  "tr_cancel": {
+    "message": "Cancelar"
+  },
+  "tr_download_failed": {
+    "message": "Falha ao baixar: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Configurar a tradução offline"
+  },
+  "tr_context_sense": {
+    "message": "Escolher o sentido pela frase"
+  },
+  "tr_context_in_card": {
+    "message": "Usar esse sentido também no cartão"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" numa página de beisebol vira o taco, não o morcego. O sentido comum continua visível abaixo."
+  },
+  "bubble_usually": {
+    "message": "normalmente: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

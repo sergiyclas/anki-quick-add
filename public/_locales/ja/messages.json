@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki はまだ閉じています。"
+  },
+  "tr_offline_title": {
+    "message": "オフライン翻訳"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome はこの端末に言語パックを保持できます。オンライン翻訳に接続できないときに使われるため、接続がなくてもバブルが動きます。"
+  },
+  "tr_pair": {
+    "message": "$SRC$ → $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "準備完了、オフラインで動作"
+  },
+  "tr_state_downloadable": {
+    "message": "未ダウンロード"
+  },
+  "tr_state_downloading": {
+    "message": "ダウンロード中…"
+  },
+  "tr_state_unavailable": {
+    "message": "この言語ペアでは利用できません"
+  },
+  "tr_unsupported": {
+    "message": "このブラウザには翻訳機能が内蔵されていません。"
+  },
+  "tr_download": {
+    "message": "言語パックをダウンロード"
+  },
+  "tr_cancel": {
+    "message": "キャンセル"
+  },
+  "tr_download_failed": {
+    "message": "ダウンロードに失敗しました: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "オフライン翻訳を設定"
+  },
+  "tr_context_sense": {
+    "message": "文に合う意味を選ぶ"
+  },
+  "tr_context_in_card": {
+    "message": "その意味をカードにも使う"
+  },
+  "tr_context_sense_hint": {
+    "message": "野球のページの \"bat\" はコウモリではなくバットになります。通常の意味はその下に残ります。"
+  },
+  "bubble_usually": {
+    "message": "通常: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

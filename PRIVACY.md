@@ -20,6 +20,12 @@ Everything below happens only when you trigger it (typing in the popup, pressing
 - **Instant translation.** While you type in the popup, and when the selection bubble opens, the
   text is sent to Google Translate (`translate.googleapis.com`) for the one-line preview. Both can be
   turned off in the settings.
+- **Sense in context.** When "Pick the meaning that fits the sentence" is on (default), selecting a
+  word also sends the sentence around it to the same endpoint, so the right meaning can be chosen.
+  Turning that setting off keeps the sentence on your device.
+- **On-device translation.** If you download a language pack in the settings, Chrome keeps it on this
+  computer and translations that use it never leave the machine. It is used when the online endpoint
+  cannot be reached.
 - **Media for the card.** The word is used to look up a pronunciation recording and an image on
   Wikipedia / Wikimedia Commons, Wiktionary and dictionaryapi.dev, and to request text-to-speech audio
   from Google Translate (`translate.google.com`). Image author and license are stored on the card.
@@ -62,7 +68,9 @@ governed by their respective privacy policies. Only the services you enable or c
 
 - `storage`, `unlimitedStorage` – settings, field mappings, keys, history, and the offline queue of
   cards waiting for Anki (which would not fit in the 10 MB default budget).
-- `alarms` – retries the offline queue every few minutes.
+- `alarms` – retries the offline queue every few minutes, and closes the translator page when idle.
+- `offscreen` – Chrome's built-in translator is only available to a page, not to the extension's
+  background worker, so a hidden page is opened when an offline translation is needed.
 - `contextMenus` – the *Add to Anki* menu on selected text.
 - `activeTab`, `scripting` – reading the selection and showing the confirmation toast on the page
   where you used the menu; registering the selection-bubble script when you enable it.

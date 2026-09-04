@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki is nog steeds gesloten."
+  },
+  "tr_offline_title": {
+    "message": "Offline vertaling"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome kan een taalpakket op dit apparaat bewaren. Het springt bij als de online vertaler onbereikbaar is, zodat de ballon zonder verbinding blijft werken."
+  },
+  "tr_pair": {
+    "message": "$SRC$ naar $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "klaar, werkt offline"
+  },
+  "tr_state_downloadable": {
+    "message": "nog niet gedownload"
+  },
+  "tr_state_downloading": {
+    "message": "downloaden…"
+  },
+  "tr_state_unavailable": {
+    "message": "niet beschikbaar voor dit paar"
+  },
+  "tr_unsupported": {
+    "message": "Deze browser heeft geen ingebouwde vertaler."
+  },
+  "tr_download": {
+    "message": "Taalpakket downloaden"
+  },
+  "tr_cancel": {
+    "message": "Annuleren"
+  },
+  "tr_download_failed": {
+    "message": "Downloaden mislukt: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Offline vertaling instellen"
+  },
+  "tr_context_sense": {
+    "message": "Betekenis uit de zin kiezen"
+  },
+  "tr_context_in_card": {
+    "message": "Die betekenis ook op de kaart"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" op een honkbalpagina wordt de knuppel, niet de vleermuis. De gewone betekenis blijft eronder staan."
+  },
+  "bubble_usually": {
+    "message": "meestal: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

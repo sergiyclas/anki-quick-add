@@ -1,5 +1,7 @@
 import { HttpError, fetchJson } from "../../http";
 import type { ProviderAdapter } from "../types";
+import { pickSense } from "../../sense/match";
+import { translateText } from "../../translate/engine";
 import { gtxLookup } from "./gtx";
 import { tatoebaExamples } from "./tatoeba";
 
@@ -64,7 +66,19 @@ export const free: ProviderAdapter = {
     const english = source === "en" ? englishFacts(word).catch(() => null) : Promise.resolve(null);
     const [gtx, facts] = await Promise.all([gtxLookup(word, source, target), english]);
 
-    const translations = dedupe([...gtx.alternatives.flatMap((a) => a.terms), gtx.translation]).slice(0, g.translationsCount);
+    // With a sentence at hand, translate it once: it decides which sense is meant, and it doubles as the
+    // translation of the context example below.
+    let contextTranslation: string | undefined;
+    let ordered = [...gtx.alternatives.flatMap((a) => a.terms), gtx.translation];
+    if (req.context && req.senseFromContext && gtx.senses.length > 1) {
+      const sentence = await translateText(req.context, source, target).catch(() => null);
+      if (sentence?.text) {
+        contextTranslation = sentence.text;
+        const pick = pickSense(gtx.senses, sentence.text, target);
+        if (pick) ordered = [pick.term, ...ordered];
+      }
+    }
+    const translations = dedupe(ordered).slice(0, g.translationsCount);
     const partOfSpeech = gtx.alternatives[0]?.partOfSpeech ?? facts?.partOfSpeech ?? "";
     const definition = facts?.definition ?? gtx.definitions[0]?.text ?? "";
     const synonyms = dedupe([...gtx.synonyms, ...(facts?.synonyms ?? [])]).filter((s) => s.toLowerCase() !== word.toLowerCase()).slice(0, g.synonymsCount);
@@ -72,7 +86,7 @@ export const free: ProviderAdapter = {
     // Examples: the sentence the word was selected in first, then Tatoeba (with translations when the pair
     // has them), then Google's and the dictionary's examples.
     const examples: { text: string; translation?: string }[] = [];
-    if (req.context) examples.push({ text: req.context });
+    if (req.context) examples.push({ text: req.context, translation: contextTranslation });
     if (examples.length < g.examplesCount) {
       const fromTatoeba = await tatoebaExamples(word, source, target, g.examplesCount - examples.length).catch(() => []);
       examples.push(...fromTatoeba);

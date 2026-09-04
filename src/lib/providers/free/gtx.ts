@@ -7,9 +7,17 @@ import { languageByCode } from "../../languages";
 // recognised by its shape rather than its index; anything unrecognised is simply left empty.
 const ENDPOINT = "https://translate.googleapis.com/translate_a/single";
 
+export interface GtxSense {
+  term: string;
+  partOfSpeech: string;
+  backTranslations: string[];
+  score: number;
+}
+
 export interface GtxResult {
   translation: string;
   alternatives: { partOfSpeech: string; terms: string[] }[];
+  senses: GtxSense[];
   synonyms: string[];
   definitions: { partOfSpeech: string; text: string }[];
   examples: string[];
@@ -23,15 +31,30 @@ function stripTags(s: string): string {
 }
 
 // dt=bd: [[pos, [term, ...], [[term, [back-translations], null, score], ...], base, posId], ...]
-function parseDictionary(part: unknown): GtxResult["alternatives"] {
-  if (!isArr(part)) return [];
-  const out: GtxResult["alternatives"] = [];
+// The third element carries one entry per candidate sense; the score is missing often enough that the
+// original order (most common first) has to stay the tie-break.
+function parseDictionary(part: unknown): { alternatives: GtxResult["alternatives"]; senses: GtxSense[] } {
+  const alternatives: GtxResult["alternatives"] = [];
+  const senses: GtxSense[] = [];
+  if (!isArr(part)) return { alternatives, senses };
   for (const entry of part) {
     if (!isArr(entry) || !isStr(entry[0]) || !isArr(entry[1])) continue;
+    const partOfSpeech = entry[0];
     const terms = entry[1].filter(isStr);
-    if (terms.length) out.push({ partOfSpeech: entry[0], terms });
+    if (terms.length) alternatives.push({ partOfSpeech, terms });
+    if (!isArr(entry[2])) continue;
+    for (const candidate of entry[2]) {
+      if (!isArr(candidate) || !isStr(candidate[0])) continue;
+      senses.push({
+        term: candidate[0],
+        partOfSpeech,
+        backTranslations: isArr(candidate[1]) ? candidate[1].filter(isStr) : [],
+        score: typeof candidate[3] === "number" ? candidate[3] : 0,
+      });
+    }
   }
-  return out;
+  senses.sort((a, b) => b.score - a.score); // Array.prototype.sort is stable, so ties keep gtx order
+  return { alternatives, senses };
 }
 
 // dt=ss: [[pos, [[syn, syn, ...], id], ...], ...]
@@ -91,11 +114,11 @@ function looksLikeSynonyms(part: unknown): boolean {
 }
 
 export function parseGtxFull(data: unknown): GtxResult {
-  const result: GtxResult = { translation: "", alternatives: [], synonyms: [], definitions: [], examples: [] };
+  const result: GtxResult = { translation: "", alternatives: [], senses: [], synonyms: [], definitions: [], examples: [] };
   if (!isArr(data)) return result;
   const [t, bd, ...rest] = data;
   if (isArr(t)) result.translation = t.map((s) => (isArr(s) && isStr(s[0]) ? s[0] : "")).join("").trim();
-  result.alternatives = parseDictionary(bd);
+  ({ alternatives: result.alternatives, senses: result.senses } = parseDictionary(bd));
   for (const part of rest) {
     if (!result.examples.length && looksLikeExamples(part)) result.examples = parseExamples(part);
     else if (!result.synonyms.length && looksLikeSynonyms(part)) result.synonyms = parseSynonyms(part);

@@ -7,7 +7,8 @@ import { KEYLESS, getAdapter } from "../lib/providers/registry";
 import { applyTheme } from "../lib/anki/builtinModel";
 import { getCache, loadKeys, loadSettings, setCache } from "../lib/settings/storage";
 import { initI18n, t } from "../lib/i18n";
-import { quickTranslate } from "../lib/quickTranslate";
+import { contextualTranslate } from "../lib/sense/contextual";
+import { cachedAvailability, deviceAvailability, noteDownloaded, translateText } from "../lib/translate/engine";
 import { flushQueue } from "../lib/queue/flush";
 import { clearQueue, queueCount, queueStatus, refreshBadge, removeQueued } from "../lib/queue/store";
 import { extractSentence } from "../lib/text";
@@ -51,6 +52,7 @@ async function ping(): Promise<PingResponse> {
     deck: settings.anki.deck,
     quickTranslate: settings.ui.quickTranslate,
     queued: await queueCount(),
+    translator: await cachedAvailability(settings.languages.source, settings.languages.target),
   };
 }
 
@@ -96,8 +98,23 @@ async function dispatch(request: Request) {
     }
     case "translate.quick": {
       const { source, target } = (await loadSettings()).languages;
-      return { ok: true, translation: await quickTranslate(request.text, source, target), source, target };
+      const { text, engine } = await translateText(request.text, source, target);
+      return { ok: true, translation: text, source, target, engine };
     }
+    case "translate.sense": {
+      const settings = await loadSettings();
+      const { source, target } = settings.languages;
+      const sentence = contextOf({ word: request.text, context: request.context, block: request.block }) ?? "";
+      const sense = await contextualTranslate({ word: request.text, sentence, source, target });
+      return { ok: true, ...sense, source, target };
+    }
+    case "translate.state": {
+      const { source, target } = (await loadSettings()).languages;
+      return { ok: true, availability: await deviceAvailability(source, target, request.refresh), source, target };
+    }
+    case "translate.ready":
+      await noteDownloaded(request.source, request.target);
+      return { ok: true };
     case "job.regenerate":
       await regenerateJob(request.id, request.hint);
       return { ok: true };

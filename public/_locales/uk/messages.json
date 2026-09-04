@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki досі закритий."
+  },
+  "tr_offline_title": {
+    "message": "Офлайн-переклад"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome може тримати мовний пакет на цьому пристрої. Він вмикається, коли онлайн-перекладач недоступний, тож бульбашка працює й без мережі."
+  },
+  "tr_pair": {
+    "message": "$SRC$ → $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "готовий, працює офлайн"
+  },
+  "tr_state_downloadable": {
+    "message": "ще не завантажений"
+  },
+  "tr_state_downloading": {
+    "message": "завантажується…"
+  },
+  "tr_state_unavailable": {
+    "message": "для цієї пари недоступний"
+  },
+  "tr_unsupported": {
+    "message": "У цьому браузері немає вбудованого перекладача."
+  },
+  "tr_download": {
+    "message": "Завантажити мовний пакет"
+  },
+  "tr_cancel": {
+    "message": "Скасувати"
+  },
+  "tr_download_failed": {
+    "message": "Не вдалося завантажити: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Налаштувати офлайн-переклад"
+  },
+  "tr_context_sense": {
+    "message": "Обирати значення за реченням"
+  },
+  "tr_context_in_card": {
+    "message": "Це саме значення ставити й у картку"
+  },
+  "tr_context_sense_hint": {
+    "message": "«bat» на бейсбольній сторінці стане биткою, а не кажаном. Звичайне значення лишається видимим нижче."
+  },
+  "bubble_usually": {
+    "message": "зазвичай: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

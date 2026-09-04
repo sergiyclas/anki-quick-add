@@ -39,7 +39,7 @@ test("parseGtxFull recognises translation, dictionary alternatives, synonyms (mi
 test("parseGtxFull picks up examples when present and tolerates junk", () => {
   const withExamples = [...GTX_LIGHTHOUSE, [[["The <b>lighthouse</b> keeper waved.", null, null, null, 3, "id"]]]];
   expect(parseGtxFull(withExamples).examples).toEqual(["The lighthouse keeper waved."]);
-  expect(parseGtxFull("garbage")).toEqual({ translation: "", alternatives: [], synonyms: [], definitions: [], examples: [] });
+  expect(parseGtxFull("garbage")).toEqual({ translation: "", alternatives: [], senses: [], synonyms: [], definitions: [], examples: [] });
   expect(parseGtxFull([[["hi", "hello"]], null]).translation).toBe("hi");
 });
 

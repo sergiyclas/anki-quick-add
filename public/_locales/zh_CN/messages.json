@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki 仍未打开。"
+  },
+  "tr_offline_title": {
+    "message": "离线翻译"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome 可以在本机保存语言包。当在线翻译无法访问时启用，气泡在断网时也能工作。"
+  },
+  "tr_pair": {
+    "message": "$SRC$ → $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "已就绪，可离线使用"
+  },
+  "tr_state_downloadable": {
+    "message": "尚未下载"
+  },
+  "tr_state_downloading": {
+    "message": "下载中…"
+  },
+  "tr_state_unavailable": {
+    "message": "该语言对不可用"
+  },
+  "tr_unsupported": {
+    "message": "此浏览器没有内置翻译器。"
+  },
+  "tr_download": {
+    "message": "下载语言包"
+  },
+  "tr_cancel": {
+    "message": "取消"
+  },
+  "tr_download_failed": {
+    "message": "下载失败：$ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "设置离线翻译"
+  },
+  "tr_context_sense": {
+    "message": "按句子选择词义"
+  },
+  "tr_context_in_card": {
+    "message": "卡片上也使用该词义"
+  },
+  "tr_context_sense_hint": {
+    "message": "棒球页面上的 \"bat\" 会变成球棒，而不是蝙蝠。常用词义仍显示在下方。"
+  },
+  "bubble_usually": {
+    "message": "通常：$BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

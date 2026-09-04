@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki is still closed."
+  },
+  "tr_offline_title": {
+    "message": "Offline translation"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome can keep a language pack on this device. It is used when the online translator cannot be reached, so the bubble keeps working with no connection."
+  },
+  "tr_pair": {
+    "message": "$SRC$ to $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "ready, works offline"
+  },
+  "tr_state_downloadable": {
+    "message": "not downloaded yet"
+  },
+  "tr_state_downloading": {
+    "message": "downloading…"
+  },
+  "tr_state_unavailable": {
+    "message": "not offered for this pair"
+  },
+  "tr_unsupported": {
+    "message": "This browser has no built-in translator."
+  },
+  "tr_download": {
+    "message": "Download language pack"
+  },
+  "tr_cancel": {
+    "message": "Cancel"
+  },
+  "tr_download_failed": {
+    "message": "Download failed: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Set up offline translation"
+  },
+  "tr_context_sense": {
+    "message": "Pick the meaning that fits the sentence"
+  },
+  "tr_context_in_card": {
+    "message": "Use that meaning on the card as well"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" on a baseball page becomes the bat you swing, not the animal. The usual meaning stays visible under it."
+  },
+  "bubble_usually": {
+    "message": "usually: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

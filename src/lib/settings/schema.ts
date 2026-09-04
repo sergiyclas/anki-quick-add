@@ -73,6 +73,10 @@ export interface Settings {
     themeSchedule: { darkFrom: string; darkUntil: string }; // HH:MM, used when theme = "schedule"
     offlineQueue: boolean; // park cards while Anki is closed and write them when it comes back
   };
+  translation: {
+    contextSense: boolean; // pick the sense that fits the sentence in the selection bubble
+    contextInCard: boolean; // and put that sense first on the card built by the Free provider
+  };
   license: { tier: Tier; redeemedAt?: string };
 }
 
@@ -141,6 +145,7 @@ export const DEFAULT_SETTINGS: Settings = {
     themeSchedule: { darkFrom: "20:00", darkUntil: "07:00" },
     offlineQueue: true,
   },
+  translation: { contextSense: true, contextInCard: true },
   license: { tier: "free" },
 };
 
@@ -167,6 +172,7 @@ export function withDefaults(partial: Partial<Settings> | undefined): Settings {
     },
     anki: { ...DEFAULT_SETTINGS.anki, ...p.anki },
     ui: { ...DEFAULT_SETTINGS.ui, ...p.ui, themeSchedule: { ...DEFAULT_SETTINGS.ui.themeSchedule, ...p.ui?.themeSchedule } },
+    translation: { ...DEFAULT_SETTINGS.translation, ...p.translation },
     license: { ...DEFAULT_SETTINGS.license, ...p.license },
   };
 }

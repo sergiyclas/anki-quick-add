@@ -11,7 +11,7 @@ if (/^\s*(import|export)\s|\bimport\(/m.test(content)) problems.push("dist/conte
 // Top-level let/const would throw "already declared" when the script is injected twice into one frame.
 if (/^\s*(let|const|class)\s/m.test(content)) problems.push("dist/content.js has top-level declarations - keep the code inside the IIFE");
 
-for (const file of ["manifest.json", "background.js", "popup/index.html", "options/index.html", "editor/index.html", "_locales/en/messages.json", "_locales/uk/messages.json"]) {
+for (const file of ["manifest.json", "background.js", "popup/index.html", "options/index.html", "editor/index.html", "offscreen/index.html", "_locales/en/messages.json", "_locales/uk/messages.json"]) {
   if (!existsSync(resolve(dist, file))) problems.push(`missing dist/${file}`);
 }
 

@@ -770,5 +770,71 @@
   },
   "queue_still_closed": {
     "message": "Anki sigue cerrado."
+  },
+  "tr_offline_title": {
+    "message": "Traducción sin conexión"
+  },
+  "tr_offline_hint": {
+    "message": "Chrome puede guardar un paquete de idioma en este dispositivo. Se usa cuando el traductor en línea no responde, así la burbuja sigue funcionando sin conexión."
+  },
+  "tr_pair": {
+    "message": "$SRC$ a $TGT$",
+    "placeholders": {
+      "SRC": {
+        "content": "$1"
+      },
+      "TGT": {
+        "content": "$2"
+      }
+    }
+  },
+  "tr_state_available": {
+    "message": "listo, funciona sin conexión"
+  },
+  "tr_state_downloadable": {
+    "message": "aún no descargado"
+  },
+  "tr_state_downloading": {
+    "message": "descargando…"
+  },
+  "tr_state_unavailable": {
+    "message": "no disponible para este par"
+  },
+  "tr_unsupported": {
+    "message": "Este navegador no tiene traductor integrado."
+  },
+  "tr_download": {
+    "message": "Descargar el paquete"
+  },
+  "tr_cancel": {
+    "message": "Cancelar"
+  },
+  "tr_download_failed": {
+    "message": "Error al descargar: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "tr_setup_link": {
+    "message": "Configurar la traducción sin conexión"
+  },
+  "tr_context_sense": {
+    "message": "Elegir el sentido según la frase"
+  },
+  "tr_context_in_card": {
+    "message": "Usar ese sentido también en la tarjeta"
+  },
+  "tr_context_sense_hint": {
+    "message": "\"bat\" en una página de béisbol será el bate, no el murciélago. El sentido habitual queda visible debajo."
+  },
+  "bubble_usually": {
+    "message": "normalmente: $BASE$",
+    "placeholders": {
+      "BASE": {
+        "content": "$1"
+      }
+    }
   }
 }

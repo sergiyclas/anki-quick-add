@@ -78,6 +78,8 @@ WORKS WITH YOUR SETUP
 
 FAST WHEN YOU WANT IT, CAREFUL WHEN YOU NEED IT
 • Instant Google translation while you type – no LLM tokens spent until you press Enter
+• The meaning that fits the sentence: "bat" on a baseball page becomes the bat you swing, not the animal
+• Optional on-device language pack, so the bubble keeps translating with no connection
 • Selection bubble on web pages (opt-in, Shift + select): the sentence around the word travels along as context, so "bat" on a baseball page becomes the baseball bat, not the animal
 • Right-click menu with your decks
 • Editor window (Shift+Enter) to review, edit, drop the image or regenerate with a hint before anything is added
@@ -105,7 +107,8 @@ Creating Anki flashcards from words the user types or selects: the card content 
 |---|---|
 | `storage` | Stores the user's settings, field mappings, API keys (in the browser's extension storage only) and a short history of added words. |
 | `unlimitedStorage` | Cards added while Anki is closed are held in a local queue until Anki accepts them. Each card carries its pronunciation audio and image, so the 10 MB default budget would hold only about 45 of them; the queue is deleted as soon as the cards are written to Anki. |
-| `alarms` | Retries that queue every few minutes, so the cards land as soon as Anki is running again. |
+| `alarms` | Retries that queue every few minutes, so the cards land as soon as Anki is running again, and closes the hidden translator page when it has been idle. |
+| `offscreen` | Chrome's built-in on-device translator is only exposed to a document, never to an extension service worker. A hidden page is opened on demand to run offline translations and closed again after a few idle minutes. |
 | `contextMenus` | Adds the "Add to Anki" entry to the context menu shown on selected text. |
 | `activeTab` | When the user invokes the context menu, reads the selected text and its paragraph on that tab to extract the sentence used as context, and shows a small confirmation toast on the same page. |
 | `scripting` | Injects the selection reader and the confirmation toast into the active tab (context-menu flow), and registers the optional selection-bubble content script when the user turns the bubble on in the settings. |

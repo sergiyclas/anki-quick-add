@@ -4,6 +4,8 @@ import { syncBubbleScript } from "./bubble";
 import { handleMenuClick, rebuildMenus } from "./contextMenu";
 import { flushQueue } from "../lib/queue/flush";
 import { refreshBadge } from "../lib/queue/store";
+import { closeTranslatorDocument } from "../lib/translate/offscreen";
+import { isOffscreenRequest } from "../lib/translate/protocol";
 import { handleMessage } from "./router";
 
 // All listeners are registered synchronously at top level so Chrome can wake the worker for them.
@@ -18,7 +20,13 @@ chrome.runtime.onInstalled.addListener(() => void Promise.all([rebuildMenus(), s
 chrome.runtime.onStartup.addListener(() => void Promise.all([rebuildMenus(), syncBubbleScript(), scheduleFlush(), flushQueue()]));
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === FLUSH_ALARM) void flushQueue();
+  if (alarm.name === "aqa-translator-idle") void releaseTranslator();
 });
+
+async function releaseTranslator(): Promise<void> {
+  await chrome.runtime.sendMessage({ target: "offscreen", kind: "translator.release" }).catch(() => undefined);
+  await closeTranslatorDocument();
+}
 chrome.permissions.onAdded.addListener(() => void syncBubbleScript());
 chrome.permissions.onRemoved.addListener(() => void syncBubbleScript());
 
@@ -34,6 +42,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
 chrome.contextMenus.onClicked.addListener((info, tab) => void handleMenuClick(info, tab));
 
 chrome.runtime.onMessage.addListener((request: Request, _sender, sendResponse) => {
+  if (isOffscreenRequest(request)) return false; // answered by the offscreen document itself
   handleMessage(request).then(sendResponse, (e: unknown) =>
     sendResponse({ ok: false, error: e instanceof Error ? e.message : String(e) }),
   );
