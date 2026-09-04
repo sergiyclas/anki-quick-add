@@ -836,5 +836,8 @@
         "content": "$1"
       }
     }
+  },
+  "tr_test": {
+    "message": "Testar"
   }
 }

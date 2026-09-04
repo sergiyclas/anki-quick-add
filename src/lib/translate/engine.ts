@@ -57,7 +57,7 @@ export async function noteDownloaded(from: string, to: string): Promise<void> {
   await writeAvailability(from, to, "available");
 }
 
-async function translateOnDevice(text: string, from: string, to: string): Promise<string> {
+export async function translateOnDevice(text: string, from: string, to: string): Promise<string> {
   if ((await deviceAvailability(from, to)) !== "available") throw new Error("No offline language pack");
   const response = await Promise.race([
     askOffscreen({ target: "offscreen", kind: "translator.translate", from, to, text }),

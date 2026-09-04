@@ -16,6 +16,7 @@ export type Request =
   | { type: "translate.quick"; text: string }
   | { type: "translate.sense"; text: string; block?: string; context?: string }
   | { type: "translate.state"; refresh?: boolean }
+  | { type: "translate.device"; text: string }
   | { type: "translate.ready"; source: string; target: string }
   | { type: "bubble.status" }
   | { type: "queue.status" }
@@ -157,7 +158,7 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
           ? StringsResponse
           : R extends { type: "bubble.status" | "bubble.sync" }
           ? BubbleStatusResponse
-          : R extends { type: "translate.quick" }
+          : R extends { type: "translate.quick" | "translate.device" }
           ? TranslateResponse
           : R extends { type: "translate.state" }
           ? TranslateStateResponse

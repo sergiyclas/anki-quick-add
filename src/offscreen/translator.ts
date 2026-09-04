@@ -20,7 +20,13 @@ async function translator(from: string, to: string): Promise<Translator> {
   if (existing) return existing;
   const created = (async () => {
     if ((await availability(from, to)) !== "available") throw new Error(`No offline translator for ${from} to ${to}`);
-    return Translator.create({ sourceLanguage: from, targetLanguage: to });
+    try {
+      return await Translator.create({ sourceLanguage: from, targetLanguage: to });
+    } catch {
+      // Chrome refuses the first create for a moment after the pack has just been installed.
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      return Translator.create({ sourceLanguage: from, targetLanguage: to });
+    }
   })();
   pool.set(id, created);
   created.catch(() => pool.delete(id));

@@ -10,6 +10,7 @@ export function OfflineTranslation({ source, target }: { source: string; target:
   const [percent, setPercent] = useState<number | null>(null);
   const [error, setError] = useState("");
   const [abort, setAbort] = useState<AbortController | null>(null);
+  const [tested, setTested] = useState("");
 
   useEffect(() => {
     if (!supported) return;
@@ -34,12 +35,22 @@ export function OfflineTranslation({ source, target }: { source: string; target:
       setState("available");
       await send({ type: "translate.ready", source, target });
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      setState(await Translator.availability({ sourceLanguage: source, targetLanguage: target }).catch(() => "unavailable" as const));
+      // Chrome sometimes rejects create() even though the pack did land; the state decides, not the error.
+      const now = await Translator.availability({ sourceLanguage: source, targetLanguage: target }).catch(() => "unavailable" as const);
+      setState(now);
+      if (now === "available") await send({ type: "translate.ready", source, target });
+      else setError(e instanceof Error ? e.message : String(e));
     } finally {
       setPercent(null);
       setAbort(null);
     }
+  }
+
+  // Proves the whole offline path: options page -> worker -> offscreen document -> on-device model.
+  async function test() {
+    setTested("…");
+    const r = await send({ type: "translate.device", text: "lighthouse" });
+    setTested(r.ok ? `lighthouse → ${r.translation}` : r.error);
   }
 
   const pair = t("tr_pair", [source.toUpperCase(), target.toUpperCase()]);
@@ -67,6 +78,14 @@ export function OfflineTranslation({ source, target }: { source: string; target:
                 {t("tr_download")}
               </button>
             )
+          )}
+          {state === "available" && (
+            <div class="row">
+              <button type="button" class="secondary" onClick={() => void test()}>
+                {t("tr_test")}
+              </button>
+              {tested && <span class="hint">{tested}</span>}
+            </div>
           )}
           {error && <div class="hint err">{t("tr_download_failed", [error])}</div>}
           <div class="hint">{t("tr_offline_hint")}</div>
