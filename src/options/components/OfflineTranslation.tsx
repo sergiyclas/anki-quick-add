@@ -11,7 +11,7 @@ export function OfflineTranslation({ source, target }: { source: string; target:
   const [percent, setPercent] = useState<number | null>(null);
   const [error, setError] = useState("");
   const [abort, setAbort] = useState<AbortController | null>(null);
-  const [tested, setTested] = useState("");
+  const [tested, setTested] = useState<string[]>([]);
 
   useEffect(() => {
     if (!supported) return;
@@ -48,13 +48,19 @@ export function OfflineTranslation({ source, target }: { source: string; target:
   }
 
   // Proves the whole offline path: options page -> worker -> offscreen document -> on-device model.
-  // The word has to be in the source language: the model is built for that pair, and feeding it
-  // something else is what made this button fail with "Other generic failures occurred".
+  // The word has to be in the source language - the model is built for that pair. A second line with
+  // the English word tells a broken pack apart from a pack for a different pair: if the English word
+  // comes back right while the source-language one does not, the model is not the one we asked for.
   async function test() {
     const word = languageByCode(source).sample;
-    setTested("…");
-    const r = await send({ type: "translate.device", text: word });
-    setTested(r.ok ? `${word} → ${r.translation}` : r.error);
+    const words = source === "en" ? [word] : [word, languageByCode("en").sample];
+    setTested(["…"]);
+    const lines: string[] = [];
+    for (const text of words) {
+      const r = await send({ type: "translate.device", text });
+      lines.push(r.ok ? `${text} → ${r.translation}` : `${text} → ${r.error}`);
+    }
+    setTested(lines);
   }
 
   const pair = t("tr_pair", [source.toUpperCase(), target.toUpperCase()]);
@@ -88,7 +94,11 @@ export function OfflineTranslation({ source, target }: { source: string; target:
               <button type="button" class="secondary" onClick={() => void test()}>
                 {t("tr_test")}
               </button>
-              {tested && <span class="hint">{tested}</span>}
+              {tested.map((line) => (
+                <span key={line} class="hint">
+                  {line}
+                </span>
+              ))}
             </div>
           )}
           {error && <div class="hint err">{t("tr_download_failed", [error])}</div>}
