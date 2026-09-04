@@ -81,9 +81,9 @@ image, examples, synonyms, grammar note and image credit.
 
 ![Card](docs/02-card-back.png)
 
-**Selection bubble** – Shift + select on a Wikipedia page. The instant Google translation says
-*кажан* (the animal); one click later the card says *битка* (the baseball bat), because the sentence
-travelled along as context.
+**Selection bubble** – Shift + select on a Wikipedia page. The bubble reads the sentence around the
+word and shows *битка* (the baseball bat) with *usually: кажан* (the animal) underneath, and the card
+gets the same meaning.
 
 ![Bubble](docs/03-bubble.png)
 

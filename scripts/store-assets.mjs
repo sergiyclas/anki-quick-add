@@ -74,9 +74,9 @@ const shots = [
   {
     name: "screenshot-3",
     eyebrow: "Selection bubble · Shift + select",
-    title: "Add words while you read",
-    lines: ["instant translation in a bubble", "one click adds the card", "the sentence goes along as context"],
-    image: "bubble-02-added.png",
+    title: "The meaning this sentence means",
+    lines: ["\"bat\" here is the one you swing", "the usual meaning stays underneath", "one click adds the card"],
+    image: "bubble-01-translation.png",
     box: [700, 560],
     focus: [480, 380, 1360, 900],
     title2: "en.wikipedia.org/wiki/Baseball",

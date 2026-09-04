@@ -196,6 +196,10 @@ async function capture(): Promise<void> {
     const tr = document.querySelector("#aqa-bubble-host")?.shadowRoot?.querySelector(".tr");
     return tr && tr.textContent && tr.textContent !== "…";
   }, null, { timeout: 15_000 });
+  // The contextual sense arrives a moment after the first line; it is the point of this shot.
+  await wiki
+    .waitForFunction(() => Boolean(document.querySelector("#aqa-bubble-host")?.shadowRoot?.querySelector(".tr2")?.textContent), null, { timeout: 15_000 })
+    .catch(() => undefined);
   await shot(wiki, "bubble-01-translation", { docs: "03-bubble" });
   await wiki.evaluate(() => (document.querySelector("#aqa-bubble-host")!.shadowRoot!.querySelector("button.add") as HTMLButtonElement).click());
   await wiki.waitForFunction(() => Boolean(document.querySelector("#aqa-bubble-host")?.shadowRoot?.querySelector(".status.ok, .status.warn, .status.err")), null, { timeout: 120_000 });

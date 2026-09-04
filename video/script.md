@@ -33,11 +33,10 @@ translation, the lighthouse photo, three examples, synonyms, grammar note and th
 
 ## Segment 04 – Selection bubble and context (0:32–0:48)
 
-**Екран:** 04a-bubble: Wikipedia "Baseball", the word "bat" selected, the bubble with the instant
-translation "кажан" (the animal). 04b-bubble-added: after one click – "Added: bat – битка, біта, палиця"
-(the baseball bat). Caption: "the sentence travels with the word".
+**Екран:** 04a-bubble: Wikipedia "Baseball", the word "bat" selected, the bubble showing "битка" with
+"usually: кажан" on the line below.
 
-> Reading something? Hold Shift, select a word, and a bubble shows an instant translation. One click adds the card. And because the sentence goes along as context, "bat" on a baseball page becomes the baseball bat, not the animal.
+> Reading something? Hold Shift, select a word, and a bubble translates it – in the meaning the sentence gives it. On a baseball page "bat" is the one you swing, not the animal, and the card gets that same meaning.
 
 ## Segment 05 – Editor (0:48–0:56)
 

@@ -87,7 +87,7 @@ Chapters
 0:00 One word in, a complete card out
 0:10 Popup: type a word, press Enter
 0:28 The card, as Anki renders it
-0:38 Selection bubble: context matters
+0:38 The meaning the sentence means
 0:55 Editor: check before it lands
 1:05 Providers, languages, note types
 1:28 Interface language and theme
@@ -102,6 +102,8 @@ What it does
 • Around 40 languages in any pair, examples at the CEFR level you pick.
 • Built-in note type, or a field mapping onto a note type you already use, with a preview that
   renders your real Anki templates.
+• The meaning that fits the sentence: "bat" on a baseball page is the one you swing, not the animal.
+• Optional on-device language pack, so the bubble keeps translating with no connection.
 • Anki can stay closed: cards wait in a queue with their audio and image and land as soon as it is back.
 • Selection bubble, right-click menu, editor window, list mode, duplicate policy.
 • Interface in 12 languages, light / dark / scheduled dark theme.

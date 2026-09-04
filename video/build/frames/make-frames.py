@@ -129,24 +129,13 @@ BUBBLE_FOCUS = (480, 380, 1360, 900)  # region around the selection on the 2560x
 demo(
     "04a-bubble",
     "Selection bubble · Shift + select",
-    "Instant translation on any page",
-    ["hold Shift, select a word", "one click: Add to Anki", "also in the right-click menu"],
+    "The meaning this<br>sentence means",
+    ["“bat” here is the one you swing", "the usual meaning stays below", "one click: Add to Anki"],
     "bubble-01-translation.png",
     box=(1040, 690),
     focus=BUBBLE_FOCUS,
     win_title="en.wikipedia.org/wiki/Baseball",
 )
-demo(
-    "04b-bubble-added",
-    "Context travels with the word",
-    "“bat” on a baseball page<br>becomes the baseball bat",
-    ["instant hint said кажан – the animal", "the card says битка – the bat", "the sentence went along as context"],
-    "bubble-02-added.png",
-    box=(1040, 690),
-    focus=BUBBLE_FOCUS,
-    win_title="en.wikipedia.org/wiki/Baseball",
-)
-
 # --- 05 Editor -----------------------------------------------------------------------------------
 demo(
     "05a-editor",
