@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseGtxFull } from "../src/lib/providers/free/gtx";
-import { levenshteinAtMost, pickSense, stemEquivalent, tokenize } from "../src/lib/sense/match";
+import { contextWindow, diffTokens, levenshteinAtMost, pickSense, removeWord, stemEquivalent, tokenize } from "../src/lib/sense/match";
 
 // Recorded from the live endpoint for en->uk "bat" (dt=t,bd). The candidate entries carry no score,
 // which is why the parser keeps the order the endpoint returned.
@@ -97,5 +97,49 @@ describe("pickSense", () => {
   it("requires every word of a multi-word candidate", () => {
     expect(pickSense(senses, "Це сварлива баба з сусіднього будинку.", "uk")).toEqual({ term: "сварлива баба", match: "exact" });
     expect(pickSense(senses, "Це сварлива жінка.", "uk")).toBeNull();
+  });
+});
+
+// The dictionary has no verb sense for "facing", so the sense picker cannot help. What does help is
+// translating a short window and seeing what disappears when the word is taken out of it.
+describe("context window", () => {
+  const sentence = "the operational challenges we were facing as our own company grew";
+
+  it("takes two words on each side", () => {
+    expect(contextWindow(sentence, "facing")).toBe("we were facing as our");
+    expect(removeWord("we were facing as our", "facing")).toBe("we were as our");
+  });
+
+  it("clips at the start and the end of the sentence", () => {
+    expect(contextWindow("Facing the wall", "facing")).toBe("Facing the wall");
+    expect(contextWindow("She sat facing", "facing")).toBe("She sat facing");
+  });
+
+  it("gives up when the word is absent or repeated", () => {
+    expect(contextWindow(sentence, "sailing")).toBe("");
+    expect(contextWindow("a bat chased another bat home", "bat")).toBe("");
+  });
+});
+
+describe("diffTokens", () => {
+  it("returns the word the translation loses", () => {
+    expect(diffTokens("ми стикалися як", "ми були як", "uk")).toEqual(["стикалися"]);
+  });
+
+  it("ignores endings that only changed form", () => {
+    expect(diffTokens("він читав книгу", "він читає книга", "uk")).toEqual([]);
+  });
+
+  it("sees through a reworded sentence as long as one word is really new", () => {
+    // "старому"/"Старий" and "проіржавіла"/"проіржавів" are the same words in another form.
+    expect(diffTokens("Пружина в старому матраці проіржавіла", "Старий матрац наскрізь проіржавів", "uk")).toEqual(["пружина"]);
+  });
+
+  it("refuses a difference too noisy to be one word", () => {
+    expect(diffTokens("Він вирішив балотуватися наступного року", "Сьогодні надворі тепла сонячна погода", "uk")).toEqual([]);
+  });
+
+  it("drops one-letter and two-letter leftovers", () => {
+    expect(diffTokens("він у балотуватися", "він балотуватися", "uk")).toEqual([]);
   });
 });

@@ -4,13 +4,14 @@
 import { gtxLookup } from "../providers/free/gtx";
 import { getCache, setCache } from "../settings/storage";
 import { type TranslateEngine, translateText } from "../translate/engine";
-import { type Sense, pickSense, stemEquivalent } from "./match";
+import { type Sense, contextWindow, diffTokens, pickSense, removeWord, stemEquivalent } from "./match";
 
 export interface ContextSense {
   translation: string; // what to show as the headline
   base: string; // the sense-blind translation, i.e. what the extension said before
   contextual?: string; // set only when the sentence points at a different sense
-  confidence: "exact" | "stem" | "none";
+  confidence: "exact" | "stem" | "diff" | "none";
+  form: "lemma" | "inflected"; // "diff" results are the form used in the sentence, not a dictionary entry
   alternatives: string[];
   sentence: string;
   engine: TranslateEngine;
@@ -60,19 +61,42 @@ export async function contextualTranslate(request: {
   const plain = base ? { text: base, engine: "gtx" as TranslateEngine } : await translateText(word, source, target);
   base = base || plain.text;
   const alternatives = senses.map((s) => s.term).filter((term) => term !== base);
-  const result: ContextSense = { translation: base, base, confidence: "none", alternatives: alternatives.slice(0, 5), sentence, engine: plain.engine };
-  if (!sentence || senses.length < 2) return result;
+  const result: ContextSense = { translation: base, base, confidence: "none", form: "lemma", alternatives: alternatives.slice(0, 5), sentence, engine: plain.engine };
+  if (!sentence) return result;
 
   const translated = await translateText(sentence, source, target).catch(() => null);
   if (!translated?.text) return result;
   result.engine = translated.engine;
 
-  const pick = pickSense(senses, translated.text, target);
-  if (!pick) return result;
-  result.confidence = pick.match;
-  // When the common sense is also the one used here, there is nothing to correct.
-  if (stemEquivalent(pick.term, base, target)) return result;
-  result.translation = pick.term;
-  result.contextual = pick.term;
+  const pick = senses.length > 1 ? pickSense(senses, translated.text, target) : null;
+  if (pick) {
+    result.confidence = pick.match;
+    // When the common sense is also the one used here, there is nothing to correct.
+    if (stemEquivalent(pick.term, base, target)) return result;
+    result.translation = pick.term;
+    result.contextual = pick.term;
+    return result;
+  }
+
+  // The dictionary has no candidate that fits - and often it simply has none at all, as for the verb
+  // form "facing". Ask what the translation of a short window loses when the word is taken out of it.
+  const window = contextWindow(sentence, word);
+  if (!window) return result;
+  const without = removeWord(window, word);
+  if (!without || without === window) return result;
+  const [full, rest] = await Promise.all([
+    translateText(window, source, target).catch(() => null),
+    translateText(without, source, target).catch(() => null),
+  ]);
+  if (!full?.text || !rest?.text) return result;
+  const missing = diffTokens(full.text, rest.text, target);
+  if (!missing.length) return result;
+  // If any leftover is the usual translation, the difference is that word plus noise, not a new sense.
+  if (missing.some((token) => stemEquivalent(token, base, target))) return result;
+  const inContext = missing.join(" ");
+  result.translation = inContext;
+  result.contextual = inContext;
+  result.confidence = "diff";
+  result.form = "inflected";
   return result;
 }

@@ -11,6 +11,11 @@ export interface Sense {
 
 export type MatchKind = "exact" | "stem";
 
+// Two words on each side of the selection, measured rather than guessed. A whole sentence is useless
+// here (the translator rebuilds the missing meaning from the rest and both translations come out the
+// same), and a single neighbour is too little: "run for office" then falls back to the literal "бігти".
+const WINDOW_RADIUS = 2;
+
 export interface SensePick {
   term: string;
   match: MatchKind;
@@ -109,6 +114,49 @@ function findInTokens(term: string, tokens: string[], target: string): MatchKind
     return null;
   }
   return weakest;
+}
+
+/** The words around the selection, at most `radius` on each side. */
+export function contextWindow(sentence: string, word: string, radius = WINDOW_RADIUS): string {
+  const words = sentence.split(/\s+/).filter(Boolean);
+  const needle = normalize(word);
+  const at = words.findIndex((w) => normalize(w) === needle);
+  if (at < 0) return "";
+  // Only safe when the word appears once: otherwise removing it is ambiguous.
+  if (words.filter((w) => normalize(w) === needle).length > 1) return "";
+  return words.slice(Math.max(0, at - radius), at + radius + 1).join(" ");
+}
+
+export function removeWord(window: string, word: string): string {
+  const needle = normalize(word);
+  return window
+    .split(/\s+/)
+    .filter((w) => normalize(w) !== needle)
+    .join(" ");
+}
+
+/**
+ * What the translation loses when the word is taken out of its window. Returns nothing when the
+ * difference is too noisy to be about that one word.
+ */
+export function diffTokens(withWord: string, withoutWord: string, target = ""): string[] {
+  const left = tokenize(withoutWord);
+  const extra: string[] = [];
+  for (const token of tokenize(withWord)) {
+    const exact = left.indexOf(token);
+    if (exact >= 0) {
+      left.splice(exact, 1);
+      continue;
+    }
+    const similar = left.findIndex((other) => stemEquivalent(token, other, target));
+    if (similar >= 0) {
+      left.splice(similar, 1);
+      continue;
+    }
+    extra.push(token);
+  }
+  const words = extra.filter((t) => t.length >= 3);
+  return words.length && words.length <= 2 ? words : [];
 }
 
 /**
