@@ -93,27 +93,38 @@ export function stemEquivalent(a: string, b: string, target = ""): boolean {
   if (!left || !right) return false;
   if (left === right) return true;
   const shortest = Math.min(left.length, right.length);
-  if (shortest <= 3) return false;
+  const inflected = INFLECTED.has(target);
+  // Short words get one narrow exception: a plain ending on top of the whole word ("бас" -> "басу").
+  // Anything longer than that is a different word ("рак" is not "ракета").
+  if (shortest <= 3) {
+    const shortMatch = (x: string, y: string) => commonPrefixLength(x, y) === Math.min(x.length, y.length) && Math.abs(x.length - y.length) <= 2;
+    if (shortMatch(left, right)) return true;
+    return inflected && FOLDS.some(([from, to]) => shortMatch(left.replace(from, to), right.replace(from, to)));
+  }
   if (Math.abs(left.length - right.length) > 3) return false;
   if (sharesStem(left, right)) return true;
-  if (!INFLECTED.has(target)) return false;
+  if (!inflected) return false;
   return FOLDS.some(([from, to]) => sharesStem(left.replace(from, to), right.replace(from, to)));
 }
 
-function findInTokens(term: string, tokens: string[], target: string): MatchKind | null {
+/**
+ * How well a candidate shows up in the sentence: `distance` is how far its form is from the word
+ * actually used there, so "бас" beats "басовий" when the sentence says "басу".
+ */
+function findInTokens(term: string, tokens: string[], target: string): { kind: MatchKind; distance: number } | null {
   const words = tokenize(term);
   if (!words.length) return null;
-  let weakest: MatchKind = "exact";
+  let kind: MatchKind = "exact";
+  let distance = 0;
   for (const word of words) {
     if (tokens.includes(word)) continue;
-    // Stem matching needs enough letters to be meaningful.
-    if (word.length >= 4 && tokens.some((t) => stemEquivalent(word, t, target))) {
-      weakest = "stem";
-      continue;
-    }
-    return null;
+    // Stem matching needs enough letters to be meaningful, except for short words that only took an ending.
+    const matches = tokens.filter((t) => (word.length >= 4 || t.startsWith(word)) && stemEquivalent(word, t, target));
+    if (!matches.length) return null;
+    kind = "stem";
+    distance += Math.min(...matches.map((t) => Math.abs(t.length - word.length)));
   }
-  return weakest;
+  return { kind, distance };
 }
 
 /** The words around the selection, at most `radius` on each side. */
@@ -155,7 +166,9 @@ export function diffTokens(withWord: string, withoutWord: string, target = ""): 
     }
     extra.push(token);
   }
-  const words = extra.filter((t) => t.length >= 3);
+  // Three letters or fewer is a preposition far more often than a word worth showing: without this,
+  // "flu shot" comes back as "щеплення від".
+  const words = extra.filter((t) => t.length >= 4);
   return words.length && words.length <= 2 ? words : [];
 }
 
@@ -166,11 +179,12 @@ export function diffTokens(withWord: string, withoutWord: string, target = ""): 
 export function pickSense(senses: Sense[], sentenceTranslation: string, target = ""): SensePick | null {
   const tokens = tokenize(sentenceTranslation);
   if (!tokens.length) return null;
-  let fallback: SensePick | null = null;
+  let best: (SensePick & { distance: number }) | null = null;
   for (const sense of senses) {
     const match = findInTokens(sense.term, tokens, target);
-    if (match === "exact") return { term: sense.term, match };
-    if (match === "stem" && !fallback) fallback = { term: sense.term, match };
+    if (!match) continue;
+    if (match.kind === "exact") return { term: sense.term, match: "exact" };
+    if (!best || match.distance < best.distance) best = { term: sense.term, match: "stem", distance: match.distance };
   }
-  return fallback;
+  return best ? { term: best.term, match: best.match } : null;
 }

@@ -45,10 +45,12 @@ describe("stemEquivalent", () => {
     expect(stemEquivalent("", "битка", "uk")).toBe(false);
   });
 
-  it("requires short words to match exactly, so рак is not ракета", () => {
+  it("lets a short word take an ending but not a whole new word", () => {
+    expect(stemEquivalent("бас", "басу", "uk")).toBe(true); // otherwise "басовий" wins over "бас"
+    expect(stemEquivalent("кіт", "кота", "uk")).toBe(true); // through the і/о fold
     expect(stemEquivalent("рак", "ракета", "uk")).toBe(false);
+    expect(stemEquivalent("рак", "ракети", "uk")).toBe(false);
     expect(stemEquivalent("рак", "рак", "uk")).toBe(true);
-    expect(stemEquivalent("кіт", "кота", "uk")).toBe(false);
   });
 });
 
@@ -92,6 +94,12 @@ describe("pickSense", () => {
     expect(pickSense(senses, "Сьогодні тепла й сонячна погода.", "uk")).toBeNull();
     expect(pickSense(senses, "", "uk")).toBeNull();
     expect(pickSense([], "Він змахнув битою.", "uk")).toBeNull();
+  });
+
+  it("prefers the candidate closest to the form used in the sentence", () => {
+    // The adjective is listed before the noun, and both share the stem: the noun has to win.
+    const bass = [{ term: "басовий" }, { term: "бас" }];
+    expect(pickSense(bass, "Він багато років грав на басу в джаз-бенді.", "uk")).toEqual({ term: "бас", match: "stem" });
   });
 
   it("requires every word of a multi-word candidate", () => {

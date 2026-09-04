@@ -1,0 +1,502 @@
+[
+ {
+  "word": "bat",
+  "sentence": "He swung the bat and hit a home run in the ninth inning.",
+  "expect": "change"
+ },
+ {
+  "word": "spring",
+  "sentence": "The spring in the old mattress had rusted through.",
+  "expect": "change"
+ },
+ {
+  "word": "bank",
+  "sentence": "We sat on the bank of the river and watched the boats go by.",
+  "expect": "change"
+ },
+ {
+  "word": "crane",
+  "sentence": "A crane lifted the steel beams onto the roof of the tower.",
+  "expect": "change"
+ },
+ {
+  "word": "seal",
+  "sentence": "The seal on the jar was broken, so the jam had spoiled.",
+  "expect": "change"
+ },
+ {
+  "word": "palm",
+  "sentence": "He held the warm coin in his palm and did not let go.",
+  "expect": "change"
+ },
+ {
+  "word": "bark",
+  "sentence": "The bark of the old oak was rough under his fingers.",
+  "expect": "change"
+ },
+ {
+  "word": "pupil",
+  "sentence": "The pupil of her eye widened in the dark corridor.",
+  "expect": "change"
+ },
+ {
+  "word": "mole",
+  "sentence": "A mole had dug fresh tunnels under the lawn overnight.",
+  "expect": "change"
+ },
+ {
+  "word": "jam",
+  "sentence": "She spread strawberry jam on the warm toast.",
+  "expect": "change"
+ },
+ {
+  "word": "match",
+  "sentence": "He struck a match to light the candle on the table.",
+  "expect": "change"
+ },
+ {
+  "word": "nail",
+  "sentence": "He hammered a nail into the board with three blows.",
+  "expect": "change"
+ },
+ {
+  "word": "plant",
+  "sentence": "The chemical plant near the river closed down last year.",
+  "expect": "change"
+ },
+ {
+  "word": "tie",
+  "sentence": "He wore a red tie to the interview and regretted it.",
+  "expect": "change"
+ },
+ {
+  "word": "watch",
+  "sentence": "He looked at his watch and hurried towards the station.",
+  "expect": "change"
+ },
+ {
+  "word": "well",
+  "sentence": "They drew cold water from the well behind the barn.",
+  "expect": "change"
+ },
+ {
+  "word": "bow",
+  "sentence": "She tied the ribbon in a neat bow on top of the box.",
+  "expect": "change"
+ },
+ {
+  "word": "drill",
+  "sentence": "The dentist picked up a drill and asked me to relax.",
+  "expect": "change"
+ },
+ {
+  "word": "fan",
+  "sentence": "The ceiling fan turned slowly above the empty office.",
+  "expect": "change"
+ },
+ {
+  "word": "board",
+  "sentence": "He nailed a board across the broken window.",
+  "expect": "change"
+ },
+ {
+  "word": "bill",
+  "sentence": "The waiter brought the bill before we had finished.",
+  "expect": "change"
+ },
+ {
+  "word": "case",
+  "sentence": "The lawyer lost the case after a week in court.",
+  "expect": "change"
+ },
+ {
+  "word": "change",
+  "sentence": "I need some change for the bus and the parking meter.",
+  "expect": "change"
+ },
+ {
+  "word": "character",
+  "sentence": "The main character of the novel dies in the last chapter.",
+  "expect": "change"
+ },
+ {
+  "word": "court",
+  "sentence": "The tennis court was still wet after the morning rain.",
+  "expect": "change"
+ },
+ {
+  "word": "current",
+  "sentence": "The current in the river was too strong for swimming.",
+  "expect": "change"
+ },
+ {
+  "word": "draft",
+  "sentence": "She wrote the first draft of the letter in pencil.",
+  "expect": "change"
+ },
+ {
+  "word": "figure",
+  "sentence": "He could not make out the figure standing in the fog.",
+  "expect": "change"
+ },
+ {
+  "word": "ground",
+  "sentence": "The ground was frozen hard after a week of frost.",
+  "expect": "change"
+ },
+ {
+  "word": "interest",
+  "sentence": "The bank pays interest on savings twice a year.",
+  "expect": "change"
+ },
+ {
+  "word": "iron",
+  "sentence": "She pressed the shirt with an iron before the meeting.",
+  "expect": "change"
+ },
+ {
+  "word": "letter",
+  "sentence": "He mailed the letter yesterday from the post office.",
+  "expect": "change"
+ },
+ {
+  "word": "note",
+  "sentence": "She left a short note on the kitchen table for him.",
+  "expect": "change"
+ },
+ {
+  "word": "order",
+  "sentence": "The waiter took our order and disappeared for an hour.",
+  "expect": "change"
+ },
+ {
+  "word": "party",
+  "sentence": "We threw a birthday party for her in the garden.",
+  "expect": "change"
+ },
+ {
+  "word": "pitch",
+  "sentence": "The football pitch was muddy after two days of rain.",
+  "expect": "change"
+ },
+ {
+  "word": "plate",
+  "sentence": "He washed the dinner plate and put it on the rack.",
+  "expect": "change"
+ },
+ {
+  "word": "point",
+  "sentence": "The point of the needle was too blunt to sew with.",
+  "expect": "change"
+ },
+ {
+  "word": "present",
+  "sentence": "She gave him a birthday present wrapped in blue paper.",
+  "expect": "change"
+ },
+ {
+  "word": "race",
+  "sentence": "He won the hundred metre race by a clear second.",
+  "expect": "change"
+ },
+ {
+  "word": "ring",
+  "sentence": "She wore a thin gold ring on her left hand.",
+  "expect": "change"
+ },
+ {
+  "word": "rock",
+  "sentence": "He sat on a large rock and looked at the valley.",
+  "expect": "change"
+ },
+ {
+  "word": "roll",
+  "sentence": "He ate a bread roll with butter for breakfast.",
+  "expect": "change"
+ },
+ {
+  "word": "row",
+  "sentence": "They sat in the front row and could see everything.",
+  "expect": "change"
+ },
+ {
+  "word": "shot",
+  "sentence": "The doctor gave him a flu shot before the winter.",
+  "expect": "change"
+ },
+ {
+  "word": "sink",
+  "sentence": "She washed the dishes in the kitchen sink after supper.",
+  "expect": "change"
+ },
+ {
+  "word": "sole",
+  "sentence": "The sole of his left shoe had worn through completely.",
+  "expect": "change"
+ },
+ {
+  "word": "state",
+  "sentence": "The state of the road made driving at night dangerous.",
+  "expect": "change"
+ },
+ {
+  "word": "subject",
+  "sentence": "Maths was always my favourite subject at school.",
+  "expect": "change"
+ },
+ {
+  "word": "trunk",
+  "sentence": "The elephant lifted its trunk and sprayed water everywhere.",
+  "expect": "change"
+ },
+ {
+  "word": "volume",
+  "sentence": "Turn down the volume, the neighbours are asleep.",
+  "expect": "change"
+ },
+ {
+  "word": "yard",
+  "sentence": "The children played in the yard behind the school.",
+  "expect": "change"
+ },
+ {
+  "word": "coach",
+  "sentence": "The coach shouted at the players from the touchline.",
+  "expect": "change"
+ },
+ {
+  "word": "stroke",
+  "sentence": "He suffered a stroke and spent a month in hospital.",
+  "expect": "change"
+ },
+ {
+  "word": "cell",
+  "sentence": "The prisoner spent ten years in a small cell.",
+  "expect": "change"
+ },
+ {
+  "word": "bass",
+  "sentence": "He played the bass in a jazz band for years.",
+  "expect": "change"
+ },
+ {
+  "word": "organ",
+  "sentence": "The organ in the cathedral had not been tuned for years.",
+  "expect": "change"
+ },
+ {
+  "word": "mint",
+  "sentence": "She grew mint and basil on the windowsill.",
+  "expect": "change"
+ },
+ {
+  "word": "squash",
+  "sentence": "They played squash every Tuesday after work.",
+  "expect": "change"
+ },
+ {
+  "word": "deck",
+  "sentence": "He stood on the deck and watched the coast disappear.",
+  "expect": "change"
+ },
+ {
+  "word": "bolt",
+  "sentence": "A bolt of lightning split the old tree in two.",
+  "expect": "change"
+ },
+ {
+  "word": "cast",
+  "sentence": "The doctor put his arm in a plaster cast for six weeks.",
+  "expect": "change"
+ },
+ {
+  "word": "duck",
+  "sentence": "The hunter watched a duck land on the still water.",
+  "expect": "change"
+ },
+ {
+  "word": "fine",
+  "sentence": "He had to pay a fine for parking on the pavement.",
+  "expect": "change"
+ },
+ {
+  "word": "kind",
+  "sentence": "She was kind to every stranger she met that winter.",
+  "expect": "change"
+ },
+ {
+  "word": "lead",
+  "sentence": "The plumber replaced the old lead pipes in the basement.",
+  "expect": "change"
+ },
+ {
+  "word": "novel",
+  "sentence": "She read a Russian novel on the train to Kyiv.",
+  "expect": "change"
+ },
+ {
+  "word": "fair",
+  "sentence": "The village fair opens on the first Sunday of June.",
+  "expect": "change"
+ },
+ {
+  "word": "facing",
+  "sentence": "We were facing serious problems as the company grew.",
+  "expect": "change"
+ },
+ {
+  "word": "run",
+  "sentence": "He decided to run for office in the next election.",
+  "expect": "change"
+ },
+ {
+  "word": "light",
+  "sentence": "She could not light the stove because the gas was off.",
+  "expect": "change"
+ },
+ {
+  "word": "book",
+  "sentence": "Please book a table for two at eight o'clock.",
+  "expect": "change"
+ },
+ {
+  "word": "running",
+  "sentence": "He is running a small business in the centre of Lviv.",
+  "expect": "change"
+ },
+ {
+  "word": "drawing",
+  "sentence": "She was drawing water from the well before sunrise.",
+  "expect": "change"
+ },
+ {
+  "word": "charging",
+  "sentence": "The company is charging too much for weekend delivery.",
+  "expect": "change"
+ },
+ {
+  "word": "holding",
+  "sentence": "He was holding a meeting when I called his office.",
+  "expect": "change"
+ },
+ {
+  "word": "keeping",
+  "sentence": "She was keeping a diary every single day that year.",
+  "expect": "change"
+ },
+ {
+  "word": "broke",
+  "sentence": "He broke the world record on his second attempt.",
+  "expect": "change"
+ },
+ {
+  "word": "caught",
+  "sentence": "She caught a bad cold on the way back from Poland.",
+  "expect": "change"
+ },
+ {
+  "word": "threw",
+  "sentence": "He threw a party for the whole department on Friday.",
+  "expect": "change"
+ },
+ {
+  "word": "cut",
+  "sentence": "They cut prices by half a week before Christmas.",
+  "expect": "change"
+ },
+ {
+  "word": "face",
+  "sentence": "We will have to face the truth sooner or later.",
+  "expect": "change"
+ },
+ {
+  "word": "draw",
+  "sentence": "The two teams played to a draw after extra time.",
+  "expect": "change"
+ },
+ {
+  "word": "lighthouse",
+  "sentence": "The lighthouse guided the ship safely into the harbor.",
+  "expect": "keep"
+ },
+ {
+  "word": "harbor",
+  "sentence": "They sailed into the harbor an hour before the storm.",
+  "expect": "keep"
+ },
+ {
+  "word": "elephant",
+  "sentence": "An elephant drank from the river at first light.",
+  "expect": "keep"
+ },
+ {
+  "word": "mountain",
+  "sentence": "They climbed the mountain at dawn and came back at dusk.",
+  "expect": "keep"
+ },
+ {
+  "word": "doctor",
+  "sentence": "The doctor examined the patient and wrote a prescription.",
+  "expect": "keep"
+ },
+ {
+  "word": "bicycle",
+  "sentence": "He repaired his bicycle in the garage all Saturday.",
+  "expect": "keep"
+ },
+ {
+  "word": "window",
+  "sentence": "She opened the window to let some cold air in.",
+  "expect": "keep"
+ },
+ {
+  "word": "teacher",
+  "sentence": "The teacher explained the lesson twice and then left.",
+  "expect": "keep"
+ },
+ {
+  "word": "hospital",
+  "sentence": "They drove him to the hospital in the middle of the night.",
+  "expect": "keep"
+ },
+ {
+  "word": "keyboard",
+  "sentence": "He spilled coffee on the keyboard and it stopped working.",
+  "expect": "keep"
+ },
+ {
+  "word": "chair",
+  "sentence": "She pulled the chair closer to the fireplace.",
+  "expect": "keep"
+ },
+ {
+  "word": "bridge",
+  "sentence": "The bridge over the river was closed for repairs.",
+  "expect": "keep"
+ },
+ {
+  "word": "mattress",
+  "sentence": "The mattress was too soft for his sore back.",
+  "expect": "keep"
+ },
+ {
+  "word": "butterfly",
+  "sentence": "A butterfly settled on the edge of the open book.",
+  "expect": "keep"
+ },
+ {
+  "word": "spring",
+  "sentence": "Spring arrived early and the snow melted in a week.",
+  "expect": "keep"
+ },
+ {
+  "word": "bat",
+  "sentence": "A bat chased another bat across the dark barn.",
+  "expect": "keep"
+ },
+ {
+  "word": "star",
+  "sentence": "She became a film star almost overnight.",
+  "expect": "any"
+ }
+]
