@@ -167,7 +167,7 @@ Testing requires the Anki desktop app with the AnkiConnect add-on (https://ankiw
 ## 7. After the item is live
 
 - README: replace *"Chrome Web Store listing: coming soon"* with the store link; add the YouTube link.
-- Tag the release (`git tag v2.1.0 && git push --tags`) and attach the zip to a GitHub release.
+- Tag the release (`git tag v2.2.0 && git push --tags`) and attach the zip to a GitHub release.
 - For every later upload: bump `version`, `npm run check`, `node scripts/e2e.mjs`, `npm run zip`.
 
 ## Assets in this folder

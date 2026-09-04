@@ -40,7 +40,7 @@ AnkiConnect. Nothing in between.
 ![TTS](https://img.shields.io/badge/Google_TTS-fallback_audio-34a853?logo=google&logoColor=white)
 
 **Quality**<br>
-![Vitest](https://img.shields.io/badge/Vitest-79_tests-6e9f18?logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-106_tests-6e9f18?logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-e2e_on_the_built_extension-2ead33?logo=playwright&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088ff?logo=githubactions&logoColor=white)
 ![i18n](https://img.shields.io/badge/UI-12_languages-ff7a59)
@@ -320,15 +320,22 @@ Everything is set in the options page; this is what the settings mean.
 ## 🧪 Testing
 
 ```bash
-npm run check                                   # tsc + 68 unit tests + build + dist checks
+npm run check                                   # tsc + 106 unit tests + build + dist checks
 npm run e2e                                     # Playwright drives the built extension (Anki running)
 AQA_ANKI=1 npx vitest run tests/integration/anki.test.ts     # live AnkiConnect
 AQA_NET=1  npx vitest run tests/integration/media.test.ts    # live Wikipedia / Wiktionary / TTS
 AQA_LIVE=1 npx vitest run tests/integration/providers.test.ts # live providers (keys from env)
+node scripts/sense-eval.mjs tests/fixtures/sense-cases.json out.json  # 100 words in context, ~10 min
 ```
 
 The e2e run loads `dist/` into a headless Chromium, checks the popup, every options tab, the field
-mapping, the preview, batch mode and the selection bubble on a real Wikipedia page.
+mapping, the preview, batch mode, the offline queue round trip, the offscreen translator plumbing and
+the selection bubble on a real Wikipedia page.
+
+`sense-eval.mjs` replays 100 word-in-sentence cases through the built extension and prints what the
+bubble would show, so a change to the sense heuristic can be judged against the same set. It is read,
+not asserted: leaving a translation untouched is often the right answer. Google's endpoint refuses
+further calls after a few hundred in quick succession, which is why the run paces itself.
 
 ---
 
