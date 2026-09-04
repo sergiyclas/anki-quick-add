@@ -1,5 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
 import { t } from "../../lib/i18n";
+import { languageByCode } from "../../lib/languages";
 import { send } from "../../lib/messages";
 
 // Chrome downloads the language pack only in response to a real click, and only a full extension page
@@ -47,10 +48,13 @@ export function OfflineTranslation({ source, target }: { source: string; target:
   }
 
   // Proves the whole offline path: options page -> worker -> offscreen document -> on-device model.
+  // The word has to be in the source language: the model is built for that pair, and feeding it
+  // something else is what made this button fail with "Other generic failures occurred".
   async function test() {
+    const word = languageByCode(source).sample;
     setTested("…");
-    const r = await send({ type: "translate.device", text: "lighthouse" });
-    setTested(r.ok ? `lighthouse → ${r.translation}` : r.error);
+    const r = await send({ type: "translate.device", text: word });
+    setTested(r.ok ? `${word} → ${r.translation}` : r.error);
   }
 
   const pair = t("tr_pair", [source.toUpperCase(), target.toUpperCase()]);

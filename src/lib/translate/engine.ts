@@ -65,7 +65,11 @@ export async function translateOnDevice(text: string, from: string, to: string):
   ]);
   // Keep the document (and the loaded model) around for a few minutes of continued reading.
   await chrome.alarms.create(IDLE_ALARM, { delayInMinutes: 5 });
-  if (!response.ok) throw new Error(response.error);
+  if (!response.ok) {
+    // The browser reported the pack as ready but the model refused: do not keep trusting that.
+    await writeAvailability(from, to, "downloadable");
+    throw new Error(response.error);
+  }
   if (!("text" in response)) throw new Error("Unexpected offscreen reply");
   return response.text;
 }
