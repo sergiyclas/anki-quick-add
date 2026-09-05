@@ -12,7 +12,7 @@ export interface SettingsState {
   modelFieldsError: string;
   dirty: boolean;
   update(patch: (s: Settings) => Settings): void;
-  applyNow(next: Settings): Promise<void>; // persist immediately, without marking the form dirty
+  applyNow(patch: (s: Settings) => Settings): Promise<void>; // persist one change at once, without marking the form dirty
   updateKeys(patch: (k: ApiKeys) => ApiKeys): void;
   updateMapping(patch: (m: FieldMapping) => FieldMapping): void;
   reloadModelFields(): Promise<void>;
@@ -57,9 +57,12 @@ export function useSettings(): SettingsState | null {
     setDirty(true);
   }, []);
 
-  const applyNow = useCallback(async (next: Settings) => {
-    setSettings(next);
-    await saveSettings(next);
+  // Writes the patch on top of what is stored right now, not on top of this page's snapshot: another
+  // options tab may have saved something since this one was opened, and it must not be rolled back.
+  const applyNow = useCallback(async (patch: (s: Settings) => Settings) => {
+    const stored = await loadSettings();
+    setSettings((current) => (current ? patch(current) : patch(stored)));
+    await saveSettings(patch(stored));
   }, []);
 
   const updateKeys = useCallback((patch: (k: ApiKeys) => ApiKeys) => {

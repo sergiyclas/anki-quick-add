@@ -58,7 +58,11 @@ export async function noteDownloaded(from: string, to: string): Promise<void> {
 }
 
 export async function translateOnDevice(text: string, from: string, to: string): Promise<string> {
-  if ((await deviceAvailability(from, to)) !== "available") throw new Error("No offline language pack");
+  // A cached "not ready" is never the last word: the pack may have been installed since, or a single
+  // failed translation may have written that state. Ask the browser again before refusing.
+  if ((await deviceAvailability(from, to)) !== "available" && (await deviceAvailability(from, to, true)) !== "available") {
+    throw new Error("No offline language pack");
+  }
   const response = await Promise.race([
     askOffscreen({ target: "offscreen", kind: "translator.translate", from, to, text }),
     new Promise<never>((_, reject) => setTimeout(() => reject(new Error("Offline translator timed out")), DEVICE_TIMEOUT_MS)),

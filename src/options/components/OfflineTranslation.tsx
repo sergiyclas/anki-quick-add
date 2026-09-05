@@ -17,7 +17,11 @@ export function OfflineTranslation({ source, target }: { source: string; target:
     if (!supported) return;
     setPercent(null);
     setError("");
-    Translator.availability({ sourceLanguage: source, targetLanguage: target }).then(setState, () => setState("unavailable"));
+    Translator.availability({ sourceLanguage: source, targetLanguage: target }).then(async (availability) => {
+      setState(availability);
+      // The worker caches this state for its own fallback; the page is the one that just measured it.
+      if (availability === "available") await send({ type: "translate.ready", source, target });
+    }, () => setState("unavailable"));
   }, [source, target]);
 
   async function download() {

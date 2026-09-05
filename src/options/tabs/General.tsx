@@ -34,7 +34,7 @@ export function GeneralTab({ state }: { state: SettingsState }) {
 
   // Language and theme take effect immediately (persisted right away); bootPage reacts to the change.
   function setUiNow(patch: Partial<Settings["ui"]>) {
-    return applyNow({ ...settings, ui: { ...settings.ui, ...patch } });
+    return applyNow((s) => ({ ...s, ui: { ...s.ui, ...patch } }));
   }
 
   async function redeem() {
@@ -43,7 +43,7 @@ export function GeneralTab({ state }: { state: SettingsState }) {
       setPromo({ text: t("promo_invalid"), cls: "err" });
       return;
     }
-    await applyNow({ ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } });
+    await applyNow((s) => ({ ...s, license: { tier: unlocked, redeemedAt: new Date().toISOString() } }));
     setPromo({ text: t("promo_success", [t(`tier_${unlocked}`)]), cls: "ok" });
     setCode("");
   }
