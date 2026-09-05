@@ -233,8 +233,11 @@ onto the card. It works by translating the sentence and matching it against the 
 senses, with stem-tolerant comparison for inflected languages – no extra key, no LLM call.
 
 Chrome can also keep a language pack on the device (Settings → Languages & Generation → *Offline
-translation*). When the online translator cannot be reached, the extension falls back to it, so the
-bubble keeps working with no connection at all.
+translation*). Downloading it needs one click there – the browser only starts the download from a real
+button press – and *Test it* then translates a word in the language you are learning through the
+on-device model, so you can see the whole offline path work before you need it. When the online
+translator cannot be reached, the extension falls back to that pack, so the bubble keeps working with
+no connection at all.
 
 ### 🔁 Duplicates, sync, backup
 
