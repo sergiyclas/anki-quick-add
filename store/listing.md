@@ -3,6 +3,19 @@
 Everything the Developer Dashboard asks for, in the order it asks. Fields marked *copy* are meant to
 be pasted as-is.
 
+> **Version 2.0.0 was rejected on 2 September 2026** (Spam and Placement in the Store, "Yellow Argon":
+> *excessive keywords in the product description*, quoting `OpenRouter, Groq, DeepSeek, xAI, Mistral,
+> Ollama, LM Studio`). The description below no longer lists compatible services by name: the three
+> providers the extension talks to directly are named once each, and everything else is described as
+> "any OpenAI-compatible endpoint". Keep it that way - a list of brand names in the description reads
+> as keyword stuffing no matter how accurate it is. No appeal is needed; a corrected draft is simply
+> submitted again.
+>
+> The rejection also linked the branding guidelines. Nothing in them was cited as broken, but the
+> title starts with someone else's product name, so the listing has to keep making clear that this is
+> a third-party extension for Anki and not published by its authors - which the description does, and
+> the icon does not imitate Anki's.
+
 ## 0. Account (one-time)
 
 - Register at https://chrome.google.com/webstore/devconsole: one-time registration fee (historically
@@ -55,43 +68,41 @@ be pasted as-is.
 
 ### 2.1 Description (*copy*)
 
-Anki Quick Add turns a single word into a complete Anki flashcard – and it works with no API key at all.
+Anki Quick Add turns a single word into a finished Anki flashcard, and it works with no API key at all.
 
-Type a word in the popup (Alt+A) or hold Shift and select it on any page. Out of the box the extension builds the card from free sources (Google Translate's dictionary data, dictionaryapi.dev, the Tatoeba sentence corpus): translation, part of speech, IPA, synonyms, definition and example sentences, plus pronunciation audio and a Wikipedia image. Plug in your own LLM key and you also get grammar notes, sense-aware translations and examples at your CEFR level. The note lands in Anki through AnkiConnect in a few seconds.
+Type a word in the popup (Alt+A), or hold Shift and select one while you read. The extension writes the card for you: translation, part of speech, IPA transcription, synonyms, a definition and example sentences at the CEFR level you choose, plus pronunciation audio and an image from Wikipedia with its author and licence. A few seconds later the note is in your own Anki, through the AnkiConnect add-on. Nothing is sent to us, because there is no us: the extension has no account, no server and no telemetry.
 
-WHAT YOU GET ON EVERY CARD
-• Translation(s) in your language
-• IPA transcription and part of speech
-• Example sentences at the CEFR level you choose, optionally translated
-• Synonyms and a short grammar note (gender, plural, irregular forms, aspect…)
-• Pronunciation audio: dictionary or Wiktionary recording, Google TTS as fallback
-• A Wikipedia image chosen for the intended sense, with author and license stored
+THE MEANING THE SENTENCE MEANS
+Selecting a word gives you the meaning it carries in that sentence, not the most common one. On a baseball page "bat" becomes the bat you swing rather than the animal, and the usual meaning stays visible underneath. The card gets the same reading, so your deck is not full of the wrong sense.
 
-WORKS WITH YOUR SETUP
-• No key needed: the Free provider is the default.
-• Or bring your own key: OpenAI, Google Gemini, Anthropic, or any OpenAI-compatible endpoint (OpenRouter, Groq, DeepSeek, xAI, Mistral, Ollama, LM Studio). Your keys stay in your browser.
-• Built-in note type with a clean two-card template, or map the generated parts onto the fields of any note type you already use – and preview the result with your real Anki templates.
-• Around 40 languages in any pair. Ukrainian targets get built-in anti-calque rules.
-• Interface in 12 languages, switchable inside the extension; light, dark or dark-on-a-schedule theme.
-• Duplicate policy: skip, add anyway, or fill the empty fields of the existing note.
-• Anki does not have to be running: cards wait in a queue with their audio and image and land as soon as it is back.
+ANKI CAN STAY CLOSED
+A word added while Anki is shut down is still turned into a full card, audio and image included, and waits in a queue on your machine. It is written the moment Anki answers again, so reading never has to stop for a flashcard.
 
-FAST WHEN YOU WANT IT, CAREFUL WHEN YOU NEED IT
-• Instant Google translation while you type – no LLM tokens spent until you press Enter
-• The meaning that fits the sentence: "bat" on a baseball page becomes the bat you swing, not the animal
-• Optional on-device language pack, so the bubble keeps translating with no connection
-• Selection bubble on web pages (opt-in, Shift + select): the sentence around the word travels along as context, so "bat" on a baseball page becomes the baseball bat, not the animal
-• Right-click menu with your decks
-• Editor window (Shift+Enter) to review, edit, drop the image or regenerate with a hint before anything is added
-• List mode: paste a list of words, get a summary of added / duplicates / errors
-• Settings sync across your Chrome installs, JSON export/import
+AND SO CAN THE CONNECTION
+Chrome can keep a language pack on your device. When the online translator cannot be reached, the extension quietly falls back to it and the bubble keeps translating with no internet at all.
 
-PRO (promo code)
-• Mnemonics and etymology on cards, audio for every example sentence, card themes (Classic, Paper, Midnight), parallel additions in List mode.
+YOUR MODEL, OR NONE
+The default needs no account and no key: the card is built from free dictionary and sentence data. If you want grammar notes and sense-aware examples, add your own key for OpenAI, Google Gemini or Anthropic, or point the extension at any OpenAI-compatible endpoint, including a model running on your own computer. Keys stay in your browser and are sent only to the service they belong to.
+
+YOUR CARDS, YOUR WAY
+• A built-in note type with a clean two-card template, or map the generated parts onto the fields of a note type you already use
+• Preview the result with your real Anki templates before anything is added
+• Around 40 languages in any pair, with built-in rules against calques for Ukrainian
+• Duplicates: skip them, add anyway, or fill only the empty fields of the note you already have
+• An editor window to check, change or regenerate a card before it lands
+• List mode for a pasted list of words, with a summary of what was added
+• Your decks in the right-click menu
+• Interface in 12 languages; light, dark, or dark on a schedule
+• Settings sync across your Chrome installations, with JSON export and import
+
+PRO, UNLOCKED WITH A PROMO CODE
+Mnemonics and etymology on cards, audio for every example sentence, three card designs, and parallel additions in List mode. The rest is free and stays free.
+
+WHAT IT TALKS TO
+Your own Anki on 127.0.0.1 through AnkiConnect; Google Translate for the quick translation and text-to-speech; dictionaryapi.dev and the Tatoeba sentence corpus for pronunciation, definitions and examples; Wikipedia and Wikimedia Commons for images. Only the service you configured, and only when you add a word. The full privacy policy is linked below.
 
 REQUIREMENTS
-• Anki desktop running with the AnkiConnect add-on (code 2055492159). No AnkiConnect configuration needed.
-• Optional: an API key for an LLM provider, or a local model via Ollama / LM Studio.
+Anki desktop with the AnkiConnect add-on (code 2055492159), running on the same computer. No AnkiConnect configuration needed. An API key is optional.
 
 Free and open source (MIT): https://github.com/sergiyclas/anki-quick-add
 
@@ -118,7 +129,7 @@ Creating Anki flashcards from words the user types or selects: the card content 
 | Host `https://*.wikipedia.org/*`, `https://*.wiktionary.org/*`, `https://commons.wikimedia.org/*`, `https://upload.wikimedia.org/*` | Card images (Wikipedia lead image, Commons search) and native pronunciation recordings, with author and license metadata. |
 | Host `https://api.dictionaryapi.dev/*` | English pronunciation recordings; IPA, definitions and examples for the keyless Free provider. |
 | Host `https://tatoeba.org/*` | Example sentences with translations for the keyless Free provider. |
-| Optional host `https://*/*`, `http://*/*` | Never requested at install. Requested from a user gesture only when the user (a) enters a custom OpenAI-compatible endpoint (e.g. a local Ollama server) or a custom AnkiConnect address, or (b) enables the selection bubble, which has to run on the pages the user reads. Disabling the bubble stops the script. |
+| Optional host `https://*/*`, `http://*/*` | Never requested at install. Requested from a user gesture only when the user (a) enters the address of a custom OpenAI-compatible endpoint or of a custom AnkiConnect server, or (b) enables the selection bubble, which has to run on the pages the user reads. Disabling the bubble stops the script. |
 
 ### Remote code
 
@@ -163,6 +174,8 @@ handles user data (website content, API keys).
 ## 6. Notes for the reviewer (*copy* into the review notes / additional information field if offered)
 
 Testing requires the Anki desktop app with the AnkiConnect add-on (https://ankiweb.net/shared/info/2055492159, add-on code 2055492159); AnkiConnect's default configuration already allows requests from extensions. Without Anki running the card is built and held in a local queue (Settings → General shows it). With Anki running: press Alt+A (or click the icon), type "harbor", press Enter – the default Free provider needs no API key and adds a note to the "Default" deck (translation, IPA, examples, pronunciation audio, image). Without Anki the popup shows "Anki: offline" and nothing is sent anywhere. LLM providers are optional and need the user's own key. The selection bubble is off by default; enabling it in Settings → Languages & Generation prompts for the site permission. No account, no backend, no remote code; source: https://github.com/sergiyclas/anki-quick-add
+
+This version replaces the 2.0.0 draft that was rejected for excessive keywords in the description. The list of compatible third-party services has been removed from the listing, and the description now explains what the extension does in prose.
 
 ## 7. After the item is live
 
