@@ -117,7 +117,7 @@ Creating Anki flashcards from words the user types or selects: the card content 
 | Permission | Justification |
 |---|---|
 | `storage` | Stores the user's settings, field mappings, API keys (in the browser's extension storage only) and a short history of added words. |
-| `unlimitedStorage` | Cards added while Anki is closed are held in a local queue until Anki accepts them. Each card carries its pronunciation audio and image, so the 10 MB default budget would hold only about 45 of them; the queue is deleted as soon as the cards are written to Anki. |
+| `unlimitedStorage` | Cards added while Anki is closed wait in a local queue until Anki accepts them, and each one carries its pronunciation audio and its image. That is about 150 KB per card, far past the 10 MB the default extension storage allows, so the queue is kept in IndexedDB; without this permission the browser may evict it when disk space runs low and the user would silently lose cards they had already added. Each entry is deleted the moment it is written to Anki, and nothing is uploaded anywhere. |
 | `alarms` | Retries that queue every few minutes, so the cards land as soon as Anki is running again, and closes the hidden translator page when it has been idle. |
 | `offscreen` | Chrome's built-in on-device translator is only exposed to a document, never to an extension service worker. A hidden page is opened on demand to run offline translations and closed again after a few idle minutes. |
 | `contextMenus` | Adds the "Add to Anki" entry to the context menu shown on selected text. |
